@@ -17,5 +17,24 @@ namespace Manager
         {
             Player.transform.GetComponent<Movement>().SetMovement(movement);
         }
+
+        public void PlayerSight(bool isLeft)
+        {
+            if (isLeft)
+            {
+                Player.transform.rotation = Constant.FLIP.NOTFLIPPED;
+            }
+            else
+            {
+                Manager.Player.transform.rotation = Constant.FLIP.FLIPPED;
+            }
+
+            Player.transform.GetComponent<Movement>().SetSightLeft(isLeft);
+        }
+
+        public void Roll()
+        {
+            Player.transform.GetComponent<Movement>().StartRoll();
+        }
     }
 }

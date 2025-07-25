@@ -2692,6 +2692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeedCoff: 0.01
+  RollDistance: 1
 --- !u!4 &1899236885
 Transform:
   m_ObjectHideFlags: 0

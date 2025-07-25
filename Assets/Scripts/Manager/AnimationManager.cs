@@ -25,5 +25,10 @@ namespace Manager
         {
             _animator.SetFloat("RunState",0f);
         }
+
+        public void StartRollAnimation()
+        {
+            
+        }
     }
 }

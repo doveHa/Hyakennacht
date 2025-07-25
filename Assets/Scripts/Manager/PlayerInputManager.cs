@@ -30,15 +30,15 @@ namespace Manager
 
             if (movement.x < 0)
             {
-                FlipX(true);
+                GameManager.Manager.PlayerSight(true);
             }
             else if (movement.x > 0)
             {
-                FlipX(false);
+                GameManager.Manager.PlayerSight(false);
             }
-            
-            //GameManager.Manager.MovePlayer(movement * Constant.SPEED.MOVESPEED);
-            GameManager.Manager.MovePlayer(movement * GameObject.Find("Coff").GetComponent<CoffTest>().MoveSpeedCoff);
+
+            GameManager.Manager.MovePlayer(movement * Constant.SPEED_DISTANCE.MOVESPEED);
+            //GameManager.Manager.MovePlayer(movement * GameObject.Find("Coff").GetComponent<CoffTest>().MoveSpeedCoff);
         }
 
         private void EndMove(InputAction.CallbackContext ctx)
@@ -49,6 +49,8 @@ namespace Manager
 
         private void StartRoll(InputAction.CallbackContext ctx)
         {
+            AnimationManager.Manager.StartRollAnimation();
+            GameManager.Manager.Roll();
         }
 
         private void StartBasicAttack(InputAction.CallbackContext ctx)
@@ -79,18 +81,6 @@ namespace Manager
         public void ChangeActiveSkill2(SkillBase skill)
         {
             _activeSkill2 = skill;
-        }
-
-        private void FlipX(bool flipX)
-        {
-            if (flipX)
-            {
-                GameManager.Manager.Player.transform.rotation = Constant.FLIP.NOTFLIPPED;
-            }
-            else
-            {
-                GameManager.Manager.Player.transform.rotation = Constant.FLIP.FLIPPED;
-            }
         }
     }
 }
