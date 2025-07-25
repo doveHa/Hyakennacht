@@ -15,7 +15,7 @@ namespace Manager
 
             _playerInput = new PlayerInput();
             _playerInput.Enable();
-            _playerInput.Movement.Move.started += StartMove;
+            _playerInput.Movement.Move.performed += StartMove;
             _playerInput.Movement.Move.canceled += EndMove;
             _playerInput.Movement.Roll.started += StartRoll;
             _playerInput.Attack.ActiveSkill1.started += RunActiveSkill1;
@@ -26,21 +26,25 @@ namespace Manager
         private void StartMove(InputAction.CallbackContext ctx)
         {
             AnimationManager.Manager.StartMoveAnimation();
+            Vector2 movement = ctx.ReadValue<Vector2>();
 
-            bool isflipX;
-            if (ctx.control.name.Equals("a"))
+            if (movement.x < 0)
             {
                 FlipX(true);
             }
-            else if (ctx.control.name.Equals("d"))
+            else if (movement.x > 0)
             {
                 FlipX(false);
             }
+            
+            //GameManager.Manager.MovePlayer(movement * Constant.SPEED.MOVESPEED);
+            GameManager.Manager.MovePlayer(movement * GameObject.Find("Coff").GetComponent<CoffTest>().MoveSpeedCoff);
         }
 
         private void EndMove(InputAction.CallbackContext ctx)
         {
             AnimationManager.Manager.EndMoveAnimation();
+            GameManager.Manager.MovePlayer(Vector2.zero);
         }
 
         private void StartRoll(InputAction.CallbackContext ctx)
@@ -81,13 +85,11 @@ namespace Manager
         {
             if (flipX)
             {
-                GameManager.Manager.Player.transform.GetChild(0)
-                    .SetPositionAndRotation(GameManager.Manager.Player.transform.position, new Quaternion(0, 0, 0, 0));
+                GameManager.Manager.Player.transform.rotation = Constant.FLIP.NOTFLIPPED;
             }
             else
             {
-                GameManager.Manager.Player.transform.GetChild(0)
-                    .SetPositionAndRotation(GameManager.Manager.Player.transform.position, new Quaternion(0, 180, 0, 0));
+                GameManager.Manager.Player.transform.rotation = Constant.FLIP.FLIPPED;
             }
         }
     }

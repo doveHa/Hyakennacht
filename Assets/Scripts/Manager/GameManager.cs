@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Character;
+using UnityEngine;
 
 namespace Manager
 {
@@ -10,6 +11,11 @@ namespace Manager
         {
             base.Awake();
             Player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        public void MovePlayer(Vector2 movement)
+        {
+            Player.transform.GetComponent<Movement>().SetMovement(movement);
         }
     }
 }
