@@ -1,49 +1,26 @@
-﻿using Manager;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Manager;
 using UnityEngine;
 
 namespace Character
 {
     public class Movement : MonoBehaviour
     {
-        private Vector3 _movement;
-        private bool _isSightLeft;
+        public static float MoveSpeed;
+        public static bool IsMoving;
+        public Vector3 MoveVector { get; set; }
 
         void Start()
         {
-            _movement = Vector3.zero;
+            MoveSpeed = 0.01f;
+            MoveVector = Vector3.zero;
         }
 
         void Update()
         {
-            GameManager.Manager.Player.transform.position += _movement;
+            GameManager.Manager.Player.transform.position += MoveVector * MoveSpeed;
         }
 
-        public void SetMovement(Vector2 movement)
-        {
-            _movement = movement;
-        }
-
-        public void StartRoll()
-        {
-            Vector2 playerPosition = GameManager.Manager.Player.transform.position;
-            CoffTest test = GameObject.Find("Coff").GetComponent<CoffTest>();
-            if (_isSightLeft)
-            {
-                playerPosition.x += (-1) * Constant.SPEED_DISTANCE.ROLL_DISTANCE;
-                //playerPosition.x += (-1) * test.RollDistance;
-            }
-            else
-            {
-                playerPosition.x += Constant.SPEED_DISTANCE.ROLL_DISTANCE;
-                //playerPosition.x += test.RollDistance;
-            }
-
-            GameManager.Manager.Player.transform.position = playerPosition;
-        }
-
-        public void SetSightLeft(bool isLeft)
-        {
-            _isSightLeft = isLeft;
-        }
     }
 }

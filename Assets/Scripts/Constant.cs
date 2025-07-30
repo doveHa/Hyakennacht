@@ -8,9 +8,12 @@ public static class Constant
         public static Quaternion FLIPPED = Quaternion.Euler(0, 180, 0);
     }
 
-    public static class SPEED_DISTANCE
+    public static class ROLL
     {
-        public static float MOVESPEED = 0.01f;
-        public static float ROLL_DISTANCE = 1f;
+        public static int ROLL_FRAME = 20;
+        public static int START_FRAME = 4;
+        public static float ROLL_DISTANCE = 0.025f;
+        public static float DISTANCE_COFF = 20f;
+
     }
 }

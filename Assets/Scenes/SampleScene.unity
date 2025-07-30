@@ -340,6 +340,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &671044812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 410686154740660025, guid: 9975c815ba8c416409590d3b34e6775d, type: 3}
+  m_PrefabInstance: {fileID: 1678136753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &671044820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671044812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91384fb97a7f9ff4e92e887d27b6259f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &860829856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,7 +2677,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 410686154740660025, guid: 9975c815ba8c416409590d3b34e6775d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 671044820}
   m_SourcePrefab: {fileID: 100100000, guid: 9975c815ba8c416409590d3b34e6775d, type: 3}
 --- !u!1 &1899236883
 GameObject:
@@ -2692,7 +2712,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeedCoff: 0.01
-  RollDistance: 1
+  RollDistance: 10
+  RollFrame: 0
+  RollStartFrame: 0
 --- !u!4 &1899236885
 Transform:
   m_ObjectHideFlags: 0

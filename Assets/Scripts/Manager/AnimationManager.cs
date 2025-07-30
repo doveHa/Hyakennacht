@@ -28,7 +28,7 @@ namespace Manager
 
         public void StartRollAnimation()
         {
-            
+            _animator.SetTrigger("Roll");
         }
     }
 }

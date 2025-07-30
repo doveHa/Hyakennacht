@@ -1,4 +1,5 @@
-﻿using Character.Skill;
+﻿using Character;
+using Character.Skill;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,7 @@ namespace Manager
 
         private void StartMove(InputAction.CallbackContext ctx)
         {
+            Movement.IsMoving = true;
             AnimationManager.Manager.StartMoveAnimation();
             Vector2 movement = ctx.ReadValue<Vector2>();
 
@@ -37,20 +39,26 @@ namespace Manager
                 GameManager.Manager.PlayerSight(false);
             }
 
-            GameManager.Manager.MovePlayer(movement * Constant.SPEED_DISTANCE.MOVESPEED);
+            GameManager.Manager.SetMoveVector(movement);
             //GameManager.Manager.MovePlayer(movement * GameObject.Find("Coff").GetComponent<CoffTest>().MoveSpeedCoff);
         }
 
         private void EndMove(InputAction.CallbackContext ctx)
         {
+            Movement.IsMoving = false;
             AnimationManager.Manager.EndMoveAnimation();
-            GameManager.Manager.MovePlayer(Vector2.zero);
+            GameManager.Manager.SetMoveVector(Vector2.zero);
         }
 
         private void StartRoll(InputAction.CallbackContext ctx)
         {
             AnimationManager.Manager.StartRollAnimation();
-            GameManager.Manager.Roll();
+            Movement.MoveSpeed *= 2;
+
+            if (!Movement.IsMoving)
+            {
+                GameManager.Manager.Roll();
+            }
         }
 
         private void StartBasicAttack(InputAction.CallbackContext ctx)

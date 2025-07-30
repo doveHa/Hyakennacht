@@ -1,10 +1,12 @@
-﻿using Character;
+﻿using System.Collections;
+using Character;
 using UnityEngine;
 
 namespace Manager
 {
     public class GameManager : AbstractManager<GameManager>
     {
+        private bool _isLeftSight = true;
         public GameObject Player { get; private set; }
 
         protected override void Awake()
@@ -13,9 +15,9 @@ namespace Manager
             Player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        public void MovePlayer(Vector2 movement)
+        public void SetMoveVector(Vector2 movement)
         {
-            Player.transform.GetComponent<Movement>().SetMovement(movement);
+            Player.transform.GetComponent<Movement>().MoveVector = movement;
         }
 
         public void PlayerSight(bool isLeft)
@@ -23,18 +25,47 @@ namespace Manager
             if (isLeft)
             {
                 Player.transform.rotation = Constant.FLIP.NOTFLIPPED;
+                _isLeftSight = true;
             }
             else
             {
-                Manager.Player.transform.rotation = Constant.FLIP.FLIPPED;
+                Player.transform.rotation = Constant.FLIP.FLIPPED;
+                _isLeftSight = false;
             }
-
-            Player.transform.GetComponent<Movement>().SetSightLeft(isLeft);
         }
 
         public void Roll()
         {
-            Player.transform.GetComponent<Movement>().StartRoll();
+            if (_isLeftSight)
+            {
+                StartCoroutine(Rolling());
+            }
+            else
+            {
+                StartCoroutine(Rolling());
+            }
+        }
+
+        private IEnumerator Rolling()
+        {
+            int currentFrame = 0;
+            while (currentFrame < Constant.ROLL.ROLL_FRAME)
+            {
+                currentFrame++;
+                if (currentFrame > Constant.ROLL.START_FRAME)
+                {
+                    if (_isLeftSight)
+                    {
+                        Player.transform.position += new Vector3((-1) * Constant.ROLL.ROLL_DISTANCE, 0, 0);
+                    }
+                    else
+                    {
+                        Player.transform.position += new Vector3(Constant.ROLL.ROLL_DISTANCE, 0, 0);
+                    }
+                }
+
+                yield return null;
+            }
         }
     }
 }
