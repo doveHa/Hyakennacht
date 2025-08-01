@@ -8,11 +8,17 @@ namespace Manager
     {
         private bool _isLeftSight = true;
         public GameObject Player { get; private set; }
+        public Player PlayerScript { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
             Player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        void Start()
+        {
+            PlayerScript = Player.GetComponent<Player>();
         }
 
         public void SetMoveVector(Vector2 movement)
@@ -44,6 +50,11 @@ namespace Manager
             {
                 StartCoroutine(Rolling());
             }
+        }
+
+        public void GameOver()
+        {
+            
         }
 
         private IEnumerator Rolling()

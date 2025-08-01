@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: 03a360cc97a32524c9b48d103e64fee4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4702544020559098553
+    second: fox_0
+  - first:
+      213: -5901367661672369291
+    second: fox_1
+  - first:
+      213: 9004580969247211910
+    second: fox_2
+  - first:
+      213: -7766446191851538065
+    second: fox_3
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fox_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 136
+        width: 924
+        height: 767
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 336, y: -296.5}
+        - {x: 438, y: -290.5}
+        - {x: 439, y: -276.5}
+        - {x: 336, y: -200.5}
+        - {x: 439, y: -60.5}
+        - {x: 385, y: -36.5}
+        - {x: 331, y: -47.5}
+        - {x: 348, y: 53.5}
+        - {x: 420, y: 122.5}
+        - {x: 379, y: 158.5}
+        - {x: 268, y: 136.5}
+        - {x: 265, y: 205.5}
+        - {x: 308, y: 275.5}
+        - {x: 222, y: 255.5}
+        - {x: 134, y: 190.5}
+        - {x: 163, y: 344.5}
+        - {x: 41, y: 271.5}
+        - {x: 6, y: 379.5}
+        - {x: -155, y: 211.5}
+        - {x: -252, y: 224.5}
+        - {x: -378, y: 369.5}
+        - {x: -414, y: 312.5}
+        - {x: -421, y: 179.5}
+        - {x: -389, y: 120.5}
+        - {x: -403, y: 52.5}
+        - {x: -455, y: 46.5}
+        - {x: -434, y: 7.5}
+        - {x: -456, y: -12.5}
+        - {x: -296, y: -116.5}
+        - {x: -302, y: -348.5}
+        - {x: 16.410889, y: -341.60303}
+        - {x: 54, y: -294.5}
+        - {x: 147, y: -336.5}
+        - {x: 252, y: -336.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5737a05e0612a1ea0800000000000000
+      internalID: -5901367661672369291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d73a06d240cccb54faa1c87a384ca191
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fox_1: -5901367661672369291
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
