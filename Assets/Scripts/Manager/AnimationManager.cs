@@ -5,10 +5,12 @@ namespace Manager
     public class AnimationManager : AbstractManager<AnimationManager>
     {
         private Animator _animator;
+        public bool RollFlag { private get; set; }
 
         protected override void Awake()
         {
             base.Awake();
+            RollFlag = true;
         }
 
         void Start()
@@ -18,17 +20,23 @@ namespace Manager
 
         public void StartMoveAnimation()
         {
-            _animator.SetFloat("RunState",0.3f);
+            _animator.SetFloat("RunState", 0.3f);
         }
 
         public void EndMoveAnimation()
         {
-            _animator.SetFloat("RunState",0f);
+            _animator.SetFloat("RunState", 0f);
         }
 
-        public void StartRollAnimation()
+        public bool StartRollAnimation()
         {
-            _animator.SetTrigger("Roll");
+            if (RollFlag)
+            {
+                _animator.SetTrigger("Roll");
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -53,12 +53,14 @@ namespace Manager
 
         private void StartRoll(InputAction.CallbackContext ctx)
         {
-            AnimationManager.Manager.StartRollAnimation();
-            Movement.MoveSpeed *= 2;
-
-            if (!Movement.IsMoving)
+            if (AnimationManager.Manager.StartRollAnimation())
             {
-                GameManager.Manager.Roll();
+                Movement.MoveSpeed *= 2;
+
+                if (!Movement.IsMoving)
+                {
+                    GameManager.Manager.Roll();
+                }
             }
         }
 

@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
-        CanvasManager.Manager.hpControl.MinusHp();
+        SystemManager.Manager.hpControl.MinusHp();
     }
     public void PlayerGetCoin()
     {

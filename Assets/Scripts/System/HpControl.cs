@@ -7,6 +7,7 @@ namespace System
     {
         public GameObject[] hpArray;
         private int _currentHp;
+        private bool _isInvincible;
 
         void Awake()
         {
@@ -23,12 +24,20 @@ namespace System
 
         public void MinusHp()
         {
-            hpArray[_currentHp--].SetActive(false);
-
-            if (_currentHp == 0)
+            if (!_isInvincible)
             {
-                GameManager.Manager.GameOver();
+                hpArray[_currentHp--].SetActive(false);
+
+                if (_currentHp == 0)
+                {
+                    GameManager.Manager.GameOver();
+                }
             }
+        }
+
+        public void SetInvincible(bool isInvincible)
+        {
+            _isInvincible = isInvincible;
         }
     }
 }

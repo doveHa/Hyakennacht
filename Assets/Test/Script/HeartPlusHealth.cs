@@ -7,7 +7,7 @@ public class HeartPlusHealth : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            CanvasManager.Manager.hpControl.PlusHp();
+            SystemManager.Manager.hpControl.PlusHp();
         }
     }
 }

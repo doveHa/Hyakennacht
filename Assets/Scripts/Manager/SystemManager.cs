@@ -3,7 +3,7 @@ using TMPro;
 
 namespace Manager
 {
-    public class CanvasManager : AbstractManager<CanvasManager>
+    public class SystemManager : AbstractManager<SystemManager>
     {
         public HpControl hpControl;
         public TextMeshProUGUI coinCount;
