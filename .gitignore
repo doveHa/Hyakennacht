@@ -12,3 +12,5 @@
 **/[Ll]ogs/
 **/[Uu]ser[Ss]ettings/
 *.log
+
+.vs/
