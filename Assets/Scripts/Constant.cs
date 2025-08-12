@@ -6,6 +6,7 @@ public static class Constant
     {
         public static int MIN_ENEMIES = 8;
         public static int MAX_ENEMIES = 11;
+        public static float SPAWN_DUPLICATION_DISTANCE = 0.3f;
     }
 
     public static class Flip

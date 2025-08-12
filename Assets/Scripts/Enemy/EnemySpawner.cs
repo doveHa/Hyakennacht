@@ -46,30 +46,26 @@ namespace Enemy
 
         private GameObject SpawnEnemy(Random rnd, GameObject enemy)
         {
-            int randomX = rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
-            int randomY = rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
+            Vector3 local = Vector3.zero;
+            do
+            {
+                int randomX = rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
+                int randomY = rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
+                Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
+                local = stage.CellToLocal(randomPoint);
+            } while (CheckDuplication(enemy, local));
 
-            Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
-            Vector3 local = stage.CellToLocal(randomPoint);
             return Instantiate(enemy, local, Quaternion.identity);
         }
 
-        private bool CheckDuplication(Vector3 position)
+        private bool CheckDuplication(GameObject enemy, Vector3 position)
         {
-            GameObject empty = Instantiate(new GameObject(), position, Quaternion.identity);
-            empty.AddComponent<Collider2D>();
-            empty.AddComponent<Rigidbody2D>().gravityScale = 0;
-            CheckCollider checkCollider = empty.AddComponent<CheckCollider>();
-            return checkCollider.IsOverlap;
-        }
-
-        class CheckCollider : MonoBehaviour
-        {
-            public bool IsOverlap { get; private set; } = false;
-            private void OnCollisionStay2D(Collision2D other)
+            if (Physics2D.OverlapCircleAll(position, 0.5f).Length == 0)
             {
-                IsOverlap = true;
+                return false;
             }
+
+            return true;
         }
     }
 }
