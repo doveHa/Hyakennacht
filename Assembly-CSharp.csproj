@@ -51,6 +51,7 @@
     <Compile Include="Assets\SPUM\Script\Plugin\Moments Recorder\Scripts\MinAttribute.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill2.cs" />
     <Compile Include="Assets\Scripts\System\AddCoin.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
     <Compile Include="Assets\SPUM\Sprite_Editor(Beta)\Script\SpriteSyncManager.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_SpriteButtonST.cs" />
     <Compile Include="Assets\SPUM\Script\Plugin\Moments Recorder\Scripts\Gif\LzwEncoder.cs" />
@@ -69,8 +70,10 @@
     <Compile Include="Assets\SPUM\Sprite_Editor(Beta)\Script\SpriteEyeSync.cs" />
     <Compile Include="Assets\SPUM\Sample\Script\PlayerManager.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_HorseSpriteList.cs" />
+    <Compile Include="Assets\Scripts\Enemy\PlayerRecognize.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_AnimationController.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill1.cs" />
+    <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
     <Compile Include="Assets\SPUM\Sprite_Editor(Beta)\Script\SPUM_SpriteEditManager.cs" />
     <Compile Include="Assets\SPUM\Script\Ect\ColorSelect.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_EyeSet.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Assets\SPUM\Script\Plugin\Moments Recorder\Scripts\Gif\GifFrame.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\SPUM\Script\Plugin\Moments Recorder\Scripts\ReflectionUtils.cs" />
+    <Compile Include="Assets\Scripts\Enemy\RandomMoveState.cs" />
     <Compile Include="Assets\SPUM\Sprite_Editor(Beta)\Script\SpriteSync.cs" />
     <Compile Include="Assets\SPUM\Sprite_SheetExporter(Beta)\Script\SPUM_Exporter.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
@@ -86,11 +90,11 @@
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_Button.cs" />
     <Compile Include="Assets\Scripts\AnimationEvent\RollAnimationEvent.cs" />
-    <Compile Include="Assets\Scripts\Enemy\CheckDuplicate.cs" />
     <Compile Include="Assets\SPUM\Script\Plugin\Moments Recorder\Scripts\Worker.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\SPUM\Script\Plugin\Moments Recorder\Scripts\Gif\NeuQuant.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_PackageButton.cs" />
+    <Compile Include="Assets\Scripts\Enemy\ChasePlayerState.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
     <Compile Include="Assets\SPUM\Script\Plugin\Moments Recorder\Scripts\Gif\GifEncoder.cs" />
     <Compile Include="Assets\SPUM\Script\SPUM_SpriteList.cs" />

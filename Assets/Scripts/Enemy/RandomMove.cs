@@ -1,36 +1,42 @@
-using System;
-using Character;
-using Enemy;
-using Manager;
-using UnityEngine;
-using Random = System.Random;
+/*
+    using Enemy;
+    using UnityEngine;
 
-public class RandomMove : MonoBehaviour
-{
-    public float moveSpeed;
-    private int _moveX, _moveY;
-    
-    void Start()
+    public class RandomMove : MonoBehaviour
     {
-        Initialize();
-    }
+        private EnemySpawner _spawner;
+        private bool _isMoving;
+        private Vector3 _destination;
+        public float speed = 0.05f;
 
-    void Update()
-    {
-        Random rnd = new Random();
+        void Start()
+        {
+            _isMoving = false;
+        }
 
-        _moveX = rnd.Next(-1, 1);
-        _moveY = rnd.Next(-1, 1);
-        
-        Vector3 moveVector = new Vector2(_moveX, _moveY);
-        transform.position -= moveVector * moveSpeed;
-        
-        Initialize();
-    }
+        void Update()
+        {
+            if (!_isMoving)
+            {
+                Debug.Log("new Destination");
+                _destination = _spawner.GetRandomPosition();
+                _isMoving = true;
+            }
+            
+            else
+            {
+                Vector3 direction = (_destination - transform.position).normalized;
+                GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
+            }
 
-    private void Initialize()
-    {
-        _moveX = 0;
-        _moveY = 0;        
-    }
-}
+            if (Vector3.Distance(_destination, transform.position) < 1)
+            {
+                _isMoving = false;
+            }
+        }
+
+        public void SetSpawner(EnemySpawner spawner)
+        {
+            _spawner = spawner;
+        }
+    }*/

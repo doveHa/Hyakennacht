@@ -55,7 +55,7 @@ namespace Manager
         {
             if (AnimationManager.Manager.StartRollAnimation())
             {
-                Movement.MoveSpeed *= 2;
+                Constant.Player.MOVE_SPEED *= 2;
 
                 if (!Movement.IsMoving)
                 {

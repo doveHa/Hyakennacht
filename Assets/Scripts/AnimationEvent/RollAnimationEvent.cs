@@ -16,7 +16,7 @@ namespace AnimationEvent
         {
             AnimationManager.Manager.RollFlag = true;
             SystemManager.Manager.hpControl.SetInvincible(false);
-            Movement.MoveSpeed /= 2;
+            Constant.Player.MOVE_SPEED /= 2;
         }
     }
 }

@@ -2,11 +2,19 @@
 
 public static class Constant
 {
+    public static class Player
+    {
+        public static float MOVE_SPEED = 0.025f;
+    }
+    public static class Enemy
+    {
+        public static float MOVE_SPEED = 1.5f;
+    }
     public static class SpawnEnemy
     {
-        public static int MIN_ENEMIES = 8;
-        public static int MAX_ENEMIES = 11;
-        public static float SPAWN_DUPLICATION_DISTANCE = 0.3f;
+        public static int MIN_ENEMIES = 1;
+        public static int MAX_ENEMIES = 2;
+        public static float SPAWN_DUPLICATION_DISTANCE = 0.5f;
     }
 
     public static class Flip
