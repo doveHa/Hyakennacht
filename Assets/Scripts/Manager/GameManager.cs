@@ -30,12 +30,12 @@ namespace Manager
         {
             if (isLeft)
             {
-                Player.transform.rotation = Constant.FLIP.NOTFLIPPED;
+                Player.transform.rotation = Constant.Flip.NOTFLIPPED;
                 _isLeftSight = true;
             }
             else
             {
-                Player.transform.rotation = Constant.FLIP.FLIPPED;
+                Player.transform.rotation = Constant.Flip.FLIPPED;
                 _isLeftSight = false;
             }
         }
@@ -60,18 +60,18 @@ namespace Manager
         private IEnumerator Rolling()
         {
             int currentFrame = 0;
-            while (currentFrame < Constant.ROLL.ROLL_FRAME)
+            while (currentFrame < Constant.Roll.ROLL_FRAME)
             {
                 currentFrame++;
-                if (currentFrame > Constant.ROLL.START_FRAME)
+                if (currentFrame > Constant.Roll.START_FRAME)
                 {
                     if (_isLeftSight)
                     {
-                        Player.transform.position += new Vector3((-1) * Constant.ROLL.ROLL_DISTANCE, 0, 0);
+                        Player.transform.position += new Vector3((-1) * Constant.Roll.ROLL_DISTANCE, 0, 0);
                     }
                     else
                     {
-                        Player.transform.position += new Vector3(Constant.ROLL.ROLL_DISTANCE, 0, 0);
+                        Player.transform.position += new Vector3(Constant.Roll.ROLL_DISTANCE, 0, 0);
                     }
                 }
 
