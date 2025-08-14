@@ -561,6 +561,7 @@ public class PixemManager : MonoBehaviour
 
         string prefabName = $"Character_{_saveNumber}.prefab";
         string prefabPath = $"Assets/Pixem/Resources/CharacterPrefabs/{prefabName}";
+ 
         GameObject prefab = PrefabUtility.SaveAsPrefabAsset(saveInstance.gameObject, prefabPath);
         GameObject.DestroyImmediate(saveInstance);
 

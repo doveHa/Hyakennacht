@@ -46,13 +46,6 @@
     <Analyzer Include="E:\Program\Unity Editor\6000.0.40f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\SPUM\Sprite_SheetExporter(Beta)\Script\Editor\SPUM_Exporter.cs" />
-    <Compile Include="Assets\SPUM\Sprite_SheetExporter(Beta)\Script\Editor\SetGameSizeWindow.cs" />
-    <Compile Include="Assets\SPUM\Sprite_Editor(Beta)\Script\Editor\SPUM_Eye.cs" />
-    <Compile Include="Assets\SPUM\Sprite_Editor(Beta)\Script\Editor\SPUM_Sync.cs" />
-    <Compile Include="Assets\SPUM\Script\Editor\SPUM_Editor.cs" />
-    <Compile Include="Assets\SPUM\Script\Editor\SPUM_SpriteEditor.cs" />
-    <Compile Include="Assets\SPUM\Sprite_Editor(Beta)\Script\Editor\SPUM_SpriteEdit.cs" />
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\Editor\ReadmeEditorBE3.cs" />
     <Reference Include="UnityEngine">
       <HintPath>E:\Program\Unity Editor\6000.0.40f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
