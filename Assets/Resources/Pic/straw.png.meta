@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      straw_0: 8854674405657680986
+      straw_1: -1495314962846003550
+      straw_2: -347967471768324075
+      straw_3: 3954823158975014909
+      straw_4: 8892337235797206491
+      straw_5: 4526846002456197695
+      straw_6: -6395022633733547757
+      straw_7: 362350740693338738
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
