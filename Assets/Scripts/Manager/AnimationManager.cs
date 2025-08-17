@@ -20,12 +20,12 @@ namespace Manager
 
         public void StartMoveAnimation()
         {
-            _animator.SetFloat("RunState", 0.3f);
+            _animator.SetBool("IsWalk",true);
         }
 
         public void EndMoveAnimation()
         {
-            _animator.SetFloat("RunState", 0f);
+            _animator.SetBool("IsWalk",false);
         }
 
         public bool StartRollAnimation()
