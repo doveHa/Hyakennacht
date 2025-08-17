@@ -28,28 +28,13 @@ namespace Manager
 
         public void PlayerSight(bool isLeft)
         {
-            if (isLeft)
-            {
-                Player.transform.rotation = Constant.Flip.NOTFLIPPED;
-                _isLeftSight = true;
-            }
-            else
-            {
-                Player.transform.rotation = Constant.Flip.FLIPPED;
-                _isLeftSight = false;
-            }
+            Player.GetComponentInChildren<SpriteRenderer>().flipX = !isLeft;
+            _isLeftSight = isLeft;
         }
 
         public void Roll()
         {
-            if (_isLeftSight)
-            {
-                StartCoroutine(Rolling());
-            }
-            else
-            {
-                StartCoroutine(Rolling());
-            }
+            StartCoroutine(Rolling());
         }
 
         public void GameOver()
