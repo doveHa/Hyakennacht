@@ -2,14 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
     [Header("Tilemap References")]
     public Tilemap groundTilemap;
     public Tilemap wallTilemap;
-    public TileBase groundTile;
+    //public TileBase groundTile;
+    // 기존 groundTile 대신 배열로 선언
+    public TileBase[] groundTilesByStage;
     public TileBase wallTile;
+
+    [Header("Stage Settings")]
+    public int currentStage = 0; // 현재 스테이지
 
     [Header("Room Settings")]
     public int roomCount = 7;
@@ -33,6 +39,10 @@ public class MapManager : MonoBehaviour
     // 모든 바닥 타일
     private List<Vector3Int> groundTiles = new List<Vector3Int>();
 
+    const int maxStage = 15; // 전체 스테이지 수
+    const int specialStageCount = 2; // 특수 스테이지 수
+
+
     // 방 데이터 구조
     [System.Serializable]
     public class Room
@@ -55,6 +65,8 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
+        // 현재 무슨 스테이지인지 StageManager에서 가져옴
+        currentStage = StageManager.CurrentStage;
         GenerateMap();
     }
 
@@ -63,7 +75,8 @@ public class MapManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ClearItems();
-            GenerateMap();
+            //GenerateMap();
+            NextStage();
             Debug.Log("Map regenerated");
         }
     }
@@ -158,7 +171,9 @@ public class MapManager : MonoBehaviour
             for (int y = 0; y < height; y++)
             {
                 Vector3Int tilePos = new Vector3Int(startX + x, startY + y, 0);
-                groundTilemap.SetTile(tilePos, groundTile);
+
+                TileBase selectedGroundTile = GetRandomGroundTile();
+                groundTilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
                 room.tiles.Add(tilePos);
             }
@@ -183,11 +198,60 @@ public class MapManager : MonoBehaviour
                 else
                     tilePos = new Vector3Int(pos.x + w, pos.y, 0);
 
-                groundTilemap.SetTile(tilePos, groundTile);
+                TileBase selectedGroundTile = GetRandomGroundTile();
+                groundTilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
             }
             pos += dir;
         }
+    }
+
+    // 확률 기반 타일 선택 함수
+    TileBase GetRandomGroundTile()
+    {
+
+        // 일반 스테이지
+        float[] tileRates = new float[groundTilesByStage.Length];
+        tileRates[0] = 1f; // 기본 타일 확률 100%에서 시작
+
+        // 두 번째 타일부터 확률 계산
+        for (int i = 1; i < groundTilesByStage.Length; i++)
+        {
+            // 스테이지별 확률 계산 (5% ~ 30%) -> 생기는 디테일 조정 필요
+            // 희망 사항: 5%에서 30%까지 선형적으로 증가 & 보스 스테이지 단위로 새로운 타일 등장
+            float rate = Mathf.Lerp(0.05f, 0.3f, (float)currentStage / (maxStage - specialStageCount - 1));
+            tileRates[i] = rate;
+            tileRates[0] -= rate; // 기본 타일 확률에서 차감
+        }
+
+        // 랜덤 선택
+        float rand = Random.value;
+        float acc = 0f;
+        for (int i = 0; i < groundTilesByStage.Length; i++)
+        {
+            acc += tileRates[i];
+            if (rand < acc)
+                return groundTilesByStage[i];
+        }
+        return groundTilesByStage[0];
+    }
+
+    // 스테이지 변경 시 currentStage 값을 바꿔주고 GenerateMap() 호출
+    public void NextStage()
+    {
+        currentStage++;
+        StageManager.CurrentStage = currentStage;
+
+        Debug.Log("Current Stage: " + currentStage);
+
+        if (currentStage == 5 || currentStage == 10 || currentStage == 15)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("BossMap");
+            Debug.Log("Boss Stage: " + currentStage);
+            return;
+        }
+
+        GenerateMap();
     }
 
     void PlaceStairs()
@@ -214,15 +278,19 @@ public class MapManager : MonoBehaviour
     {
         Vector3Int[] dirs =
         {
-            new Vector3Int(1, 0, 0),
-            new Vector3Int(-1, 0, 0),
-            new Vector3Int(0, 1, 0),
-            new Vector3Int(0, -1, 0)
-        };
+        new Vector3Int(1, 0, 0),
+        new Vector3Int(-1, 0, 0),
+        new Vector3Int(0, 1, 0),
+        new Vector3Int(0, -1, 0)
+    };
+
+        int tileCount = Mathf.Clamp(currentStage + 1, 1, groundTilesByStage.Length);
+        TileBase[] candidates = groundTilesByStage.Take(tileCount).ToArray();
 
         foreach (var dir in dirs)
         {
-            if (groundTilemap.GetTile(tilePos + dir) != groundTile)
+            TileBase tile = groundTilemap.GetTile(tilePos + dir);
+            if (!candidates.Contains(tile))
                 return false;
         }
         return true;

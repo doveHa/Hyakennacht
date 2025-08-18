@@ -78,6 +78,8 @@
     <Compile Include="Assets\Scripts\Constant.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill1.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
+    <Compile Include="Assets\HR\Script\StageManager.cs" />
+    <Compile Include="Assets\HR\Script\LobbyManager.cs" />
     <Compile Include="Assets\HR\Script\MapManager.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
     <Compile Include="Assets\Test\Script\Shooter.cs" />
@@ -89,9 +91,11 @@
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemSlot.cs" />
+    <Compile Include="Assets\HR\Script\BossManager.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacter.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\SkillBase.cs" />
+    <Compile Include="Assets\HR\Script\ShopManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemUIManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemListPanel.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemSaveCharacter.cs" />

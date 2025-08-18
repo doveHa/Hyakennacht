@@ -165,8 +165,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
-  groundTile: {fileID: 11400000, guid: de4231a7331db494fba4ba06484c344f, type: 2}
+  groundTilesByStage:
+  - {fileID: 11400000, guid: de4231a7331db494fba4ba06484c344f, type: 2}
+  - {fileID: 11400000, guid: 30ee68ebc51fb98418690a39438c0256, type: 2}
+  - {fileID: 11400000, guid: 85ddbd21cf2d77c459bce7c1d9bb5b4d, type: 2}
+  - {fileID: 11400000, guid: 398da8d7576c62a42a936b3a0ce45969, type: 2}
   wallTile: {fileID: 11400000, guid: 087b1e0b7ff010d4db09afc1653c9b33, type: 2}
+  currentStage: 0
   roomCount: 7
   roomWidth: 13
   roomHeight: 13
@@ -472,8 +477,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
-  groundTile: {fileID: 11400000, guid: 70b32983aaf43e84d881a07cf3c5d269, type: 2}
+  groundTilesByStage: []
   wallTile: {fileID: 11400000, guid: 4481007b59eb8824caeb031f80482f0d, type: 2}
+  currentStage: 0
   roomCount: 7
   roomWidth: 13
   roomHeight: 13
