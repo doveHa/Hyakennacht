@@ -10,6 +10,7 @@ namespace Enemy
         public RandomMoveState(EnemyController controller)
         {
             _controller = controller;
+            _controller.Animator.SetBool("IsWalk",true);
         }
 
         public void Enter()
@@ -23,12 +24,13 @@ namespace Enemy
             _controller.Rigidbody.linearVelocity = direction * Constant.Enemy.MOVE_SPEED;
             if (Vector3.Distance(_destination, _controller.transform.position) < 1f)
             {
-                _destination = _controller.Spawner.GetRandomPosition();
+                _controller.ChangeState(new IdelState(_controller));
             }
         }
 
         public void Exit()
         {
+            _controller.Animator.SetBool("IsWalk",false);
         }
     }
 }

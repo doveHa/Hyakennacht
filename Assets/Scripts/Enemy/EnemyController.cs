@@ -4,6 +4,7 @@ namespace Enemy
 {
     public class EnemyController : MonoBehaviour
     {
+        public Animator Animator { get; private set; }
         private IEnemyState _currentState;
         public EnemySpawner Spawner { get; set; }
         public Rigidbody2D Rigidbody { get; private set; }
@@ -11,6 +12,7 @@ namespace Enemy
 
         void Awake()
         {
+            Animator = GetComponent<Animator>();
             Rigidbody = GetComponent<Rigidbody2D>();
         }
 
@@ -21,6 +23,7 @@ namespace Enemy
 
         void Update()
         {
+            Debug.Log(_currentState.GetType().Name);
             _currentState?.Update();
         }
 

@@ -56,6 +56,7 @@
     <Compile Include="Assets\Test\Script\CoffTest.cs" />
     <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabListPanel.cs" />
+    <Compile Include="Assets\Scripts\Enemy\IdelState.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabSlot.cs" />
     <Compile Include="Assets\Test\Script\BallHit.cs" />
@@ -68,10 +69,12 @@
     <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\RandomMoveState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
     <Compile Include="Assets\Test\Script\Shooter.cs" />
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemToggleController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AttackState.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
     <Compile Include="Assets\Scripts\AnimationEvent\RollAnimationEvent.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />

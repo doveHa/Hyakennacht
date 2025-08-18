@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 namespace Enemy
 {
@@ -13,7 +14,7 @@ namespace Enemy
         
         public void Enter()
         {
-            
+            _controller.Animator.SetBool("IsWalk",true);
         }
 
         public void Update()
@@ -22,12 +23,20 @@ namespace Enemy
             {
                 Vector3 direction = (_controller.Target.position - _controller.transform.position).normalized;
                 _controller.Rigidbody.linearVelocity = direction * Constant.Enemy.MOVE_SPEED;
+
+                if (Vector2.Distance(_controller.Target.position, _controller.transform.position) < 1)
+                {
+                    _controller.Rigidbody.linearVelocity = Vector3.zero;
+                    _controller.ChangeState(new AttackState(_controller));
+                }
             }
         }
 
         public void Exit()
         {
             _controller.Rigidbody.linearVelocity = Vector3.zero;
+            _controller.Animator.SetBool("IsWalk", false);
+
         }
     }
 }
