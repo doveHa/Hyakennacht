@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &72642676
 Transform:
   m_ObjectHideFlags: 0
@@ -166,10 +166,11 @@ MonoBehaviour:
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
   groundTile: {fileID: 11400000, guid: de4231a7331db494fba4ba06484c344f, type: 2}
-  wallTile: {fileID: 11400000, guid: b528222bb06d5ef46ac22853cb1630a0, type: 2}
+  wallTile: {fileID: 11400000, guid: 087b1e0b7ff010d4db09afc1653c9b33, type: 2}
   roomCount: 7
   roomWidth: 13
   roomHeight: 13
+  roomSpacing: 25
   corridorWidth: 3
   stairUpTile: {fileID: 11400000, guid: 9687d733991ecca44af2aaf3f505085e, type: 2}
   stairDownTile: {fileID: 11400000, guid: 9687d733991ecca44af2aaf3f505085e, type: 2}
@@ -278,15 +279,39 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: 1.427e-42
+      e01: 0
+      e02: 1e-45
+      e03: 2.3622353e+10
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 7.88e-43
+      e20: 3.937302e+29
+      e21: 2.3622353e+10
+      e22: -1.458135e-39
+      e23: -0.00000000323916
+      e30: 4.5916e-41
+      e31: 7.88e-43
+      e32: 7.9e-43
+      e33: 7.88e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: 6.8425e-41, g: 6.8425e-41, b: 6.8425e-41, a: 6.8425e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Size: {x: 133, y: 41, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -432,7 +457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &823124033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +477,7 @@ MonoBehaviour:
   roomCount: 7
   roomWidth: 13
   roomHeight: 13
+  roomSpacing: 25
   corridorWidth: 3
   stairUpTile: {fileID: 11400000, guid: 55ae2fbdd7bbb4b4b8cec534d266fd74, type: 2}
   stairDownTile: {fileID: 11400000, guid: 3367a3db87b5b1c40a78b3284cad0938, type: 2}
@@ -585,7 +611,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

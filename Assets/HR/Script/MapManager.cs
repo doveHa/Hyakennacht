@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using System.Linq; // for .ToList()??
 
 public class MapManager : MonoBehaviour
 {
@@ -16,6 +16,9 @@ public class MapManager : MonoBehaviour
     public int roomWidth = 13;
     public int roomHeight = 13;
 
+    [Header("Spacing Settings")]
+    public int roomSpacing = 25;
+
     [Header("Corridor Settings")]
     public int corridorWidth = 3;
 
@@ -27,22 +30,28 @@ public class MapManager : MonoBehaviour
     public GameObject[] itemPrefabs;
     public int maxItemCount = 10;
 
-    // 방 바닥 타일 위치 저장용
-    private List<Vector3Int> floorTiles = new List<Vector3Int>();
+    // 모든 바닥 타일
+    private List<Vector3Int> groundTiles = new List<Vector3Int>();
+
+    // 방 데이터 구조
+    [System.Serializable]
+    public class Room
+    {
+        public int id;
+        public Vector2Int gridPos; // 맵 배치 좌표
+        public List<Vector3Int> tiles = new List<Vector3Int>(); // 방 내부 타일
+        public List<Vector2Int> connectedRooms = new List<Vector2Int>();
+    }
+
+    private List<Room> rooms = new List<Room>();
 
     private Vector2Int[] dirVectors =
     {
-        new Vector2Int(0, 1),   // Up
-        new Vector2Int(0, -1),  // Down
-        new Vector2Int(-1, 0),  // Left
-        new Vector2Int(1, 0)    // Right
+        new Vector2Int(0, 1),
+        new Vector2Int(0, -1),
+        new Vector2Int(-1, 0),
+        new Vector2Int(1, 0)
     };
-
-    private class Room
-    {
-        public Vector2Int gridPos;
-        public List<Vector2Int> connectedRooms = new List<Vector2Int>();
-    }
 
     void Start()
     {
@@ -51,7 +60,6 @@ public class MapManager : MonoBehaviour
 
     void Update()
     {
-        // 디버그용: 키를 누르면 맵 재생성
         if (Input.GetKeyDown(KeyCode.R))
         {
             ClearItems();
@@ -64,72 +72,71 @@ public class MapManager : MonoBehaviour
     {
         groundTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
-        floorTiles.Clear();
+        groundTiles.Clear();
+        rooms.Clear();
 
-        Dictionary<Vector2Int, Room> rooms = new Dictionary<Vector2Int, Room>();
+        Dictionary<Vector2Int, Room> roomDict = new Dictionary<Vector2Int, Room>();
         HashSet<Vector2Int> occupied = new HashSet<Vector2Int>();
 
         Vector2Int startPos = Vector2Int.zero;
-
         Queue<Vector2Int> toExplore = new Queue<Vector2Int>();
         toExplore.Enqueue(startPos);
 
-        rooms[startPos] = new Room { gridPos = startPos };
+        Room startRoom = new Room { id = 0, gridPos = startPos };
+        roomDict[startPos] = startRoom;
+        rooms.Add(startRoom);
         occupied.Add(startPos);
+
+        int roomIdCounter = 1;
 
         while (rooms.Count < roomCount && toExplore.Count > 0)
         {
             Vector2Int current = toExplore.Dequeue();
-
             List<Vector2Int> directions = new List<Vector2Int>(dirVectors);
             Shuffle(directions);
 
             foreach (var dir in directions)
             {
                 Vector2Int nextPos = current + dir;
-
-                if (rooms.Count >= roomCount)
-                    break;
+                if (rooms.Count >= roomCount) break;
 
                 if (!occupied.Contains(nextPos))
                 {
-                    Room newRoom = new Room { gridPos = nextPos };
-                    rooms[nextPos] = newRoom;
+                    Room newRoom = new Room { id = roomIdCounter++, gridPos = nextPos };
+                    roomDict[nextPos] = newRoom;
+                    rooms.Add(newRoom);
                     occupied.Add(nextPos);
 
-                    // 서로 연결
-                    rooms[current].connectedRooms.Add(nextPos);
+                    roomDict[current].connectedRooms.Add(nextPos);
                     newRoom.connectedRooms.Add(current);
 
                     toExplore.Enqueue(nextPos);
                 }
                 else
                 {
-                    // 이미 방이 있는데 아직 연결 안 됐으면 연결
-                    if (!rooms[current].connectedRooms.Contains(nextPos))
+                    if (!roomDict[current].connectedRooms.Contains(nextPos))
                     {
-                        rooms[current].connectedRooms.Add(nextPos);
-                        rooms[nextPos].connectedRooms.Add(current);
+                        roomDict[current].connectedRooms.Add(nextPos);
+                        roomDict[nextPos].connectedRooms.Add(current);
                     }
                 }
             }
         }
 
-        // 방과 복도 바닥 그리기
-        foreach (var room in rooms.Values)
+        // 방 & 복도 그리기
+        foreach (var room in rooms)
         {
-            Vector2Int worldPos = room.gridPos * new Vector2Int(roomWidth + corridorWidth, roomHeight + corridorWidth);
-            DrawRoomFloor(worldPos, roomWidth, roomHeight);
+            Vector2Int worldPos = room.gridPos * new Vector2Int(roomSpacing, roomSpacing);
+            DrawRoomFloor(worldPos, roomWidth, roomHeight, room);
 
             foreach (var conn in room.connectedRooms)
             {
-                Vector2Int connWorldPos = conn * new Vector2Int(roomWidth + corridorWidth, roomHeight + corridorWidth);
+                Vector2Int connWorldPos = conn * new Vector2Int(roomSpacing, roomSpacing);
                 DrawCorridor(worldPos, connWorldPos);
             }
         }
 
-        // 바닥 타일 모으기 (GenerateWalls 호출 전에)
-        CollectFloorTiles();
+        groundTiles = groundTiles.Distinct().ToList();
 
         // 계단 배치
         PlaceStairs();
@@ -137,12 +144,11 @@ public class MapManager : MonoBehaviour
         // 아이템 생성
         SpawnItems();
 
-        // 바닥 주변 벽 생성
+        // 벽 생성
         GenerateWalls();
-
     }
 
-    void DrawRoomFloor(Vector2Int worldPos, int width, int height)
+    void DrawRoomFloor(Vector2Int worldPos, int width, int height, Room room)
     {
         int startX = worldPos.x - width / 2;
         int startY = worldPos.y - height / 2;
@@ -153,8 +159,8 @@ public class MapManager : MonoBehaviour
             {
                 Vector3Int tilePos = new Vector3Int(startX + x, startY + y, 0);
                 groundTilemap.SetTile(tilePos, groundTile);
-
-                floorTiles.Add(tilePos);
+                groundTiles.Add(tilePos);
+                room.tiles.Add(tilePos);
             }
         }
     }
@@ -178,46 +184,74 @@ public class MapManager : MonoBehaviour
                     tilePos = new Vector3Int(pos.x + w, pos.y, 0);
 
                 groundTilemap.SetTile(tilePos, groundTile);
-                floorTiles.Add(tilePos);
+                groundTiles.Add(tilePos);
             }
             pos += dir;
         }
     }
 
-    void CollectFloorTiles()
-    {
-        // floorTiles는 DrawRoomFloor, DrawCorridor에서 계속 채워졌음
-        // 혹시 중복 제거 필요하면 아래처럼
-        floorTiles = floorTiles.Distinct().ToList();
-    }
-
     void PlaceStairs()
     {
-        if (floorTiles.Count < 2) return;
+        if (rooms.Count < 2) return;
 
-        // 랜덤 2개 뽑기
-        var shuffled = floorTiles.OrderBy(x => Random.value).ToList();
+        var shuffledRooms = rooms.OrderBy(r => Random.value).ToList();
+        Room upRoom = shuffledRooms[0];
+        Room downRoom = shuffledRooms[1];
 
-        Vector3Int upPos = shuffled[0];
-        Vector3Int downPos = shuffled[1];
+        var upRoomTiles = upRoom.tiles.Where(t => IsInsideRoom(t)).ToList();
+        var downRoomTiles = downRoom.tiles.Where(t => IsInsideRoom(t)).ToList();
 
-        groundTilemap.SetTile(upPos, stairUpTile);
-        groundTilemap.SetTile(downPos, stairDownTile);
+        if (upRoomTiles.Count == 0 || downRoomTiles.Count == 0) return;
+
+        Vector3Int upPos = upRoomTiles[Random.Range(0, upRoomTiles.Count)];
+        Vector3Int downPos = downRoomTiles[Random.Range(0, downRoomTiles.Count)];
+
+        PlaceStairArea(upPos, stairUpTile);
+        PlaceStairArea(downPos, stairDownTile);
+    }
+
+    bool IsInsideRoom(Vector3Int tilePos)
+    {
+        Vector3Int[] dirs =
+        {
+            new Vector3Int(1, 0, 0),
+            new Vector3Int(-1, 0, 0),
+            new Vector3Int(0, 1, 0),
+            new Vector3Int(0, -1, 0)
+        };
+
+        foreach (var dir in dirs)
+        {
+            if (groundTilemap.GetTile(tilePos + dir) != groundTile)
+                return false;
+        }
+        return true;
+    }
+
+    void PlaceStairArea(Vector3Int centerPos, TileBase stairTile)
+    {
+        for (int x = 0; x < 2; x++)
+        {
+            for (int y = 0; y < 2; y++)
+            {
+                Vector3Int pos = new Vector3Int(centerPos.x + x, centerPos.y + y, 0);
+                groundTilemap.SetTile(pos, stairTile);
+            }
+        }
     }
 
     void SpawnItems()
     {
         if (itemPrefabs == null || itemPrefabs.Length == 0) return;
 
-        int spawnCount = Mathf.Min(maxItemCount, floorTiles.Count);
-        var shuffled = floorTiles.OrderBy(x => Random.value).ToList();
+        int spawnCount = Mathf.Min(maxItemCount, groundTiles.Count);
+        var shuffled = groundTiles.OrderBy(x => Random.value).ToList();
 
         for (int i = 0; i < spawnCount; i++)
         {
             Vector3Int tilePos = shuffled[i];
             Vector3 worldPos = groundTilemap.CellToWorld(tilePos) + new Vector3(0.5f, 0.5f, 0);
 
-            // 아이템 종류 랜덤 선택
             int randomIndex = Random.Range(0, itemPrefabs.Length);
             GameObject selectedPrefab = itemPrefabs[randomIndex];
 
@@ -235,7 +269,6 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-
 
     void GenerateWalls()
     {
