@@ -550,7 +550,7 @@ TextureImporter:
         width: 34
         height: 34
       alignment: 9
-      pivot: {x: 0.52142197, y: 0.46429712}
+      pivot: {x: 0.5, y: 0.421454}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -827,6 +827,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Roll
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 263
+        width: 40
+        height: 34
+      alignment: 9
+      pivot: {x: 0.38764343, y: 0.3964942}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc3650c9837358c4dbb9139c01c602ae
+      internalID: 2125472814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -855,7 +877,6 @@ TextureImporter:
       AttackSlash_0: 8411207754999314373
       AttackSlash_1: -7310170192197352561
       AttackSlash_2: -6071183472874484970
-      Character_0_Sheet_0: -911040244
       Death_0: 6991849013916550155
       Death_1: -276728812324164698
       Death_2: 3156895337291164288
@@ -867,6 +888,7 @@ TextureImporter:
       Idle_3: 6373048116405451881
       Jump_0: 7460046300004610927
       Jump_1: 7034338576483803127
+      Roll: 2125472814
       Run_0: 4944230376442633554
       Run_1: -2274363484027164459
       Run_2: 8284087734974297348

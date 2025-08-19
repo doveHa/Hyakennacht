@@ -14,9 +14,9 @@ namespace AnimationEvent
 
         public void StopRoll()
         {
-            AnimationManager.Manager.RollFlag = true;
             SystemManager.Manager.hpControl.SetInvincible(false);
             Constant.Player.MOVE_SPEED /= 2;
+            AnimationManager.Manager.RollFlag = true;
         }
     }
 }

@@ -35,6 +35,10 @@ namespace Manager
                 _animator.SetTrigger("Roll");
                 return true;
             }
+            else
+            {
+                Debug.Log(RollFlag);
+            }
 
             return false;
         }
