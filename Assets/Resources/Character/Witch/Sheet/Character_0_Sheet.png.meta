@@ -501,12 +501,12 @@ TextureImporter:
       name: Death_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 64
-        height: 64
+        x: 28
+        y: 263
+        width: 34
+        height: 34
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.42145404}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -523,12 +523,12 @@ TextureImporter:
       name: Death_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 64
+        x: 91
+        y: 263
+        width: 34
+        height: 34
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.421454}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -545,12 +545,12 @@ TextureImporter:
       name: Death_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 256
-        width: 64
-        height: 64
+        x: 152
+        y: 258
+        width: 34
+        height: 34
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.52142197, y: 0.46429712}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -655,12 +655,12 @@ TextureImporter:
       name: Run_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 31
+        y: 72
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -677,12 +677,12 @@ TextureImporter:
       name: Run_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 95
+        y: 72
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -699,12 +699,12 @@ TextureImporter:
       name: Run_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
+        x: 158
+        y: 72
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -721,12 +721,12 @@ TextureImporter:
       name: Run_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
+        x: 222
+        y: 72
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -743,12 +743,12 @@ TextureImporter:
       name: Idle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 31
+        y: 7
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -765,12 +765,12 @@ TextureImporter:
       name: Idle_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 95
+        y: 7
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -787,12 +787,12 @@ TextureImporter:
       name: Idle_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 158
+        y: 7
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -809,12 +809,12 @@ TextureImporter:
       name: Idle_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 222
+        y: 7
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.6875, y: 0.125}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -831,7 +831,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1eda44645130ddc4aa6bdd9e7c0876d9
     internalID: 0
     vertices: []
     indices: 
@@ -855,6 +855,7 @@ TextureImporter:
       AttackSlash_0: 8411207754999314373
       AttackSlash_1: -7310170192197352561
       AttackSlash_2: -6071183472874484970
+      Character_0_Sheet_0: -911040244
       Death_0: 6991849013916550155
       Death_1: -276728812324164698
       Death_2: 3156895337291164288
