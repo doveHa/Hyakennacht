@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2316976659988654998}
-  - component: {fileID: 6472350457789080868}
   - component: {fileID: 3030321980319832105}
   - component: {fileID: 858537675387258698}
   - component: {fileID: 4059183156551638637}
+  - component: {fileID: 6472350457789080868}
   - component: {fileID: 4659562302849844744}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Straw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,18 +38,6 @@ Transform:
   - {fileID: 5892755729009307014}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6472350457789080868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783177417010643878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb114a0e40ab421f8bee9facf9e70687, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &3030321980319832105
 Rigidbody2D:
   serializedVersion: 5
@@ -603,7 +591,7 @@ Animator:
   m_GameObject: {fileID: 6783177417010643878}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 38651a07c0e7abc4d8a333b907bb7755, type: 2}
+  m_Controller: {fileID: 22100000, guid: 332c5569cd7b81a46a840dc0166a51ea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -615,6 +603,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6472350457789080868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783177417010643878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb114a0e40ab421f8bee9facf9e70687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4659562302849844744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: f0e1fa174793b6c478196da8147710f3, type: 3}
       propertyPath: m_Name
-      value: straw_psb
+      value: Straw_psb
       objectReference: {fileID: 0}
     - target: {fileID: -8244691016477402259, guid: f0e1fa174793b6c478196da8147710f3, type: 3}
       propertyPath: m_LocalPosition.y

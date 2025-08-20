@@ -1810,7 +1810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1554760463
 Transform:
   m_ObjectHideFlags: 0
@@ -4636,6 +4636,7 @@ MonoBehaviour:
   stage: {fileID: 1664321074}
   enemies:
   - {fileID: 6783177417010643878, guid: f1d7c1f2d5d0bc549a72083c6a388bf6, type: 3}
+  - {fileID: 6783177417010643878, guid: 8084749f3786d0b4cb3de5ee1ead1ad6, type: 3}
 --- !u!1 &2082038698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4719,8 +4720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274b4192dea47049b45251503efbf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpControl: {fileID: 125329548}
-  coinCount: {fileID: 1654804941}
+  hpControl: {fileID: 0}
+  coinCount: {fileID: 0}
 --- !u!1001 &7429156903076431929
 PrefabInstance:
   m_ObjectHideFlags: 0

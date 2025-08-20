@@ -12,8 +12,8 @@ public static class Constant
     }
     public static class SpawnEnemy
     {
-        public static int MIN_ENEMIES = 1;
-        public static int MAX_ENEMIES = 2;
+        public static int MIN_ENEMIES = 3;
+        public static int MAX_ENEMIES = 5;
         public static float SPAWN_DUPLICATION_DISTANCE = 0.5f;
     }
 

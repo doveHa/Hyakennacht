@@ -11,7 +11,6 @@ namespace Enemy
         public IdleState(EnemyController controller)
         {
             _controller = controller;
-            _controller.Animator.SetTrigger("Idle");
         }
 
         public void Enter()

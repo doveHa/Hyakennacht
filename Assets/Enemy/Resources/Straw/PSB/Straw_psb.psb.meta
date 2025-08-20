@@ -109,7 +109,7 @@ ScriptedImporter:
       height: 425
     spriteID: ae8ba7ecfffd21b4c9f7dd99cd5022b1
     spriteBone:
-    - name: BodyBorn
+    - name: BodyBone
       guid: 80abde5c653e5ac4f8f86095e760d267
       position: {x: 248.0471, y: -143.59421, z: 0}
       rotation: {x: 0, y: 0, z: 0.71170306, w: 0.70248044}
@@ -525,7 +525,7 @@ ScriptedImporter:
       height: 270
     spriteID: 68179c22a0965f6408faad6bae8853bf
     spriteBone:
-    - name: BodyBorn
+    - name: BodyBone
       guid: 80abde5c653e5ac4f8f86095e760d267
       position: {x: 113.04712, y: 72.40579, z: 0}
       rotation: {x: 0, y: 0, z: 0.71170306, w: 0.70248044}
@@ -963,7 +963,7 @@ ScriptedImporter:
       height: 221
     spriteID: 95ec6c327a1dbcf4c8b85caa631cc963
     spriteBone:
-    - name: LeftArmBorn
+    - name: LeftArmBone
       guid: dbff13793009bc646a0b38b17d65bd6f
       position: {x: 93.70703, y: 188.27112, z: 0}
       rotation: {x: 0, y: 0, z: -0.7907262, w: 0.6121701}
@@ -1379,7 +1379,7 @@ ScriptedImporter:
       height: 221
     spriteID: 27dde0f78679f254483ed2efac6b45e3
     spriteBone:
-    - name: RightArmBorn
+    - name: RightArmBone
       guid: d7974c1938477e942ac23806c62ddf62
       position: {x: 53.12451, y: 188.27109, z: 0}
       rotation: {x: 0, y: 0, z: -0.64505845, w: 0.7641332}
@@ -1784,7 +1784,7 @@ ScriptedImporter:
       height: 200
     spriteID: cc7ca6ef92fb7884ab85c3485305c27e
     spriteBone:
-    - name: LeftLegBorn
+    - name: LeftLegBone
       guid: b43df8d3143100d48b30bd63a8bcd673
       position: {x: 56.68347, y: 128.12297, z: 0}
       rotation: {x: 0, y: 0, z: -0.77334213, w: 0.633989}
@@ -2189,7 +2189,7 @@ ScriptedImporter:
       height: 200
     spriteID: d47da0f19bbb5d74d93b6b154b687a6d
     spriteBone:
-    - name: RightLegBorn
+    - name: RightLegBone
       guid: e9693def1c97b444aa4812832e5ce883
       position: {x: 48.14807, y: 122.90411, z: 0}
       rotation: {x: 0, y: 0, z: -0.61893535, w: 0.78544194}
@@ -2593,7 +2593,7 @@ ScriptedImporter:
     boneReadOnly: 0
   characterData:
     bones:
-    - name: LeftArmBorn
+    - name: LeftArmBone
       guid: dbff13793009bc646a0b38b17d65bd6f
       position: {x: 120.70705, y: 346.27112, z: 0}
       rotation: {x: 0, y: 0, z: -0.7907262, w: 0.6121701}
@@ -2602,7 +2602,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278190335
-    - name: RightArmBorn
+    - name: RightArmBone
       guid: d7974c1938477e942ac23806c62ddf62
       position: {x: 369.1245, y: 346.2711, z: 0}
       rotation: {x: 0, y: 0, z: -0.64505845, w: 0.7641332}
@@ -2611,7 +2611,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278255615
-    - name: LeftLegBorn
+    - name: LeftLegBone
       guid: b43df8d3143100d48b30bd63a8bcd673
       position: {x: 191.68347, y: 128.12297, z: 0}
       rotation: {x: 0, y: 0, z: -0.77334213, w: 0.633989}
@@ -2620,7 +2620,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278255360
-    - name: RightLegBorn
+    - name: RightLegBone
       guid: e9693def1c97b444aa4812832e5ce883
       position: {x: 298.1481, y: 122.90411, z: 0}
       rotation: {x: 0, y: 0, z: -0.61893535, w: 0.78544194}
@@ -2629,7 +2629,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4294967040
-    - name: BodyBorn
+    - name: BodyBone
       guid: 80abde5c653e5ac4f8f86095e760d267
       position: {x: 248.0471, y: 206.40579, z: 0}
       rotation: {x: 0, y: 0, z: 0.71170306, w: 0.70248044}
