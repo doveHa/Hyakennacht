@@ -4,7 +4,7 @@ public static class Constant
 {
     public static class Player
     {
-        public static float MOVE_SPEED = 0.025f;
+        public static float MOVE_SPEED = 0.05f;
     }
 
     public static class Enemy
@@ -30,7 +30,6 @@ public static class Constant
         public static int ROLL_FRAME = 20;
         public static int START_FRAME = 4;
         public static float ROLL_DISTANCE = 0.025f;
-        public static float DISTANCE_COFF = 20f;
     }
 
     public static class Scene

@@ -76,7 +76,7 @@
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemToggleController.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
-    <Compile Include="Assets\Scripts\AnimationEvent\RollAnimationEvent.cs" />
+    <Compile Include="Assets\Scripts\Character\Dash.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\ChasePlayerState.cs" />

@@ -652,7 +652,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_0
+      name: Walk_0
       rect:
         serializedVersion: 2
         x: 31
@@ -674,7 +674,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_1
+      name: Walk_1
       rect:
         serializedVersion: 2
         x: 95
@@ -696,7 +696,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_2
+      name: Walk_2
       rect:
         serializedVersion: 2
         x: 159
@@ -718,7 +718,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_3
+      name: Walk_3
       rect:
         serializedVersion: 2
         x: 223
@@ -828,11 +828,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roll
+      name: Dash
       rect:
         serializedVersion: 2
-        x: 198
-        y: 263
+        x: 197
+        y: 262
         width: 40
         height: 34
       alignment: 9
@@ -877,6 +877,7 @@ TextureImporter:
       AttackSlash_0: 8411207754999314373
       AttackSlash_1: -7310170192197352561
       AttackSlash_2: -6071183472874484970
+      Dash: 2125472814
       Death_0: 6991849013916550155
       Death_1: -276728812324164698
       Death_2: 3156895337291164288
@@ -888,11 +889,10 @@ TextureImporter:
       Idle_3: 6373048116405451881
       Jump_0: 7460046300004610927
       Jump_1: 7034338576483803127
-      Roll: 2125472814
-      Run_0: 4944230376442633554
-      Run_1: -2274363484027164459
-      Run_2: 8284087734974297348
-      Run_3: 5304202850863732263
+      Walk_0: 4944230376442633554
+      Walk_1: -2274363484027164459
+      Walk_2: 8284087734974297348
+      Walk_3: 5304202850863732263
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

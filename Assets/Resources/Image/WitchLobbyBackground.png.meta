@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WitchLobbyBackground_0: -3742231979675903125
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
