@@ -6,10 +6,12 @@ public static class Constant
     {
         public static float MOVE_SPEED = 0.025f;
     }
+
     public static class Enemy
     {
         public static float MOVE_SPEED = 1.5f;
     }
+
     public static class SpawnEnemy
     {
         public static int MIN_ENEMIES = 1;
@@ -29,5 +31,11 @@ public static class Constant
         public static int START_FRAME = 4;
         public static float ROLL_DISTANCE = 0.025f;
         public static float DISTANCE_COFF = 20f;
+    }
+
+    public static class Scene
+    {
+        public static string WITCHLOBBY = "WitchLobbyScene(Temp)";
+        public static string YOKAILOBBY = "YokaiLobbyScene(Temp)";
     }
 }

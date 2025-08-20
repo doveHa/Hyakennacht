@@ -14,11 +14,11 @@ namespace Manager
         {
             base.Awake();
             Player = GameObject.FindGameObjectWithTag("Player");
+            PlayerScript = Player.GetComponent<Player>();
         }
 
         void Start()
         {
-            PlayerScript = Player.GetComponent<Player>();
         }
 
         public void SetMoveVector(Vector2 movement)
@@ -39,7 +39,6 @@ namespace Manager
 
         public void GameOver()
         {
-            
         }
 
         private IEnumerator Rolling()

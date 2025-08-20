@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        Instantiate(playerPrefab, transform).transform.parent = transform;
         WeaponHandler = GetComponent<WeaponHandler>();
         Coins = 0;
     }
     void Start()
     {
-        Instantiate(playerPrefab, transform).transform.parent = transform;
     }
 
     void Update()
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
-        SystemManager.Manager.hpControl.MinusHp();
+        SystemManager.Manager.HpControl.MinusHp();
     }
     public void PlayerGetCoin()
     {
