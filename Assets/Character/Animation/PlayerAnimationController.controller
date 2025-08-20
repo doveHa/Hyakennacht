@@ -68,7 +68,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1a21ea84118c8724d96ca61dae9fccd4, type: 2}
+  m_Motion: {fileID: 7400000, guid: f859e8b0445869a42adac0c4d4c7a4b1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -95,7 +95,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6fa6bf5ecfee80749927198586e7884d, type: 2}
+  m_Motion: {fileID: 7400000, guid: e993d7c43b3eaa94fa16bf911b7f9a43, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -132,7 +132,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WitchAnimationController
+  m_Name: PlayerAnimationController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsWalk
@@ -235,7 +235,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 84c36147c8a3a0846a11c1d05b5f51cd, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2a36f745f0172a84e8904460c5042853, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

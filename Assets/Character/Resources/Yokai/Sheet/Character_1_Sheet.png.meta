@@ -1,100 +1,109 @@
 fileFormatVersion: 2
-guid: 052c0b7579e313946a69060a40a8c411
+guid: 686e1185db622f149b0dd5db192279bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5127772882427732023
-    second: Character_0_Sheet_0
+      213: 1311256155870801905
+    second: Character_1_Sheet_0
   - first:
-      213: 2736045925242753969
-    second: Character_0_Sheet_1
+      213: -9101646068048287946
+    second: Character_1_Sheet_1
   - first:
-      213: 4972231105317628056
-    second: Character_0_Sheet_2
+      213: 6858477802140137957
+    second: Character_1_Sheet_2
   - first:
-      213: 4628228855252947980
-    second: Character_0_Sheet_3
+      213: 9020866178480838503
+    second: Character_1_Sheet_3
   - first:
-      213: -8523587229314407417
-    second: Character_0_Sheet_4
+      213: 5037018668381269929
+    second: Character_1_Sheet_4
   - first:
-      213: -5672433948055976182
-    second: Character_0_Sheet_5
+      213: -5382123983859913046
+    second: Character_1_Sheet_5
   - first:
-      213: -2750894046249559914
-    second: Character_0_Sheet_6
+      213: -5814328864153033733
+    second: Character_1_Sheet_6
   - first:
-      213: 293793152637131495
-    second: Character_0_Sheet_7
+      213: 6135625127694980265
+    second: Character_1_Sheet_7
   - first:
-      213: 4215940794183865081
-    second: Character_0_Sheet_8
+      213: 3098494292054323070
+    second: Character_1_Sheet_8
   - first:
-      213: -6090291814544745003
-    second: Character_0_Sheet_9
+      213: -9128584103526307756
+    second: Character_1_Sheet_9
   - first:
-      213: -7931865246650077881
-    second: Character_0_Sheet_10
+      213: 6391473342035676910
+    second: Character_1_Sheet_10
   - first:
-      213: 1142521095766779081
-    second: Character_0_Sheet_11
+      213: 5719236344426965162
+    second: Character_1_Sheet_11
   - first:
-      213: -7660859814492481670
-    second: Character_0_Sheet_12
+      213: 4383674654853998861
+    second: Character_1_Sheet_12
   - first:
-      213: 2994716088177203509
-    second: Character_0_Sheet_13
+      213: 5840287114764288363
+    second: Character_1_Sheet_13
   - first:
-      213: 1769999303753634761
-    second: Character_0_Sheet_14
+      213: -5703047276487612107
+    second: Character_1_Sheet_14
   - first:
-      213: -6687694699187767153
-    second: Character_0_Sheet_15
+      213: -5944376336705782012
+    second: Character_1_Sheet_15
   - first:
-      213: -3542670616970658495
-    second: Character_0_Sheet_16
+      213: -2130511740299206141
+    second: Character_1_Sheet_16
   - first:
-      213: -2099961217065303517
-    second: Character_0_Sheet_17
+      213: 6475826779062542579
+    second: Character_1_Sheet_17
   - first:
-      213: 7941853459010112443
-    second: Character_0_Sheet_18
+      213: 5119298220879986784
+    second: Character_1_Sheet_18
   - first:
-      213: 3634549670822825355
-    second: Character_0_Sheet_19
+      213: 2902228216564396494
+    second: Character_1_Sheet_19
   - first:
-      213: 1583173168186268781
-    second: Character_0_Sheet_20
+      213: 8076554341581741073
+    second: Character_1_Sheet_20
   - first:
-      213: -6607874894502219932
-    second: Character_0_Sheet_21
+      213: -7750698500993327406
+    second: Character_1_Sheet_21
   - first:
-      213: 5651729502573302682
-    second: Character_0_Sheet_22
+      213: -1976500360195150669
+    second: Character_1_Sheet_22
   - first:
-      213: -4173206934762289099
-    second: Character_0_Sheet_23
+      213: 7086121543596704385
+    second: Character_1_Sheet_23
   - first:
-      213: -6193107697332615354
-    second: Character_0_Sheet_24
+      213: -5459432090386028810
+    second: Character_1_Sheet_24
   - first:
-      213: 6627923190311801696
-    second: Character_0_Sheet_25
+      213: -5764802633216347406
+    second: Character_1_Sheet_25
   - first:
-      213: 412253001147627475
-    second: Character_0_Sheet_26
+      213: 2386339290217008356
+    second: Character_1_Sheet_26
   - first:
-      213: 3022937533156461964
-    second: Character_0_Sheet_27
+      213: -1280935736526944517
+    second: Character_1_Sheet_27
   - first:
-      213: -3344914325912692871
-    second: Character_0_Sheet_28
+      213: 1731708310274364302
+    second: Character_1_Sheet_28
   - first:
-      213: 3976643220620491589
-    second: Character_0_Sheet_29
+      213: -1150382351892724743
+    second: Character_1_Sheet_29
   - first:
-      213: -2426385455213046800
-    second: Character_0_Sheet_30
+      213: -789001094255728954
+    second: Character_1_Sheet_30
+  - first:
+      213: 580187023301108027
+    second: Character_1_Sheet_31
+  - first:
+      213: 525147310380894896
+    second: Character_1_Sheet_32
+  - first:
+      213: -67004123689330137
+    second: Character_1_Sheet_33
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -501,12 +510,12 @@ TextureImporter:
       name: Death_0
       rect:
         serializedVersion: 2
-        x: 28
+        x: 31
         y: 263
-        width: 34
-        height: 34
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.5, y: 0.42145404}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -525,10 +534,10 @@ TextureImporter:
         serializedVersion: 2
         x: 91
         y: 263
-        width: 34
-        height: 34
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.5, y: 0.421454}
+      pivot: {x: 0.46953693, y: 0.3286111}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -547,10 +556,10 @@ TextureImporter:
         serializedVersion: 2
         x: 152
         y: 258
-        width: 34
-        height: 34
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.5, y: 0.421454}
+      pivot: {x: 0.51218635, y: 0.37735203}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -656,7 +665,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 31
-        y: 72
+        y: 71
         width: 28
         height: 28
       alignment: 9
@@ -678,7 +687,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 95
-        y: 72
+        y: 71
         width: 28
         height: 28
       alignment: 9
@@ -699,8 +708,8 @@ TextureImporter:
       name: Run_2
       rect:
         serializedVersion: 2
-        x: 158
-        y: 72
+        x: 159
+        y: 71
         width: 28
         height: 28
       alignment: 9
@@ -721,8 +730,8 @@ TextureImporter:
       name: Run_3
       rect:
         serializedVersion: 2
-        x: 222
-        y: 72
+        x: 223
+        y: 71
         width: 28
         height: 28
       alignment: 9
@@ -787,7 +796,7 @@ TextureImporter:
       name: Idle_2
       rect:
         serializedVersion: 2
-        x: 158
+        x: 159
         y: 7
         width: 28
         height: 28
@@ -809,7 +818,7 @@ TextureImporter:
       name: Idle_3
       rect:
         serializedVersion: 2
-        x: 222
+        x: 223
         y: 7
         width: 28
         height: 28
@@ -831,20 +840,20 @@ TextureImporter:
       name: Roll
       rect:
         serializedVersion: 2
-        x: 198
-        y: 263
-        width: 40
-        height: 34
+        x: 210
+        y: 261
+        width: 28
+        height: 28
       alignment: 9
-      pivot: {x: 0.38764343, y: 0.3964942}
+      pivot: {x: 0.38423866, y: 0.40860966}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc3650c9837358c4dbb9139c01c602ae
-      internalID: 2125472814
+      spriteID: b2a29a1aa960f3541b7dec9fab5d33e8
+      internalID: 2072768570
       vertices: []
       indices: 
       edges: []
@@ -853,7 +862,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1eda44645130ddc4aa6bdd9e7c0876d9
+    spriteID: ee4995800ebe2b34a98943c8ea576e07
     internalID: 0
     vertices: []
     indices: 
@@ -888,7 +897,7 @@ TextureImporter:
       Idle_3: 6373048116405451881
       Jump_0: 7460046300004610927
       Jump_1: 7034338576483803127
-      Roll: 2125472814
+      Roll: 2072768570
       Run_0: 4944230376442633554
       Run_1: -2274363484027164459
       Run_2: 8284087734974297348
