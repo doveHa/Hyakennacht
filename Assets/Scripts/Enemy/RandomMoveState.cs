@@ -10,12 +10,13 @@ namespace Enemy
         public RandomMoveState(EnemyController controller)
         {
             _controller = controller;
-            _controller.Animator.SetBool("IsWalk",true);
+            _controller.Animator.SetBool("IsWalk", true);
         }
 
         public void Enter()
         {
             _destination = _controller.Spawner.GetRandomPosition();
+            _controller.Flip(_controller.transform.position.x < _destination.x);
         }
 
         public void Update()
@@ -31,7 +32,7 @@ namespace Enemy
 
         public void Exit()
         {
-            _controller.Animator.SetBool("IsWalk",false);
+            _controller.Animator.SetBool("IsWalk", false);
         }
     }
 }

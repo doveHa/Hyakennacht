@@ -10,10 +10,13 @@ namespace Enemy
         public Rigidbody2D Rigidbody { get; private set; }
         public Transform Target { get; private set; }
 
+        private bool _isLeftSight;
+
         void Awake()
         {
             Animator = GetComponent<Animator>();
             Rigidbody = GetComponent<Rigidbody2D>();
+            _isLeftSight = false;
         }
 
         void Start()
@@ -45,6 +48,14 @@ namespace Enemy
             Target = null;
             ChangeState(new RandomMoveState(this));
         }
-        
+
+        public void Flip(bool isRightDestination)
+        {
+            if ((_isLeftSight && isRightDestination) || (!_isLeftSight && !isRightDestination))
+            {
+                _isLeftSight = !_isLeftSight;
+                transform.GetChild(1).localRotation = Quaternion.Euler(0f, _isLeftSight ? 180f : 0f, 0f);
+            }
+        }
     }
 }

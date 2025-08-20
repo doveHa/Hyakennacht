@@ -245,9 +245,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2316976659988654998}
     m_Modifications:
+    - target: {fileID: -8913533962594999635, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
       propertyPath: m_Name
       value: Kappa_psb
+      objectReference: {fileID: 0}
+    - target: {fileID: -8089108032486474258, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
       propertyPath: m_LocalScale.x
@@ -295,6 +303,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7177796038800571695, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4457772106480614152, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300142661454288029, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359103177601667974, guid: bdb189ae32fd85a49ada5e6035a430af, type: 3}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
