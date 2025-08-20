@@ -24,7 +24,7 @@ namespace Enemy
             _controller.Rigidbody.linearVelocity = direction * Constant.Enemy.MOVE_SPEED;
             if (Vector3.Distance(_destination, _controller.transform.position) < 1f)
             {
-                _controller.ChangeState(new IdelState(_controller));
+                _controller.ChangeState(new IdleState(_controller));
             }
         }
 

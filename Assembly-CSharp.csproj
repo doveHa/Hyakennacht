@@ -56,7 +56,6 @@
     <Compile Include="Assets\Test\Script\CoffTest.cs" />
     <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabListPanel.cs" />
-    <Compile Include="Assets\Scripts\Enemy\IdelState.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabSlot.cs" />
     <Compile Include="Assets\Test\Script\BallHit.cs" />
@@ -89,6 +88,7 @@
     <Compile Include="Assets\Pixem\Scripts\PixemUIManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemListPanel.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemSaveCharacter.cs" />
+    <Compile Include="Assets\Scripts\Enemy\IdleState.cs" />
     <Compile Include="Assets\Test\Script\EmptyEnemyHit.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
