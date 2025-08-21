@@ -1,7 +1,10 @@
 ﻿using Character;
 using Character.Skill;
+using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using static Constant;
 
 namespace Manager
 {
@@ -24,6 +27,24 @@ namespace Manager
             _playerInput.Attack.ActiveSkill2.started += RunActiveSkill2;
         }
 
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+        private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+        {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                GameManager.Manager.SetPlayer(player);
+            }
+        }
+
 
         private void StartMove(InputAction.CallbackContext ctx)
         {
@@ -31,34 +52,70 @@ namespace Manager
             AnimationManager.Manager.StartMoveAnimation();
             Vector2 movement = ctx.ReadValue<Vector2>();
 
-            if (movement.x < 0)
-            {
-                GameManager.Manager.PlayerSight(true);
-            }
-            else if (movement.x > 0)
-            {
-                GameManager.Manager.PlayerSight(false);
-            }
+            var player = GameManager.Manager.Player;
+            if (player == null) return;
 
-            GameManager.Manager.SetMoveVector(movement);
-            //GameManager.Manager.MovePlayer(movement * GameObject.Find("Coff").GetComponent<CoffTest>().MoveSpeedCoff);
+            if (movement.x < 0)
+                GameManager.Manager.PlayerSight(true);
+            else if (movement.x > 0)
+                GameManager.Manager.PlayerSight(false);
+
+            var movementComp = player.GetComponentInChildren<Movement>();
+            if (movementComp != null)
+                movementComp.MoveVector = movement;
         }
 
         private void EndMove(InputAction.CallbackContext ctx)
         {
             Movement.IsMoving = false;
             AnimationManager.Manager.EndMoveAnimation();
-            GameManager.Manager.SetMoveVector(Vector2.zero);
+
+            var player = GameManager.Manager.Player;
+            if (player == null) return;
+
+            var movementComp = player.GetComponentInChildren<Movement>();
+            if (movementComp != null)
+                movementComp.MoveVector = Vector2.zero;
         }
 
+        /*        private void StartMove(InputAction.CallbackContext ctx)
+                {
+                    Movement.IsMoving = true;
+                    AnimationManager.Manager.StartMoveAnimation();
+                    Vector2 movement = ctx.ReadValue<Vector2>();
+
+                    if (movement.x < 0)
+                    {
+                        GameManager.Manager.PlayerSight(true);
+                    }
+                    else if (movement.x > 0)
+                    {
+                        GameManager.Manager.PlayerSight(false);
+                    }
+
+                    GameManager.Manager.SetMoveVector(movement);
+                    //GameManager.Manager.MovePlayer(movement * GameObject.Find("Coff").GetComponent<CoffTest>().MoveSpeedCoff);
+                }
+
+                private void EndMove(InputAction.CallbackContext ctx)
+                {
+                    Movement.IsMoving = false;
+                    AnimationManager.Manager.EndMoveAnimation();
+                    GameManager.Manager.SetMoveVector(Vector2.zero);
+                }
+        */
         private void StartRoll(InputAction.CallbackContext ctx)
         {
-            GameManager.Manager.Player.GetComponentInChildren<Dash>().StartDashCoroutine();
+            var player = GameManager.Manager.Player;
+            if (player != null)
+                player.GetComponentInChildren<Dash>().StartDashCoroutine();
         }
 
         private void StartBasicAttack(InputAction.CallbackContext ctx)
         {
-            GameManager.Manager.PlayerScript.WeaponHandler.UseWeapon();
+            var playerScript = GameManager.Manager.PlayerScript;
+            if (playerScript != null)
+                playerScript.WeaponHandler.UseWeapon();
         }
 
         private void RunActiveSkill1(InputAction.CallbackContext ctx)
@@ -86,5 +143,12 @@ namespace Manager
         {
             _activeSkill2 = skill;
         }
+
+        //HR: 씬 전환을 위해 추가
+        public void DisableInput()
+        {
+            _playerInput?.Disable();
+        }
+
     }
 }

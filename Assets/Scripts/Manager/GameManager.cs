@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using Character;
+﻿using Character;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Manager
 {
@@ -12,23 +13,57 @@ namespace Manager
         protected override void Awake()
         {
             base.Awake();
-            Player = GameObject.FindGameObjectWithTag("Player");
-            PlayerScript = Player.GetComponent<Player>();
+
+            //HR: 씬 전환 후 Player 재설정
+            RefreshPlayerReference();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+            //Player = GameObject.FindGameObjectWithTag("Player");
+            //PlayerScript = Player.GetComponent<Player>();
         }
-        
+
+        //HR: 씬 전환
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            RefreshPlayerReference();
+        }
+
+        public void RefreshPlayerReference()
+        {
+            var scenePlayer = GameObject.FindGameObjectWithTag("Player");
+            if (scenePlayer != null)
+            {
+                Player = scenePlayer;
+                PlayerScript = Player.GetComponent<Player>();
+            }
+        }
+
+
         public void SetMoveVector(Vector2 movement)
         {
-            Player.transform.GetComponentInChildren<Movement>().MoveVector = movement;
+            if (Player != null)
+                Player.GetComponentInChildren<Character.Movement>().MoveVector = movement;
         }
 
         public void PlayerSight(bool isLeft)
         {
-            Player.GetComponentInChildren<SpriteRenderer>().flipX = !isLeft;
-            Player.GetComponentInChildren<Dash>().IsLeftSight = isLeft;
+            if (Player != null)
+            {
+                Player.GetComponentInChildren<SpriteRenderer>().flipX = !isLeft;
+                Player.GetComponentInChildren<Dash>().IsLeftSight = isLeft;
+            }
         }
         
         public void GameOver()
         {
         }
+
+        //HR
+        public void SetPlayer(GameObject player)
+        {
+            Player = player;
+            PlayerScript = player.GetComponent<Player>();
+        }
+
     }
 }
