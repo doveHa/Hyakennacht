@@ -74,7 +74,7 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ClearItems();
+            
             //GenerateMap();
             NextStage();
             Debug.Log("Map regenerated");
@@ -151,14 +151,14 @@ public class MapManager : MonoBehaviour
 
         groundTiles = groundTiles.Distinct().ToList();
 
-        // 계단 배치
-        PlaceStairs();
-
         // 아이템 생성
         SpawnItems();
 
         // 벽 생성
         GenerateWalls();
+
+        // 계단 배치
+        PlaceStairs();
     }
 
     void DrawRoomFloor(Vector2Int worldPos, int width, int height, Room room)
@@ -209,25 +209,54 @@ public class MapManager : MonoBehaviour
     // 확률 기반 타일 선택 함수
     TileBase GetRandomGroundTile()
     {
+        // 기본 타일 외 타일의 등장 확률 (1~5%)
+        float minRate = 0.01f;
+        float maxRate = 0.05f;
+        float rate = Mathf.Lerp(minRate, maxRate, Mathf.InverseLerp(2, 14, currentStage));
 
-        // 일반 스테이지
-        float[] tileRates = new float[groundTilesByStage.Length];
-        tileRates[0] = 1f; // 기본 타일 확률 100%에서 시작
+        // 스테이지별 등장 타일 인덱스 결정
+        int extraStart = 2;
+        int extraEnd = 1; // 기본값: 첫번째 스테이지는 추가 타일 없음
 
-        // 두 번째 타일부터 확률 계산
+        if (currentStage >= 2 && currentStage <= 3)
+            extraEnd = 2;
+        else if (currentStage >= 4 && currentStage <= 5)
+            extraEnd = 3;
+        else if (currentStage >= 6 && currentStage <= 7)
+            extraEnd = 4;
+        else if (currentStage >= 8 && currentStage <= 9)
+            extraEnd = 5;
+        else if (currentStage >= 10 && currentStage <= 11)
+            extraEnd = 6;
+        else if (currentStage >= 12 && currentStage <= 13)
+            extraEnd = 7;
+        else if (currentStage == 14)
+            extraEnd = 8;
+        else if (currentStage == 15)
+            extraEnd = 9;
+
+        // 등장 타일 인덱스 리스트 생성
+        List<int> extraTileIndices = new List<int>();
+        for (int i = extraStart; i <= extraEnd && i < groundTilesByStage.Length; i++)
+            extraTileIndices.Add(i);
+
+        // 확률 분배
+        float defaultTileRate = 1f - (rate * extraTileIndices.Count);
+        List<float> tileRates = new List<float>();
+        tileRates.Add(defaultTileRate); // 0번 타일
+
         for (int i = 1; i < groundTilesByStage.Length; i++)
         {
-            // 스테이지별 확률 계산 (5% ~ 30%) -> 생기는 디테일 조정 필요
-            // 희망 사항: 5%에서 30%까지 선형적으로 증가 & 보스 스테이지 단위로 새로운 타일 등장
-            float rate = Mathf.Lerp(0.05f, 0.3f, (float)currentStage / (maxStage - specialStageCount - 1));
-            tileRates[i] = rate;
-            tileRates[0] -= rate; // 기본 타일 확률에서 차감
+            if (extraTileIndices.Contains(i))
+                tileRates.Add(rate);
+            else
+                tileRates.Add(0f);
         }
 
         // 랜덤 선택
         float rand = Random.value;
         float acc = 0f;
-        for (int i = 0; i < groundTilesByStage.Length; i++)
+        for (int i = 0; i < tileRates.Count; i++)
         {
             acc += tileRates[i];
             if (rand < acc)
@@ -239,6 +268,8 @@ public class MapManager : MonoBehaviour
     // 스테이지 변경 시 currentStage 값을 바꿔주고 GenerateMap() 호출
     public void NextStage()
     {
+        ClearItems();
+
         currentStage++;
         StageManager.CurrentStage = currentStage;
 
@@ -312,8 +343,17 @@ public class MapManager : MonoBehaviour
     {
         if (itemPrefabs == null || itemPrefabs.Length == 0) return;
 
-        int spawnCount = Mathf.Min(maxItemCount, groundTiles.Count);
-        var shuffled = groundTiles.OrderBy(x => Random.value).ToList();
+        // 계단 타일이 아닌 위치만 필터링
+        var validTiles = groundTiles
+            .Where(tilePos =>
+            {
+                TileBase tile = groundTilemap.GetTile(tilePos);
+                return tile != stairUpTile && tile != stairDownTile;
+            })
+            .ToList();
+
+        int spawnCount = Mathf.Min(maxItemCount, validTiles.Count);
+        var shuffled = validTiles.OrderBy(x => Random.value).ToList();
 
         for (int i = 0; i < spawnCount; i++)
         {

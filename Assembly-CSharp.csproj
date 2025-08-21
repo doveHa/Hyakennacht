@@ -93,6 +93,7 @@
     <Compile Include="Assets\Test\Script\Shooter.cs" />
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemToggleController.cs" />
+    <Compile Include="Assets\HR\Script\StallTrigger.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
     <Compile Include="Assets\Scripts\Character\Dash.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacter.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\SkillBase.cs" />
+    <Compile Include="Assets\HR\Script\PlayerCamera.cs" />
     <Compile Include="Assets\HR\Script\ShopManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemUIManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemListPanel.cs" />
