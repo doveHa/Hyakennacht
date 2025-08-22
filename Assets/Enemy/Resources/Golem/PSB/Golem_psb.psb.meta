@@ -3110,16 +3110,6 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: RigthLeg
-    spriteName: RigthLeg
-    isGroup: 0
-    parentIndex: -1
-    spriteID: dd64d2a89cb9f2e47bd3528c8492a0d1
-    layerID: 4
-    mosaicPosition: {x: 493, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: LeftLeg
     spriteName: LeftLeg
     isGroup: 0
@@ -3127,6 +3117,16 @@ ScriptedImporter:
     spriteID: 1f9f70dc8888fb34ca6508a4122e027c
     layerID: 3
     mosaicPosition: {x: 493, y: 319}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: RigthLeg
+    spriteName: RigthLeg
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dd64d2a89cb9f2e47bd3528c8492a0d1
+    layerID: 4
+    mosaicPosition: {x: 493, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
