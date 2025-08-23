@@ -36,6 +36,9 @@ public class MapManager : MonoBehaviour
     public GameObject[] itemPrefabs;
     public int maxItemCount = 10;
 
+    public GameObject shopPrefab; // 인스펙터에서 상점 프리팹 할당
+    private GameObject shopInstance; // 현재 맵에 생성된 상점 오브젝트 참조
+
     // 모든 바닥 타일
     private List<Vector3Int> groundTiles = new List<Vector3Int>();
 
@@ -65,8 +68,9 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        // 현재 무슨 스테이지인지 StageManager에서 가져옴
+        // 스테이지 1부터 시작
         currentStage = StageManager.CurrentStage;
+        if (currentStage < 1) currentStage = 1;
         GenerateMap();
     }
 
@@ -87,6 +91,12 @@ public class MapManager : MonoBehaviour
         wallTilemap.ClearAllTiles();
         groundTiles.Clear();
         rooms.Clear();
+
+        // 4, 9, 14번째 스테이지는 구역 8개
+        if (currentStage == 4 || currentStage == 9 || currentStage == 14)
+            roomCount = 8;
+        else
+            roomCount = 7;
 
         Dictionary<Vector2Int, Room> roomDict = new Dictionary<Vector2Int, Room>();
         HashSet<Vector2Int> occupied = new HashSet<Vector2Int>();
@@ -159,6 +169,12 @@ public class MapManager : MonoBehaviour
 
         // 계단 배치
         PlaceStairs();
+
+        // 상점 프리팹 배치 (4, 9, 14번째 스테이지)
+        if (shopPrefab != null && (currentStage == 4 || currentStage == 9 || currentStage == 14))
+        {
+            shopInstance = PlaceShop();
+        }
     }
 
     void DrawRoomFloor(Vector2Int worldPos, int width, int height, Room room)
@@ -420,5 +436,21 @@ public class MapManager : MonoBehaviour
             list[i] = list[r];
             list[r] = tmp;
         }
+    }
+
+    // 상점 프리팹을 8번째 방 중앙에 배치
+    GameObject PlaceShop()
+    {
+        if (rooms.Count < 8) return null;
+        Room shopRoom = rooms[7]; // 8번째 방 (인덱스 7)
+        // 방 중앙 좌표 계산
+        Vector3 avgWorldPos = Vector3.zero;
+        foreach (var tile in shopRoom.tiles)
+        {
+            avgWorldPos += groundTilemap.CellToWorld(tile) + new Vector3(0.5f, 0.5f, 0);
+        }
+        avgWorldPos /= shopRoom.tiles.Count;
+
+        return Instantiate(shopPrefab, avgWorldPos, Quaternion.identity, this.transform);
     }
 }
