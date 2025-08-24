@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Enemy
 {
@@ -19,14 +20,16 @@ namespace Enemy
             _isLeftSight = false;
         }
 
-        void Start()
+        async void Start()
         {
+            EnemyStats stat = GetComponent<EnemyStats>();
+            await stat.SetStat();
+            Debug.Log("[" + name + "] SetRandomMoveState");
             ChangeState(new RandomMoveState(this));
         }
 
         void Update()
         {
-            Debug.Log(_currentState.GetType().Name);
             _currentState?.Update();
         }
 

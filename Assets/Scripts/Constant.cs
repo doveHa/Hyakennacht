@@ -2,13 +2,14 @@
 
 public static class Constant
 {
+    public static class Path
+    {
+        //public static string ENEMYJSON = "E:\\Project\\Unity\\Hyakennacht\\Assets\\Resources\\Json\\EnemyStats.json";
+        public static string ENEMYJSON = "Assets/Resources/Json/EnemyStats.json";
+    }
     public static class Player
     {
         public static float MOVE_SPEED = 0.025f;
-    }
-    public static class Enemy
-    {
-        public static float MOVE_SPEED = 1.5f;
     }
     public static class SpawnEnemy
     {
