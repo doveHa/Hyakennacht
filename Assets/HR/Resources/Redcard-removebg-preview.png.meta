@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Redcard-removebg-preview_0: -608833120603988079
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ProgressLine-Photoroom_0: -8591946270154162148
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

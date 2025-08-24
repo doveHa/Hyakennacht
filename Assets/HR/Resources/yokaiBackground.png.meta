@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      yokaiBackground_0: -1197052528046672865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

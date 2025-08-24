@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      skull-Photoroom_0: 5269994458301701660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
