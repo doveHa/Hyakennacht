@@ -80,7 +80,7 @@ public class MapManager : MonoBehaviour
         {
             
             //GenerateMap();
-            NextStage();
+            NextStage(true);
             Debug.Log("Map regenerated");
         }
     }
@@ -282,12 +282,12 @@ public class MapManager : MonoBehaviour
     }
 
     // 스테이지 변경 시 currentStage 값을 바꿔주고 GenerateMap() 호출
-    public void NextStage()
+    public void NextStage(bool isStairUp)
     {
         ClearItems();
 
-        currentStage++;
-        StageManager.CurrentStage = currentStage;
+        StageManager.AdvanceStage(isStairUp);
+        currentStage = StageManager.CurrentStage;
 
         Debug.Log("Current Stage: " + currentStage);
 
