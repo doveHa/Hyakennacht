@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Enemy\PlayerRecognize.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill1.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\ChasePlayerState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Attack\IAttack.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\Character\Skill\SkillBase.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\IEnemyState.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemUIManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Attack\SlimeAttack.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemListPanel.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemSaveCharacter.cs" />
     <Compile Include="Assets\Test\Script\EmptyEnemyHit.cs" />
