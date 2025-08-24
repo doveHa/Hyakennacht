@@ -1,24 +1,21 @@
 ﻿using System;
 using TMPro;
-using UnityEngine;
 
 namespace Manager
 {
     public class SystemManager : AbstractManager<SystemManager>
     {
-        public HpControl HpControl { get; private set; }
-        private TextMeshProUGUI _coinCount;
-
+        public HpControl hpControl;
+        public TextMeshProUGUI coinCount;
+        
         protected override void Awake()
         {
             base.Awake();
-            HpControl = FindFirstObjectByType<HpControl>();
-            _coinCount = GameObject.Find("GameSystem").GetComponentInChildren<TextMeshProUGUI>();
         }
 
         void Update()
         {
-            _coinCount.text = GameManager.Manager.PlayerScript.Coins.ToString();
+            coinCount.text = GameManager.Manager.PlayerScript.Coins.ToString();
         }
     }
 }
