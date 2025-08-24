@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AddressableAssetsData.meta
 guid: 48c12a453f7ba2a4c95db6e64992c6fa
+========
+guid: da41921af8f31a949b43aac007fe3743
+>>>>>>>> main:Assets/Character.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

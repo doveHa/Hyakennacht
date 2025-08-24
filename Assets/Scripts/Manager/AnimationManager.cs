@@ -5,12 +5,10 @@ namespace Manager
     public class AnimationManager : AbstractManager<AnimationManager>
     {
         private Animator _animator;
-        public bool RollFlag { private get; set; }
 
         protected override void Awake()
         {
             base.Awake();
-            RollFlag = true;
         }
 
         void Start()
@@ -20,23 +18,17 @@ namespace Manager
 
         public void StartMoveAnimation()
         {
-            _animator.SetBool("IsWalk",true);
+            _animator.SetBool("IsWalk", true);
         }
 
         public void EndMoveAnimation()
         {
-            _animator.SetBool("IsWalk",false);
+            _animator.SetBool("IsWalk", false);
         }
 
-        public bool StartRollAnimation()
+        public void StartDashAnimation()
         {
-            if (RollFlag)
-            {
-                _animator.SetTrigger("Roll");
-                return true;
-            }
-
-            return false;
+            _animator.SetTrigger("Dash");
         }
     }
 }

@@ -8,10 +8,16 @@ namespace Manager
 
         protected virtual void Awake()
         {
-            if (Manager == null)
+            DontDestroyOnLoad(gameObject);
+            
+            if (!GameObject.Find("Manager").TryGetComponent<T>(out T manager) && Manager == null)
             {
-                Manager = this as T;
+                GameObject.Find("Manager").AddComponent<T>();
+                Destroy(gameObject);
             }
+            
+            Manager = GameObject.Find("Manager").GetComponent<T>();
+
         }
     }
 }

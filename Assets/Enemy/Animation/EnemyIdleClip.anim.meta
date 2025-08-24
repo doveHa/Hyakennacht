@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Enemy/Animation/EnemyIdleClip.anim.meta
 guid: ab2a4f49a90056044a0ea18a6a413d87
+========
+guid: 8249574f84dfd2d4cbb25e8c48a925cd
+>>>>>>>> main:Assets/Character/Animation/PlayerAnimationController.controller.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
