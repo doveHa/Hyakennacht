@@ -21,5 +21,6 @@ EditorBuildSettings:
     path: Assets/HR/Scenes/BossMap.unity
     guid: 2508b548525d582469a310b9fbc11b1c
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 9021b487ee25596439e8727faa6f514c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

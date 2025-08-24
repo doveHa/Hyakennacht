@@ -416,14 +416,23 @@
     <Reference Include="nunit.framework">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.ext.nunit@60ef35ffd3cd\net40\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="unityplastic">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\log4netPlastic.dll</HintPath>
@@ -434,11 +443,17 @@
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines">
+      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.IO.Pipelines.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>E:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>
@@ -827,6 +842,9 @@
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Addressables.Editor">
+      <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
@@ -853,6 +871,9 @@
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
@@ -890,6 +911,9 @@
     <Reference Include="Unity.Multiplayer.Center.Editor">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+      <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
@@ -902,11 +926,17 @@
     <Reference Include="Unity.2D.Animation.Editor">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+      <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Collections">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
@@ -937,6 +967,9 @@
     </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Profiling.Core">
+      <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
