@@ -2,19 +2,20 @@
 
 public static class Constant
 {
-    public static class Path
-    {
-        //public static string ENEMYJSON = "E:\\Project\\Unity\\Hyakennacht\\Assets\\Resources\\Json\\EnemyStats.json";
-        public static string ENEMYJSON = "Assets/Resources/Json/EnemyStats.json";
-    }
     public static class Player
     {
-        public static float MOVE_SPEED = 0.025f;
+        public static float MOVE_SPEED = 0.05f;
     }
+
+    public static class Enemy
+    {
+        public static float MOVE_SPEED = 1.5f;
+    }
+
     public static class SpawnEnemy
     {
-        public static int MIN_ENEMIES = 3;
-        public static int MAX_ENEMIES = 5;
+        public static int MIN_ENEMIES = 1;
+        public static int MAX_ENEMIES = 2;
         public static float SPAWN_DUPLICATION_DISTANCE = 0.5f;
     }
 
@@ -29,6 +30,11 @@ public static class Constant
         public static int ROLL_FRAME = 20;
         public static int START_FRAME = 4;
         public static float ROLL_DISTANCE = 0.025f;
-        public static float DISTANCE_COFF = 20f;
+    }
+
+    public static class Scene
+    {
+        public static string WITCHLOBBY = "WitchLobbyScene(Temp)";
+        public static string YOKAILOBBY = "YokaiLobbyScene(Temp)";
     }
 }

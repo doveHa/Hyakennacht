@@ -441,21 +441,6 @@
     <Reference Include="Mono.Cecil">
       <HintPath>E:\Project\Unity\Hyakennacht\Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Json">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Text.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Pipelines">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.IO.Pipelines.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib">
       <HintPath>E:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>
     </Reference>

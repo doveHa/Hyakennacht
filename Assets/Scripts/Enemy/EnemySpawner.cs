@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = Unity.Mathematics.Random;
@@ -54,23 +53,22 @@ namespace Enemy
         }
 
 
-        private async Task SpawnEnemies()
+        private void SpawnEnemies()
         {
             int spawnEnemies = _rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
             for (int i = 0; i < spawnEnemies; i++)
             {
                 int rndEnemy = _rnd.NextInt(enemies.Length);
-                _objects[i] = await SpawnEnemy(enemies[rndEnemy]);
+                _objects[i] = SpawnEnemy(enemies[rndEnemy]);
             }
         }
 
-        private async Task<GameObject> SpawnEnemy(GameObject enemy)
+        private GameObject SpawnEnemy(GameObject enemy)
         {
             Vector3 local = GetRandomPosition();
             GameObject mob = Instantiate(enemy, local, Quaternion.identity);
             mob.GetComponent<EnemyController>().Spawner = this;
-            await mob.GetComponent<EnemyStats>().SetStat();
             return mob;
         }
 

@@ -6,9 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EnemyScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/FactionSelectScene.unity
+    guid: 9f3395f585b018340917e632bd378e80
+  - enabled: 1
+    path: Assets/Scenes/WitchLobbyScene(Temp).unity
+    guid: 9bc759a91fdb0264eaf637b9d8d71ea4
+  - enabled: 1
+    path: Assets/Scenes/YokaiLobbyScene(Temp).unity
+    guid: de40c13e67629534bb14cb6561df60ca
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 9021b487ee25596439e8727faa6f514c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
