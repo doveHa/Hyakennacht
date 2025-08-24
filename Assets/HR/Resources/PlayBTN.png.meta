@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 18c568ba408d43d418cd234ecfb173fb
+guid: 783a67c75c8117d44a25734e0e9ad645
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6384119864520804223
-    second: e4ab907f46454a72a2d7dd41c3f361 1_0
+      213: 7585812508196092434
+    second: PlayBTN_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: e4ab907f46454a72a2d7dd41c3f361 1_0
+      name: PlayBTN_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1536
-        height: 1024
+        width: 829
+        height: 526
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7707483133f89850800000000000000
-      internalID: 6384119864520804223
+      spriteID: 21a3ebbe848364960800000000000000
+      internalID: 7585812508196092434
       vertices: []
       indices: 
       edges: []
