@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject playerPrefab;
     public WeaponHandler WeaponHandler { get; private set; }
     public int Coins { get; private set; }
 
     void Awake()
     {
-        Instantiate(playerPrefab, transform).transform.parent = transform;
         WeaponHandler = GetComponent<WeaponHandler>();
         Coins = 0;
     }
@@ -23,7 +21,7 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
-        SystemManager.Manager.HpControl.MinusHp();
+        SystemManager.Manager.hpControl.MinusHp();
     }
     public void PlayerGetCoin()
     {

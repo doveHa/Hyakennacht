@@ -8,7 +8,7 @@ public class BallHit : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            SystemManager.Manager.HpControl.MinusHp();
+            SystemManager.Manager.hpControl.MinusHp();
             Destroy(gameObject);
         }
     }

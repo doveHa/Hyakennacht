@@ -53,7 +53,15 @@ namespace Manager
 
         private void StartRoll(InputAction.CallbackContext ctx)
         {
-            GameManager.Manager.Player.GetComponentInChildren<Dash>().StartDashCoroutine();
+            if (AnimationManager.Manager.StartRollAnimation())
+            {
+                Constant.Player.MOVE_SPEED *= 2;
+
+                if (!Movement.IsMoving)
+                {
+                    GameManager.Manager.Roll();
+                }
+            }
         }
 
         private void StartBasicAttack(InputAction.CallbackContext ctx)
