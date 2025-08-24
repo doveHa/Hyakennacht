@@ -29,11 +29,11 @@ namespace Character
                 {
                     if (IsLeftSight)
                     {
-                        transform.position += new Vector3((-1) * Constant.Roll.ROLL_DISTANCE, 0, 0);
+                        GameManager.Manager.Player.transform.position += new Vector3((-1) * Constant.Roll.ROLL_DISTANCE, 0, 0);
                     }
                     else
                     {
-                        transform.position += new Vector3(Constant.Roll.ROLL_DISTANCE, 0, 0);
+                        GameManager.Manager.Player.transform.position += new Vector3(Constant.Roll.ROLL_DISTANCE, 0, 0);
                     }
                 }
 

@@ -29,7 +29,7 @@ public static class Constant
     {
         public static int ROLL_FRAME = 20;
         public static int START_FRAME = 4;
-        public static float ROLL_DISTANCE = 0.025f;
+        public static float ROLL_DISTANCE = 0.125f;
     }
 
     public static class Scene
