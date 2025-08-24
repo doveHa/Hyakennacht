@@ -15,7 +15,7 @@ public class PlayerRecognize : MonoBehaviour
         {
             _controller.SetTarget(collider2D.transform);
             _controller.ChangeState(new ChasePlayerState(_controller));
-            Destroy(this);
+            //Destroy(this);
         }
     }
 }
