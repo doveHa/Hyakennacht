@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: daf2b4d07f0ada34d90f6c2edfc2e1f6
+    m_Address: Assets/Tile/256Wall.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f1d7c1f2d5d0bc549a72083c6a388bf6
     m_Address: Assets/Enemy/Prefab/Straw.prefab
     m_ReadOnly: 0

@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Manager;
-using NUnit.Framework;
-using UnityEditor;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = Unity.Mathematics.Random;
 
@@ -22,14 +18,14 @@ namespace Enemy
         private GameObject[] _objects;
         private Random _rnd;
 
-        private bool _isSpawn;
+        public bool IsSpawn;
 
         void Awake()
         {
             _rnd = new Random((uint)DateTime.Now.Millisecond);
             _stage = GetComponent<Tilemap>();
             _enemyObjects = new List<GameObject>();
-            _isSpawn = false;
+            IsSpawn = false;
         }
 
         async void Start()
@@ -40,27 +36,23 @@ namespace Enemy
             keys.Add(path + "Will-o-Wisp.prefab");
             keys.Add(path + "Straw.prefab");
             keys.Add(path + "Kappa.prefab");
-
+            
             foreach (string key in keys)
             {
-                AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(key);
-                await handle.Task;
-                _enemyObjects.Add(handle.Result);
+                _enemyObjects.Add(await AddressableManager.Manager.LoadAsset<GameObject>(key));
             }
-
+            
             _stage.CompressBounds();
             _bounds = _stage.localBounds;
-            Debug.Log("max" + _bounds.max);
-            Debug.Log("min" + _bounds.min);
-            Debug.Log("size" + _bounds.size);
         }
 
         void Update()
         {
             Vector3Int playerPoint = _stage.WorldToCell(GameManager.Manager.Player.transform.position);
-            if (!_isSpawn && _stage.HasTile(playerPoint))
+            if (!IsSpawn && _stage.HasTile(playerPoint))
             {
-                _isSpawn = true;
+                IsSpawn = true;
+                StartStage();
                 SpawnEnemies();
             }
             /*
@@ -78,7 +70,7 @@ namespace Enemy
         public Vector3 GetRandomPosition()
         {
             Vector3 randomPosition;
-            
+
             int randomX = _rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
             int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
             Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
@@ -124,6 +116,22 @@ namespace Enemy
             }
 
             return true;
+        }
+        
+        public async void StartStage()
+        {
+            GameObject child = new GameObject();
+            child.transform.parent = transform;
+            TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/256Wall.asset");
+            Tilemap tilemap = child.transform.AddComponent<Tilemap>();
+            child.transform.AddComponent<TilemapRenderer>();
+            MapManager.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase);
+            //await SpawnEnemies();
+        }
+        
+        public void EndStage()
+        {
+            Destroy(this);
         }
     }
 }

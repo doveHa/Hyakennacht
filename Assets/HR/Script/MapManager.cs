@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Enemy;
@@ -5,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class MapManager : MonoBehaviour
 {
@@ -182,7 +184,7 @@ public class MapManager : MonoBehaviour
         SpawnItems();
 
         // �� ����
-        GenerateWalls();
+        GenerateWalls(emptyMap,wallTilemap,wallTile);
 
         // ��� ��ġ
         PlaceStairs();
@@ -201,6 +203,7 @@ public class MapManager : MonoBehaviour
         roomObject.AddComponent<Tilemap>();
         roomObject.AddComponent<TilemapRenderer>();
         roomObject.AddComponent<EnemySpawner>();
+        //roomObject.AddComponent<RoomControl>();
 
         Room room = new Room(roomIdCounter, pos, roomObject);
         return room;
@@ -430,7 +433,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    void GenerateWalls()
+    public static void GenerateWalls(Tilemap emptyMap,Tilemap wallTilemap,TileBase wallTile)
     {
         BoundsInt bounds = emptyMap.cellBounds;
 
@@ -441,7 +444,7 @@ public class MapManager : MonoBehaviour
                 Vector3Int pos = new Vector3Int(x, y, 0);
                 if (emptyMap.GetTile(pos) == null)
                 {
-                    if (HasGroundNeighbour(pos))
+                    if (HasGroundNeighbour(pos,emptyMap))
                     {
                         wallTilemap.SetTile(pos, wallTile);
                     }
@@ -450,14 +453,14 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    bool HasGroundNeighbour(Vector3Int pos)
+    static bool HasGroundNeighbour(Vector3Int pos,Tilemap tilemap)
     {
         for (int dx = -1; dx <= 1; dx++)
         {
             for (int dy = -1; dy <= 1; dy++)
             {
                 if (dx == 0 && dy == 0) continue;
-                if (emptyMap.GetTile(new Vector3Int(pos.x + dx, pos.y + dy, 0)) != null)
+                if (tilemap.GetTile(new Vector3Int(pos.x + dx, pos.y + dy, 0)) != null)
                     return true;
             }
         }

@@ -88,8 +88,10 @@
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
+    <Compile Include="Assets\Scripts\System\RoomControl.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\AttackState.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemSlot.cs" />
+    <Compile Include="Assets\Scripts\Manager\AddressableManager.cs" />
     <Compile Include="Assets\HR\Script\BossManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\RandomMove.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Manager;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -34,40 +35,34 @@ public class EnemyStats : MonoBehaviour
 
     public async Task SetStat()
     {
-        AsyncOperationHandle<TextAsset> handle = Addressables.LoadAssetAsync<TextAsset>("Assets/TextAsset/EnemyStats.json");
-        await handle.Task;
-        OnJsonLoaded(handle);
+        TextAsset textAsset = await AddressableManager.Manager.LoadAsset<TextAsset>("Assets/TextAsset/EnemyStats.json");
+        OnJsonLoaded(textAsset);
     }
 
-    private void OnJsonLoaded(AsyncOperationHandle<TextAsset> handle)
+    private void OnJsonLoaded(TextAsset textAsset)
     {
-        if (handle.Status == AsyncOperationStatus.Succeeded)
-        {
-            string json = handle.Result.text;
+        string json = textAsset.text;
 
-            List<EnemyStat> set = JsonSerializer.Deserialize<List<EnemyStat>>(json);
-            EnemyStat stat = set.Find(e => e.Name == enemyName.ToString());
-            _health = stat.Health;
-            Speed = stat.Speed;
-        }
-
-        Addressables.Release(handle);
+        List<EnemyStat> set = JsonSerializer.Deserialize<List<EnemyStat>>(json);
+        EnemyStat stat = set.Find(e => e.Name == enemyName.ToString());
+        _health = stat.Health;
+        Speed = stat.Speed;
     }
 
-    /*
-    private void SetStat(List<EnemyStat> set)
+/*
+private void SetStat(List<EnemyStat> set)
+{
+    foreach (EnemyStat enemyStat in set)
     {
-        foreach (EnemyStat enemyStat in set)
+        if (enemyStat.Name.Equals(enemyName.ToString()))
         {
-            if (enemyStat.Name.Equals(enemyName.ToString()))
-            {
-                _health = enemyStat.Health;
-                Speed = enemyStat.Speed;
-                Debug.Log(enemyName.ToString());
-                return;
-            }
+            _health = enemyStat.Health;
+            Speed = enemyStat.Speed;
+            Debug.Log(enemyName.ToString());
+            return;
         }
-    }*/
+    }
+}*/
 
     void Start()
     {
