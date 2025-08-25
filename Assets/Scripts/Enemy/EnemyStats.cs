@@ -34,7 +34,7 @@ public class EnemyStats : MonoBehaviour
 
     public async Task SetStat()
     {
-        AsyncOperationHandle<TextAsset> handle = Addressables.LoadAssetAsync<TextAsset>("TextAsset/EnemyStats");
+        AsyncOperationHandle<TextAsset> handle = Addressables.LoadAssetAsync<TextAsset>("Assets/TextAsset/EnemyStats.json");
         await handle.Task;
         OnJsonLoaded(handle);
     }

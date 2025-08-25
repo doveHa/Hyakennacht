@@ -26,19 +26,16 @@ namespace Character
 
         void FixedUpdate()
         {
-            Debug.Log($"MoveVector: {MoveVector}, IsMoving: {IsMoving}");
 
             if (MoveVector != Vector2.zero)
             {
                 Vector2 targetPos = rb.position + MoveVector * moveSpeed * Time.fixedDeltaTime;
-                Debug.Log(targetPos);
                 // 벽 체크 (Raycast)
                 RaycastHit2D hit = Physics2D.Raycast(rb.position, MoveVector, moveSpeed * Time.fixedDeltaTime);
                 rb.MovePosition(targetPos);
 
                 if (hit.collider == null) // 벽 없음
                 {
-                    Debug.Log(targetPos);
 /*
                     // 부모도 자식 이동만큼 같이 이동
                     if (parentTransform != null)

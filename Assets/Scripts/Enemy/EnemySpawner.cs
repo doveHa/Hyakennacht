@@ -1,6 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Manager;
+using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = Unity.Mathematics.Random;
 
@@ -8,26 +15,55 @@ namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
-        public Tilemap stage;
-        public GameObject[] enemies;
+        private Tilemap _stage;
+        private List<GameObject> _enemyObjects;
         private Bounds _bounds;
 
         private GameObject[] _objects;
         private Random _rnd;
 
+        private bool _isSpawn;
+
         void Awake()
         {
             _rnd = new Random((uint)DateTime.Now.Millisecond);
+            _stage = GetComponent<Tilemap>();
+            _enemyObjects = new List<GameObject>();
+            _isSpawn = false;
         }
 
-        void Start()
+        async void Start()
         {
-            _bounds = stage.localBounds;
-            SpawnEnemies();
+            List<string> keys = new List<string>();
+            string path = "Assets/Enemy/Prefab/";
+            keys.Add(path + "Ghost.prefab");
+            keys.Add(path + "Will-o-Wisp.prefab");
+            keys.Add(path + "Straw.prefab");
+            keys.Add(path + "Kappa.prefab");
+
+            foreach (string key in keys)
+            {
+                AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(key);
+                await handle.Task;
+                _enemyObjects.Add(handle.Result);
+            }
+
+            _stage.CompressBounds();
+            _bounds = _stage.localBounds;
+            Debug.Log("max" + _bounds.max);
+            Debug.Log("min" + _bounds.min);
+            Debug.Log("size" + _bounds.size);
         }
 
         void Update()
         {
+            Vector3Int playerPoint = _stage.WorldToCell(GameManager.Manager.Player.transform.position);
+            if (!_isSpawn && _stage.HasTile(playerPoint))
+            {
+                _isSpawn = true;
+                SpawnEnemies();
+            }
+            /*
             if (Input.GetKeyDown(KeyCode.R))
             {
                 foreach (GameObject obj in _objects)
@@ -36,20 +72,26 @@ namespace Enemy
                 }
 
                 SpawnEnemies();
-            }
+            }*/
         }
 
         public Vector3 GetRandomPosition()
         {
             Vector3 randomPosition;
+            
+            int randomX = _rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
+            int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
+            Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
+            randomPosition = _stage.CellToLocal(randomPoint);
+            /*
             do
             {
                 int randomX = _rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
                 int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
                 Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
-                randomPosition = stage.CellToLocal(randomPoint);
+                randomPosition = _stage.CellToLocal(randomPoint);
             } while (CheckDuplication(randomPosition));
-
+*/
             return randomPosition;
         }
 
@@ -60,8 +102,8 @@ namespace Enemy
             _objects = new GameObject[spawnEnemies];
             for (int i = 0; i < spawnEnemies; i++)
             {
-                int rndEnemy = _rnd.NextInt(enemies.Length);
-                _objects[i] = await SpawnEnemy(enemies[rndEnemy]);
+                int rndEnemy = _rnd.NextInt(_enemyObjects.Count);
+                _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy]);
             }
         }
 
