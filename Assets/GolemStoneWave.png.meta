@@ -1,0 +1,792 @@
+fileFormatVersion: 2
+guid: 696b230ceebc8b0488a9e9051edc0ef4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5265993806843095171
+    second: GolemStoneWave_0
+  - first:
+      213: -705565596609417082
+    second: GolemStoneWave_1
+  - first:
+      213: 8225152558754546033
+    second: GolemStoneWave_2
+  - first:
+      213: 4842537803557068941
+    second: GolemStoneWave_3
+  - first:
+      213: -7321644077485701756
+    second: GolemStoneWave_4
+  - first:
+      213: -6984647647181458647
+    second: GolemStoneWave_5
+  - first:
+      213: -7418942712230686965
+    second: GolemStoneWave_6
+  - first:
+      213: -6102992590005411275
+    second: GolemStoneWave_7
+  - first:
+      213: 1909133638718483855
+    second: GolemStoneWave_8
+  - first:
+      213: -6824836539008219904
+    second: GolemStoneWave_9
+  - first:
+      213: 2785904949718268735
+    second: GolemStoneWave_10
+  - first:
+      213: -4728194579514102845
+    second: GolemStoneWave_11
+  - first:
+      213: 3732492939657333694
+    second: GolemStoneWave_12
+  - first:
+      213: -6840030350938045831
+    second: GolemStoneWave_13
+  - first:
+      213: -8253275785845891271
+    second: GolemStoneWave_14
+  - first:
+      213: -6210028872387244245
+    second: GolemStoneWave_15
+  - first:
+      213: 3137128765422646970
+    second: GolemStoneWave_16
+  - first:
+      213: 7329752959666378720
+    second: GolemStoneWave_17
+  - first:
+      213: 7755925359253713243
+    second: GolemStoneWave_18
+  - first:
+      213: -5162343489252370410
+    second: GolemStoneWave_19
+  - first:
+      213: 5918077142088389029
+    second: GolemStoneWave_20
+  - first:
+      213: -3577081723204462088
+    second: GolemStoneWave_21
+  - first:
+      213: 7104190943100657770
+    second: GolemStoneWave_22
+  - first:
+      213: -5059639733348265277
+    second: GolemStoneWave_23
+  - first:
+      213: 5829944535428635314
+    second: GolemStoneWave_24
+  - first:
+      213: 4390496026765264729
+    second: GolemStoneWave_25
+  - first:
+      213: -2773591076432579254
+    second: GolemStoneWave_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GolemStoneWave_0
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 232
+        width: 250
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77d5b9788e6be6b0800000000000000
+      internalID: -5265993806843095171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_1
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 402
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 680fb5004d35536f0800000000000000
+      internalID: -705565596609417082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_2
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 423
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 171c5f76cac952270800000000000000
+      internalID: 8225152558754546033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_3
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 232
+        width: 250
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d806b68b976243340800000000000000
+      internalID: 4842537803557068941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_4
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 402
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4854f95d08b446a90800000000000000
+      internalID: -7321644077485701756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_5
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 423
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9233b7c98fb811f90800000000000000
+      internalID: -6984647647181458647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_6
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 224
+        width: 264
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f448419ee9a0990800000000000000
+      internalID: -7418942712230686965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_7
+      rect:
+        serializedVersion: 2
+        x: 2424
+        y: 224
+        width: 264
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 532e2ed0390dd4ba0800000000000000
+      internalID: -6102992590005411275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_8
+      rect:
+        serializedVersion: 2
+        x: 3448
+        y: 224
+        width: 264
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8d609cedea9e7a10800000000000000
+      internalID: 1909133638718483855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_9
+      rect:
+        serializedVersion: 2
+        x: 3737
+        y: 227
+        width: 294
+        height: 579
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0050f4ac35f4941a0800000000000000
+      internalID: -6824836539008219904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_10
+      rect:
+        serializedVersion: 2
+        x: 4541
+        y: 240
+        width: 158
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3bb5f99ac589a620800000000000000
+      internalID: 2785904949718268735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_11
+      rect:
+        serializedVersion: 2
+        x: 4611
+        y: 227
+        width: 431
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cb622bb414126eb0800000000000000
+      internalID: -4728194579514102845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_12
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 343
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebbcde29d8a7cc330800000000000000
+      internalID: 3732492939657333694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_13
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 343
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9728277c2a45311a0800000000000000
+      internalID: -6840030350938045831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_14
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 315
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93f92578669767d80800000000000000
+      internalID: -8253275785845891271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_15
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 315
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2f407884ab81d9a0800000000000000
+      internalID: -6210028872387244245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_16
+      rect:
+        serializedVersion: 2
+        x: 4504
+        y: 297
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab63dadadf1598b20800000000000000
+      internalID: 3137128765422646970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_17
+      rect:
+        serializedVersion: 2
+        x: 5567
+        y: 240
+        width: 152
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e7584c6b7388b560800000000000000
+      internalID: 7329752959666378720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_18
+      rect:
+        serializedVersion: 2
+        x: 5877
+        y: 246
+        width: 152
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b51f2c6850592ab60800000000000000
+      internalID: 7755925359253713243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_19
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 276
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618df82a2fbab58b0800000000000000
+      internalID: -5162343489252370410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_20
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 277
+        width: 36
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a1998f2ecb312250800000000000000
+      internalID: 5918077142088389029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_21
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 276
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f91bdbff17ab5ec0800000000000000
+      internalID: -3577081723204462088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_22
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 277
+        width: 36
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a60ef0ce508279260800000000000000
+      internalID: 7104190943100657770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_23
+      rect:
+        serializedVersion: 2
+        x: 5043
+        y: 270
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2135a387c88c9b0800000000000000
+      internalID: -5059639733348265277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_24
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 267
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba1476aaaf18e050800000000000000
+      internalID: 5829944535428635314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_25
+      rect:
+        serializedVersion: 2
+        x: 2689
+        y: 267
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9578b1fdfdc2eec30800000000000000
+      internalID: 4390496026765264729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GolemStoneWave_26
+      rect:
+        serializedVersion: 2
+        x: 3713
+        y: 267
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a45fa017c993289d0800000000000000
+      internalID: -2773591076432579254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

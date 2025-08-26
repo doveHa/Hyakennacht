@@ -18,6 +18,7 @@ namespace Enemy
 
         public void Enter()
         {
+            _controller.Rigidbody.linearVelocity = Vector3.zero;
             _attack.Attack(_controller.Target.position);
             _controller.Animator.SetTrigger("Attack");
         }

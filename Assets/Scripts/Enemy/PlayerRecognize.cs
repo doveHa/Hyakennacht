@@ -14,7 +14,8 @@ public class PlayerRecognize : MonoBehaviour
         if (collider2D.gameObject.tag.Equals("Player"))
         {
             _controller.SetTarget(collider2D.transform);
-            _controller.ChangeState(new ChasePlayerState(_controller));
+            //_controller.ChangeState(new ChasePlayerState(_controller));
+            _controller.ChangeState(new AttackState(_controller));
         }
     }
 }

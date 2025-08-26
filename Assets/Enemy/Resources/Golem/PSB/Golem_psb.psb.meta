@@ -3070,16 +3070,6 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: Head
-    spriteName: Head
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 9a5e7f50269adad4a9b48fe127d79612
-    layerID: 8
-    mosaicPosition: {x: 4, y: 467}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: LeftArm
     spriteName: LeftArm
     isGroup: 0
@@ -3087,6 +3077,16 @@ ScriptedImporter:
     spriteID: 67452bea936f28648b75dc3775f698ac
     layerID: 7
     mosaicPosition: {x: 493, y: 620}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Head
+    spriteName: Head
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9a5e7f50269adad4a9b48fe127d79612
+    layerID: 8
+    mosaicPosition: {x: 4, y: 467}
     flatten: 0
     isImported: 1
     isVisible: 1

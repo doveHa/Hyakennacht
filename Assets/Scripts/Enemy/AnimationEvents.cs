@@ -12,6 +12,6 @@ public class AnimationEvents : MonoBehaviour
 
     public void EndAttack()
     {
-        _controller.ChangeState(new RandomMoveState(_controller));
+        _controller.ChangeState(new ChasePlayerState(_controller));
     }
 }
