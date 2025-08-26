@@ -55,6 +55,11 @@ namespace Enemy
                 StartStage();
                 SpawnEnemies();
             }
+
+            if (Input.GetKeyDown(KeyCode.Delete))
+            {
+                EndStage();
+            }
             /*
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -122,15 +127,17 @@ namespace Enemy
         {
             GameObject child = new GameObject();
             child.transform.parent = transform;
-            TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/256Wall.asset");
+            TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/Wall.asset");
             Tilemap tilemap = child.transform.AddComponent<Tilemap>();
             child.transform.AddComponent<TilemapRenderer>();
+            child.transform.AddComponent<TilemapCollider2D>();
             MapManager.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase);
             //await SpawnEnemies();
         }
         
         public void EndStage()
         {
+            Destroy(transform.GetChild(0).gameObject);
             Destroy(this);
         }
     }
