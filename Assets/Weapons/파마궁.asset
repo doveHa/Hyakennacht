@@ -19,6 +19,6 @@ MonoBehaviour:
   baseDamage: 10
   attackSpeed: 10
   behaviorType: 2
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 1921815811, guid: 0e14bf80eb766414f9c2fd13b7fe0d3a, type: 3}
   prefab: {fileID: 4260222561911818869, guid: 5a8a26a597b83fd41a07deff7681d33a, type: 3}
-  visualPrefab: {fileID: 2750372936912905126, guid: e06e613cec09c0741a8553143029722c, type: 3}
+  visualPrefab: {fileID: 3557671396067890383, guid: e06e613cec09c0741a8553143029722c, type: 3}

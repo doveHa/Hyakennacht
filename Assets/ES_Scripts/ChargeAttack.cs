@@ -17,7 +17,6 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
     {
         this.data = data;
         this.firePoint = firePoint;
-        animator = GetComponentInChildren<Animator>();
     }
 
     public void Attack()
@@ -29,6 +28,9 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            if(animator == null)
+                animator = GetComponentInChildren<Animator>();
+
             isCharging = true;
             chargeTime = 0f;
 
@@ -38,7 +40,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
             }
 
             if (animator != null)
-                animator.SetTrigger("Charge");
+                animator.SetBool("isCharging", true);
         }
 
         if (isCharging && Input.GetKey(KeyCode.Z))
@@ -50,12 +52,18 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
                 float scale = Mathf.Lerp(1f, 2.5f, chargeTime / chargeThreshold);
                 currentProjectile.transform.localScale = new Vector3(scale, scale, 1);
 
+                CircleCollider2D collider = currentProjectile.GetComponent<CircleCollider2D>();
+                if (collider != null)
+                {
+                    collider.radius = scale * 0.35f; // �ʿ� �� ��� ����
+                }
+
                 Animator projAnim = currentProjectile.GetComponent<Animator>();
                 if (projAnim != null)
                 {
-                    if (chargeTime >= chargeThreshold * 0.66f)
+                    if (chargeTime >= chargeThreshold * 0.44f)
                         projAnim.Play("Stage3"); 
-                    else if (chargeTime >= chargeThreshold * 0.33f)
+                    else if (chargeTime >= chargeThreshold * 0.22f)
                         projAnim.Play("Stage2");
                     else
                         projAnim.Play("Stage1"); 
@@ -78,7 +86,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
             }
 
             if (animator != null)
-                animator.SetTrigger("Shoot");
+                animator.SetBool("isCharging", false);
         }
     }
 
