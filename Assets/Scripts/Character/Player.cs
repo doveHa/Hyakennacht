@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     public int Coins { get; private set; }
 
     void Awake()
-    {
+    {  
+        DontDestroyOnLoad(this);
         Instantiate(playerPrefab, transform).transform.parent = transform;
         WeaponHandler = GetComponent<WeaponHandler>();
         Coins = 0;

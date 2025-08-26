@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Enemy;
+using Manager;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
@@ -96,13 +97,13 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    void GenerateMap()
+    Vector2Int GenerateMap()
     {
         foreach (Room room in rooms)
         {
             Destroy(room.roomObject);
         }
-        
+
         emptyMap.ClearAllTiles();
         groundTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
@@ -125,7 +126,7 @@ public class MapManager : MonoBehaviour
         int roomIdCounter = 0;
 
         Room startRoom = RoomObject(startPos, roomIdCounter++);
-
+        Destroy(startRoom.roomObject.GetComponent<EnemySpawner>());
         roomDict[startPos] = startRoom;
         rooms.Add(startRoom);
         occupied.Add(startPos);
@@ -184,7 +185,7 @@ public class MapManager : MonoBehaviour
         SpawnItems();
 
         // �� ����
-        GenerateWalls(emptyMap,wallTilemap,wallTile);
+        GenerateWalls(emptyMap, wallTilemap, wallTile);
 
         // ��� ��ġ
         PlaceStairs();
@@ -194,6 +195,8 @@ public class MapManager : MonoBehaviour
         {
             shopInstance = PlaceShop();
         }
+
+        return startPos;
     }
 
     private Room RoomObject(Vector2Int pos, int roomIdCounter)
@@ -336,7 +339,8 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-        GenerateMap();
+        Vector2Int startPos = GenerateMap();
+        GameManager.Manager.Player.transform.position = new Vector3(startPos.x, startPos.y, 0);
     }
 
     void PlaceStairs()
@@ -433,7 +437,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public static void GenerateWalls(Tilemap emptyMap,Tilemap wallTilemap,TileBase wallTile)
+    public static void GenerateWalls(Tilemap emptyMap, Tilemap wallTilemap, TileBase wallTile)
     {
         BoundsInt bounds = emptyMap.cellBounds;
 
@@ -444,7 +448,7 @@ public class MapManager : MonoBehaviour
                 Vector3Int pos = new Vector3Int(x, y, 0);
                 if (emptyMap.GetTile(pos) == null)
                 {
-                    if (HasGroundNeighbour(pos,emptyMap))
+                    if (HasGroundNeighbour(pos, emptyMap))
                     {
                         wallTilemap.SetTile(pos, wallTile);
                     }
@@ -453,7 +457,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    static bool HasGroundNeighbour(Vector3Int pos,Tilemap tilemap)
+    static bool HasGroundNeighbour(Vector3Int pos, Tilemap tilemap)
     {
         for (int dx = -1; dx <= 1; dx++)
         {
