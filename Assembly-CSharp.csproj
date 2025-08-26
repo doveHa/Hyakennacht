@@ -76,6 +76,7 @@
     <Compile Include="Assets\HR\Script\StageManager.cs" />
     <Compile Include="Assets\HR\Script\LobbyManager.cs" />
     <Compile Include="Assets\HR\Script\MapManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Attack\GhostAttack.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
     <Compile Include="Assets\Test\Script\Shooter.cs" />
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\Enemy\Attack\GolemAttack.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
     <Compile Include="Assets\Scripts\System\RoomControl.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Attack\WispAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\AttackState.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemSlot.cs" />
     <Compile Include="Assets\Scripts\Manager\AddressableManager.cs" />

@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: 8a47b073f70dc7f4d9dfebdfbd7fa069
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 278443811231408618
+    second: WispAttack_0
+  - first:
+      213: -1329812962209979625
+    second: WispAttack_1
+  - first:
+      213: 7508938468481889820
+    second: WispAttack_2
+  - first:
+      213: 2634932693723111667
+    second: WispAttack_3
+  - first:
+      213: -1257751911063963817
+    second: WispAttack_4
+  - first:
+      213: 8413639509117457997
+    second: WispAttack_5
+  - first:
+      213: 8094808211878605247
+    second: WispAttack_6
+  - first:
+      213: 153530576321421493
+    second: WispAttack_7
+  - first:
+      213: -1405564639152247633
+    second: WispAttack_8
+  - first:
+      213: 3641804944680942112
+    second: WispAttack_9
+  - first:
+      213: -1364767437747809511
+    second: WispAttack_10
+  - first:
+      213: 4008271920915322374
+    second: WispAttack_11
+  - first:
+      213: 41330988807913139
+    second: WispAttack_12
+  - first:
+      213: -5615197466028738071
+    second: WispAttack_13
+  - first:
+      213: 29866906931831214
+    second: WispAttack_14
+  - first:
+      213: -2435305504262283124
+    second: WispAttack_15
+  - first:
+      213: 256316035218225886
+    second: WispAttack_16
+  - first:
+      213: -5260254106316233092
+    second: WispAttack_17
+  - first:
+      213: -5505209476177902
+    second: WispAttack_18
+  - first:
+      213: -6147479366576135458
+    second: WispAttack_19
+  - first:
+      213: 8621111337413230803
+    second: WispAttack_20
+  - first:
+      213: -5044410056271500900
+    second: WispAttack_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WispAttack_0
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 630
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ac18f2884ab764cacfb219842159bc
+      internalID: -1616914680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WispAttack_1
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 630
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1def884c84d5d7b4bad3ccecde4a1379
+      internalID: 1126658271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WispAttack_2
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 0
+        width: 630
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63146687ae0e484399595e669cba19a
+      internalID: -866524777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WispAttack_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 629
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31f73bf378025e4abaa1fa02d645397
+      internalID: -1679163168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 76b59ab96ca782e40aa9c3cb9c9efeee
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      WispAttack_0: -1616914680
+      WispAttack_1: 1126658271
+      WispAttack_2: -866524777
+      WispAttack_3: -1679163168
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

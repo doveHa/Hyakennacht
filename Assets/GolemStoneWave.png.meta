@@ -784,7 +784,34 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GolemStoneWave_0: -5265993806843095171
+      GolemStoneWave_1: -705565596609417082
+      GolemStoneWave_10: 2785904949718268735
+      GolemStoneWave_11: -4728194579514102845
+      GolemStoneWave_12: 3732492939657333694
+      GolemStoneWave_13: -6840030350938045831
+      GolemStoneWave_14: -8253275785845891271
+      GolemStoneWave_15: -6210028872387244245
+      GolemStoneWave_16: 3137128765422646970
+      GolemStoneWave_17: 7329752959666378720
+      GolemStoneWave_18: 7755925359253713243
+      GolemStoneWave_19: -5162343489252370410
+      GolemStoneWave_2: 8225152558754546033
+      GolemStoneWave_20: 5918077142088389029
+      GolemStoneWave_21: -3577081723204462088
+      GolemStoneWave_22: 7104190943100657770
+      GolemStoneWave_23: -5059639733348265277
+      GolemStoneWave_24: 5829944535428635314
+      GolemStoneWave_25: 4390496026765264729
+      GolemStoneWave_26: -2773591076432579254
+      GolemStoneWave_3: 4842537803557068941
+      GolemStoneWave_4: -7321644077485701756
+      GolemStoneWave_5: -6984647647181458647
+      GolemStoneWave_6: -7418942712230686965
+      GolemStoneWave_7: -6102992590005411275
+      GolemStoneWave_8: 1909133638718483855
+      GolemStoneWave_9: -6824836539008219904
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

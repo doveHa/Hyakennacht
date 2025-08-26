@@ -27,14 +27,9 @@ namespace Character
                 currentFrame++;
                 if (currentFrame > Constant.Roll.START_FRAME)
                 {
-                    if (IsLeftSight)
-                    {
-                        GameManager.Manager.Player.transform.position += new Vector3((-1) * Constant.Roll.ROLL_DISTANCE, 0, 0);
-                    }
-                    else
-                    {
-                        GameManager.Manager.Player.transform.position += new Vector3(Constant.Roll.ROLL_DISTANCE, 0, 0);
-                    }
+                    GameManager.Manager.Player.transform.position +=
+                        (Vector3) GameManager.Manager.Player.transform.GetComponentInChildren<Movement>().MoveVector *
+                        Constant.Roll.ROLL_DISTANCE;
                 }
 
                 yield return null;

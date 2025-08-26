@@ -6,7 +6,10 @@ namespace Enemy.Attack
     {
         public abstract void Attack(Vector3 targetPosition);
 
-        public abstract void Exit();
+        public virtual void Exit()
+        {
+            GetComponentInChildren<PlayerRecognize>().Flag = true;
+        }
         
     }
 }

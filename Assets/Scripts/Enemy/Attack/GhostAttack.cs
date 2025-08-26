@@ -4,21 +4,12 @@ using UnityEngine;
 
 namespace Enemy.Attack
 {
-    public class SlimeAttack : IAttack
+    public class GhostAttack : IAttack
     {
         public float attackSpeed;
         public override void Attack(Vector3 targetPosition)
         {
             StartCoroutine(Charge(targetPosition));
-            /*
-            _currentState = transform.rotation;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, transform.GetChild(1).eulerAngles.y, angle);
-            Debug.Log(transform.eulerAngles.z);
-            Debug.Log(360 - angle);
-            transform.GetChild(1).localRotation = Quaternion.AngleAxis(360 - angle, Vector3.forward);
-
-        */
         }
 
         private IEnumerator Charge(Vector3 targetPosition)
@@ -36,8 +27,8 @@ namespace Enemy.Attack
         }
 
         public override void Exit()
-        {            base.Exit();
-
+        {
+            base.Exit();
         }
     }
 }
