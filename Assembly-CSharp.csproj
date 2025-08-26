@@ -61,6 +61,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HR\Script\MapUIManager.cs" />
     <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacterData_SO.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\Enemy\PlayerRecognize.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill1.cs" />
     <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
+    <Compile Include="Assets\HR\Script\Movement_HR.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\RandomMoveState.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneChangeManager.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemToggleController.cs" />
     <Compile Include="Assets\HR\Script\StallTrigger.cs" />
+    <Compile Include="Assets\button.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
     <Compile Include="Assets\Scripts\Character\Dash.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Assets\Scripts\Enemy\RandomMove.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacter.cs" />
+    <Compile Include="Assets\HR\Script\PlayerInputManager_HR.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\SkillBase.cs" />
     <Compile Include="Assets\HR\Script\PlayerCamera.cs" />
     <Compile Include="Assets\HR\Script\ShopManager.cs" />
