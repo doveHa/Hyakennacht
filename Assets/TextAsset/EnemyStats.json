@@ -1,0 +1,32 @@
+﻿[
+  {
+    "Name": "Ghost",
+    "Speed": 1,
+    "Health": 20
+  },
+  {
+    "Name": "Golem",
+    "Speed": 0.5,
+    "Health": 20
+  },
+  {
+    "Name": "Kappa",
+    "Speed": 1,
+    "Health": 20
+  },
+  {
+    "Name": "Slime",
+    "Speed": 1,
+    "Health": 20
+  },
+  {
+    "Name": "Straw",
+    "Speed": 1,
+    "Health": 20
+  },
+  {
+    "Name": "Wisp",
+    "Speed": 1,
+    "Health": 20
+  }
+]
