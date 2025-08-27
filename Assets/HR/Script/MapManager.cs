@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
+    public static MapManager Instance { get; private set; }
+
     [Header("Tilemap References")]
     public Tilemap groundTilemap;
     public Tilemap wallTilemap;
@@ -66,6 +68,14 @@ public class MapManager : MonoBehaviour
         new Vector2Int(1, 0)
     };
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
+    }
+
     void Start()
     {
         // 스테이지 1부터 시작
@@ -78,10 +88,16 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            
+
             //GenerateMap();
+            /*            NextStage(true);
+                        Debug.Log("Map regenerated");*/
             NextStage(true);
-            Debug.Log("Map regenerated");
+            MapUIManager ui = Object.FindFirstObjectByType<MapUIManager>();
+            if (ui != null)
+            {
+                ui.OnStageEnd();
+            }
         }
     }
 
@@ -385,6 +401,8 @@ public class MapManager : MonoBehaviour
 
     void ClearItems()
     {
+        MapUIManager.Instance.OnStageStart();
+
         foreach (Transform child in transform)
         {
             if (child.CompareTag("Item"))

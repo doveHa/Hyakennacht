@@ -570,7 +570,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <HintPath>Assets\Plugins\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\unityplastic.dll</HintPath>
@@ -581,14 +582,16 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Text.Encodings.Web">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Text.Encodings.Web.dll</HintPath>
+      <HintPath>Assets\Plugins\System.Text.Encodings.Web.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Text.Json">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Text.Json.dll</HintPath>
+      <HintPath>Assets\Plugins\System.Text.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@c854d1f7d97f\Lib\Editor\log4netPlastic.dll</HintPath>
@@ -603,7 +606,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>Assets\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
@@ -614,7 +618,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.IO.Pipelines">
-      <HintPath>E:\Project\Unity\Hyakennacht\Assets\Plugins\System.IO.Pipelines.dll</HintPath>
+      <HintPath>Assets\Plugins\System.IO.Pipelines.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>

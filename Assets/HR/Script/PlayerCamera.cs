@@ -32,12 +32,32 @@ public class PlayerCamera : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) // 상호작용 키
         {
-            TryInteractWithStairs();
-            Debug.Log("E key pressed for interaction");
+            if (IsOnStairs()) // 계단 위인지 확인
+            {
+                // 통계창 열기
+                MapUIManager ui = Object.FindFirstObjectByType<MapUIManager>();
+                if (ui != null)
+                {
+                    ui.OnStageEnd();
+                }
+            }
         }
     }
 
-    void TryInteractWithStairs()
+    private bool IsOnStairs()
+    {
+        if (player.childCount == 0) return false;
+
+        Transform childTransform = player.GetChild(0);
+        Vector3 childWorldPos = childTransform.position;
+        Vector3Int tilePos = mapManager.groundTilemap.WorldToCell(childWorldPos);
+
+        TileBase currentTile = mapManager.groundTilemap.GetTile(tilePos);
+
+        return (currentTile == mapManager.stairUpTile || currentTile == mapManager.stairDownTile);
+    }
+
+    public void TryInteractWithStairs()
     {
         // 플레이어의 첫 번째 자식 오브젝트 위치를 기준으로 타일맵 좌표 변환
         if (player.childCount == 0)
