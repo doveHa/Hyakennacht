@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8427465323789882971}
   - component: {fileID: 8560863271948007708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5248274359620578878}
   - component: {fileID: 4717743083441808493}
   - component: {fileID: 8170900010812059582}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Yokai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d4ab09caae4d37892577639de3fc58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &8170900010812059582
 MonoBehaviour:
   m_ObjectHideFlags: 0

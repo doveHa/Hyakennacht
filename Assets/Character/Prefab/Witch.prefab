@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4585347093047955174}
   - component: {fileID: 11303381495021348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 9124163973153386425}
   - component: {fileID: 8114748236499146807}
   - component: {fileID: 3179231036781148564}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Witch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d4ab09caae4d37892577639de3fc58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &3179231036781148564
 MonoBehaviour:
   m_ObjectHideFlags: 0

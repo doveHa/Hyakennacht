@@ -1,65 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Manager;
+﻿using Manager;
 using UnityEngine;
 
 namespace Character
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     public class Movement : MonoBehaviour
     {
         public static bool IsMoving;
         public Vector2 MoveVector { get; set; } // 외부 입력 세팅
         [SerializeField] private float moveSpeed = 5f;
 
-        private Rigidbody2D rb;
-        private Transform parentTransform;
+        private Rigidbody2D parentRb; // 부모 Rigidbody
 
         void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
-            rb.gravityScale = 0f;
-            rb.freezeRotation = true;
-            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
-            parentTransform = transform.parent;
+            if (transform.parent != null)
+            {
+                parentRb = transform.parent.GetComponent<Rigidbody2D>();
+                if (parentRb != null)
+                {
+                    parentRb.gravityScale = 0f;
+                    parentRb.freezeRotation = true;
+                    parentRb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+                }
+                else
+                {
+                    Debug.LogError("부모에 Rigidbody2D가 없습니다!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Movement 스크립트가 부모 없이 존재합니다!");
+            }
         }
 
         void FixedUpdate()
         {
-            //Debug.Log($"MoveVector: {MoveVector}, IsMoving: {IsMoving}");
+            if (parentRb == null) return;
 
             if (MoveVector != Vector2.zero)
             {
-                Vector2 targetPos = rb.position + MoveVector * moveSpeed * Time.fixedDeltaTime;
-
-                // 벽 체크 (Raycast)
-                RaycastHit2D hit = Physics2D.Raycast(rb.position, MoveVector, moveSpeed * Time.fixedDeltaTime);
-                if (hit.collider == null) // 벽 없음
-                {
-                    rb.MovePosition(targetPos);
-
-                    // 부모도 자식 이동만큼 같이 이동
-                    if (parentTransform != null)
-                        parentTransform.position += (Vector3)(MoveVector * moveSpeed * Time.fixedDeltaTime);
-                }
-
+                // 속도 기반 이동
+                parentRb.linearVelocity = MoveVector.normalized * moveSpeed;
                 IsMoving = true;
             }
             else
             {
+                // 입력 없으면 정지
+                parentRb.linearVelocity = Vector2.zero;
                 IsMoving = false;
             }
         }
-
-        /*        void Start()
-                {
-                    MoveVector = Vector3.zero;
-                }
-
-                void Update()
-                {
-                    GameManager.Manager.Player.transform.position += MoveVector * Constant.Player.MOVE_SPEED;
-                }*/
     }
 }

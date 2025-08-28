@@ -375,14 +375,35 @@ public class MapManager : MonoBehaviour
     {
         if (itemPrefabs == null || itemPrefabs.Length == 0) return;
 
-        // 계단 타일이 아닌 위치만 필터링
-        var validTiles = groundTiles
-            .Where(tilePos =>
-            {
-                TileBase tile = groundTilemap.GetTile(tilePos);
-                return tile != stairUpTile && tile != stairDownTile;
-            })
-            .ToList();
+        // 상점이 있는 방의 타일 제외
+        List<Vector3Int> shopRoomTiles = new List<Vector3Int>();
+        if (shopInstance != null)
+        {
+            // shopInstance가 있는 방 찾기
+            Room shopRoom = rooms.FirstOrDefault(r =>
+                r.tiles.Any(t =>
+                {
+                    Vector3 worldPos = groundTilemap.CellToWorld(t) + new Vector3(0.5f, 0.5f, 0);
+                    return Vector3.Distance(worldPos, shopInstance.transform.position) < 1f;
+                })
+            );
+
+            if (shopRoom != null)
+                shopRoomTiles = shopRoom.tiles;
+        }
+
+        // 방 내부 타일만 대상으로, 상점 타일 제외
+        var roomTiles = rooms.SelectMany(r => r.tiles)
+                             .Where(t => !shopRoomTiles.Contains(t))
+                             .Distinct()
+                             .ToList();
+
+        // 계단 타일 제외
+        var validTiles = roomTiles.Where(tilePos =>
+        {
+            TileBase tile = groundTilemap.GetTile(tilePos);
+            return tile != stairUpTile && tile != stairDownTile;
+        }).ToList();
 
         int spawnCount = Mathf.Min(maxItemCount, validTiles.Count);
         var shuffled = validTiles.OrderBy(x => Random.value).ToList();
@@ -398,6 +419,7 @@ public class MapManager : MonoBehaviour
             Instantiate(selectedPrefab, worldPos, Quaternion.identity, this.transform);
         }
     }
+
 
     void ClearItems()
     {

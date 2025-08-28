@@ -3,11 +3,9 @@ using UnityEngine.Tilemaps;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public Transform player; // 플레이어의 Transform을 할당
-
+    public Transform player; // 플레이어 Transform
     public Vector3 offset = new Vector3(0, 5, -10);
-
-    public MapManager mapManager; // 인스펙터에서 할당하거나 FindObjectOfType 사용
+    public MapManager mapManager; // Inspector에서 할당
 
     void Start()
     {
@@ -30,57 +28,54 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // 상호작용 키
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (IsOnStairs()) // 계단 위인지 확인
-            {
-                // 통계창 열기
-                MapUIManager ui = Object.FindFirstObjectByType<MapUIManager>();
-                if (ui != null)
-                {
-                    ui.OnStageEnd();
-                }
-            }
+            TryInteractWithStairs();
         }
     }
 
     private bool IsOnStairs()
     {
-        if (player.childCount == 0) return false;
+        if (player == null || mapManager == null) return false;
 
-        Transform childTransform = player.GetChild(0);
-        Vector3 childWorldPos = childTransform.position;
-        Vector3Int tilePos = mapManager.groundTilemap.WorldToCell(childWorldPos);
+        Vector3 checkPos = GetPlayerBottomPosition();
+        Vector3Int tilePos = mapManager.groundTilemap.WorldToCell(checkPos);
 
         TileBase currentTile = mapManager.groundTilemap.GetTile(tilePos);
-
         return (currentTile == mapManager.stairUpTile || currentTile == mapManager.stairDownTile);
+    }
+
+    private Vector3 GetPlayerBottomPosition()
+    {
+        // 플레이어 Collider 하단 기준 위치
+        Collider2D col = player.GetComponent<Collider2D>();
+        if (col != null)
+            return col.bounds.min + Vector3.up * 0.05f; // 약간 위로 offset
+        else
+            return player.position;
     }
 
     public void TryInteractWithStairs()
     {
-        // 플레이어의 첫 번째 자식 오브젝트 위치를 기준으로 타일맵 좌표 변환
-        if (player.childCount == 0)
+        if (player == null || mapManager == null)
         {
-            Debug.LogWarning("Player의 자식 오브젝트가 없습니다.");
+            Debug.LogWarning("Player 또는 MapManager가 할당되지 않았습니다.");
             return;
         }
 
-        Transform childTransform = player.GetChild(0); // 첫 번째 자식
-        Vector3 childWorldPos = childTransform.position;
-        Vector3Int tilePos = mapManager.groundTilemap.WorldToCell(childWorldPos);
+        Vector3 checkPos = GetPlayerBottomPosition();
+        Vector3Int tilePos = mapManager.groundTilemap.WorldToCell(checkPos);
 
-        // 현재 타일이 계단 타일인지 확인
         TileBase currentTile = mapManager.groundTilemap.GetTile(tilePos);
-        // 계단 종류에 따라 MapManager.NextStage() 호출
+
         if (currentTile == mapManager.stairUpTile)
         {
-            mapManager.NextStage(true); // true는 난이도 상승 (stairUp)
+            mapManager.NextStage(true); // 난이도 상승
             Debug.Log("Stairs Up interacted. Moving to next stage.");
         }
         else if (currentTile == mapManager.stairDownTile)
         {
-            mapManager.NextStage(false); // false는 난이도 하락 (stairDown)
+            mapManager.NextStage(false); // 난이도 하락
             Debug.Log("Stairs Down interacted. Moving to previous stage.");
         }
     }

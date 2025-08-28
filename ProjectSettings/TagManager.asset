@@ -14,8 +14,8 @@ TagManager:
   - UI
   - Wall
   - Weapon
-  - 
-  - 
+  - PlayerParent
+  - PlayerCharacter
   - 
   - 
   - 
