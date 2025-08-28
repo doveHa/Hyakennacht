@@ -18,6 +18,10 @@ namespace Manager
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.KeypadPlus))
+            {
+                HpControl.PlusHp();
+            }
             _coinCount.text = GameManager.Manager.PlayerScript.Coins.ToString();
         }
     }

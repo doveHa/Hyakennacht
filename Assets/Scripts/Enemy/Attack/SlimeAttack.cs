@@ -7,6 +7,7 @@ namespace Enemy.Attack
     public class SlimeAttack : IAttack
     {
         public float attackSpeed;
+
         public override void Attack(Vector3 targetPosition)
         {
             StartCoroutine(Charge(targetPosition));
@@ -34,10 +35,10 @@ namespace Enemy.Attack
             GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
             GetComponent<EnemyController>().ChangeState(new ChasePlayerState(GetComponent<EnemyController>()));
         }
-
+        
         public override void Exit()
-        {            base.Exit();
-
+        {
+            base.Exit();
         }
     }
 }

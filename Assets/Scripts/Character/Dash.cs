@@ -21,15 +21,35 @@ namespace Character
 
         private IEnumerator StartDash()
         {
+            SystemManager.Manager.HpControl.SetInvincible(true);
+            Vector2 moveVector = GameManager.Manager.Player.transform.GetComponentInChildren<Movement>().MoveVector;
+
             int currentFrame = 0;
             while (currentFrame < Constant.Roll.ROLL_FRAME)
             {
                 currentFrame++;
                 if (currentFrame > Constant.Roll.START_FRAME)
                 {
-                    GameManager.Manager.Player.transform.position +=
-                        (Vector3) GameManager.Manager.Player.transform.GetComponentInChildren<Movement>().MoveVector *
-                        Constant.Roll.ROLL_DISTANCE;
+                    if (moveVector == Vector2.zero)
+                    {
+                        if (IsLeftSight)
+                        {
+                            GameManager.Manager.Player.transform.position +=
+                                new Vector3((-1) * Constant.Roll.ROLL_DISTANCE, 0, 0);
+                        }
+                        else
+                        {
+                            GameManager.Manager.Player.transform.position +=
+                                new Vector3(Constant.Roll.ROLL_DISTANCE, 0, 0);
+                        }
+                    }
+                    else
+                    {
+                        GameManager.Manager.Player.transform.position +=
+                            (Vector3)GameManager.Manager.Player.transform.GetComponentInChildren<Movement>()
+                                .MoveVector *
+                            Constant.Roll.ROLL_DISTANCE;
+                    }
                 }
 
                 yield return null;
@@ -43,6 +63,7 @@ namespace Character
 
         public void UnlockDash()
         {
+            SystemManager.Manager.HpControl.SetInvincible(false);
             _isDashing = false;
         }
     }

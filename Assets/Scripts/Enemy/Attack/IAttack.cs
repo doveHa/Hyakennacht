@@ -10,6 +10,5 @@ namespace Enemy.Attack
         {
             GetComponentInChildren<PlayerRecognize>().Flag = true;
         }
-        
     }
 }

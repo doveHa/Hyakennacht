@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98c3869ab8ec0ab4e97e23a843431819
+    m_Address: Assets/Enmy/Resource/Kappa/Effect/WaterBall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99cf8cb51eb472c42a6ee3473f0473b3
     m_Address: Assets/Enemy/Prefab/Will-o-Wisp.prefab
     m_ReadOnly: 0

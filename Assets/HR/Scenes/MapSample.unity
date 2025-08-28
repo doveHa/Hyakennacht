@@ -1588,7 +1588,7 @@ MonoBehaviour:
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
   emptyMap: {fileID: 1007474513}
-  emptyTile: {fileID: 11400000, guid: 0a1d5856944219b4fa2581de5cb1dac9, type: 2}
+  emptyTile: {fileID: 0}
   groundTilesByStage:
   - {fileID: 11400000, guid: 70b32983aaf43e84d881a07cf3c5d269, type: 2}
   - {fileID: 11400000, guid: c4ffa644345e4cf48abc75c6bde12cf3, type: 2}
@@ -3079,6 +3079,10 @@ PrefabInstance:
       objectReference: {fileID: 6654459765545817610, guid: 0d6851a08534fed4dbd55eb693efdc04, type: 3}
     - target: {fileID: 1947442291444497742, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4298335347944655996, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4298335347944655996, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}

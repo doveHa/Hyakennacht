@@ -8,12 +8,12 @@ namespace Enemy.Attack
     {
         public override void Attack(Vector3 targetPosition)
         {
-            
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
         }
         
-        public override void Exit()
-        {            base.Exit();
-
-        }
     }
 }

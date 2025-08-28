@@ -32,10 +32,10 @@ namespace Enemy
         {
             List<string> keys = new List<string>();
             string path = "Assets/Enemy/Prefab/";
-            keys.Add(path + "Ghost.prefab");
-            //keys.Add(path + "Will-o-Wisp.prefab");
-            //keys.Add(path + "Straw.prefab");
-            //keys.Add(path + "Kappa.prefab");
+            //keys.Add(path + "Ghost.prefab");
+            keys.Add(path + "Will-o-Wisp.prefab");
+            keys.Add(path + "Straw.prefab");
+            keys.Add(path + "Kappa.prefab");
             //keys.Add(path + "Slime.prefab");
             //keys.Add(path + "Golem.prefab");
             foreach (string key in keys)
