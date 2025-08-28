@@ -401,7 +401,7 @@ public class MapManager : MonoBehaviour
 
     void ClearItems()
     {
-        MapUIManager.Instance.OnStageStart();
+        //MapUIManager.Instance.OnStageStart();
 
         foreach (Transform child in transform)
         {
