@@ -115,7 +115,7 @@ namespace Manager
         {
             var playerScript = GameManager.Manager.PlayerScript;
             if (playerScript != null)
-                playerScript.WeaponHandler.UseWeapon();
+                playerScript.weaponHandler.UseWeapon();
         }
 
         private void RunActiveSkill1(InputAction.CallbackContext ctx)

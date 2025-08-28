@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
-        SystemManager.Manager.hpControl.MinusHp();
+        SystemManager.Manager.HpControl.MinusHp();
     }
     public void PlayerGetCoin()
     {

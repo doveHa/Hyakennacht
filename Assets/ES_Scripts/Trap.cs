@@ -19,7 +19,7 @@ public class Trap : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            ES.Enemy enemy = other.GetComponent<ES.Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);

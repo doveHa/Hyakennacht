@@ -30,7 +30,7 @@ public class Bell : MonoBehaviour
         {
             hasHit = true;
 
-            Enemy enemy = other.GetComponent<Enemy>();
+            ES.Enemy enemy = other.GetComponent<ES.Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);

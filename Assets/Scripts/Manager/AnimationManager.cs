@@ -9,6 +9,12 @@ namespace Manager
         protected override void Awake()
         {
             base.Awake();
+
+            //HR
+            _animator = GameManager.Manager.Player.GetComponentInChildren<Animator>();
+
+            if (_animator == null)
+                Debug.LogError("Player Animator not found!");
         }
 
         void Start()

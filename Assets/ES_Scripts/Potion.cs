@@ -16,7 +16,7 @@ public class Potion : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            ES.Enemy enemy = other.GetComponent<ES.Enemy>();
             if (enemy != null)
             {
                 ApplyEffect(enemy);
@@ -32,7 +32,7 @@ public class Potion : MonoBehaviour
         }
     }
 
-    private void ApplyEffect(Enemy enemy)
+    private void ApplyEffect(ES.Enemy enemy)
     {
         switch (potionType)
         {
