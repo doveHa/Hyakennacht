@@ -178,7 +178,7 @@ MonoBehaviour:
   roomSpacing: 25
   corridorWidth: 3
   stairUpTile: {fileID: 11400000, guid: 9687d733991ecca44af2aaf3f505085e, type: 2}
-  stairDownTile: {fileID: 11400000, guid: 9687d733991ecca44af2aaf3f505085e, type: 2}
+  stairDownTile: {fileID: 11400000, guid: 4e24f055052301946a4c28276d86c2ba, type: 2}
   itemPrefabs:
   - {fileID: 9168704567307088785, guid: de1776a27e390c940ba69835714215df, type: 3}
   - {fileID: 7184037060009489329, guid: 5f23b6e03aa9b5741b2df41f05d1f3fc, type: 3}
@@ -496,6 +496,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7516839119857002302, guid: bc5a71fd90997a444b707c3060823a3a, type: 3}
+      propertyPath: coinText
+      value: 
+      objectReference: {fileID: 1807317576}
+    - target: {fileID: 7516839119857002302, guid: bc5a71fd90997a444b707c3060823a3a, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -538,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703791776115854186, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5106042371004758616, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -656,15 +660,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e752afccdc4e96843afb0b66a2ad839f, type: 2}
   - {fileID: 11400000, guid: 75f409794530c9c4f8d55a6fcd1e9828, type: 2}
   - {fileID: 11400000, guid: b02d02a46d81d2842aabcfa12e17e1f3, type: 2}
-  wallTile: {fileID: 11400000, guid: 4481007b59eb8824caeb031f80482f0d, type: 2}
+  wallTile: {fileID: 11400000, guid: 7ac0fa25c66066444aee252ae43726d0, type: 2}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
   roomHeight: 13
   roomSpacing: 25
   corridorWidth: 3
-  stairUpTile: {fileID: 11400000, guid: 55ae2fbdd7bbb4b4b8cec534d266fd74, type: 2}
-  stairDownTile: {fileID: 11400000, guid: 3367a3db87b5b1c40a78b3284cad0938, type: 2}
+  stairUpTile: {fileID: 11400000, guid: 3367a3db87b5b1c40a78b3284cad0938, type: 2}
+  stairDownTile: {fileID: 11400000, guid: fed0800ab5bfae349bac514e7ae389a0, type: 2}
   itemPrefabs:
   - {fileID: 76525343073050715, guid: d6ed1de7fefaf0d40bf5d921362d5e92, type: 3}
   - {fileID: 6715082319081662226, guid: 1f57533b49cc99e4c89f8c0562bbb1ab, type: 3}
@@ -942,6 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274b4192dea47049b45251503efbf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coinCount: {fileID: 0}
 --- !u!114 &1610339729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1151,17 @@ MonoBehaviour:
   player: {fileID: 354720198}
   offset: {x: 0, y: 0, z: -10}
   mapManager: {fileID: 823124033}
+--- !u!114 &1807317576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3989619286567365347, guid: 7dddf7a49e931f744a745873b75ff4e3, type: 3}
+  m_PrefabInstance: {fileID: 1418564848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1858252828
 GameObject:
   m_ObjectHideFlags: 0

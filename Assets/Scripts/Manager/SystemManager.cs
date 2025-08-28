@@ -7,7 +7,8 @@ namespace Manager
     public class SystemManager : AbstractManager<SystemManager>
     {
         public HpControl HpControl { get; private set; }
-        private TextMeshProUGUI _coinCount;
+        //private TextMeshProUGUI _coinCount;
+        public TextMeshProUGUI _coinCount;
 
         protected override void Awake()
         {

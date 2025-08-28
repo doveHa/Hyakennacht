@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using TMPro;
+using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class ShopManager : MonoBehaviour
     private bool[] playerInRange;
     private float weaponYOffset = 0.5f; // 무기 Y축 오프셋
 
+    public int playerCoins = 100; //임시 코인
+    public TextMeshProUGUI coinText; //임시 텍스트
+
     // 구매한 무기 정보 외부 접근용
     public GameObject LastPurchasedWeaponPrefab { get; private set; }
     public int LastPurchasedStallIndex { get; private set; }
@@ -23,6 +28,16 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        // 코인 UI 연결
+        if (coinText == null)
+        {
+            var systemObj = GameObject.Find("GameSystem");
+            if (systemObj != null)
+                coinText = systemObj.GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        UpdateCoinUI();
+
         // stallTransforms 자동 할당 (장식용 제외, 2~4번째 자식만)
         if (stallTransforms == null || stallTransforms.Length == 0)
         {
@@ -45,9 +60,23 @@ public class ShopManager : MonoBehaviour
             weaponLayer = 0; // Default layer
         }
 
+        // 중복 방지를 위한 리스트
+        List<int> availableIndices = new List<int>();
+        for (int i = 0; i < weaponPrefabs.Length; i++)
+            availableIndices.Add(i);
+
         for (int i = 0; i < stallCount; i++)
         {
-            int randIdx = UnityEngine.Random.Range(0, weaponPrefabs.Length);
+            if (availableIndices.Count == 0)
+            {
+                Debug.LogWarning("가판대 수가 무기 종류보다 많아 중복이 발생할 수 있습니다.");
+                break;
+            }
+
+            int randListIdx = UnityEngine.Random.Range(0, availableIndices.Count);
+            int randIdx = availableIndices[randListIdx];
+            availableIndices.RemoveAt(randListIdx); // 뽑힌 인덱스 제거
+
             Vector3 spawnPos = stallTransforms[i].position + new Vector3(0, weaponYOffset, 0);
             spawnedWeapons[i] = Instantiate(weaponPrefabs[randIdx], spawnPos, Quaternion.identity, stallTransforms[i]);
             SetWeaponSorting(spawnedWeapons[i]);
@@ -69,27 +98,41 @@ public class ShopManager : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     private void BuyWeapon(int index)
     {
-        if (spawnedWeapons[index] != null)
-        {
-            // 구매한 무기 정보 저장 (정확한 프리팹 참조)
-            LastPurchasedWeaponPrefab = weaponPrefabs[spawnedWeaponPrefabIndices[index]];
-            LastPurchasedStallIndex = index;
-
-            Debug.Log($"가판대 {index + 1} 무기 구매 완료! ({LastPurchasedWeaponPrefab.name})");
-
-            // 구매 이벤트 호출
-            OnWeaponPurchased?.Invoke(index, LastPurchasedWeaponPrefab);
-
-            Destroy(spawnedWeapons[index]);
-        }
-        else
+        if (spawnedWeapons[index] == null)
         {
             Debug.LogWarning("구매하려는 무기가 이미 제거되었거나 존재하지 않습니다.");
+            return;
         }
+
+        if (playerCoins < 25)
+        {
+            Debug.Log("코인이 부족합니다! 25코인이 필요합니다.");
+            return;
+        }
+
+        playerCoins -= 25; // 25코인 차감
+        UpdateCoinUI();
+
+        LastPurchasedWeaponPrefab = weaponPrefabs[spawnedWeaponPrefabIndices[index]];
+        LastPurchasedStallIndex = index;
+
+        Debug.Log($"가판대 {index + 1} 무기 구매 완료! ({LastPurchasedWeaponPrefab.name}) 남은 코인: {playerCoins}");
+
+        OnWeaponPurchased?.Invoke(index, LastPurchasedWeaponPrefab);
+
+        Destroy(spawnedWeapons[index]);
+    }
+
+    private void UpdateCoinUI()
+    {
+        if (coinText != null)
+            coinText.text = playerCoins.ToString();
     }
 
     private void SetWeaponSorting(GameObject weaponObj)

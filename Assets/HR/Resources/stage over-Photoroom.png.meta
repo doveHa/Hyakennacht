@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 9b1e50b9ee7ab1341b2169c1d5b664eb
+guid: 21e174f250d94814a9a46f87654acb32
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3433343825812423510
-    second: YWN3_R_0
+      213: 7104685691241648997
+    second: stage over-Photoroom_0
+  - first:
+      213: -7407324297001265647
+    second: stage over-Photoroom_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 193
+  spritePixelsToUnits: 611
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,30 +99,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: YWN3_R_0
+      name: stage over-Photoroom_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 321
-        height: 198
+        y: 314
+        width: 1003
+        height: 297
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6538459d400b5af20800000000000000
-      internalID: 3433343825812423510
+      spriteID: 56352437ef9e89260800000000000000
+      internalID: 7104685691241648997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage over-Photoroom_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 912
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1169e1d2cc5e33990800000000000000
+      internalID: -7407324297001265647
       vertices: []
       indices: 
       edges: []
@@ -138,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      YWN3_R_0: 3433343825812423510
+      stage over-Photoroom_0: 7104685691241648997
+      stage over-Photoroom_1: -7407324297001265647
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
