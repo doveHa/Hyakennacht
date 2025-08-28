@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bcacc473ec11d064491309667a91fd0f
+guid: 02837dcb50868ea48adb924633671635
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 280560279940776898
-    second: SamllStraw_0
+      213: 1050792917933646562
+    second: BulletSprite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SamllStraw_0
+      name: BulletSprite_0
       rect:
         serializedVersion: 2
-        x: 256
-        y: 55
-        width: 647
-        height: 897
+        x: 286
+        y: 285
+        width: 453
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c344ff8610c4e300800000000000000
-      internalID: 280560279940776898
+      spriteID: 2e26eed679a259e00800000000000000
+      internalID: 1050792917933646562
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      SamllStraw_0: 280560279940776898
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

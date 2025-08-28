@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using Random = Unity.Mathematics.Random;
 
 namespace Enemy
 {
@@ -10,7 +13,6 @@ namespace Enemy
 
         public RandomMoveState(EnemyController controller)
         {
-            Debug.Log("RandomMoveState");
             _controller = controller;
             _controller.Animator.SetBool("IsWalk", true);
             _enemySpeed = _controller.transform.GetComponent<EnemyStats>().Speed;
@@ -26,16 +28,18 @@ namespace Enemy
         {
             Vector3 direction = (_destination - _controller.transform.position).normalized;
             _controller.Rigidbody.linearVelocity = direction * _enemySpeed;
+            /*
             if (Vector3.Distance(_destination, _controller.transform.position) < 1f)
             {
                 _controller.Rigidbody.linearVelocity = Vector3.zero;
                 _controller.ChangeState(new IdleState(_controller));
-            }
+            }*/
         }
 
         public void Exit()
         {
             _controller.Animator.SetBool("IsWalk", false);
         }
+
     }
 }

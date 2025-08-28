@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Manager;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = Unity.Mathematics.Random;
 
@@ -25,7 +26,7 @@ namespace Enemy
             _rnd = new Random((uint)DateTime.Now.Millisecond);
             _stage = GetComponent<Tilemap>();
             _enemyObjects = new List<GameObject>();
-            IsSpawn = false;
+            //IsSpawn = false;
         }
 
         async void Start()
@@ -75,21 +76,14 @@ namespace Enemy
 
         public Vector3 GetRandomPosition()
         {
+            Debug.Log(_bounds.size);
             Vector3 randomPosition;
 
             int randomX = _rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
             int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
             Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
             randomPosition = _stage.CellToLocal(randomPoint);
-            /*
-            do
-            {
-                int randomX = _rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
-                int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
-                Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
-                randomPosition = _stage.CellToLocal(randomPoint);
-            } while (CheckDuplication(randomPosition));
-*/
+            
             return randomPosition;
         }
 

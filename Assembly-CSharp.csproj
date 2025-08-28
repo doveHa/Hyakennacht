@@ -84,7 +84,9 @@
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemToggleController.cs" />
     <Compile Include="Assets\HR\Script\StallTrigger.cs" />
+    <Compile Include="Assets\Enemy\Resource\Boss1\Effect\BossBulletPattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\StrawAttack.cs" />
+    <Compile Include="Assets\Enemy\Resource\Boss1\Effect\Bullet.cs" />
     <Compile Include="Assets\Enemy\Resource\Straw\Effect\SmallStraw.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\EnemyController.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\GolemAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemy\States\ActivePatternState.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
     <Compile Include="Assets\Scripts\System\RoomControl.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\WispAttack.cs" />

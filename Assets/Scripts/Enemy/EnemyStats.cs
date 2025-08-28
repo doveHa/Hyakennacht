@@ -15,7 +15,8 @@ public class EnemyStats : MonoBehaviour
         Kappa,
         Slime,
         Straw,
-        Wisp
+        Wisp,
+        Boss1
     }
 
     public EnemyName enemyName;
