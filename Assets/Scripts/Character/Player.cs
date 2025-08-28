@@ -3,29 +3,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //public WeaponHandler WeaponHandler { get; private set; }
+    public GameObject playerPrefab;
+    public WeaponHandler WeaponHandler { get; private set; }
     public int Coins { get; private set; }
-
-    public WeaponHandler weaponHandler;
-    //public WeaponData startingWeapon;
+    public Transform Target { get; private set; }
 
     void Awake()
     {
-        weaponHandler = GetComponent<WeaponHandler>();
+        DontDestroyOnLoad(this);
+        Instantiate(playerPrefab, transform).transform.parent = transform;
+        WeaponHandler = GetComponent<WeaponHandler>();
+        Target = transform.GetChild(0).GetChild(0);
         Coins = 0;
     }
+
     void Start()
     {
-        //weaponHandler.EquipWeapon(startingWeapon);
     }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("무기 사용 시도");
-            weaponHandler.UseWeapon();
-        }
     }
 
     public void Hit()

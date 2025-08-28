@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bluecard-removebg-preview_0: 8722279976049313580
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

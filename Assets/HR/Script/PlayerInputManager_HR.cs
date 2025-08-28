@@ -8,7 +8,7 @@ using static Constant;
 
 namespace Manager
 {
-    public class PlayerInputManager_HR : AbstractManager<PlayerInputManager>
+/*    public class PlayerInputManager_HR : AbstractManager<PlayerInputManager>
     {
         private PlayerInput _playerInput;
         private SkillBase _activeSkill1, _activeSkill2;
@@ -78,7 +78,7 @@ namespace Manager
                 movementComp.MoveVector = Vector2.zero;
         }
 
-        /*        private void StartMove(InputAction.CallbackContext ctx)
+        *//*        private void StartMove(InputAction.CallbackContext ctx)
                 {
                     Movement.IsMoving = true;
                     AnimationManager.Manager.StartMoveAnimation();
@@ -103,7 +103,7 @@ namespace Manager
                     AnimationManager.Manager.EndMoveAnimation();
                     GameManager.Manager.SetMoveVector(Vector2.zero);
                 }
-        */
+        *//*
         private void StartRoll(InputAction.CallbackContext ctx)
         {
             var player = GameManager.Manager.Player;
@@ -150,5 +150,5 @@ namespace Manager
             _playerInput?.Disable();
         }
 
-    }
+    }*/
 }

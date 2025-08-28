@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      witch_Background_0: 8484890021180979787
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

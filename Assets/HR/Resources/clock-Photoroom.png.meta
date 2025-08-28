@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      clock-Photoroom_0: 5274736002756388539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
