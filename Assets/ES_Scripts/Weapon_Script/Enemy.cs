@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy_ES : MonoBehaviour
 {
     public int hp = 10;
     public int maxHp = 20;

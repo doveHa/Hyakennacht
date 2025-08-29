@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Skills/AoE/Â÷¿øÀÇÆ´")]
-public class SK_DimensionalRift : SkillBase
+public class SK_DimensionalRift : SkillBase_ES
 {
     [Header("Rift Settings")]
     public string riftPoolKey = "DimRift";

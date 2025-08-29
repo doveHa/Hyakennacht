@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bell : MonoBehaviour
 {
-    public float destroyDelay = 0.5f; // ¾Ö´Ï¸ÞÀÌ¼Ç ÈÄ ÆÄ±« ´ë±â ½Ã°£
+    public float destroyDelay = 0.5f; // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     private int damage;
     private Animator anim;
     private Rigidbody2D rb;
@@ -30,7 +30,7 @@ public class Bell : MonoBehaviour
         {
             hasHit = true;
 
-            Enemy enemy = other.GetComponent<Enemy>();
+            Enemy_ES enemy = other.GetComponent<Enemy_ES>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
@@ -43,7 +43,7 @@ public class Bell : MonoBehaviour
 
             if (rb != null)
             {
-                rb.velocity = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
                 rb.isKinematic = true;
                 rb.simulated = false;
             }
@@ -65,7 +65,7 @@ public class Bell : MonoBehaviour
 
     private IEnumerator ApplyForceAfterStart(float xDir)
     {
-        yield return new WaitForFixedUpdate(); // physics update ÀÌÈÄ±îÁö ´ë±â
+        yield return new WaitForFixedUpdate(); // physics update ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();

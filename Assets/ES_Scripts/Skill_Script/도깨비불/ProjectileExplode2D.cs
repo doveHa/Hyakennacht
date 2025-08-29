@@ -16,8 +16,8 @@ public class ProjectileExplode2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         var col = GetComponent<Collider2D>();
-        col.isTrigger = true;        // Æ®¸®°Å·Î Ãæµ¹ ÆÇ´Ü
-        rb.gravityScale = 0f;        // Åõ»çÃ¼¶ó Áß·Â X
+        col.isTrigger = true;        // Æ®ï¿½ï¿½ï¿½Å·ï¿½ ï¿½æµ¹ ï¿½Ç´ï¿½
+        rb.gravityScale = 0f;        // ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ß·ï¿½ X
     }
 
     public void Fire(
@@ -33,7 +33,7 @@ public class ProjectileExplode2D : MonoBehaviour
         _impactFxKey = impactFxKey;
         _trailFxKey = trailFxKey;
 
-        rb.velocity = dir.normalized * speed;
+        rb.linearVelocity = dir.normalized * speed;
         gameObject.SetActive(true);
     }
 
@@ -44,10 +44,10 @@ public class ProjectileExplode2D : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // ÀÚ½Å/¼ÒÈ¯ÀÚ¿ÍÀÇ Ãæµ¹ ¹«½Ã
+        // ï¿½Ú½ï¿½/ï¿½ï¿½È¯ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½
         if (_owner && other.transform == _owner) return;
 
-        // ·¹ÀÌ¾î ÇÊÅÍ
+        // ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (((1 << other.gameObject.layer) & _hitMask) == 0) return;
 
         Explode(other);
@@ -55,24 +55,24 @@ public class ProjectileExplode2D : MonoBehaviour
 
     void Explode(Collider2D hitCol)
     {
-        // Æø¹ß À§Ä¡ = ÇöÀç À§Ä¡(¶Ç´Â Ãæµ¹ ÁöÁ¡)
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ = ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡(ï¿½Ç´ï¿½ ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½)
         Vector2 pos = transform.position;
 
-        // ÇÇÇØ Àû¿ë
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var cols = Physics2D.OverlapCircleAll(pos, _explodeRadius, _hitMask);
         for (int i = 0; i < cols.Length; i++)
         {
-            // Enemy°¡ ºÎ¸ð¿¡ ÀÖÀ» ¼öµµ ÀÖÀ¸¹Ç·Î InParent·Î
-            var enemy = cols[i].GetComponentInParent<Enemy>();
+            // Enemyï¿½ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ InParentï¿½ï¿½
+            var enemy = cols[i].GetComponentInParent<Enemy_ES>();
             if (enemy != null)
                 enemy.TakeDamage(_damage);
         }
 
-        // Æø¹ß FX (ÀÖÀ¸¸é)
+        // ï¿½ï¿½ï¿½ï¿½ FX (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
         if (!string.IsNullOrEmpty(_impactFxKey))
         {
-            // Ç®/FXRouter¸¦ ¸ø ¾²´Â À§Ä¡´Ï, Æø¹ß ÇÁ¸®ÆÕ ÀÚÃ¼¿¡¼­ ÆÄÆ¼Å¬ Àç»ýÇÏµµ·Ï ±¸¼ºÇÏ°Å³ª
-            // °£´ÜÈ÷ ÀÓ½Ã·Î »õ·Î ¸¸µé¾îµµ µÊ(ÃÖÀûÈ­´Â ÇÁ·ÎÁ§Æ®¿¡ ¸ÂÃç)
+            // Ç®/FXRouterï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½îµµ ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
             // Example: Instantiate(impactPrefab, pos, Quaternion.identity);
         }
 
@@ -81,9 +81,9 @@ public class ProjectileExplode2D : MonoBehaviour
 
     void ReturnToPool()
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
 
-        // Ç® ¹Ý³³
+        // Ç® ï¿½Ý³ï¿½
         var token = GetComponent<PooledObject>();
         if (token != null) token.ReturnToPool();
         else gameObject.SetActive(false);

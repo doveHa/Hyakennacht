@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Soul : MonoBehaviour
 {
-    public float duration = 3f; // Áö¼Ó ½Ã°£
+    public float duration = 3f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     public float tickInterval = 0.5f;
     private int damage;
 
@@ -22,7 +22,7 @@ public class Soul : MonoBehaviour
     {
         if (target == null && other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            Enemy_ES enemy = other.GetComponent<Enemy_ES>();
             if (enemy != null)
             {
                 target = other.transform;
@@ -32,7 +32,7 @@ public class Soul : MonoBehaviour
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.velocity = Vector2.zero;
+                    rb.linearVelocity = Vector2.zero;
                     rb.isKinematic = true;
                 }
 
@@ -48,7 +48,7 @@ public class Soul : MonoBehaviour
         }
     }
 
-    private IEnumerator ApplyDot(Enemy enemy)
+    private IEnumerator ApplyDot(Enemy_ES enemy)
     {
         float elapsed = 0f;
         while (elapsed < duration)

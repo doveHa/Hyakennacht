@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillCaster : MonoBehaviour
 {
-    public SkillBase[] slots;
+    public SkillBase_ES[] slots;
     public Transform firePoint;
     public float gcd = 0.2f;
 
@@ -23,7 +23,7 @@ public class SkillCaster : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V)) TryCast(slots.Length > 2 ? slots[2] : null);
     }
 
-    void TryCast(SkillBase skill)
+    void TryCast(SkillBase_ES skill)
     {
         if (skill == null) return;
         if (skill.useGCD && Time.time < gcdEnd) return;
@@ -57,13 +57,13 @@ public class SkillCaster : MonoBehaviour
             CastNow(skill, ctx);
     }
 
-    IEnumerator CastRoutine(SkillBase s, SkillContext ctx)
+    IEnumerator CastRoutine(SkillBase_ES s, SkillContext ctx)
     {
         yield return new WaitForSeconds(s.castTime);
         CastNow(s, ctx);
     }
 
-    void CastNow(SkillBase s, SkillContext ctx)
+    void CastNow(SkillBase_ES s, SkillContext ctx)
     {
         if (s.useGCD) gcdEnd = Time.time + gcd;
         s.Execute(ctx);

@@ -34,7 +34,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
             isCharging = true;
             chargeTime = 0f;
 
-            if (data.weaponName == "¸¶¹ýÁø")
+            if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
             {
                 SpawnMagicCircle();
             }
@@ -47,7 +47,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
         {
             chargeTime += Time.deltaTime;
 
-            if (data.weaponName == "¸¶¹ýÁø" && currentProjectile != null)
+            if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" && currentProjectile != null)
             {
                 float scale = Mathf.Lerp(1f, 2.5f, chargeTime / chargeThreshold);
                 currentProjectile.transform.localScale = new Vector3(scale, scale, 1);
@@ -55,7 +55,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
                 CircleCollider2D collider = currentProjectile.GetComponent<CircleCollider2D>();
                 if (collider != null)
                 {
-                    collider.radius = scale * 0.35f; // ÇÊ¿ä ½Ã °è¼ö Á¶Á¤
+                    collider.radius = scale * 0.35f; // ï¿½Ê¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 }
 
                 Animator projAnim = currentProjectile.GetComponent<Animator>();
@@ -75,7 +75,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
         {
             isCharging = false;
 
-            if (data.weaponName == "¸¶¹ýÁø")
+            if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
             {
                 Destroy(currentProjectile, 0.2f); 
             }
@@ -101,7 +101,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
         Rigidbody2D rb = currentProjectile.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = new Vector2(xDir * data.attackSpeed, 0f);
+            rb.linearVelocity = new Vector2(xDir * data.attackSpeed, 0f);
         }
 
         SpriteRenderer sr = currentProjectile.GetComponentInChildren<SpriteRenderer>();
