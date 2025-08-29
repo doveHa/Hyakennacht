@@ -111,9 +111,14 @@ public class MapManager : MonoBehaviour
 
         // 4, 9, 14번째 스테이지는 구역 8개
         if (currentStage == 4 || currentStage == 9 || currentStage == 14)
+        {
+            MapUIManager.Instance.ShowSkillSelectPanel();
             roomCount = 8;
+        }
         else
+        {
             roomCount = 7;
+        }
 
         Dictionary<Vector2Int, Room> roomDict = new Dictionary<Vector2Int, Room>();
         HashSet<Vector2Int> occupied = new HashSet<Vector2Int>();

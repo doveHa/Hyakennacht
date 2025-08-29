@@ -2,6 +2,22 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
+
+[System.Serializable]
+public class SkillData
+{
+    public string title;
+    public string description;
+    public Sprite icon; // JSON에서 Sprite 로드 시, Resources 폴더 사용 추천
+}
+
+[System.Serializable]
+public class SkillDataArrayWrapper
+{
+    public SkillData[] skills;
+}
 
 public class MapUIManager : MonoBehaviour
 {
@@ -22,6 +38,23 @@ public class MapUIManager : MonoBehaviour
     [SerializeField] private Button SelectCard2;
     [SerializeField] private Button SelectCard3;
 
+    [SerializeField] private TMP_Text cardTitle1;
+    [SerializeField] private TMP_Text cardDesc1;
+    [SerializeField] private Image cardIcon1;
+
+    [SerializeField] private TMP_Text cardTitle2;
+    [SerializeField] private TMP_Text cardDesc2;
+    [SerializeField] private Image cardIcon2;
+
+    [SerializeField] private TMP_Text cardTitle3;
+    [SerializeField] private TMP_Text cardDesc3;
+    [SerializeField] private Image cardIcon3;
+
+    private List<SkillData> skillList = new List<SkillData>();
+    // 선택한 스킬 저장
+    public SkillData SelectedSkill { get; private set; }
+    private bool AfterSkillSelect = false;
+
     private int totalStage = 15;
 
     private float stageStartTime;
@@ -40,8 +73,17 @@ public class MapUIManager : MonoBehaviour
         }
         Instance = this;
 
+        // 버튼 클릭 이벤트 등록
+        SelectCard1.onClick.AddListener(() => OnCardSelected(0));
+        SelectCard2.onClick.AddListener(() => OnCardSelected(1));
+        SelectCard3.onClick.AddListener(() => OnCardSelected(2));
+
+        LoadSkillsFromJSON();
+
         player = FindFirstObjectByType<Player>(); // CS0618 경고 해결
         PlayerDied = false;
+
+        skillSelectPanel.SetActive(false);
     }
 
     void Update()
@@ -136,19 +178,123 @@ public class MapUIManager : MonoBehaviour
         if (killText) killText.text = $"{KilledEnemies}";
         if (coinText) coinText.text = $"{StageCoins}";
 
+        // 특정 스테이지에서만 스킬 선택
+        if (MapManager.Instance.currentStage == 4 ||
+            MapManager.Instance.currentStage == 9 ||
+            MapManager.Instance.currentStage == 14)
+        {
+            ShowSkillSelectPanel();
+            AfterSkillSelect = true;
+            return; // 스킬 선택 끝날 때까지 stage clear 패널은 안 열림
+        }
+
         statsPanel.SetActive(true); // 통계창 열기
 
         MoveFlag(MapManager.Instance.currentStage);
     }
 
-/*    public void OnSkillSelect(int card1, int card2, int card3)
+    //스킬 선택
+
+    public void ShowSkillSelectPanel()
+    {
+        ShowRandomSkills(); // 랜덤 스킬 카드 띄우기
+        skillSelectPanel.SetActive(true); // 여기서 열림
+    }
+
+    private void LoadSkillsFromJSON()
+    {
+        // JSON은 Resources 폴더에 skill.json으로 가정
+        TextAsset json = Resources.Load<TextAsset>("DummyJson");
+        if (json != null)
+        {
+            SkillData[] skills = JsonUtility.FromJson<SkillDataArrayWrapper>(json.text).skills;
+            skillList = new List<SkillData>(skills);
+        }
+        else
+        {
+            Debug.LogWarning("Skill JSON not found!");
+        }
+    }
+
+    private void SetCardUI(int cardIndex, SkillData skill)
+    {
+        switch (cardIndex)
+        {
+            case 0:
+                cardTitle1.text = skill.title;
+                cardDesc1.text = skill.description;
+                cardIcon1.sprite = skill.icon;
+                break;
+            case 1:
+                cardTitle2.text = skill.title;
+                cardDesc2.text = skill.description;
+                cardIcon2.sprite = skill.icon;
+                break;
+            case 2:
+                cardTitle3.text = skill.title;
+                cardDesc3.text = skill.description;
+                cardIcon3.sprite = skill.icon;
+                break;
+        }
+    }
+
+    private List<SkillData> currentCards = new List<SkillData>();
+
+    private void ShowRandomSkills()
     {
         skillSelectPanel.SetActive(true);
-        SelectCard1.onClick.RemoveAllListeners();
-        SelectCard1.onClick.AddListener(() => OnSelectCard(card1));
-        SelectCard2.onClick.RemoveAllListeners();
-        SelectCard2.onClick.AddListener(() => OnSelectCard(card2));
-        SelectCard3.onClick.RemoveAllListeners();
-        SelectCard3.onClick.AddListener(() => OnSelectCard(card3));
-    }*/
+
+        if (skillList.Count < 3)
+        {
+            Debug.LogWarning("Not enough skills in JSON!");
+            return;
+        }
+
+        currentCards.Clear();
+
+        // 3개 랜덤 선택
+        List<int> indices = new List<int>();
+        while (indices.Count < 3)
+        {
+            int rand = Random.Range(0, skillList.Count);
+            if (!indices.Contains(rand)) indices.Add(rand);
+        }
+
+        currentCards.Add(skillList[indices[0]]);
+        currentCards.Add(skillList[indices[1]]);
+        currentCards.Add(skillList[indices[2]]);
+
+        SetCardUI(0, currentCards[0]);
+        SetCardUI(1, currentCards[1]);
+        SetCardUI(2, currentCards[2]);
+    }
+
+    private void OnCardSelected(int index)
+    {
+        if (currentCards == null || currentCards.Count < 3)
+        {
+            Debug.LogWarning($"Tried to select card {index} before initialization. Ignoring.");
+            return; // 그냥 무시
+        }
+
+        if (index < 0 || index >= currentCards.Count)
+        {
+            Debug.LogError($"Invalid card index: {index}");
+            return;
+        }
+
+        SelectedSkill = currentCards[index];
+        skillSelectPanel.SetActive(false);
+
+        Debug.Log($"Selected Skill: {SelectedSkill.title}"); 
+        //여기서 이제 플레이어한테 선택한 스킬 전달
+
+        // skill 선택 후 stage clear 패널 열기
+        if (AfterSkillSelect)
+        {
+            statsPanel.SetActive(true);
+            MoveFlag(MapManager.Instance.currentStage);
+            AfterSkillSelect = false;
+        }
+    }
 }
