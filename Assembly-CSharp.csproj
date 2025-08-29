@@ -100,7 +100,6 @@
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ChargeAttack.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
-    <Compile Include="Assets\ES_Scripts\Weapon_Script\Enemy_ES.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\InstallAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\도깨비불\ProjectileExplode2D.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\MagicFlower.cs" />
@@ -148,6 +147,7 @@
     <Compile Include="Assets\Scripts\Enemy\HitCollider.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\도깨비불\SK_DokkaebiFire.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\WeaponData.cs" />
+    <Compile Include="Assets\ES_Scripts\Weapon_Script\Enemy.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\SkillBase.cs" />
     <Compile Include="Assets\HR\Script\PlayerCamera.cs" />
     <Compile Include="Assets\HR\Script\ShopManager.cs" />

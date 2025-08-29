@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy_ES>()?.TakeDamage(damage);
+            other.GetComponent<Enemy>()?.TakeDamage(damage);
             Debug.Log("발사 완료");
 
             if (weaponName != "가시") 

@@ -114,10 +114,8 @@ namespace Manager
         private void StartBasicAttack(InputAction.CallbackContext ctx)
         {
             var playerScript = GameManager.Manager.PlayerScript;
-            /*
             if (playerScript != null)
                 playerScript.WeaponHandler.UseWeapon();
-            */
         }
 
         private void RunActiveSkill1(InputAction.CallbackContext ctx)

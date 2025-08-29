@@ -76,27 +76,27 @@ public class RiftZone2D : MonoBehaviour
         {
             var col = _buf[i];
             if (!col) continue;
-            if (!PassesFilter(col)) continue; // ï¿½ï¿½ ï¿½Ã±×´ï¿½Ã³ ï¿½Ù²ï¿½ (ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½)
+            if (!PassesFilter(col)) continue; // ¡ç ½Ã±×´ÏÃ³ ¹Ù²ñ (¾Æ·¡ Âü°í)
 
             Vector2 pos = col.bounds.center;
             Vector2 to = center - pos;
             float dist = to.magnitude;
             if (dist < Mathf.Epsilon) continue;
 
-            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¤ï¿½Ã¸ï¿½
+            // ¾ÕÂÊ ºÎÃ¤²Ã¸¸
             if (Vector2.Angle(fwd, -to) > halfArc) continue;
 
             var rb = col.attachedRigidbody;
             if (rb != null && !rb.isKinematic)
             {
                 Vector2 dir = to / dist;
-                float arriveRadius = _radius * 0.7f;                  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                float arriveRadius = _radius * 0.7f;                  // °¨¼Ó ½ÃÀÛ ÁöÁ¡
                 float speedScale = Mathf.Clamp01(dist / arriveRadius); // 0~1
                 Vector2 desiredVel = dir * (_maxPullSpeed * speedScale);
 
-                Vector2 steering = desiredVel - rb.linearVelocity;
-                // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ê¹ï¿½ Å« ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
-                float maxAccel = _pullForce; // ForceMode2D.Force ï¿½ï¿½ï¿½ï¿½
+                Vector2 steering = desiredVel - rb.velocity;
+                // Èû Á¦ÇÑ(³Ê¹« Å« °¡¼Ó ¹æÁö)
+                float maxAccel = _pullForce; // ForceMode2D.Force ±âÁØ
                 if (steering.magnitude > maxAccel)
                     steering = steering.normalized * maxAccel;
 
@@ -104,18 +104,18 @@ public class RiftZone2D : MonoBehaviour
 
                 if (dist <= innerStopRadius)
                 {
-                    rb.linearVelocity = Vector2.zero;
+                    rb.velocity = Vector2.zero;
                     // rb.MovePosition(center);
                 }
                 else
                 {
-                    float awayDot = Vector2.Dot(rb.linearVelocity, -dir);
+                    float awayDot = Vector2.Dot(rb.velocity, -dir);
                     if (awayDot > 0f)
-                        rb.linearVelocity -= (-dir) * (awayDot * 0.3f);
+                        rb.velocity -= (-dir) * (awayDot * 0.3f);
                 }
 
-                if (rb.linearVelocity.magnitude > _maxPullSpeed)
-                    rb.linearVelocity = rb.linearVelocity.normalized * _maxPullSpeed;
+                if (rb.velocity.magnitude > _maxPullSpeed)
+                    rb.velocity = rb.velocity.normalized * _maxPullSpeed;
             }
         }
 
@@ -139,7 +139,7 @@ public class RiftZone2D : MonoBehaviour
             {
                 var col = _buf[i];
                 if (!col) continue;
-                if (!PassesFilter(col)) continue; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                if (!PassesFilter(col)) continue; // ¡ç º¯°æ
 
                 Vector2 to = center - (Vector2)col.bounds.center;
                 if (Vector2.Angle(fwd, -to) > halfArc) continue;
@@ -149,8 +149,8 @@ public class RiftZone2D : MonoBehaviour
 
                 if (tick > 0)
                 {
-                    // ï¿½ï¿½ ï¿½Î¸ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ Enemy ï¿½ï¿½ï¿½ï¿½
-                    var enemy = col.GetComponentInParent<Enemy_ES>();
+                    // ¡Ú ºÎ¸ð±îÁö Ã£¾Æ¼­ Enemy Àû¿ë
+                    var enemy = col.GetComponentInParent<Enemy>();
                     if (enemy != null)
                     {
                         enemy.TakeDamage(tick);
@@ -171,19 +171,19 @@ public class RiftZone2D : MonoBehaviour
     {
         var go = col.gameObject;
 
-        // ï¿½Â±ï¿½ Ã¼Å©(ï¿½ï¿½Æ®/ï¿½Î¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+        // ÅÂ±× Ã¼Å©(·çÆ®/ºÎ¸ð±îÁö Çã¿ë)
         if (_targetTags != null && _targetTags.Length > 0)
         {
             bool tagOk = false;
 
-            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Â±ï¿½
+            // ÇöÀç ¿ÀºêÁ§Æ® ÅÂ±×
             for (int i = 0; i < _targetTags.Length; i++)
             {
                 var t = _targetTags[i];
                 if (!string.IsNullOrEmpty(t) && go.CompareTag(t)) { tagOk = true; break; }
             }
 
-            // ï¿½Î¸ï¿½(ï¿½ï¿½Æ®) ï¿½Â±ï¿½
+            // ºÎ¸ð(·çÆ®) ÅÂ±×
             if (!tagOk)
             {
                 var root = go.transform.root.gameObject;
@@ -197,8 +197,8 @@ public class RiftZone2D : MonoBehaviour
             if (!tagOk) return false;
         }
 
-        // Enemy ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½Î¸ï¿½ï¿½ï¿½ï¿½)
-        return col.GetComponentInParent<Enemy_ES>() != null;
+        // Enemy ÄÄÆ÷³ÍÆ®(ºÎ¸ð±îÁö)
+        return col.GetComponentInParent<Enemy>() != null;
     }
 
     void Finish()
@@ -209,7 +209,7 @@ public class RiftZone2D : MonoBehaviour
 
         var token = GetComponent<PooledObject>();
         if (token != null) token.ReturnToPool();
-        else gameObject.SetActive(false); // (ï¿½ï¿½ï¿½)
+        else gameObject.SetActive(false); // (¹é¾÷)
     }
 
 #if UNITY_EDITOR
