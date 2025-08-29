@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Enemy.BossStage
 {
     public class MiddleBossPattern : ABossPattern
     {
+        /*
+            LightningIndex = 1
+            DashIndex = 2
+         */
         private EnemyController _controller;
+
+        private bool _isMotionEnd;
 
         protected override void Start()
         {
@@ -15,7 +22,13 @@ namespace Enemy.BossStage
 
         protected override void SetAction()
         {
-            _actions.Add(PatternLightning);
+            Actions.Add(PatternLightning);
+            Actions.Add(PatternDash);
+        }
+
+        public void MotionEnd()
+        {
+            _isMotionEnd = true;
         }
 
         // --- 패턴 4: 번개 낙하 (경고 → 번개 → 연쇄 십자가) ---
@@ -23,20 +36,18 @@ namespace Enemy.BossStage
         private float lightningRange = 3f;
         public GameObject warningPrefab; // 경고 표시 프리팹
         public GameObject lightningPrefab; // 번개 프리팹
-        private bool isLightningActive = false;
         public float fallingSpeed = 1f;
+
         void PatternLightning()
         {
-            if (!isLightningActive)
-            {
-                StartCoroutine(SpawnLightningSequence());
-            }
+            StartCoroutine(SpawnLightningSequence());
         }
 
         IEnumerator SpawnLightningSequence()
         {
-            isLightningActive = true;
-         
+            yield return new WaitUntil(() => _isMotionEnd);
+
+            _isMotionEnd = false;
             // 타일맵 그리드 스냅
             Vector3Int cellPos = _controller.stage.WorldToCell(_target.position);
             Vector3 spawnPos = _controller.stage.GetCellCenterWorld(cellPos);
@@ -47,16 +58,6 @@ namespace Enemy.BossStage
 
             Destroy(warn);
             Instantiate(lightningPrefab, spawnPos, Quaternion.identity);
-
-            // 플레이어 충돌 체크
-            Collider2D[] hits = Physics2D.OverlapCircleAll(spawnPos, 0.5f);
-            foreach (var hit in hits)
-            {
-                if (hit.CompareTag("Player"))
-                {
-                    Debug.Log("플레이어가 번개에 맞음!");
-                }
-            }
 
             // 2단계: 십자가 방향 연쇄 낙뢰
             Vector3[] directions = new Vector3[]
@@ -77,9 +78,7 @@ namespace Enemy.BossStage
 
                 StartCoroutine(DelayedLightning(crossWarn, crossPos, fallingSpeed));
             }
-
-            yield return new WaitForSeconds(lightningInterval);
-            isLightningActive = false;
+            _controller.CanChangeState();
         }
 
         IEnumerator DelayedLightning(GameObject warning, Vector3 pos, float delay)
@@ -89,16 +88,57 @@ namespace Enemy.BossStage
             if (warning != null) Destroy(warning);
 
             Instantiate(lightningPrefab, pos, Quaternion.identity);
+        }
 
-            // 충돌 판정
-            Collider2D[] hits = Physics2D.OverlapCircleAll(pos, 0.5f);
-            foreach (var hit in hits)
+        // --- 패턴 5: 기 모으기 후 돌진 ---
+        public float chargeTime = 1.0f; // 기 모으는 시간
+        public float dashSpeed = 12f; // 돌진 속도
+        private float dashDuration = 0.4f; // 돌진 지속 시간
+
+        void PatternDash()
+        {
+            StartCoroutine(DashSequence());
+        }
+
+        IEnumerator DashSequence()
+        {
+            yield return new WaitUntil(() => _isMotionEnd);
+            _isMotionEnd = false;
+            
+            if (_target != null)
             {
-                if (hit.CompareTag("Player"))
+                Vector3 dir = (_target.position - transform.position).normalized;
+                float timer = 0f;
+
+                // 맵 경계 가져오기
+                Bounds stageBounds = _controller.stage.localBounds;
+
+                while (timer < dashDuration)
                 {
-                    Debug.Log("플레이어가 연쇄 번개에 맞음!");
+                    // 이동 예정 좌표
+                    Vector3 nextPos = transform.position + dir * dashSpeed * Time.deltaTime;
+
+                    // Clamp 적용
+                    float clampedX = Mathf.Clamp(nextPos.x, stageBounds.min.x, stageBounds.max.x);
+                    float clampedY = Mathf.Clamp(nextPos.y, stageBounds.min.y, stageBounds.max.y);
+                    Vector3 clampedPos = new Vector3(clampedX, clampedY, nextPos.z);
+
+                    // 만약 Clamp 결과가 달라졌다면 (= 벽에 닿음)
+                    if (clampedPos.x != nextPos.x || clampedPos.y != nextPos.y)
+                    {
+                        transform.position = clampedPos;
+                        Debug.Log("보스가 벽에 부딪혀 돌진 종료!");
+                        break; // 돌진 즉시 종료
+                    }
+
+                    transform.position = clampedPos;
+
+                    timer += Time.deltaTime;
+                    yield return null;
                 }
             }
+            _controller.CanChangeState();
+            _controller.Animator.SetBool("EndDash",true);
         }
     }
 }

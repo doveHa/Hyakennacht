@@ -13,6 +13,7 @@ namespace Enemy
         public Rigidbody2D Rigidbody { get; private set; }
         public Transform Target { get; private set; }
 
+        public bool IsChangeState = true;
         private bool _isLeftSight;
 
         void Awake()
@@ -36,9 +37,12 @@ namespace Enemy
 
         public void ChangeState(IEnemyState newState)
         {
-            _currentState?.Exit();
-            _currentState = newState;
-            _currentState?.Enter();
+            if (IsChangeState)
+            {
+                _currentState?.Exit();
+                _currentState = newState;
+                _currentState?.Enter();
+            }
         }
 
         public void SetTarget(Transform target)
@@ -60,6 +64,11 @@ namespace Enemy
                 _isLeftSight = !_isLeftSight;
                 transform.GetChild(1).localRotation = Quaternion.Euler(0f, _isLeftSight ? 180f : 0f, 0f);
             }
+        }
+
+        public void CanChangeState()
+        {
+            IsChangeState = true;
         }
     }
 }

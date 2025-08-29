@@ -19,7 +19,6 @@ public class Lightning : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Ontrigger");
         if (other.tag.Equals("Player"))
         {
             SystemManager.Manager.HpControl.MinusHp();

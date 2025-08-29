@@ -8,12 +8,12 @@ namespace Enemy.BossStage
 {
     public abstract class ABossPattern : MonoBehaviour
     {
-        protected List<Action> _actions;
+        public List<Action> Actions { get; private set; }
         protected Transform _target;
 
         void Awake()
         {
-            _actions = new List<Action>();
+            Actions = new List<Action>();
         }
         protected virtual void Start()
         {
@@ -21,9 +21,9 @@ namespace Enemy.BossStage
             SetAction();
         }
         
-        public Action RandomPattern()
+        public int RandomPattern()
         {
-            return _actions[Random.Range(0, _actions.Count)];
+            return Random.Range(0, Actions.Count);
         }
 
         protected abstract void SetAction();

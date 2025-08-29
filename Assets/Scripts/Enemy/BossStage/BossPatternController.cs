@@ -29,9 +29,10 @@ namespace Enemy.BossStage
             {
                 _patternTimer = 0f;
 
-                Action action = _bossPattern.RandomPattern();
+                int patternIndex = _bossPattern.RandomPattern();
+                Action action = _bossPattern.Actions[patternIndex];
                 
-                _controller.ChangeState(new ActivePatternState(_controller, action));
+                _controller.ChangeState(new ActivePatternState(_controller, action, patternIndex));
             }
         }
         

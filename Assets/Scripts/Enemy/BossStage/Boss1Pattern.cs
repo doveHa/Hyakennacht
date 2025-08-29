@@ -15,9 +15,9 @@ namespace Enemy.BossStage
 
         protected override void SetAction()
         {
-            _actions.Add(PatternRadial);    
-            _actions.Add(PatternSpiral);    
-            _actions.Add(PatternWave);    
+            Actions.Add(PatternRadial);    
+            Actions.Add(PatternSpiral);    
+            Actions.Add(PatternWave);    
         }
         
         void PatternRadial()

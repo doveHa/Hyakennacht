@@ -60,10 +60,10 @@
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabSlot.cs" />
     <Compile Include="Assets\Test\Script\BallHit.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\ABossPattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\RandomMoveState.cs" />
     <Compile Include="Assets\Test\Script\MotionTransformWriter.cs" />
     <Compile Include="Assets\Scripts\Character\Player.cs" />
-    <Compile Include="Assets\Scripts\Enemy\BossStage\IBossPattern.cs" />
     <Compile Include="Assets\Scripts\System\HpControl.cs" />
     <Compile Include="Assets\Scripts\System\FactionSelect.cs" />
     <Compile Include="Assets\Scripts\Constant.cs" />
