@@ -11,6 +11,7 @@ namespace System
 
         void Awake()
         {
+            DontDestroyOnLoad(transform.parent.gameObject);
             _currentHp = 4;
         }
 

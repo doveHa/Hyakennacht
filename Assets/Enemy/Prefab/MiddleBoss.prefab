@@ -876,7 +876,7 @@ Animator:
   m_GameObject: {fileID: 520945707462152971}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 208133b27b401b74c94947698b8487f4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8374119d670921d46ba86f1596a94840, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warningPrefab: {fileID: 142425687856309170, guid: 2e00b93d713482643a9e49bf93ae760f, type: 3}
-  lightningPrefab: {fileID: 5730760378704384338, guid: 1e608f60115ba454fa22b689f3b6ba2a, type: 3}
+  lightningPrefab: {fileID: 96755072266579295, guid: 08a0bbb59bf228648b8628e382f42ad3, type: 3}
   fallingSpeed: 1
   chargeTime: 1
   dashSpeed: 12

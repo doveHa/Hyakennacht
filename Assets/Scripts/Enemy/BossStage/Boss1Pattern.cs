@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Enemy.BossStage
 {
@@ -15,83 +16,119 @@ namespace Enemy.BossStage
 
         protected override void SetAction()
         {
-            Actions.Add(PatternRadial);    
-            Actions.Add(PatternSpiral);    
-            Actions.Add(PatternWave);    
+            Actions.Add(() => StartCoroutine(PatternRadial()));
+            Actions.Add(() => StartCoroutine(PatternSpiral()));
+            Actions.Add(() => StartCoroutine((PatternWave())));
         }
-        
-        void PatternRadial()
+
+        // --- 패턴 1: 원형 확산탄 ---
+        private IEnumerator PatternRadial()
         {
-            radialTimer += Time.deltaTime;
-            if (radialTimer >= radialInterval)
+            float duration = 3f;
+            float timer = 0f;
+
+            float interval = 2f;
+            float localTimer = 0f;
+            int bulletCount = 20;
+
+            while (timer < duration)
             {
-                float angleStep = 360f / radialBulletCount;
-                float angle = 0f;
-
-                for (int i = 0; i < radialBulletCount; i++)
+                localTimer += Time.deltaTime;
+                if (localTimer >= interval)
                 {
-                    float x = Mathf.Cos(angle * Mathf.Deg2Rad);
-                    float y = Mathf.Sin(angle * Mathf.Deg2Rad);
-                    Vector3 dir = new Vector3(x, y, 0f);
+                    float angleStep = 360f / bulletCount;
+                    float angle = 0f;
 
-                    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                    bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
-                    bullet.transform.parent = transform.GetChild(1);
+                    for (int i = 0; i < bulletCount; i++)
+                    {
+                        float x = Mathf.Cos(angle * Mathf.Deg2Rad);
+                        float y = Mathf.Sin(angle * Mathf.Deg2Rad);
+                        Vector3 dir = new Vector3(x, y, 0f);
 
-                    angle += angleStep;
+                        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                        bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
+                        bullet.transform.parent = transform.GetChild(1);
+
+                        angle += angleStep;
+                    }
+
+                    localTimer = 0f;
                 }
 
-                radialTimer = 0f;
+                timer += Time.deltaTime;
+                yield return null;
             }
+
+            _controller.CanChangeState(); // 패턴 끝나면 상태 전환 허용
         }
 
         // --- 패턴 2: 나선 탄막 ---
-        private float spiralTimer = 0f;
-        private float spiralInterval = 0.05f;
-        private float rotateSpeed = 10f;
-        private float spiralAngle = 0f;
-
-        void PatternSpiral()
+        private IEnumerator PatternSpiral()
         {
-            spiralTimer += Time.deltaTime;
-            if (spiralTimer >= spiralInterval)
+            float duration = 3f;
+            float timer = 0f;
+
+            float interval = 0.05f;
+            float localTimer = 0f;
+            float angle = 0f;
+            float rotateSpeed = 10f;
+
+            while (timer < duration)
             {
-                float dirX = Mathf.Cos(spiralAngle * Mathf.Deg2Rad);
-                float dirY = Mathf.Sin(spiralAngle * Mathf.Deg2Rad);
+                localTimer += Time.deltaTime;
+                if (localTimer >= interval)
+                {
+                    float dirX = Mathf.Cos(angle * Mathf.Deg2Rad);
+                    float dirY = Mathf.Sin(angle * Mathf.Deg2Rad);
 
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(dirX, dirY) * bulletSpeed;
+                    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                    bullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(dirX, dirY) * bulletSpeed;
 
-                spiralAngle += rotateSpeed;
-                spiralTimer = 0f;
+                    angle += rotateSpeed;
+                    localTimer = 0f;
+                }
+
+                timer += Time.deltaTime;
+                yield return null;
             }
+
+            _controller.CanChangeState();
         }
 
         // --- 패턴 3: 파도형 탄막 ---
-        private float waveTimer = 0f;
-        private float waveInterval = 0.2f;
-        private float waveFrequency = 5f;
-        private float waveAmplitude = 2f;
-        private float waveOffset = 0f;
-
-        void PatternWave()
+        private IEnumerator PatternWave()
         {
-            if (_target == null) return;
+            float duration = 3f;
+            float timer = 0f;
 
-            waveTimer += Time.deltaTime;
-            if (waveTimer >= waveInterval)
+            float interval = 0.2f;
+            float localTimer = 0f;
+            float waveFrequency = 5f;
+            float waveAmplitude = 2f;
+            float waveOffset = 0f;
+
+            while (timer < duration)
             {
-                Vector2 dir = (_target.position - transform.position).normalized;
-                Vector2 perp = new Vector2(-dir.y, dir.x);
+                localTimer += Time.deltaTime;
+                if (localTimer >= interval)
+                {
+                    Vector2 dir = (_target.position - transform.position).normalized;
+                    Vector2 perp = new Vector2(-dir.y, dir.x);
 
-                waveOffset += waveFrequency * Time.deltaTime;
-                Vector2 finalDir = (dir + perp * Mathf.Sin(waveOffset) * waveAmplitude).normalized;
+                    waveOffset += waveFrequency * Time.deltaTime;
+                    Vector2 finalDir = (dir + perp * Mathf.Sin(waveOffset) * waveAmplitude).normalized;
 
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().linearVelocity = finalDir * bulletSpeed;
+                    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                    bullet.GetComponent<Rigidbody2D>().linearVelocity = finalDir * bulletSpeed;
 
-                waveTimer = 0f;
+                    localTimer = 0f;
+                }
+
+                timer += Time.deltaTime;
+                yield return null;
             }
+
+            _controller.CanChangeState();
         }
     }
 }

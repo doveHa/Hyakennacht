@@ -68,6 +68,7 @@ namespace Enemy
 
         public void CanChangeState()
         {
+            Debug.Log("Can change state");
             IsChangeState = true;
         }
     }

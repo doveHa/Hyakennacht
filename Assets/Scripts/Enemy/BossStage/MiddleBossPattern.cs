@@ -10,14 +10,12 @@ namespace Enemy.BossStage
             LightningIndex = 1
             DashIndex = 2
          */
-        private EnemyController _controller;
 
         private bool _isMotionEnd;
 
         protected override void Start()
         {
             base.Start();
-            _controller = GetComponent<EnemyController>();
         }
 
         protected override void SetAction()

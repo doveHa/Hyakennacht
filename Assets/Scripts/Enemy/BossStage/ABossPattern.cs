@@ -10,6 +10,8 @@ namespace Enemy.BossStage
     {
         public List<Action> Actions { get; private set; }
         protected Transform _target;
+        protected EnemyController _controller;
+
 
         void Awake()
         {
@@ -18,6 +20,7 @@ namespace Enemy.BossStage
         protected virtual void Start()
         {
             _target = GameManager.Manager.PlayerScript.Target;
+            _controller = GetComponent<EnemyController>();
             SetAction();
         }
         

@@ -27,8 +27,8 @@ namespace Enemy
             _controller.Rigidbody.linearVelocity = Vector3.zero;
             _controller.Animator.SetTrigger("Attack");
             _controller.Animator.SetInteger("PatternIndex", _patternIndex + 1);
-            _action?.Invoke();
             _controller.IsChangeState = false;
+            _action?.Invoke();
             _timer = 0f;
         }
 
