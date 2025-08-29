@@ -4,7 +4,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public WeaponHandler WeaponHandler { get; private set; }
+    public WeaponHandler weaponHandler;
+    public WeaponData startingWeapon;
     public int Coins { get; private set; }
     public Transform Target { get; private set; }
 
@@ -12,17 +13,22 @@ public class Player : MonoBehaviour
     {  
         DontDestroyOnLoad(this);
         Instantiate(playerPrefab, transform).transform.parent = transform;
-        WeaponHandler = GetComponent<WeaponHandler>();
         Target = transform.GetChild(0).GetChild(1);
         Coins = 0;
     }
     
     void Start()
     {
+        weaponHandler.EquipWeapon(startingWeapon);
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("무기 사용 시도");
+            weaponHandler.UseWeapon();
+        }
     }
 
     public void Hit()

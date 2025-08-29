@@ -93,7 +93,6 @@
     <Compile Include="Assets\Scripts\Enemy\States\ChasePlayerState.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill1.cs" />
     <Compile Include="Assets\Enemy\Resource\Kappa\Effect\WaterBallHit.cs" />
-    <Compile Include="Assets\ES_Scripts\Weapon_Script\Player.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\차원의 틈\SK_DimensionalRift.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\IAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\SkillCaster.cs" />
@@ -122,7 +121,6 @@
     <Compile Include="Assets\Enemy\Resource\Boss1\Effect\Bullet.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ProjectileAttack.cs" />
     <Compile Include="Assets\Enemy\Resource\Straw\Effect\SmallStraw.cs" />
-    <Compile Include="Assets\ES_Scripts\Weapon_Script\WeaponHandler.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Character\Dash.cs" />
