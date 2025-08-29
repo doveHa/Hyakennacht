@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicFlower : MonoBehaviour
 {
-    public GameObject[] elementalProjectiles; // ºÒ, Àü±â, ¾óÀ½ µîÀÇ ¹ß»çÃ¼ ÇÁ¸®ÆÕ
+    public GameObject[] elementalProjectiles; // ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public float fireRate = 1.5f;
     public float detectionRadius = 5f;
     private int damage;
@@ -14,7 +14,7 @@ public class MagicFlower : MonoBehaviour
     private void Start()
     {
         StartCoroutine(FireRoutine());
-        Destroy(gameObject, 10f); // ¿¹: 10ÃÊ ÈÄ Á¦°Å
+        Destroy(gameObject, 10f); // ï¿½ï¿½: 10ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     private IEnumerator FireRoutine()
@@ -53,7 +53,7 @@ public class MagicFlower : MonoBehaviour
             {
                 Vector2 dir = (target.position - transform.position).normalized;
                 rb.gravityScale = 0f;
-                rb.velocity = dir * 5f;
+                rb.linearVelocity = dir * 5f;
             }
 
             Projectile p = proj.GetComponent<Projectile>();

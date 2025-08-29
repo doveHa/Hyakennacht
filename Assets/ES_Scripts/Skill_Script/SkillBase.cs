@@ -5,7 +5,7 @@ public enum Tier { Low, Mid, High }
 public enum Exec { Projectile, AoEInstant, AoEDelayed, Dash, Buff, Debuff, TrapTotem, Summon, Channel, Passive }
 public enum Targeting { None, Self, Direction, Point, Enemy }
 
-public abstract class SkillBase : ScriptableObject
+public abstract class SkillBase_ES : ScriptableObject
 {
     [Header("ID & Meta")]
     public string skillId;

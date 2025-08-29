@@ -13,33 +13,33 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior
         this.data = data;
         this.firePoint = firePoint;
 
-        if (data.weaponName == "¹«·É")
+        if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½")
         {
-            soundWave = Resources.Load<GameObject>("Effects/¼Ò¸® ÆÄµ¿");
+            soundWave = Resources.Load<GameObject>("Effects/ï¿½Ò¸ï¿½ ï¿½Äµï¿½");
             if (soundWave == null)
-                Debug.LogWarning("SoundWave ÇÁ¸®ÆÕÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+                Debug.LogWarning("SoundWave ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
         }
     }
 
     public void Attack()
     {
-        Debug.Log("¾îÅÃ È£Ãâ ¿Ï·á");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ ï¿½Ï·ï¿½");
 
         if (data.prefab == null)
         {
-            Debug.LogWarning("¹«±â ÇÁ¸®ÆÕÀÌ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
 
         Vector2 direction = new Vector2(firePoint.parent.localScale.x, 0).normalized;
 
         Vector3 Pos = firePoint.position;
-        if (data.weaponName == "±ä ÁöÆÎÀÌ")
+        if (data.weaponName == "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
         {
             Pos += Vector3.up * 1f;
         }
 
-        if (data.weaponName == "¹«·É" && soundWave != null)
+        if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½" && soundWave != null)
         {
             Vector3 spawnPos = new Vector3(firePoint.position.x, firePoint.position.y + 0.5f, firePoint.position.z);
             GameObject wave = GameObject.Instantiate(soundWave, spawnPos, Quaternion.identity);
@@ -50,11 +50,11 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior
         GameObject proj = GameObject.Instantiate(data.prefab, Pos, Quaternion.identity);
         Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
 
-        // ½ºÇÁ¶óÀÌÆ® ·»´õ·¯¸¦ Ã£¾Æ ÁÂ¿ì ¹ÝÀü
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½
         SpriteRenderer projSprite = proj.GetComponentInChildren<SpriteRenderer>();
         if (projSprite != null)
         {
-            // ÇÃ·¹ÀÌ¾îÀÇ x ½ºÄÉÀÏÀÌ À½¼ö¸é ½ºÇÁ¶óÀÌÆ®¸¦ µÚÁýÀ½
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ x ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             projSprite.flipX = firePoint.parent.localScale.x < 0;
         }
 
@@ -66,7 +66,7 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior
             return;
         }
 
-        if (data.weaponName == "Æ÷¼Ç")
+        if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½")
         {
             rb = proj.GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -74,7 +74,7 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior
                 rb.gravityScale = 1.5f;
 
                 Vector2 throwVelocity = new Vector2(direction.x * 5f, 5f); 
-                rb.velocity = throwVelocity;
+                rb.linearVelocity = throwVelocity;
             }
 
             Potion potion = proj.GetComponent<Potion>();
@@ -86,19 +86,19 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior
             return;
         }
 
-        // ¾Ö´Ï¸ÞÀÌ¼Ç Ã³¸®
+        // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ Ã³ï¿½ï¿½
         Animator weaponAnimator = proj.GetComponent<Animator>();
         if (weaponAnimator != null)
         {
             weaponAnimator.SetBool("isAttack", true);
         }
 
-        // Á÷¼± ¹æÇâÀ¸·Î ¹ß»ç
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
         
         if (rb != null)
         {
             rb.gravityScale = 0f;
-            rb.velocity = direction * data.attackSpeed;
+            rb.linearVelocity = direction * data.attackSpeed;
         }
 
         Soul soul = proj.GetComponent<Soul>();
@@ -130,7 +130,7 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior
 
     private void CameraShake()
     {
-        Debug.Log("Èçµé¸² È¿°ú ¹ß»ý");
+        Debug.Log("ï¿½ï¿½é¸² È¿ï¿½ï¿½ ï¿½ß»ï¿½");
     }
 
 }
