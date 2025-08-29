@@ -56,12 +56,14 @@
     <Compile Include="Assets\Test\Script\CoffTest.cs" />
     <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabListPanel.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\MiddleBossPattern.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabSlot.cs" />
     <Compile Include="Assets\Test\Script\BallHit.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\RandomMoveState.cs" />
     <Compile Include="Assets\Test\Script\MotionTransformWriter.cs" />
     <Compile Include="Assets\Scripts\Character\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\IBossPattern.cs" />
     <Compile Include="Assets\Scripts\System\HpControl.cs" />
     <Compile Include="Assets\Scripts\System\FactionSelect.cs" />
     <Compile Include="Assets\Scripts\Constant.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Assets\Scripts\Enemy\States\ChasePlayerState.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill1.cs" />
     <Compile Include="Assets\Enemy\Resource\Kappa\Effect\WaterBallHit.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\Boss1Pattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\IAttack.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
@@ -78,13 +81,13 @@
     <Compile Include="Assets\HR\Script\LobbyManager.cs" />
     <Compile Include="Assets\HR\Script\MapManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\GhostAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\BossPatternController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\KappaAttack.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
     <Compile Include="Assets\Test\Script\Shooter.cs" />
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemToggleController.cs" />
     <Compile Include="Assets\HR\Script\StallTrigger.cs" />
-    <Compile Include="Assets\Enemy\Resource\Boss1\Effect\BossBulletPattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\StrawAttack.cs" />
     <Compile Include="Assets\Enemy\Resource\Boss1\Effect\Bullet.cs" />
     <Compile Include="Assets\Enemy\Resource\Straw\Effect\SmallStraw.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Assets\Scripts\Manager\AddressableManager.cs" />
     <Compile Include="Assets\HR\Script\BossManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\RandomMove.cs" />
+    <Compile Include="Assets\Enemy\Resource\MiddleBoss\Effect\Lightning.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacter.cs" />
     <Compile Include="Assets\Scripts\Enemy\HitCollider.cs" />

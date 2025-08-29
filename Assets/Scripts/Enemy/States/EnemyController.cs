@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
 
 namespace Enemy
 {
@@ -7,7 +9,7 @@ namespace Enemy
     {
         public Animator Animator { get; private set; }
         private IEnemyState _currentState;
-        public EnemySpawner Spawner { get; set; }
+        public Tilemap stage;
         public Rigidbody2D Rigidbody { get; private set; }
         public Transform Target { get; private set; }
 

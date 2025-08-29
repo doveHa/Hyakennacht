@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 3782929631951379360}
   - component: {fileID: 7929427378953673235}
   - component: {fileID: 2782011665946213251}
-  - component: {fileID: 297686834535347219}
   - component: {fileID: 7855453494167686705}
   - component: {fileID: 6295810517878711896}
   - component: {fileID: 232116486221048034}
   - component: {fileID: 7992639868892031145}
+  - component: {fileID: 2295448253604587303}
+  - component: {fileID: 8192418101917592996}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Untagged
@@ -66,7 +67,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!66 &2782011665946213251
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -848,21 +849,6 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 520945707462152971}
---- !u!114 &297686834535347219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d63557bb3ab864e8a3bd9130bd3602, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5730760378704384338, guid: 1e608f60115ba454fa22b689f3b6ba2a, type: 3}
-  patternDuration: 10
-  bulletSpeed: 5
 --- !u!114 &7855453494167686705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,6 +908,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4533fbcca7d9684aad31ca50a3a3f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2295448253604587303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520945707462152971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dd73a131b94cc6a5668d48a569e5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternDuration: 2
+--- !u!114 &8192418101917592996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520945707462152971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04ba3a286df4a85905b90bbd8c9b793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5730760378704384338, guid: 1e608f60115ba454fa22b689f3b6ba2a, type: 3}
+  bulletSpeed: 5
 --- !u!1 &2159096669655434152
 GameObject:
   m_ObjectHideFlags: 0
