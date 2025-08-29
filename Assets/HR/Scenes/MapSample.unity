@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &72642676
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +170,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30ee68ebc51fb98418690a39438c0256, type: 2}
   - {fileID: 11400000, guid: 85ddbd21cf2d77c459bce7c1d9bb5b4d, type: 2}
   - {fileID: 11400000, guid: 398da8d7576c62a42a936b3a0ce45969, type: 2}
-  wallTile: {fileID: 11400000, guid: 087b1e0b7ff010d4db09afc1653c9b33, type: 2}
+  wallTileHorizontal: {fileID: 11400000, guid: 43cf9b717e846aa48a99e23b5b95b2ff, type: 2}
+  wallTileVertical: {fileID: 11400000, guid: 4c5e1c76571c2c348b264282cbeb8fcd, type: 2}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
@@ -634,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &823124033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,7 +661,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e752afccdc4e96843afb0b66a2ad839f, type: 2}
   - {fileID: 11400000, guid: 75f409794530c9c4f8d55a6fcd1e9828, type: 2}
   - {fileID: 11400000, guid: b02d02a46d81d2842aabcfa12e17e1f3, type: 2}
-  wallTile: {fileID: 11400000, guid: 7ac0fa25c66066444aee252ae43726d0, type: 2}
+  wallTileHorizontal: {fileID: 11400000, guid: 43cf9b717e846aa48a99e23b5b95b2ff, type: 2}
+  wallTileVertical: {fileID: 11400000, guid: 4c5e1c76571c2c348b264282cbeb8fcd, type: 2}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
@@ -946,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274b4192dea47049b45251503efbf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinCount: {fileID: 0}
+  _coinCount: {fileID: 1807317576}
 --- !u!114 &1610339729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,8 +1037,8 @@ Camera:
   m_GameObject: {fileID: 1615555840}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

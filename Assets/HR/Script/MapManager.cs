@@ -14,7 +14,8 @@ public class MapManager : MonoBehaviour
     //public TileBase groundTile;
     // 기존 groundTile 대신 배열로 선언
     public TileBase[] groundTilesByStage;
-    public TileBase wallTile;
+    public TileBase wallTileHorizontal;
+    public TileBase wallTileVertical;
 
     [Header("Stage Settings")]
     public int currentStage = 0; // 현재 스테이지
@@ -442,16 +443,31 @@ public class MapManager : MonoBehaviour
             for (int y = bounds.yMin - 1; y <= bounds.yMax + 1; y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
-                if (groundTilemap.GetTile(pos) == null)
+
+                if (groundTilemap.GetTile(pos) == null) // 땅이 아니면 벽 후보
                 {
                     if (HasGroundNeighbour(pos))
                     {
-                        wallTilemap.SetTile(pos, wallTile);
+                        bool hasHorizontalNeighbour =
+                            groundTilemap.GetTile(new Vector3Int(pos.x - 1, pos.y, 0)) != null ||
+                            groundTilemap.GetTile(new Vector3Int(pos.x + 1, pos.y, 0)) != null;
+
+                        bool hasVerticalNeighbour =
+                            groundTilemap.GetTile(new Vector3Int(pos.x, pos.y - 1, 0)) != null ||
+                            groundTilemap.GetTile(new Vector3Int(pos.x, pos.y + 1, 0)) != null;
+
+                        if (hasHorizontalNeighbour && !hasVerticalNeighbour)
+                            wallTilemap.SetTile(pos, wallTileHorizontal);
+                        else if (hasVerticalNeighbour && !hasHorizontalNeighbour)
+                            wallTilemap.SetTile(pos, wallTileVertical);
+                        else
+                            wallTilemap.SetTile(pos, wallTileVertical); // 코너도 vertical로 설정
                     }
                 }
             }
         }
     }
+
 
     bool HasGroundNeighbour(Vector3Int pos)
     {

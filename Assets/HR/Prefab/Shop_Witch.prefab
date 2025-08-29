@@ -64,6 +64,7 @@ MonoBehaviour:
   - {fileID: 4809750369868454450}
   - {fileID: 2271625278932127590}
   - {fileID: 270916157169708729}
+  healthPotionPrefab: {fileID: 2448991724125156059, guid: 935f0cbedd04e3e46aef07d4355e8db0, type: 3}
   playerCoins: 100
   coinText: {fileID: 0}
 --- !u!1001 &4460497163283907778
