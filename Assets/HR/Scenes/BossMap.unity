@@ -822,6 +822,7 @@ GameObject:
   - component: {fileID: 1028639496}
   - component: {fileID: 1028639495}
   - component: {fileID: 1028639494}
+  - component: {fileID: 1028639499}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -841,7 +842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274b4192dea47049b45251503efbf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinCount: {fileID: 0}
 --- !u!114 &1028639495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +893,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1028639499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028639493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c304497d3dff45fba80baa17bb2c2118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1247407675
 PrefabInstance:
   m_ObjectHideFlags: 0
