@@ -14,10 +14,7 @@ public class MapManager : MonoBehaviour
 
     [Header("Tilemap References")] public Tilemap groundTilemap;
     public Tilemap wallTilemap;
-    public Tilemap emptyMap;
-
-    [SerializeField] public TileBase emptyTile;
-
+    
     //public TileBase groundTile;
     // ���� groundTile ��� �迭�� ����
     public TileBase[] groundTilesByStage;
@@ -120,7 +117,6 @@ public class MapManager : MonoBehaviour
             Destroy(room.roomObject);
         }
 
-        emptyMap.ClearAllTiles();
         groundTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
         groundTiles.Clear();
@@ -205,7 +201,6 @@ public class MapManager : MonoBehaviour
         SpawnItems();
 
         //        
-        GenerateWalls(emptyMap, wallTilemap);
 
         //       ġ
         PlaceStairs();
@@ -245,7 +240,6 @@ public class MapManager : MonoBehaviour
 
                 TileBase selectedGroundTile = GetRandomGroundTile();
 
-                emptyMap.SetTile(tilePos, selectedGroundTile);
                 room.tilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
                 room.tiles.Add(tilePos);
@@ -273,7 +267,6 @@ public class MapManager : MonoBehaviour
 
                 TileBase selectedGroundTile = GetRandomGroundTile();
                 //room.roomObject.GetComponent<Tilemap>().SetTile(tilePos, selectedGroundTile);
-                emptyMap.SetTile(tilePos, selectedGroundTile);
                 groundTilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
             }
