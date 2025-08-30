@@ -21,6 +21,8 @@ namespace Enemy
 
         public bool IsSpawn;
 
+        public GameObject _wall;
+        
         void Awake()
         {
             _rnd = new Random((uint)DateTime.Now.Millisecond);
@@ -58,6 +60,11 @@ namespace Enemy
                 SpawnEnemies();
             }
 
+            if (_wall?.transform.childCount <= 0)
+            {
+                EndStage();
+            }
+            
             if (Input.GetKeyDown(KeyCode.Delete))
             {
                 EndStage();
@@ -96,6 +103,7 @@ namespace Enemy
             {
                 int rndEnemy = _rnd.NextInt(_enemyObjects.Count);
                 _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy]);
+                _objects[i].transform.parent = _wall.transform;
             }
         }
 
@@ -120,12 +128,12 @@ namespace Enemy
         
         public async void StartStage()
         {
-            GameObject child = new GameObject();
-            child.transform.parent = transform;
+            _wall = new GameObject();
+            _wall.transform.parent = transform;
+            Tilemap tilemap = _wall.transform.AddComponent<Tilemap>();
+            _wall.transform.AddComponent<TilemapRenderer>();
+            _wall.transform.AddComponent<TilemapCollider2D>();
             TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/Wall.asset");
-            Tilemap tilemap = child.transform.AddComponent<Tilemap>();
-            child.transform.AddComponent<TilemapRenderer>();
-            child.transform.AddComponent<TilemapCollider2D>();
             MapManager.Instance.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase);
             //await SpawnEnemies();
         }
