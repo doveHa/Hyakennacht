@@ -49,19 +49,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefabs:
-  - {fileID: 7894764309908682564, guid: ab9b396fe2d616443bb141565c336449, type: 3}
-  - {fileID: 1767249776766639226, guid: dd9d4d6ed9112e9419be8337b0a85579, type: 3}
-  - {fileID: 6658493877804583699, guid: 31d96e1fcb32bd64d8cbd79f099ac1c4, type: 3}
-  - {fileID: 8883010201247647325, guid: 495d9a8cd39b9e149b5318cbcabf42e9, type: 3}
-  - {fileID: 2246779297464904147, guid: 0c90e7d8bd6066b4d85fd903833cd870, type: 3}
-  - {fileID: 8436800781539069424, guid: 68fdbf34dca71fe49b1dd84f81402277, type: 3}
-  - {fileID: 1408806210522497192, guid: e2353831843f76749975a4bb4c89c4b8, type: 3}
-  - {fileID: 4317761115187432246, guid: f1d51ed84292b294798d58d7beb982e0, type: 3}
-  - {fileID: 5905276642831678141, guid: 3b55430ec4aa2934088109e13ea39b0e, type: 3}
+  - {fileID: 8914758360542796921, guid: e29af6462b12caa459d37d7b8c4ee754, type: 3}
+  - {fileID: 7485578837621575502, guid: 324ec69e448dd0f47b9ecc61bf258ae1, type: 3}
+  - {fileID: 2873882223903997513, guid: 22b52b64b8718374b9f96e735b0e5e9a, type: 3}
+  - {fileID: 9025183269850006190, guid: 0e69516390133c54d9ab52578f6d1329, type: 3}
+  - {fileID: 175894421978928194, guid: 084523ccc98fe5e4e8761ed49aae6169, type: 3}
+  - {fileID: 8697287533329720088, guid: 9108f1a90f17a0e4fb172ed5750f7435, type: 3}
+  - {fileID: 1592574143970570617, guid: 9ee0acf0d8cbed1498466c68810b507f, type: 3}
+  - {fileID: 9208696594913934517, guid: a10306556b11de54c821fe4525d329fc, type: 3}
+  - {fileID: 5679773163421190857, guid: 7a8a2269c16b565438cd929e0575e4ed, type: 3}
+  - {fileID: 731215106427599669, guid: 1a81caa0fce69f9479d87e1ee58152a3, type: 3}
+  - {fileID: 6511232671806082310, guid: 0670175d6ab681e4683931fba5fd4b9d, type: 3}
   stallTransforms:
   - {fileID: 4809750369868454450}
   - {fileID: 2271625278932127590}
   - {fileID: 270916157169708729}
+  healthPotionPrefab: {fileID: 2448991724125156059, guid: 935f0cbedd04e3e46aef07d4355e8db0, type: 3}
+  playerCoins: 100
+  coinText: {fileID: 0}
 --- !u!1001 &4460497163283907778
 PrefabInstance:
   m_ObjectHideFlags: 0
