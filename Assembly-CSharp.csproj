@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Character\Player.cs" />
     <Compile Include="Assets\ES_Scripts\Phys2DCompat.cs" />
     <Compile Include="Assets\Scripts\System\HpControl.cs" />
+    <Compile Include="Assets\ES_Scripts\Enemy_ES.cs" />
     <Compile Include="Assets\Scripts\System\FactionSelect.cs" />
     <Compile Include="Assets\Scripts\Constant.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Trap.cs" />
@@ -109,7 +110,6 @@
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ChargeAttack.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
-    <Compile Include="Assets\ES_Scripts\Weapon_Script\Enemy_ES.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\InstallAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\독 사과\SK_PoisonApple.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\도깨비불\ProjectileExplode2D.cs" />
