@@ -3,6 +3,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using Enemy;
+using Manager;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class MapManager : MonoBehaviour
 {
@@ -11,6 +15,8 @@ public class MapManager : MonoBehaviour
     [Header("Tilemap References")]
     public Tilemap groundTilemap;
     public Tilemap wallTilemap;
+    public Tilemap emptyMap;
+
     //public TileBase groundTile;
     // 기존 groundTile 대신 배열로 선언
     public TileBase[] groundTilesByStage;

@@ -61,6 +61,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HR\Script\MapUIManager.cs" />
     <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacterData_SO.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Enemy\Resource\Kappa\Effect\WaterBallHit.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\Boss1Pattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\IAttack.cs" />
+    <Compile Include="Assets\HR\Script\Movement_HR.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneChangeManager.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
+    <Compile Include="Assets\HR\Script\StallTrigerSimple.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\GolemAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\ActivePatternState.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
@@ -128,12 +131,14 @@
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacter.cs" />
     <Compile Include="Assets\Scripts\Enemy\HitCollider.cs" />
+    <Compile Include="Assets\HR\Script\PlayerInputManager_HR.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\SkillBase.cs" />
     <Compile Include="Assets\HR\Script\PlayerCamera.cs" />
     <Compile Include="Assets\HR\Script\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\IEnemyState.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemUIManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\SlimeAttack.cs" />
+    <Compile Include="Assets\HR\Script\StartWeapon.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemListPanel.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemSaveCharacter.cs" />
     <Compile Include="Assets\Test\Script\EmptyEnemyHit.cs" />
