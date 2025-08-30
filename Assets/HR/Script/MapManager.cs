@@ -15,8 +15,6 @@ public class MapManager : MonoBehaviour
     [Header("Tilemap References")] public Tilemap groundTilemap;
     public Tilemap wallTilemap;
     
-    //public TileBase groundTile;
-    // ���� groundTile ��� �迭�� ����
     public TileBase[] groundTilesByStage;
     public TileBase wallTileHorizontal;
     public TileBase wallTileVertical;
@@ -182,7 +180,6 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        //    &       ׸   
         foreach (var room in rooms)
         {
             Vector2Int worldPos = room.gridPos * new Vector2Int(roomSpacing, roomSpacing);
@@ -197,15 +194,12 @@ public class MapManager : MonoBehaviour
 
         groundTiles = groundTiles.Distinct().ToList();
 
-        //            
         SpawnItems();
 
-        //        
-
-        //       ġ
+        GenerateWalls(groundTilemap,wallTilemap);
+        
         PlaceStairs();
 
-        //               ġ (4, 9, 14  °         )
         if (shopPrefab != null && (currentStage == 4 || currentStage == 9 || currentStage == 14))
         {
             shopInstance = PlaceShop();
@@ -219,9 +213,8 @@ public class MapManager : MonoBehaviour
         GameObject roomObject = new GameObject();
         roomObject.transform.parent = GameObject.Find("Grid").transform;
         roomObject.AddComponent<Tilemap>();
-        roomObject.AddComponent<TilemapRenderer>();
+        roomObject.AddComponent<TilemapRenderer>().sortingOrder = -1;
         roomObject.AddComponent<EnemySpawner>();
-        //roomObject.AddComponent<RoomControl>();
 
         Room room = new Room(roomIdCounter, pos, roomObject);
         return room;
@@ -240,6 +233,7 @@ public class MapManager : MonoBehaviour
 
                 TileBase selectedGroundTile = GetRandomGroundTile();
 
+                groundTilemap.SetTile(tilePos, selectedGroundTile);
                 room.tilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
                 room.tiles.Add(tilePos);
@@ -266,7 +260,6 @@ public class MapManager : MonoBehaviour
                     tilePos = new Vector3Int(pos.x + w, pos.y, 0);
 
                 TileBase selectedGroundTile = GetRandomGroundTile();
-                //room.roomObject.GetComponent<Tilemap>().SetTile(tilePos, selectedGroundTile);
                 groundTilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
             }
@@ -278,12 +271,10 @@ public class MapManager : MonoBehaviour
     // Ȯ       Ÿ         Լ 
     TileBase GetRandomGroundTile()
     {
-        //  ⺻ Ÿ      Ÿ          Ȯ   (1~5%)
         float minRate = 0.01f;
         float maxRate = 0.05f;
         float rate = Mathf.Lerp(minRate, maxRate, Mathf.InverseLerp(2, 14, currentStage));
 
-        //                 Ÿ    ε        
         int extraStart = 2;
         int extraEnd = 1; //  ⺻  : ù  °             ߰  Ÿ       
 
@@ -304,12 +295,10 @@ public class MapManager : MonoBehaviour
         else if (currentStage == 15)
             extraEnd = 9;
 
-        //      Ÿ    ε        Ʈ     
         List<int> extraTileIndices = new List<int>();
         for (int i = extraStart; i <= extraEnd && i < groundTilesByStage.Length; i++)
             extraTileIndices.Add(i);
 
-        // Ȯ    й 
         float defaultTileRate = 1f - (rate * extraTileIndices.Count);
         List<float> tileRates = new List<float>();
         tileRates.Add(defaultTileRate); // 0   Ÿ  
@@ -322,7 +311,6 @@ public class MapManager : MonoBehaviour
                 tileRates.Add(0f);
         }
 
-        //          
         float rand = Random.value;
         float acc = 0f;
         for (int i = 0; i < tileRates.Count; i++)
@@ -335,7 +323,6 @@ public class MapManager : MonoBehaviour
         return groundTilesByStage[0];
     }
 
-    //                  currentStage       ٲ  ְ  GenerateMap() ȣ  
     public void NextStage(bool isStairUp)
     {
         ClearItems();
@@ -473,41 +460,40 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void GenerateWalls(Tilemap emptyMap, Tilemap wallTilemap, TileBase tileBase = null,
+    public void GenerateWalls(Tilemap flowTilemap, Tilemap generateWallTilemap, TileBase tileBase = null,
         bool isStageBlock = false)
     {
-        BoundsInt bounds = emptyMap.cellBounds;
+        BoundsInt bounds = flowTilemap.cellBounds;
 
         for (int x = bounds.xMin - 1; x <= bounds.xMax + 1; x++)
         {
             for (int y = bounds.yMin - 1; y <= bounds.yMax + 1; y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
-                if (emptyMap.GetTile(pos) == null)
+                if (flowTilemap.GetTile(pos) == null)
                 {
-                    if (HasGroundNeighbour(pos, emptyMap))
+                    if (HasGroundNeighbour(pos, flowTilemap))
                     {
                         if (isStageBlock)
                         {
-                            wallTilemap.SetTile(pos, tileBase);
-
+                            generateWallTilemap.SetTile(pos, tileBase);
                         }
                         else
                         {
                             bool hasHorizontalNeighbour =
-                                groundTilemap.GetTile(new Vector3Int(pos.x - 1, pos.y, 0)) != null ||
-                                groundTilemap.GetTile(new Vector3Int(pos.x + 1, pos.y, 0)) != null;
+                                flowTilemap.GetTile(new Vector3Int(pos.x - 1, pos.y, 0)) != null ||
+                                flowTilemap.GetTile(new Vector3Int(pos.x + 1, pos.y, 0)) != null;
 
                             bool hasVerticalNeighbour =
-                                groundTilemap.GetTile(new Vector3Int(pos.x, pos.y - 1, 0)) != null ||
-                                groundTilemap.GetTile(new Vector3Int(pos.x, pos.y + 1, 0)) != null;
+                                flowTilemap.GetTile(new Vector3Int(pos.x, pos.y - 1, 0)) != null ||
+                                flowTilemap.GetTile(new Vector3Int(pos.x, pos.y + 1, 0)) != null;
 
                             if (hasHorizontalNeighbour && !hasVerticalNeighbour)
-                                wallTilemap.SetTile(pos, wallTileHorizontal);
+                                generateWallTilemap.SetTile(pos, wallTileHorizontal);
                             else if (hasVerticalNeighbour && !hasHorizontalNeighbour)
-                                wallTilemap.SetTile(pos, wallTileVertical);
+                                generateWallTilemap.SetTile(pos, wallTileVertical);
                             else
-                                wallTilemap.SetTile(pos, wallTileVertical); // �ڳʵ� vertical�� ����
+                                generateWallTilemap.SetTile(pos, wallTileVertical); // �ڳʵ� vertical�� ����
                         }
                     }
                 }

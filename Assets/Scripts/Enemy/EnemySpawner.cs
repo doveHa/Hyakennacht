@@ -125,7 +125,7 @@ namespace Enemy
             child.transform.parent = transform;
             TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/Wall.asset");
             Tilemap tilemap = child.transform.AddComponent<Tilemap>();
-            child.transform.AddComponent<TilemapRenderer>();
+            child.transform.AddComponent<TilemapRenderer>().sortingOrder = 2;
             child.transform.AddComponent<TilemapCollider2D>();
             MapManager.Instance.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase,true);
             //await SpawnEnemies();
