@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Manager;
 using UnityEngine;
 
 namespace Enemy.BossStage
@@ -9,19 +10,13 @@ namespace Enemy.BossStage
 
         public float bulletSpeed;
 
-        // --- 패턴 1: 원형 확산탄 ---
-        private float radialTimer = 0f;
-        private float radialInterval = 2f;
-        private int radialBulletCount = 20;
-
         protected override void SetAction()
         {
             Actions.Add(() => StartCoroutine(PatternRadial()));
             Actions.Add(() => StartCoroutine(PatternSpiral()));
-            Actions.Add(() => StartCoroutine((PatternWave())));
+            Actions.Add(() => StartCoroutine(PatternFan()));
         }
 
-        // --- 패턴 1: 원형 확산탄 ---
         private IEnumerator PatternRadial()
         {
             float duration = 3f;
@@ -45,9 +40,8 @@ namespace Enemy.BossStage
                         float y = Mathf.Sin(angle * Mathf.Deg2Rad);
                         Vector3 dir = new Vector3(x, y, 0f);
 
-                        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                        bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
-                        bullet.transform.parent = transform.GetChild(1);
+                        // SpawnBullet 활용
+                        SpawnBullet(dir, true);
 
                         angle += angleStep;
                     }
@@ -59,10 +53,9 @@ namespace Enemy.BossStage
                 yield return null;
             }
 
-            _controller.CanChangeState(); // 패턴 끝나면 상태 전환 허용
+            _controller.CanChangeState();
         }
 
-        // --- 패턴 2: 나선 탄막 ---
         private IEnumerator PatternSpiral()
         {
             float duration = 3f;
@@ -80,9 +73,10 @@ namespace Enemy.BossStage
                 {
                     float dirX = Mathf.Cos(angle * Mathf.Deg2Rad);
                     float dirY = Mathf.Sin(angle * Mathf.Deg2Rad);
+                    Vector3 dir = new Vector3(dirX, dirY, 0f);
 
-                    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                    bullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(dirX, dirY) * bulletSpeed;
+                    // SpawnBullet 활용
+                    SpawnBullet(dir, true);
 
                     angle += rotateSpeed;
                     localTimer = 0f;
@@ -95,40 +89,67 @@ namespace Enemy.BossStage
             _controller.CanChangeState();
         }
 
-        // --- 패턴 3: 파도형 탄막 ---
-        private IEnumerator PatternWave()
+        public IEnumerator PatternFan()
         {
-            float duration = 3f;
+            Debug.Log("fan");
             float timer = 0f;
+            float elapsed = 0f;
+            float duration = 4f;
+            float interval = 2f;
+            int bulletCount = 20;
+            float angleRange = 120f;
 
-            float interval = 0.2f;
-            float localTimer = 0f;
-            float waveFrequency = 5f;
-            float waveAmplitude = 2f;
-            float waveOffset = 0f;
-
-            while (timer < duration)
+            while (elapsed < duration)
             {
-                localTimer += Time.deltaTime;
-                if (localTimer >= interval)
+                timer += Time.deltaTime;
+                elapsed += Time.deltaTime;
+
+                if (timer >= interval)
                 {
-                    Vector2 dir = (_target.position - transform.position).normalized;
-                    Vector2 perp = new Vector2(-dir.y, dir.x);
+                    timer = 0f;
 
-                    waveOffset += waveFrequency * Time.deltaTime;
-                    Vector2 finalDir = (dir + perp * Mathf.Sin(waveOffset) * waveAmplitude).normalized;
+                    Vector3 targetDir = (_target.position - transform.position).normalized;
+                    float baseAngle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
+                    float step = angleRange / (bulletCount - 1);
 
-                    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                    bullet.GetComponent<Rigidbody2D>().linearVelocity = finalDir * bulletSpeed;
-
-                    localTimer = 0f;
+                    for (int i = 0; i < bulletCount; i++)
+                    {
+                        float angle = baseAngle - angleRange / 2f + step * i;
+                        Vector3 dir = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+                        SpawnBullet(dir);
+                    }
                 }
 
-                timer += Time.deltaTime;
                 yield return null;
             }
 
             _controller.CanChangeState();
+        }
+
+        public void SpawnBullet(Vector3 direction, bool isDirection = true)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector3 moveDir;
+
+                if (isDirection)
+                {
+                    moveDir = direction.normalized;
+                }
+                else
+                {
+                    bullet.transform.position = direction;
+                    moveDir = (_target.position - direction).normalized;
+                }
+
+                rb.linearVelocity = moveDir * bulletSpeed;
+
+                float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
+                bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
         }
     }
 }

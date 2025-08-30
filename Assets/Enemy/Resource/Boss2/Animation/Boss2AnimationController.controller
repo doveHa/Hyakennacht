@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: afaf00df774b6994d85097d65d434603, type: 2}
+  m_Motion: {fileID: 7400000, guid: 982756446c34e384380f42322d0f6902, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -69,7 +69,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e5d43897f02863f49b0e428a2d6684bf, type: 2}
+  m_Motion: {fileID: 7400000, guid: f48257301929bd14c9f9cec8ca169cbf, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -96,7 +96,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 53e2097bd6d80534eb2ad1e5ba6ddc92, type: 2}
+  m_Motion: {fileID: 7400000, guid: e67d4f4dc05e0d94b9be4243b721c933, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -133,7 +133,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss1AnimationController
+  m_Name: Boss2AnimationController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsWalk

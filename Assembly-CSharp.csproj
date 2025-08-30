@@ -92,6 +92,7 @@
     <Compile Include="Assets\Enemy\Resource\Boss1\Effect\Bullet.cs" />
     <Compile Include="Assets\Enemy\Resource\Straw\Effect\SmallStraw.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\Boss2Pattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Character\Dash.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
