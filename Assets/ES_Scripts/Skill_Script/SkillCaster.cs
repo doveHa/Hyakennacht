@@ -1,3 +1,5 @@
+using Character;
+using Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,11 @@ public class SkillCaster : MonoBehaviour
 {
     public SkillBase[] slots;
     public Transform firePoint;
-    public float gcd = 0.2f;
+    public Transform actor;
+    SpriteRenderer actorSR;
+    Dash actorDash;
+
+    public float gcd = 5;
 
     private readonly Dictionary<string, float> cdEnd = new();
     private float gcdEnd;
@@ -14,25 +20,34 @@ public class SkillCaster : MonoBehaviour
     public ObjectPool pool;
     public FXRouter fx;
 
+
     void Awake()
     {
         if (!pool) pool = FindFirstObjectByType<ObjectPool>();
         if (!fx) fx = FindFirstObjectByType<FXRouter>();
+
+        // Body / FirePos ÀÚµ¿ Å½»ö
+        if (!actor)
+        {
+            var root = (GameManager.Manager && GameManager.Manager.Player)
+                       ? GameManager.Manager.Player.transform
+                       : transform;
+            actor = root.Find("Body") ?? root;
+        }
+
         if (!firePoint)
         {
-            var body = transform.Find("Body");
-            if (body)
-            {
-                var fp = body.Find("FirePos");
-                if (fp) firePoint = fp;
-            }
+            firePoint = actor.Find("FirePos");
+            if (!firePoint) firePoint = actor;
         }
+
+        actorSR = actor.GetComponentInChildren<SpriteRenderer>(true);
+        actorDash = actor.GetComponentInChildren<Dash>(true);
     }
 
     void Update()
     {
         if (slots == null) return;
-
         if (Input.GetKeyDown(KeyCode.F)) TryCast(slots.Length > 0 ? slots[0] : null);
         if (Input.GetKeyDown(KeyCode.G)) TryCast(slots.Length > 1 ? slots[1] : null);
         if (Input.GetKeyDown(KeyCode.H)) TryCast(slots.Length > 2 ? slots[2] : null);
@@ -40,17 +55,31 @@ public class SkillCaster : MonoBehaviour
 
     void TryCast(SkillBase skill)
     {
-        if (skill == null) return;
+        if (!skill) return;
         if (skill.useGCD && Time.time < gcdEnd) return;
 
+        bool isLeft =
+            (actorDash != null) ? actorDash.IsLeftSight :
+            (actorSR != null) ? actorSR.flipX :
+            (actor.localScale.x < 0f);
+
+        float face = isLeft ? -1f : 1f;
+
+        var s = actor.localScale;
+        actor.localScale = new Vector3(Mathf.Abs(s.x) * face, s.y, s.z);
+
+        if (actorSR) actorSR.flipX = false;
+
+        Vector2 castPos = firePoint ? (Vector2)firePoint.position : (Vector2)actor.position;
+        Vector2 forward = new Vector2(face, 0f);
         Vector2 mouseWorld = Camera.main ? (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition)
-                                         : (Vector2)transform.position;
-        Vector2 castPos = firePoint ? (Vector2)firePoint.position : (Vector2)transform.position;
-        Vector2 aimDir = (mouseWorld - castPos).normalized;
+                                         : castPos + forward;
+        Vector2 aimDir = (mouseWorld - castPos).sqrMagnitude > 0.0001f ? (mouseWorld - castPos).normalized
+                                                                           : forward;
 
         var ctx = new SkillContext
         {
-            caster = transform,
+            caster = actor,     
             castPos = castPos,
             aimDir = aimDir,
             aimPoint = mouseWorld,
@@ -61,15 +90,13 @@ public class SkillCaster : MonoBehaviour
             StartCooldown = (id, cd) => cdEnd[id] = Time.time + cd,
 
             SpawnFromPool = (key) => pool ? pool.Spawn(key) : null,
-            PlayFXAt = (key, pos) => { if (fx != null) fx.PlayAt(key, pos); }
+            PlayFXAt = (key, pos) => { if (fx) fx.PlayAt(key, pos); }
         };
 
         if (!skill.CanCast(ctx)) return;
 
-        if (skill.castTime > 0f)
-            StartCoroutine(CastRoutine(skill, ctx));
-        else
-            CastNow(skill, ctx);
+        if (skill.castTime > 0f) StartCoroutine(CastRoutine(skill, ctx));
+        else CastNow(skill, ctx);
     }
 
     IEnumerator CastRoutine(SkillBase s, SkillContext ctx)
