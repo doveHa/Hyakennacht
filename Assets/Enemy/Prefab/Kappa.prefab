@@ -18,8 +18,6 @@ GameObject:
   - component: {fileID: 8122706781385606940}
   - component: {fileID: 1757427523406434269}
   - component: {fileID: 3243928953205170348}
-  - component: {fileID: -8359472457709290703}
-  - component: {fileID: -4397873476236965772}
   m_Layer: 0
   m_Name: Kappa
   m_TagString: Enemy
@@ -212,32 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6077324bf3cfab84582c811b1cac84d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8359472457709290703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783177417010643878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846b8377da2a145478afdda90b1e59af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-4397873476236965772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783177417010643878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e12198b08ab9d647975137c6fd8fc93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunnedTint: {r: 1, g: 0.3820755, b: 0.3820755, a: 0.5}
-  debugLog: 0
 --- !u!1 &7565353995710199854
 GameObject:
   m_ObjectHideFlags: 0

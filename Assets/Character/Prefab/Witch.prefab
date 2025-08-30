@@ -133,8 +133,6 @@ GameObject:
   - component: {fileID: 8114748236499146807}
   - component: {fileID: 3179231036781148564}
   - component: {fileID: 9147628870489548251}
-  - component: {fileID: 8752441299701848582}
-  - component: {fileID: 944288025010140601}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Untagged
@@ -219,34 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponVisualHolder: {fileID: 0}
---- !u!114 &8752441299701848582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6654459765545817610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f95aff6bc6ba74784f3b22c2d69d23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 11303381495021348}
-  dash: {fileID: 3179231036781148564}
---- !u!114 &944288025010140601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6654459765545817610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c86f0869944832b4cad6184c8116fda0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facing: {fileID: 8752441299701848582}
-  affectChildren: 0
 --- !u!1 &7595310395033506146
 GameObject:
   m_ObjectHideFlags: 0

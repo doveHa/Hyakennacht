@@ -17,8 +17,6 @@ GameObject:
   - component: {fileID: 232116486221048034}
   - component: {fileID: 7992639868892031145}
   - component: {fileID: 8635730488989224433}
-  - component: {fileID: 3391922792731622367}
-  - component: {fileID: -7791281638110887462}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Untagged
@@ -935,32 +933,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6077324bf3cfab84582c811b1cac84d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3391922792731622367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e12198b08ab9d647975137c6fd8fc93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunnedTint: {r: 1, g: 1, b: 1, a: 0.5}
-  debugLog: 0
---- !u!114 &-7791281638110887462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846b8377da2a145478afdda90b1e59af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2159096669655434152

@@ -51,7 +51,7 @@ MonoBehaviour:
   tierMulHigh: 1
   spawnKey: yogi pogbal
   impactKey: 
-  radius: 3
+  radius: 2.5
   baseDamage: 8
   enemyMask:
     serializedVersion: 2
