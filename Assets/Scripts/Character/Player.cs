@@ -56,4 +56,15 @@ public class Player : MonoBehaviour
     {
         Coins++;
     }
+
+    //HR
+    public bool SpendCoins(int amount)
+    {
+        if (Coins >= amount)
+        {
+            Coins -= amount;
+            return true;
+        }
+        return false;
+    }
 }

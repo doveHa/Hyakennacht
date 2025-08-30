@@ -1,62 +1,69 @@
-using System.Collections.Generic;
+癤퓎sing System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using Enemy;
+using Manager;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
 
-    [Header("Tilemap References")]
-    public Tilemap groundTilemap;
+    [Header("Tilemap References")] public Tilemap groundTilemap;
     public Tilemap wallTilemap;
-    //public TileBase groundTile;
-    // 기존 groundTile 대신 배열로 선언
+
     public TileBase[] groundTilesByStage;
     public TileBase wallTileHorizontal;
     public TileBase wallTileVertical;
 
-    [Header("Stage Settings")]
-    public int currentStage = 0; // 현재 스테이지
+    [Header("Stage Settings")] public int currentStage = 0; //              
 
-    [Header("Room Settings")]
-    public int roomCount = 7;
+    [Header("Room Settings")] public int roomCount = 7;
     public int roomWidth = 13;
     public int roomHeight = 13;
 
-    [Header("Spacing Settings")]
-    public int roomSpacing = 25;
+    [Header("Spacing Settings")] public int roomSpacing = 25;
 
-    [Header("Corridor Settings")]
-    public int corridorWidth = 3;
+    [Header("Corridor Settings")] public int corridorWidth = 3;
 
-    [Header("Stair Tiles")]
-    public TileBase stairUpTile;
+    [Header("Stair Tiles")] public TileBase stairUpTile;
     public TileBase stairDownTile;
 
-    [Header("Item Spawn")]
-    public GameObject[] itemPrefabs;
+    [Header("Item Spawn")] public GameObject[] itemPrefabs;
     public int maxItemCount = 10;
 
-    public GameObject shopPrefab; // 인스펙터에서 상점 프리팹 할당
-    private GameObject shopInstance; // 현재 맵에 생성된 상점 오브젝트 참조
+    public GameObject shopPrefab; //  館    沽                 年 
+    private GameObject shopInstance; //       却                    트     
 
-    // 모든 바닥 타일
+    //      募  타  
     private List<Vector3Int> groundTiles = new List<Vector3Int>();
 
-    const int maxStage = 15; // 전체 스테이지 수
-    const int specialStageCount = 2; // 특수 스테이지 수
+    const int maxStage = 15; //   체            
+    const int specialStageCount = 2; // 특              
 
+    private List<GameObject> roomGameObjects = new List<GameObject>();
 
-    // 방 데이터 구조
+    //               
     [System.Serializable]
     public class Room
     {
+        public Room(int id, Vector2Int gridPos, GameObject roomObject)
+        {
+            this.id = id;
+            this.gridPos = gridPos;
+            this.roomObject = roomObject;
+            tilemap = roomObject.GetComponent<Tilemap>();
+        }
+
         public int id;
-        public Vector2Int gridPos; // 맵 배치 좌표
-        public List<Vector3Int> tiles = new List<Vector3Int>(); // 방 내부 타일
+        public Vector2Int gridPos; //      치   표
+        public List<Vector3Int> tiles = new List<Vector3Int>(); //         타  
         public List<Vector2Int> connectedRooms = new List<Vector2Int>();
+        public GameObject roomObject;
+        public Tilemap tilemap;
     }
 
     private List<Room> rooms = new List<Room>();
@@ -79,7 +86,7 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        // 스테이지 1부터 시작
+        //          1         
         currentStage = StageManager.CurrentStage;
         if (currentStage < 1) currentStage = 1;
         GenerateMap();
@@ -89,7 +96,6 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-
             //GenerateMap();
             /*            NextStage(true);
                         Debug.Log("Map regenerated");*/
@@ -102,14 +108,19 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    void GenerateMap()
+    Vector2Int GenerateMap()
     {
+        foreach (Room room in rooms)
+        {
+            Destroy(room.roomObject);
+        }
+
         groundTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
         groundTiles.Clear();
         rooms.Clear();
 
-        // 4, 9, 14번째 스테이지는 구역 8개
+        // 4, 9, 14  째                 8  
         if (currentStage == 4 || currentStage == 9 || currentStage == 14)
         {
             roomCount = 8;
@@ -126,12 +137,14 @@ public class MapManager : MonoBehaviour
         Queue<Vector2Int> toExplore = new Queue<Vector2Int>();
         toExplore.Enqueue(startPos);
 
-        Room startRoom = new Room { id = 0, gridPos = startPos };
+        int roomIdCounter = 0;
+
+        Room startRoom = RoomObject(startPos, roomIdCounter++);
+        Destroy(startRoom.roomObject.GetComponent<EnemySpawner>());
         roomDict[startPos] = startRoom;
         rooms.Add(startRoom);
         occupied.Add(startPos);
 
-        int roomIdCounter = 1;
 
         while (rooms.Count < roomCount && toExplore.Count > 0)
         {
@@ -146,7 +159,7 @@ public class MapManager : MonoBehaviour
 
                 if (!occupied.Contains(nextPos))
                 {
-                    Room newRoom = new Room { id = roomIdCounter++, gridPos = nextPos };
+                    Room newRoom = RoomObject(nextPos, roomIdCounter++);
                     roomDict[nextPos] = newRoom;
                     rooms.Add(newRoom);
                     occupied.Add(nextPos);
@@ -167,7 +180,6 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        // 방 & 복도 그리기
         foreach (var room in rooms)
         {
             Vector2Int worldPos = room.gridPos * new Vector2Int(roomSpacing, roomSpacing);
@@ -176,26 +188,36 @@ public class MapManager : MonoBehaviour
             foreach (var conn in room.connectedRooms)
             {
                 Vector2Int connWorldPos = conn * new Vector2Int(roomSpacing, roomSpacing);
-                DrawCorridor(worldPos, connWorldPos);
+                DrawCorridor(worldPos, connWorldPos, room);
             }
         }
 
         groundTiles = groundTiles.Distinct().ToList();
 
-        // 아이템 생성
         SpawnItems();
 
-        // 벽 생성
-        GenerateWalls();
+        GenerateWalls(groundTilemap, wallTilemap);
 
-        // 계단 배치
         PlaceStairs();
 
-        // 상점 프리팹 배치 (4, 9, 14번째 스테이지)
         if (shopPrefab != null && (currentStage == 4 || currentStage == 9 || currentStage == 14))
         {
             shopInstance = PlaceShop();
         }
+
+        return startPos;
+    }
+
+    private Room RoomObject(Vector2Int pos, int roomIdCounter)
+    {
+        GameObject roomObject = new GameObject();
+        roomObject.transform.parent = GameObject.Find("Grid").transform;
+        roomObject.AddComponent<Tilemap>();
+        roomObject.AddComponent<TilemapRenderer>().sortingOrder = -4;
+        roomObject.AddComponent<EnemySpawner>();
+
+        Room room = new Room(roomIdCounter, pos, roomObject);
+        return room;
     }
 
     void DrawRoomFloor(Vector2Int worldPos, int width, int height, Room room)
@@ -210,14 +232,16 @@ public class MapManager : MonoBehaviour
                 Vector3Int tilePos = new Vector3Int(startX + x, startY + y, 0);
 
                 TileBase selectedGroundTile = GetRandomGroundTile();
+
                 groundTilemap.SetTile(tilePos, selectedGroundTile);
+                room.tilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
                 room.tiles.Add(tilePos);
             }
         }
     }
 
-    void DrawCorridor(Vector2Int from, Vector2Int to)
+    void DrawCorridor(Vector2Int from, Vector2Int to, Room room)
     {
         Vector2Int dir = new Vector2Int(
             to.x > from.x ? 1 : to.x < from.x ? -1 : 0,
@@ -239,21 +263,20 @@ public class MapManager : MonoBehaviour
                 groundTilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
             }
+
             pos += dir;
         }
     }
 
-    // 확률 기반 타일 선택 함수
+    // 확       타         獨 
     TileBase GetRandomGroundTile()
     {
-        // 기본 타일 외 타일의 등장 확률 (1~5%)
         float minRate = 0.01f;
         float maxRate = 0.05f;
         float rate = Mathf.Lerp(minRate, maxRate, Mathf.InverseLerp(2, 14, currentStage));
 
-        // 스테이지별 등장 타일 인덱스 결정
         int extraStart = 2;
-        int extraEnd = 1; // 기본값: 첫번째 스테이지는 추가 타일 없음
+        int extraEnd = 1; //  羞�  : 첫  째             煞  타       
 
         if (currentStage >= 2 && currentStage <= 3)
             extraEnd = 2;
@@ -272,15 +295,13 @@ public class MapManager : MonoBehaviour
         else if (currentStage == 15)
             extraEnd = 9;
 
-        // 등장 타일 인덱스 리스트 생성
         List<int> extraTileIndices = new List<int>();
         for (int i = extraStart; i <= extraEnd && i < groundTilesByStage.Length; i++)
             extraTileIndices.Add(i);
 
-        // 확률 분배
         float defaultTileRate = 1f - (rate * extraTileIndices.Count);
         List<float> tileRates = new List<float>();
-        tileRates.Add(defaultTileRate); // 0번 타일
+        tileRates.Add(defaultTileRate); // 0   타  
 
         for (int i = 1; i < groundTilesByStage.Length; i++)
         {
@@ -290,7 +311,6 @@ public class MapManager : MonoBehaviour
                 tileRates.Add(0f);
         }
 
-        // 랜덤 선택
         float rand = Random.value;
         float acc = 0f;
         for (int i = 0; i < tileRates.Count; i++)
@@ -299,10 +319,10 @@ public class MapManager : MonoBehaviour
             if (rand < acc)
                 return groundTilesByStage[i];
         }
+
         return groundTilesByStage[0];
     }
 
-    // 스테이지 변경 시 currentStage 값을 바꿔주고 GenerateMap() 호출
     public void NextStage(bool isStairUp)
     {
         ClearItems();
@@ -310,18 +330,6 @@ public class MapManager : MonoBehaviour
         StageManager.AdvanceStage(isStairUp);
         currentStage = StageManager.CurrentStage;
 
-        /*        Debug.Log("Current Stage: " + currentStage);
-
-                if (currentStage == 5 || currentStage == 10 || currentStage == 15)
-                {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("BossMap");
-                    Debug.Log("Boss Stage: " + currentStage);
-
-                    Debug.Log("Ready for Boss Stage: " + currentStage);
-                    return;
-                }
-
-                GenerateMap();*/
 
         if (StageManager.IsBossStage())
         {
@@ -331,10 +339,10 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-        // 일반 맵
+        //  球    
         string mapScene = StageManager.GetMapScene();
         Debug.Log("Map Stage: " + currentStage + " -> Loading: " + mapScene);
-        GenerateMap(); // 맵 재생성
+        GenerateMap(); //         
     }
 
     void PlaceStairs()
@@ -361,11 +369,11 @@ public class MapManager : MonoBehaviour
     {
         Vector3Int[] dirs =
         {
-        new Vector3Int(1, 0, 0),
-        new Vector3Int(-1, 0, 0),
-        new Vector3Int(0, 1, 0),
-        new Vector3Int(0, -1, 0)
-    };
+            new Vector3Int(1, 0, 0),
+            new Vector3Int(-1, 0, 0),
+            new Vector3Int(0, 1, 0),
+            new Vector3Int(0, -1, 0)
+        };
 
         int tileCount = Mathf.Clamp(currentStage + 1, 1, groundTilesByStage.Length);
         TileBase[] candidates = groundTilesByStage.Take(tileCount).ToArray();
@@ -376,6 +384,7 @@ public class MapManager : MonoBehaviour
             if (!candidates.Contains(tile))
                 return false;
         }
+
         return true;
     }
 
@@ -395,11 +404,11 @@ public class MapManager : MonoBehaviour
     {
         if (itemPrefabs == null || itemPrefabs.Length == 0) return;
 
-        // 상점이 있는 방의 타일 제외
+        //         獵       타       
         List<Vector3Int> shopRoomTiles = new List<Vector3Int>();
         if (shopInstance != null)
         {
-            // shopInstance가 있는 방 찾기
+            // shopInstance    獵     찾  
             Room shopRoom = rooms.FirstOrDefault(r =>
                 r.tiles.Any(t =>
                 {
@@ -412,13 +421,13 @@ public class MapManager : MonoBehaviour
                 shopRoomTiles = shopRoom.tiles;
         }
 
-        // 방 내부 타일만 대상으로, 상점 타일 제외
+        //         타 玖         ,      타       
         var roomTiles = rooms.SelectMany(r => r.tiles)
-                             .Where(t => !shopRoomTiles.Contains(t))
-                             .Distinct()
-                             .ToList();
+            .Where(t => !shopRoomTiles.Contains(t))
+            .Distinct()
+            .ToList();
 
-        // 계단 타일 제외
+        //     타       
         var validTiles = roomTiles.Where(tilePos =>
         {
             TileBase tile = groundTilemap.GetTile(tilePos);
@@ -440,11 +449,8 @@ public class MapManager : MonoBehaviour
         }
     }
 
-
     void ClearItems()
     {
-        //MapUIManager.Instance.OnStageStart();
-
         foreach (Transform child in transform)
         {
             if (child.CompareTag("Item"))
@@ -454,51 +460,59 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    void GenerateWalls()
+    public void GenerateWalls(Tilemap flowTilemap, Tilemap generateWallTilemap, TileBase tileBase = null,
+        bool isStageBlock = false)
     {
-        BoundsInt bounds = groundTilemap.cellBounds;
+        BoundsInt bounds = flowTilemap.cellBounds;
+
         for (int x = bounds.xMin - 1; x <= bounds.xMax + 1; x++)
         {
             for (int y = bounds.yMin - 1; y <= bounds.yMax + 1; y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
-
-                if (groundTilemap.GetTile(pos) == null) // 땅이 아니면 벽 후보
+                if (flowTilemap.GetTile(pos) == null)
                 {
-                    if (HasGroundNeighbour(pos))
+                    if (HasGroundNeighbour(pos, flowTilemap))
                     {
-                        bool hasHorizontalNeighbour =
-                            groundTilemap.GetTile(new Vector3Int(pos.x - 1, pos.y, 0)) != null ||
-                            groundTilemap.GetTile(new Vector3Int(pos.x + 1, pos.y, 0)) != null;
-
-                        bool hasVerticalNeighbour =
-                            groundTilemap.GetTile(new Vector3Int(pos.x, pos.y - 1, 0)) != null ||
-                            groundTilemap.GetTile(new Vector3Int(pos.x, pos.y + 1, 0)) != null;
-
-                        if (hasHorizontalNeighbour && !hasVerticalNeighbour)
-                            wallTilemap.SetTile(pos, wallTileHorizontal);
-                        else if (hasVerticalNeighbour && !hasHorizontalNeighbour)
-                            wallTilemap.SetTile(pos, wallTileVertical);
+                        if (isStageBlock)
+                        {
+                            generateWallTilemap.SetTile(pos, tileBase);
+                        }
                         else
-                            wallTilemap.SetTile(pos, wallTileVertical); // 코너도 vertical로 설정
+                        {
+                            bool hasHorizontalNeighbour =
+                                flowTilemap.GetTile(new Vector3Int(pos.x - 1, pos.y, 0)) != null ||
+                                flowTilemap.GetTile(new Vector3Int(pos.x + 1, pos.y, 0)) != null;
+
+                            bool hasVerticalNeighbour =
+                                flowTilemap.GetTile(new Vector3Int(pos.x, pos.y - 1, 0)) != null ||
+                                flowTilemap.GetTile(new Vector3Int(pos.x, pos.y + 1, 0)) != null;
+
+                            if (hasHorizontalNeighbour && !hasVerticalNeighbour)
+                                generateWallTilemap.SetTile(pos, wallTileHorizontal);
+                            else if (hasVerticalNeighbour && !hasHorizontalNeighbour)
+                                generateWallTilemap.SetTile(pos, wallTileVertical);
+                            else
+                                generateWallTilemap.SetTile(pos, wallTileVertical); //  楣茄  vertical       
+                        }
                     }
                 }
             }
         }
     }
 
-
-    bool HasGroundNeighbour(Vector3Int pos)
+    bool HasGroundNeighbour(Vector3Int pos, Tilemap tilemap)
     {
         for (int dx = -1; dx <= 1; dx++)
         {
             for (int dy = -1; dy <= 1; dy++)
             {
                 if (dx == 0 && dy == 0) continue;
-                if (groundTilemap.GetTile(new Vector3Int(pos.x + dx, pos.y + dy, 0)) != null)
+                if (tilemap.GetTile(new Vector3Int(pos.x + dx, pos.y + dy, 0)) != null)
                     return true;
             }
         }
+
         return false;
     }
 
@@ -513,17 +527,18 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    // 상점 프리팹을 8번째 방 중앙에 배치
+    //               8  째     上淡    치
     GameObject PlaceShop()
     {
         if (rooms.Count < 8) return null;
-        Room shopRoom = rooms[7]; // 8번째 방 (인덱스 7)
-        // 방 중앙 좌표 계산
+        Room shopRoom = rooms[7]; // 8  째    ( 琯    7)
+        //     上    표    
         Vector3 avgWorldPos = Vector3.zero;
         foreach (var tile in shopRoom.tiles)
         {
             avgWorldPos += groundTilemap.CellToWorld(tile) + new Vector3(0.5f, 0.5f, 0);
         }
+
         avgWorldPos /= shopRoom.tiles.Count;
 
         return Instantiate(shopPrefab, avgWorldPos, Quaternion.identity, this.transform);

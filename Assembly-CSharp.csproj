@@ -61,6 +61,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HR\Script\MapUIManager.cs" />
     <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\AutoDestroy.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\FXRouter.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\ES_Scripts\Skill_Script\SkillCaster.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Projectile.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ChargeAttack.cs" />
+    <Compile Include="Assets\HR\Script\Movement_HR.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\InstallAttack.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Assets\ES_Scripts\Weapon_Script\LongStaff.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\SkillBase.cs" />
+    <Compile Include="Assets\HR\Script\StallTrigerSimple.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\GolemAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\백귀야행\SpiritMinion2D.cs" />
@@ -168,6 +171,7 @@
     <Compile Include="Assets\ES_Scripts\Skill_Script\결초보은\TrapPlant2D.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\도깨비불\SK_DokkaebiFire.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\WeaponData.cs" />
+    <Compile Include="Assets\HR\Script\PlayerInputManager_HR.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\SkillBase.cs" />
     <Compile Include="Assets\HR\Script\PlayerCamera.cs" />
     <Compile Include="Assets\HR\Script\ShopManager.cs" />
@@ -175,6 +179,7 @@
     <Compile Include="Assets\ES_Scripts\Skill_Script\펌프킨 메테오\FallingProjectile2D.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemUIManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\SlimeAttack.cs" />
+    <Compile Include="Assets\HR\Script\StartWeapon.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemListPanel.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\펌프킨 메테오\SK_PumpkinMeteor.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemSaveCharacter.cs" />
