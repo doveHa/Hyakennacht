@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943ba348e4a39f147ab048836f7d3ae4, type: 3}
+  m_Name: "\uACB0\uCD08\uBCF4\uC740"
+  m_EditorClassIdentifier: 
+  skillId: KyulTrap
+  displayName: "\uACB0\uCD08\uBCF4\uC740"
+  factionGate: 0
+  tier: 0
+  exec: 6
+  targeting: 1
+  cooldown: 6
+  castTime: 0
+  range: 6
+  useGCD: 1
+  powerByLevel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  tierMulLow: 1
+  tierMulMid: 1
+  tierMulHigh: 1
+  spawnKey: 
+  impactKey: 
+  trapKey: KyulTrap
+  offset: 1
+  feetYOffset: -0.2
+  alignToFacing: 1
+  maxActivePerCaster: 5
+  trapLifetime: 20
+  baseDamage: 10
+  stunSeconds: 1.5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  targetTags:
+  - Enemy
+  hitFxKey: 

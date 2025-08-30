@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Skills/Projectile/도깨비불")]
-public class SK_DokkaebiFire : SkillBase_ES
+public class SK_DokkaebiFire : SkillBase
 {
     [Header("Projectile Settings")]
     public string projectileKey = "DokkaebiFire"; // 풀 키

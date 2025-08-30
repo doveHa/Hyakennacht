@@ -6,6 +6,7 @@ public class Enemy_ES : MonoBehaviour
 {
     public int hp = 10;
     public int maxHp = 20;
+    public float moveSpeed = 10;
 
     public void TakeDamage(int dmg)
     {
