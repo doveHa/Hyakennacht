@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8976457026783313276}
   - component: {fileID: 117380227252251624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\uAE34 \uC9C0\uD321\uC774"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

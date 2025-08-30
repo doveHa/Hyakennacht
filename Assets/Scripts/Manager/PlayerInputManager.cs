@@ -124,20 +124,20 @@ namespace Manager
         {
             if (_activeSkill1 != null)
             {
-                _activeSkill1.Run();
+                //_activeSkill1.Run();
             }
         }
 
         public void ChangeActiveSkill1(SkillBase skill)
         {
-            _activeSkill1 = skill;
+            //_activeSkill1 = skill;
         }
 
         private void RunActiveSkill2(InputAction.CallbackContext ctx)
         {
             if (_activeSkill2 != null)
             {
-                _activeSkill2.Run();
+                //_activeSkill2.Run();
             }
         }
 

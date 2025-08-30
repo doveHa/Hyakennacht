@@ -52,14 +52,11 @@ MonoBehaviour:
   spawnKey: 
   impactKey: 
   radius: 3.5
-  baseDamage: 0
   enemyMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   targetTags:
   - Enemy
-  knockbackForce: 6
-  maxKnockbackSpeed: 5
-  knockbackDuration: 5
+  stunSeconds: 1.5
   clockPoolKey: ClockMarker
   clockOffset: {x: 0, y: 1.5}

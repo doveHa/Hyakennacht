@@ -61,7 +61,7 @@ MonoBehaviour:
   stunSeconds: 1.5
   enemyMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   targetTags:
   - Enemy
   hitFxKey: 

@@ -60,5 +60,5 @@ MonoBehaviour:
   explodeRadius: 1.6
   hitMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   trailFxKey: 

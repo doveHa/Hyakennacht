@@ -64,7 +64,8 @@ public class RiftZone2D : MonoBehaviour
         if (!_armed) return;
 
         Vector2 center = transform.position;
-        int n = Physics2D.OverlapCircleNonAlloc(center, _radius, _buf, _mask);
+        int n = Phys2DCompat.OverlapCircle(center, _radius, _buf, _mask, includeTriggers: true);
+
         if (n <= 0) { if (Time.time >= _endTime) Finish(); return; }
 
         Vector2 fwd = (Vector2)transform.right;
@@ -87,7 +88,7 @@ public class RiftZone2D : MonoBehaviour
             if (Vector2.Angle(fwd, -to) > halfArc) continue;
 
             var rb = col.attachedRigidbody;
-            if (rb != null && !rb.isKinematic)
+            if (rb != null && rb.bodyType != RigidbodyType2D.Kinematic)
             {
                 Vector2 dir = to / dist;
                 float arriveRadius = _radius * 0.7f;                  // ���� ���� ����
@@ -134,7 +135,8 @@ public class RiftZone2D : MonoBehaviour
             Vector2 fwd = transform.right;
             float halfArc = _frontArcDeg * 0.5f;
 
-            int n = Physics2D.OverlapCircleNonAlloc(center, _radius, _buf, _mask);
+            int n = Phys2DCompat.OverlapCircle(center, _radius, _buf, _mask, includeTriggers: true);
+
             for (int i = 0; i < n; i++)
             {
                 var col = _buf[i];

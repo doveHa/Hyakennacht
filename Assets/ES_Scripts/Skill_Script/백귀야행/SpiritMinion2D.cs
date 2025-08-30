@@ -16,16 +16,13 @@ public class SpiritMinion2D : MonoBehaviour
         public LayerMask enemyMask;
         public string[] targetTags;
 
-        // ����
         public int damage;
         public float attackCooldown;
         public string hitFxKey;
         public float ignoreSameTargetSeconds;
 
-        // (������/�˹��� �̹� ���迡�� ��� �� ��)
         public float recoilDist, recoilTime, enemyKnockbackForce, maxEnemyKnockbackSpeed;
 
-        // Ÿ�� ����: ��-��Ŀ ���� ���
         public float orbitRadius, orbitTightness;
         public bool orbitClockwise;
         public float footYOffset, idleSlotRadius;
@@ -33,7 +30,6 @@ public class SpiritMinion2D : MonoBehaviour
 
         public float standoffDistance;
 
-        // �ܹ߼� �ɼ� & �ݹ�
         public bool despawnOnHit;                                // ���� ������ ��� �ݳ�
         public System.Action<SpiritMinion2D> onReturned;         // �ݳ� ����
         public System.Func<string, GameObject> poolSpawn;        // (Ȯ���)
@@ -44,7 +40,6 @@ public class SpiritMinion2D : MonoBehaviour
     [SerializeField] float blinkFrontOffsetY = -0.2f;
     [SerializeField] float postBlinkDelay = 0.06f;
 
-    // ��Ÿ�� ����
     Transform _owner;
     float _lifeEnd;
 
@@ -107,7 +102,7 @@ public class SpiritMinion2D : MonoBehaviour
 
         _despawnOnHit = c.despawnOnHit;
         _onReturned = c.onReturned;
-        _playFxAt = null; // �ʿ� �� �ܺο��� �ֱ�
+        _playFxAt = null; 
 
         _nextAttackTime = Time.time;
         transform.right = Vector2.right;
@@ -119,7 +114,6 @@ public class SpiritMinion2D : MonoBehaviour
     {
         if (Time.time >= _lifeEnd) { ReturnToPool(); return; }
 
-        // ���� ���
         var target = AcquireTarget(transform.position, _detectRadius);
         if (target)
         {
@@ -142,11 +136,10 @@ public class SpiritMinion2D : MonoBehaviour
         }
         else
         {
-            // ��-��Ŀ ���� ���
             if (_owner)
             {
                 Vector2 anchor = (Vector2)_owner.position + new Vector2(0f, _footYOffset);
-                float ang = ((_slotIndex + 0.5f) / _slotCount) * Mathf.PI; // �Ʒ� �ݿ�
+                float ang = ((_slotIndex + 0.5f) / _slotCount) * Mathf.PI;
                 Vector2 home = anchor + new Vector2(Mathf.Cos(ang), Mathf.Sin(ang)) * _idleSlotRadius;
 
                 Vector2 toHome = home - (Vector2)transform.position;
@@ -177,20 +170,19 @@ public class SpiritMinion2D : MonoBehaviour
 
         if (_anim) _anim.SetTrigger("Attack");
 
-        // ���� Ÿ�� ��� ����(������ ����)
         _lastHitTargetId = enemy.GetInstanceID();
         _ignoreUntil = Time.time + _ignoreSameTargetSeconds;
 
         if (_despawnOnHit)
         {
-            ReturnToPool(); // ��� Ǯ ���� �� ��Ʈ�ѷ��� �ݹ� �޾Ƽ� ���ȯ
+            ReturnToPool(); 
         }
     }
 
     Transform AcquireTarget(Vector2 origin, float radius)
     {
         Collider2D[] buf = new Collider2D[32];
-        int n = Physics2D.OverlapCircleNonAlloc(origin, radius, buf, _enemyMask);
+        int n = Phys2DCompat.OverlapCircle(origin, radius, buf, _enemyMask, includeTriggers: true);
         Transform best = null; float bestSqr = float.MaxValue;
 
         for (int i = 0; i < n; i++)

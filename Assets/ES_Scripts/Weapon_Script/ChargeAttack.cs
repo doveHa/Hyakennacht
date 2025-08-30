@@ -34,7 +34,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
             isCharging = true;
             chargeTime = 0f;
 
-            if (data.weaponName == "������")
+            if (data.weaponName == "마법진")
             {
                 SpawnMagicCircle();
             }
@@ -47,7 +47,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
         {
             chargeTime += Time.deltaTime;
 
-            if (data.weaponName == "������" && currentProjectile != null)
+            if (data.weaponName == "마법진" && currentProjectile != null)
             {
                 float scale = Mathf.Lerp(1f, 2.5f, chargeTime / chargeThreshold);
                 currentProjectile.transform.localScale = new Vector3(scale, scale, 1);
@@ -55,7 +55,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
                 CircleCollider2D collider = currentProjectile.GetComponent<CircleCollider2D>();
                 if (collider != null)
                 {
-                    collider.radius = scale * 0.35f; // �ʿ� �� ��� ����
+                    collider.radius = scale * 0.35f; 
                 }
 
                 Animator projAnim = currentProjectile.GetComponent<Animator>();
@@ -75,7 +75,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
         {
             isCharging = false;
 
-            if (data.weaponName == "������")
+            if (data.weaponName == "마법진")
             {
                 Destroy(currentProjectile, 0.2f); 
             }

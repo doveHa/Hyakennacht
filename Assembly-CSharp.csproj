@@ -90,6 +90,7 @@
     <Compile Include="Assets\Test\Script\MotionTransformWriter.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\펌프킨 메테오\PumpkinMeteorPayload.cs" />
     <Compile Include="Assets\Scripts\Character\Player.cs" />
+    <Compile Include="Assets\ES_Scripts\Phys2DCompat.cs" />
     <Compile Include="Assets\Scripts\System\HpControl.cs" />
     <Compile Include="Assets\Scripts\System\FactionSelect.cs" />
     <Compile Include="Assets\Scripts\Constant.cs" />

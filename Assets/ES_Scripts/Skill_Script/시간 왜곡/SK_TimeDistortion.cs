@@ -22,7 +22,7 @@ public class SK_TimeDistortion : SkillBase
         Vector2 center = ctx.caster.position;
 
         Collider2D[] buf = new Collider2D[64];
-        int n = Physics2D.OverlapCircleNonAlloc(center, radius, buf, enemyMask);
+        int n = Phys2DCompat.OverlapCircle(center, radius, buf, enemyMask, includeTriggers: true);
 
         int dmg = Mathf.RoundToInt(powerByLevel.Evaluate(ctx.casterLevel) * TierMul());
 

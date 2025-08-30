@@ -51,7 +51,7 @@ public class FirePatch2D : MonoBehaviour
 
         while (Time.time < end && _armed)
         {
-            int n = Physics2D.OverlapCircleNonAlloc(transform.position, _radius, _buf, _enemyMask);
+            int n = Phys2DCompat.OverlapCircle(transform.position, _radius, _buf, _enemyMask, includeTriggers: true);
             for (int i = 0; i < n; i++)
             {
                 var co = _buf[i];

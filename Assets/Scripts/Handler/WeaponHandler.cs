@@ -10,14 +10,21 @@ public interface IWeaponBehavior
 
 public class WeaponHandler : MonoBehaviour
 {
-    public Transform firePoint;
+    private Transform firePoint;
     public Transform weaponVisualHolder;
-    public Transform tailFirePoint;
+    private Transform tailFirePoint;
 
     private IWeaponBehavior currentBehavior;
     private MonoBehaviour currentScript;
     private GameObject currentVisual;
     private WeaponData currentData;
+
+    public void Initialize(Transform firePoint, Transform weaponVisualHolder, Transform tailFirePoint)
+    {
+        this.firePoint = firePoint;
+        this.weaponVisualHolder = weaponVisualHolder;
+        this.tailFirePoint = tailFirePoint;
+    }
 
     public void EquipWeapon(WeaponData data)
     {

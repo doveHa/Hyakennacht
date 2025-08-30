@@ -18,9 +18,18 @@ public class SkillCaster : MonoBehaviour
     {
         if (!pool) pool = FindFirstObjectByType<ObjectPool>();
         if (!fx) fx = FindFirstObjectByType<FXRouter>();
+        if (!firePoint)
+        {
+            var body = transform.Find("Body");
+            if (body)
+            {
+                var fp = body.Find("FirePos");
+                if (fp) firePoint = fp;
+            }
+        }
     }
 
-        void Update()
+    void Update()
     {
         if (slots == null) return;
 

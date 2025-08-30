@@ -69,7 +69,7 @@ MonoBehaviour:
   tickInterval: 1
   patchEnemyMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   patchTargetTags:
   - Enemy
   tickFxKey: 

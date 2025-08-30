@@ -64,7 +64,7 @@ MonoBehaviour:
   detectRadius: 6
   enemyMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   targetTags:
   - Enemy
   moveSpeed: 6

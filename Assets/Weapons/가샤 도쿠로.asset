@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1391105ed3e56e42ac6eb494202341b, type: 3}
   m_Name: "\uAC00\uC0E4 \uB3C4\uCFE0\uB85C"
   m_EditorClassIdentifier: 
-  weaponName: "\uAC00\uC0E4 \uB3C4\uCFE0\uB85C"
+  weaponName: "\uAC00\uC0E4\uB3C4\uCFE0\uB85C"
   faction: 0
   grade: 0
   category: 0

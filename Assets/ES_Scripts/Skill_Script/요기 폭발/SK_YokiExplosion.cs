@@ -25,7 +25,8 @@ public class SK_YokiExplosion : SkillBase
             ctx.PlayFXAt?.Invoke(spawnKey, center);
 
         Collider2D[] buf = new Collider2D[48];
-        int n = Physics2D.OverlapCircleNonAlloc(center, radius, buf, enemyMask);
+        int n = Phys2DCompat.OverlapCircle(center, radius, buf, enemyMask, includeTriggers: true);
+        for (int i = 0; i < n; i++) Debug.Log($" - {buf[i].name} (layer={buf[i].gameObject.layer})");
 
         int dmg = Mathf.RoundToInt(baseDamage * powerByLevel.Evaluate(ctx.casterLevel) * TierMul());
 

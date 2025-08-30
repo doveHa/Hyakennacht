@@ -58,7 +58,7 @@ MonoBehaviour:
   life: 4
   hitMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   doomSeconds: 3
   bubbleFxKey: Poison bubbles
   trailFxKey: 

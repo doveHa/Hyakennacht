@@ -19,7 +19,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
 
         if (data.weaponName == "²¿¸®") 
         { 
-            tailFirePoint = GameObject.FindWithTag("Player")?.GetComponent<WeaponHandler>()?.weaponVisualHolder; 
+            tailFirePoint = GameObject.FindWithTag("Player")?.GetComponentInChildren<WeaponHandler>()?.weaponVisualHolder; 
             if (tailFirePoint != null) 
                 originalTailPos = tailFirePoint.localPosition; 
         }

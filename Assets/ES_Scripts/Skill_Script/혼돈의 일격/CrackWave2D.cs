@@ -63,7 +63,8 @@ public class CrackWave2D : MonoBehaviour
         Vector2 size = new Vector2(probeLen, _width * 0.6f);
         float angle = Vector2.SignedAngle(Vector2.right, _forward);
 
-        int n = Physics2D.OverlapBoxNonAlloc(center, size, angle, _buf, _enemyMask);
+        int n = Phys2DCompat.OverlapBox(center, size, angle, _buf, _enemyMask, includeTriggers: true);
+
         float best = float.MaxValue;
         Enemy_ES bestE = null;
         for (int i = 0; i < n; i++)
@@ -94,7 +95,7 @@ public class CrackWave2D : MonoBehaviour
             Vector2 size = new Vector2(len, _width);
             float angle = Vector2.SignedAngle(Vector2.right, _forward);
 
-            int n = Physics2D.OverlapBoxNonAlloc(center, size, angle, _buf, _enemyMask);
+            int n = Phys2DCompat.OverlapBox(center, size, angle, _buf, _enemyMask, includeTriggers: true);
             for (int i = 0; i < n; i++)
             {
                 var col = _buf[i];

@@ -84,7 +84,8 @@ public class HyakkiController2D : MonoBehaviour
     {
         var buf = new Collider2D[16];
         Vector2 pos = (Vector2)transform.position;
-        int n = Physics2D.OverlapCircleNonAlloc(pos, _c.detectRadius, buf, _c.enemyMask);
+        //int n = Physics2D.OverlapCircleNonAlloc(pos, _c.detectRadius, buf, _c.enemyMask);
+        int n = Phys2DCompat.OverlapCircle(pos, _c.detectRadius, buf, _c.enemyMask, includeTriggers: true);
         if (n <= 0) return false;
         if (_c.targetTags == null || _c.targetTags.Length == 0) return true;
         for (int i = 0; i < n; i++)

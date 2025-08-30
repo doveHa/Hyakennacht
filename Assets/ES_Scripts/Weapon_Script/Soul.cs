@@ -33,7 +33,7 @@ public class Soul : MonoBehaviour
                 if (rb != null)
                 {
                     rb.linearVelocity = Vector2.zero;
-                    rb.isKinematic = true;
+                    rb.bodyType = RigidbodyType2D.Kinematic;
                 }
 
                 Collider2D col = GetComponent<Collider2D>();
