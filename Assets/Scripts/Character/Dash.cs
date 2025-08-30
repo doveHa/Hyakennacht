@@ -6,7 +6,7 @@ namespace Character
 {
     public class Dash : MonoBehaviour
     {
-        public bool IsLeftSight { private get; set; }
+        public bool IsLeftSight { get; set; }
         private bool _isDashing;
 
         public void StartDashCoroutine()

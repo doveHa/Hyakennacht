@@ -75,6 +75,7 @@
     <Compile Include="Assets\ES_Scripts\Skill_Script\독 사과\ThrownProjectile2D.cs" />
     <Compile Include="Assets\Scripts\Manager\AbstractManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\IdleState.cs" />
+    <Compile Include="Assets\ES_Scripts\FacingProvider2D.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\백귀야행\HyakkiController2D.cs" />
     <Compile Include="Assets\Test\Script\CoffTest.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\MagicCircle.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Assets\Test\Script\Shooter.cs" />
     <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemToggleController.cs" />
+    <Compile Include="Assets\ES_Scripts\FacingSyncLocalScale.cs" />
     <Compile Include="Assets\HR\Script\StallTrigger.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\PooledObject.cs" />
     <Compile Include="Assets\Enemy\Resource\Boss1\Effect\BossBulletPattern.cs" />

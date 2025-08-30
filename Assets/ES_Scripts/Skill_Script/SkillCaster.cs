@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Manager;
 
 public class SkillCaster : MonoBehaviour
 {
     public SkillBase[] slots;
-    public Transform firePoint;
-    public float gcd = 0.2f;
 
+    // ★ 실제로 움직이고 뒤집히는 주체(Body)와 발사 위치
+    public Transform actor;                 // Body
+    public FacingProvider2D facing;         // Body에 붙인 FacingProvider2D
+    public Transform firePoint;             // Body/FirePos
+
+    public float gcd = 0.2f;
     private readonly Dictionary<string, float> cdEnd = new();
     private float gcdEnd;
 
@@ -18,14 +23,25 @@ public class SkillCaster : MonoBehaviour
     {
         if (!pool) pool = FindFirstObjectByType<ObjectPool>();
         if (!fx) fx = FindFirstObjectByType<FXRouter>();
-        if (!firePoint)
+
+        // 자동 탐색(비워져 있으면)
+        if (!actor)
         {
-            var body = transform.Find("Body");
-            if (body)
-            {
-                var fp = body.Find("FirePos");
-                if (fp) firePoint = fp;
-            }
+            var gmPlayer = (GameManager.Manager && GameManager.Manager.Player)
+                           ? GameManager.Manager.Player
+                           : GameObject.FindGameObjectWithTag("Player"); // 안전망
+
+            Transform root = gmPlayer ? gmPlayer.transform : transform;
+
+            var body = root.Find("Body");
+            actor = body ? body : root.GetComponentInChildren<Transform>(true);
+        }
+        if (actor && !facing) facing = actor.GetComponent<FacingProvider2D>();
+
+        if (actor && !firePoint)
+        {
+            firePoint = actor.Find("FirePos");
+            if (!firePoint) firePoint = actor; // 안전망
         }
     }
 
@@ -43,15 +59,22 @@ public class SkillCaster : MonoBehaviour
         if (skill == null) return;
         if (skill.useGCD && Time.time < gcdEnd) return;
 
+        Vector2 origin = firePoint ? (Vector2)firePoint.position
+                                   : (Vector2)(actor ? actor.position : transform.position);
+
+        float face = facing ? facing.FaceSign()
+                            : Mathf.Sign((actor ? actor.localScale.x : transform.localScale.x));
+        Vector2 forward = new Vector2(face, 0f);
+
         Vector2 mouseWorld = Camera.main ? (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition)
-                                         : (Vector2)transform.position;
-        Vector2 castPos = firePoint ? (Vector2)firePoint.position : (Vector2)transform.position;
-        Vector2 aimDir = (mouseWorld - castPos).normalized;
+                                         : origin + forward;
+        Vector2 aimDir = (mouseWorld - origin).sqrMagnitude > 0.001f ? (mouseWorld - origin).normalized
+                                                                      : forward;
 
         var ctx = new SkillContext
         {
-            caster = transform,
-            castPos = castPos,
+            caster = actor ? actor : transform,  
+            castPos = origin,
             aimDir = aimDir,
             aimPoint = mouseWorld,
             target = null,
@@ -61,15 +84,13 @@ public class SkillCaster : MonoBehaviour
             StartCooldown = (id, cd) => cdEnd[id] = Time.time + cd,
 
             SpawnFromPool = (key) => pool ? pool.Spawn(key) : null,
-            PlayFXAt = (key, pos) => { if (fx != null) fx.PlayAt(key, pos); }
+            PlayFXAt = (key, pos) => { if (fx) fx.PlayAt(key, pos); }
         };
 
         if (!skill.CanCast(ctx)) return;
 
-        if (skill.castTime > 0f)
-            StartCoroutine(CastRoutine(skill, ctx));
-        else
-            CastNow(skill, ctx);
+        if (skill.castTime > 0f) StartCoroutine(CastRoutine(skill, ctx));
+        else CastNow(skill, ctx);
     }
 
     IEnumerator CastRoutine(SkillBase s, SkillContext ctx)

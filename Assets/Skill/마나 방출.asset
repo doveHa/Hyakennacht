@@ -51,7 +51,7 @@ MonoBehaviour:
   tierMulHigh: 1
   spawnKey: mana bangchul
   impactKey: 
-  radius: 2
+  radius: 3
   baseDamage: 8
   enemyMask:
     serializedVersion: 2
