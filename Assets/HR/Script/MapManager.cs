@@ -112,7 +112,6 @@ public class MapManager : MonoBehaviour
         // 4, 9, 14번째 스테이지는 구역 8개
         if (currentStage == 4 || currentStage == 9 || currentStage == 14)
         {
-            MapUIManager.Instance.ShowSkillSelectPanel();
             roomCount = 8;
         }
         else
@@ -317,6 +316,8 @@ public class MapManager : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("BossMap");
             Debug.Log("Boss Stage: " + currentStage);
+
+            Debug.Log("Ready for Boss Stage: " + currentStage);
             return;
         }
 

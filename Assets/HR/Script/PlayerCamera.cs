@@ -30,7 +30,8 @@ public class PlayerCamera : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TryInteractWithStairs();
+            //TryInteractWithStairs();
+            MapUIManager.Instance.OnStageEnd();
         }
     }
 
@@ -57,6 +58,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void TryInteractWithStairs()
     {
+
         if (player == null || mapManager == null)
         {
             Debug.LogWarning("Player 또는 MapManager가 할당되지 않았습니다.");

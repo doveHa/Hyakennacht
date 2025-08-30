@@ -53,7 +53,7 @@ public class MapUIManager : MonoBehaviour
     private List<SkillData> skillList = new List<SkillData>();
     // 선택한 스킬 저장
     public SkillData SelectedSkill { get; private set; }
-    private bool AfterSkillSelect = false;
+    public bool AfterSkillSelect = false;
 
     private int totalStage = 15;
 
@@ -179,7 +179,9 @@ public class MapUIManager : MonoBehaviour
         if (coinText) coinText.text = $"{StageCoins}";
 
         // 특정 스테이지에서만 스킬 선택
-        if (MapManager.Instance.currentStage == 4 ||
+
+
+       if (MapManager.Instance.currentStage == 4 ||
             MapManager.Instance.currentStage == 9 ||
             MapManager.Instance.currentStage == 14)
         {

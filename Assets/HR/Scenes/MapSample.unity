@@ -170,6 +170,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30ee68ebc51fb98418690a39438c0256, type: 2}
   - {fileID: 11400000, guid: 85ddbd21cf2d77c459bce7c1d9bb5b4d, type: 2}
   - {fileID: 11400000, guid: 398da8d7576c62a42a936b3a0ce45969, type: 2}
+  - {fileID: 11400000, guid: 7532154cd50d05740ab89264ebe2bc3e, type: 2}
+  - {fileID: 11400000, guid: bdfd0a60d86d41d419ea30181a608d6c, type: 2}
+  - {fileID: 11400000, guid: 968f0db120dd20447b04895aa3f1ea49, type: 2}
+  - {fileID: 11400000, guid: 4a329a4fba31a2b4791af3a2ee0925cc, type: 2}
+  - {fileID: 11400000, guid: fc967a66edf37544a946931c8dc0152a, type: 2}
+  - {fileID: 11400000, guid: 534d0cecdbdce584d81c88f96382992c, type: 2}
   wallTileHorizontal: {fileID: 11400000, guid: 43cf9b717e846aa48a99e23b5b95b2ff, type: 2}
   wallTileVertical: {fileID: 11400000, guid: 4c5e1c76571c2c348b264282cbeb8fcd, type: 2}
   currentStage: 0
@@ -187,7 +193,7 @@ MonoBehaviour:
   - {fileID: 2678927989458112558, guid: d70648995a9f4b2488a2a0d40b1fe9a1, type: 3}
   - {fileID: 3861259102929350419, guid: ea51817384b13814fa23527c54060111, type: 3}
   maxItemCount: 10
-  shopPrefab: {fileID: 6428129230551053248, guid: 4723bcdc5b3b0a74b9032b63415ee7d7, type: 3}
+  shopPrefab: {fileID: 6428129230551053248, guid: 4d5ad57b1103f5d4a848fd18e53fd42e, type: 3}
 --- !u!1 &80108511
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,8 +727,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e752afccdc4e96843afb0b66a2ad839f, type: 2}
   - {fileID: 11400000, guid: 75f409794530c9c4f8d55a6fcd1e9828, type: 2}
   - {fileID: 11400000, guid: b02d02a46d81d2842aabcfa12e17e1f3, type: 2}
-  wallTileHorizontal: {fileID: 11400000, guid: 43cf9b717e846aa48a99e23b5b95b2ff, type: 2}
-  wallTileVertical: {fileID: 11400000, guid: 4c5e1c76571c2c348b264282cbeb8fcd, type: 2}
+  wallTileHorizontal: {fileID: 11400000, guid: 42f8209639129234e9d2ad734c1d19c6, type: 2}
+  wallTileVertical: {fileID: 11400000, guid: d40a1bee10523bf4ebd961f7ddd4ba40, type: 2}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
