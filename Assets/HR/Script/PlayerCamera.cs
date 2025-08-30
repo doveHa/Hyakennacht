@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -7,14 +8,26 @@ public class PlayerCamera : MonoBehaviour
     public Vector3 offset = new Vector3(0, 5, -10);
     public MapManager mapManager; // Inspector에서 할당
 
+    void Awake()
+    {
+        // 씬 전환될 때마다 자동 호출되도록 이벤트 등록
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        // 메모리 누수 방지
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindPlayer();
+    }
+
     void Start()
     {
-        if (player == null)
-        {
-            GameObject playerObj = GameObject.Find("Player");
-            if (playerObj != null)
-                player = playerObj.transform;
-        }
+        FindPlayer();
     }
 
     void LateUpdate()
@@ -32,6 +45,16 @@ public class PlayerCamera : MonoBehaviour
         {
             //TryInteractWithStairs();
             MapUIManager.Instance.OnStageEnd();
+        }
+    }
+
+    void FindPlayer()
+    {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindWithTag("Player"); // Tag 사용 권장
+            if (playerObj != null)
+                player = playerObj.transform;
         }
     }
 

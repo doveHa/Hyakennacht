@@ -109,7 +109,8 @@ public class MapUIManager : MonoBehaviour
         if (PlayerDied)
         {
             // 플레이어가 죽은 상태라면 스테이지 진행 없이 로비 복귀
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
+            SceneManager.LoadScene(StageManager.GetLobbyScene());
             PlayerDied = false; // 리셋
             return;
         }
@@ -297,6 +298,10 @@ public class MapUIManager : MonoBehaviour
             statsPanel.SetActive(true);
             MoveFlag(MapManager.Instance.currentStage);
             AfterSkillSelect = false;
+
+            // 스킬 선택 후 다음 스테이지 이동
+            PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
+            cam?.TryInteractWithStairs(); // 선택 후 바로 다음 스테이지로
         }
     }
 }

@@ -801,7 +801,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7299678921791046738}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2468542486440090120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,6 +2227,21 @@ MonoBehaviour:
   statsPanel: {fileID: 5344091067555801600}
   progressLine: {fileID: 6258452818978575910}
   flag: {fileID: 7737640036814549925}
+  skillSelectPanel: {fileID: 7962890490944256933}
+  SelectCard1: {fileID: 6554593448134576700}
+  SelectCard2: {fileID: 6198899211329957443}
+  SelectCard3: {fileID: 7864803942349032371}
+  cardTitle1: {fileID: 2849140456389125236}
+  cardDesc1: {fileID: 6749206167879883559}
+  cardIcon1: {fileID: 1695494598756416582}
+  cardTitle2: {fileID: 2206938566591418291}
+  cardDesc2: {fileID: 3457128088551669136}
+  cardIcon2: {fileID: 1995609986520300829}
+  cardTitle3: {fileID: 2252137850608049921}
+  cardDesc3: {fileID: 5760492791199766235}
+  cardIcon3: {fileID: 1651384999239777612}
+  AfterSkillSelect: 0
+  PlayerDied: 0
 --- !u!1 &6821264470140773295
 GameObject:
   m_ObjectHideFlags: 0

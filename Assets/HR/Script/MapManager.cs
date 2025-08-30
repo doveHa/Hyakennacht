@@ -310,18 +310,31 @@ public class MapManager : MonoBehaviour
         StageManager.AdvanceStage(isStairUp);
         currentStage = StageManager.CurrentStage;
 
-        Debug.Log("Current Stage: " + currentStage);
+        /*        Debug.Log("Current Stage: " + currentStage);
 
-        if (currentStage == 5 || currentStage == 10 || currentStage == 15)
+                if (currentStage == 5 || currentStage == 10 || currentStage == 15)
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("BossMap");
+                    Debug.Log("Boss Stage: " + currentStage);
+
+                    Debug.Log("Ready for Boss Stage: " + currentStage);
+                    return;
+                }
+
+                GenerateMap();*/
+
+        if (StageManager.IsBossStage())
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("BossMap");
-            Debug.Log("Boss Stage: " + currentStage);
-
-            Debug.Log("Ready for Boss Stage: " + currentStage);
+            string bossScene = StageManager.GetBossScene();
+            Debug.Log("Boss Stage: " + currentStage + " -> Loading: " + bossScene);
+            SceneManager.LoadScene(bossScene);
             return;
         }
 
-        GenerateMap();
+        // ÀÏ¹Ý ¸Ê
+        string mapScene = StageManager.GetMapScene();
+        Debug.Log("Map Stage: " + currentStage + " -> Loading: " + mapScene);
+        GenerateMap(); // ¸Ê Àç»ý¼º
     }
 
     void PlaceStairs()
