@@ -1,5 +1,4 @@
-﻿/*
-using Enemy;
+﻿using Enemy;
 using Manager;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,4 +33,4 @@ namespace System
             Destroy(_spawner);
         }
     }
-}*/
+}

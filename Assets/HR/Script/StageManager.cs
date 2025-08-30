@@ -1,19 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public static class StageManager
 {
     public static int CurrentStage { get; set; } = 1;
-    //public static MapTheme CurrentTheme { get; private set; }
-    //public static bool IsLobby { get; set; } = true;
-
-    public static bool IsYokai { get; private set; } = true;
-
 
     public static void AdvanceStage(bool isStairUp)
     {
         CurrentStage++;
-        Debug.Log("½ºÅ×ÀÌÁö°¡ Áõ°¡Çß½À´Ï´Ù. ÇöÀç ½ºÅ×ÀÌÁö: " + CurrentStage);
+        Debug.Log("ìŠ¤í…Œì´ì§€ê°€ ì¦ê°€í–ˆìŠµë‹ˆë‹¤. í˜„ì¬ ìŠ¤í…Œì´ì§€: " + CurrentStage);
 
         AdjustDifficulty(isStairUp);
     }
@@ -22,49 +16,11 @@ public static class StageManager
     {
         if (isStairUp)
         {
-            Debug.Log("°è´Ü Up: ³­ÀÌµµ »ó½Â");
+            Debug.Log("ê³„ë‹¨ Up: ë‚œì´ë„ ìƒìŠ¹");
         }
         else
         {
-            Debug.Log("°è´Ü Down: ³­ÀÌµµ ÇÏ¶ô");
+            Debug.Log("ê³„ë‹¨ Down: ë‚œì´ë„ í•˜ë½");
         }
     }
-
-    //¸¶³à/¿ä±« ¾À
-
-    public static void SetTheme(bool yokai)
-    {
-        IsYokai = yokai;
-    }
-
-    public static void AdvanceStage()
-    {
-        CurrentStage++;
-    }
-
-    public static bool IsBossStage()
-    {
-        return CurrentStage == 5 || CurrentStage == 10 || CurrentStage == 15;
-    }
-
-    public static string GetMapScene()
-    {
-        return IsYokai ? "YokaiMap" : "WitchMap";
-    }
-
-    public static string GetBossScene()
-    {
-        return IsYokai ? "YokaiBoss" : "WitchBoss";
-    }
-
-    public static string GetLobbyScene()
-    {
-        return IsYokai ? "YokaiLobbyScene(Temp)" : "WitchLobbyScene(Temp)";
-    }
 }
-/*
-public enum MapTheme
-{
-    Yokai,
-    Witch
-}*/

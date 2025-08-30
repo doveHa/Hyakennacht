@@ -20,7 +20,7 @@ namespace Enemy
 
         public void Enter()
         {
-            _destination = EnemySpawner.GetRandomPosition(_controller.stage);
+            _destination = _controller.Spawner.GetRandomPosition();
             _controller.Flip(_controller.transform.position.x < _destination.x);
         }
 
@@ -28,12 +28,12 @@ namespace Enemy
         {
             Vector3 direction = (_destination - _controller.transform.position).normalized;
             _controller.Rigidbody.linearVelocity = direction * _enemySpeed;
-            
+            /*
             if (Vector3.Distance(_destination, _controller.transform.position) < 1f)
             {
                 _controller.Rigidbody.linearVelocity = Vector3.zero;
                 _controller.ChangeState(new IdleState(_controller));
-            }
+            }*/
         }
 
         public void Exit()

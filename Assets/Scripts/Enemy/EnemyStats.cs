@@ -20,8 +20,13 @@ public class EnemyStats : MonoBehaviour
     }
 
     public EnemyName enemyName;
-    private float _health;
-    public float Speed { get; private set; }
+    // ES
+    public float Health { get; private set; }
+    public float MaxHealth { get; private set; }
+    public float Speed { get; set; }
+
+    public bool IsDead => Health <= 0f;
+
 
     void Awake()
     {
@@ -46,7 +51,8 @@ public class EnemyStats : MonoBehaviour
 
         List<EnemyStat> set = JsonSerializer.Deserialize<List<EnemyStat>>(json);
         EnemyStat stat = set.Find(e => e.Name == enemyName.ToString());
-        _health = stat.Health;
+        Health = stat.Health;
+        MaxHealth = stat.Health;
         Speed = stat.Speed;
     }
 
@@ -73,20 +79,22 @@ private void SetStat(List<EnemyStat> set)
     {
     }
 
-    void Hurt(float damage)
+    public void Hurt(float damage)
     {
-        if ((_health - damage) <= 0)
-        {
-            Death();
-        }
-        else
-        {
-            _health -= damage;
-        }
+        if (IsDead) return;
+        Health = Mathf.Max(0f, Health - Mathf.Max(0f, damage));
+        if (IsDead) Death();
     }
 
-    private void Death()
+    public void Heal(float amount)
     {
+        if (IsDead) return;
+        Health = Mathf.Min(MaxHealth, Health + Mathf.Max(0f, amount));
+    }
+
+    public void Death()
+    {
+        //Destroy(gameObject);
     }
 
     private class EnemyStat

@@ -30,7 +30,7 @@
     "Health": 20
   },{
   "Name": "Boss1",
-  "Speed": 2,
+  "Speed": 0.5,
   "Health": 20
 }
 ]

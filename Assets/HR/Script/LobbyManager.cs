@@ -5,12 +5,9 @@ using Manager;
 
 public class LobbyManager : MonoBehaviour
 {
-    public bool isYokai = true;
-
     void Start()
     {
         // StageManager.CurrentStage = 0; // 필요시 초기화
-        StageManager.SetTheme(isYokai);
         Debug.Log("현재 스테이지: " + StageManager.CurrentStage);
     }
 
@@ -19,22 +16,21 @@ public class LobbyManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("Lobby To Map");
-            string nextMap = StageManager.GetMapScene();
-            Debug.Log("Lobby -> Loading Map: " + nextMap);
-            SceneManager.LoadScene(nextMap);
+            SceneManager.LoadScene("MapSample");
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player entered the game");
 
-        // 씬 전환 전에 Input 비활성화
-        var inputManager = Object.FindFirstObjectByType<Manager.PlayerInputManager>();
-        inputManager?.DisableInput();
+            // 씬 전환 전에 Input 비활성화
+            var inputManager = Object.FindFirstObjectByType<Manager.PlayerInputManager>();
+            inputManager?.DisableInput();
 
-        string nextMap = StageManager.GetMapScene();
-        Debug.Log("Lobby -> Loading Map: " + nextMap);
-        SceneManager.LoadScene(nextMap);
+            SceneManager.LoadScene("MapSample");
+        }
     }
 }

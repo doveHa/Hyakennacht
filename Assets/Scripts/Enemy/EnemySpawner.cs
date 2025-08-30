@@ -17,11 +17,13 @@ namespace Enemy
         private Bounds _bounds;
 
         private GameObject[] _objects;
+        private Random _rnd;
 
         public bool IsSpawn;
 
         void Awake()
         {
+            _rnd = new Random((uint)DateTime.Now.Millisecond);
             _stage = GetComponent<Tilemap>();
             _enemyObjects = new List<GameObject>();
             //IsSpawn = false;
@@ -41,7 +43,7 @@ namespace Enemy
             {
                 _enemyObjects.Add(await AddressableManager.Manager.LoadAsset<GameObject>(key));
             }
-
+            
             _stage.CompressBounds();
             _bounds = _stage.localBounds;
         }
@@ -72,78 +74,62 @@ namespace Enemy
             }*/
         }
 
-        public static Vector3 GetRandomPosition(Tilemap tilemap)
+        public Vector3 GetRandomPosition()
         {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
-            Bounds bounds = tilemap.localBounds;
+            Debug.Log(_bounds.size);
             Vector3 randomPosition;
 
-            int randomX = rnd.NextInt((int)bounds.min.x, (int)bounds.max.x);
-            int randomY = rnd.NextInt((int)bounds.min.y, (int)bounds.max.y);
+            int randomX = _rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
+            int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
             Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
-            randomPosition = tilemap.CellToLocal(randomPoint);
-
+            randomPosition = _stage.CellToLocal(randomPoint);
+            
             return randomPosition;
         }
 
 
         private async Task SpawnEnemies()
         {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
-
-            int spawnEnemies = rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
+            int spawnEnemies = _rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
-
-            HashSet<Vector3Int> usedPositions = new HashSet<Vector3Int>(); // ✅ 사용된 셀 기록
-
             for (int i = 0; i < spawnEnemies; i++)
             {
-                int rndEnemy = rnd.NextInt(_enemyObjects.Count);
-                Vector3 spawnPos = GetUniqueRandomPosition(_stage, usedPositions);
-                _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy], spawnPos);
+                int rndEnemy = _rnd.NextInt(_enemyObjects.Count);
+                _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy]);
             }
         }
 
-        private Vector3 GetUniqueRandomPosition(Tilemap tilemap, HashSet<Vector3Int> usedPositions)
+        private async Task<GameObject> SpawnEnemy(GameObject enemy)
         {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
-            Bounds bounds = tilemap.localBounds;
-
-            Vector3Int randomPoint;
-
-            // 중복되지 않는 타일 좌표 뽑기
-            do
-            {
-                int randomX = rnd.NextInt((int)bounds.min.x, (int)bounds.max.x);
-                int randomY = rnd.NextInt((int)bounds.min.y, (int)bounds.max.y);
-                randomPoint = new Vector3Int(randomX, randomY, 0);
-            } while (usedPositions.Contains(randomPoint) || !tilemap.HasTile(randomPoint));
-
-            usedPositions.Add(randomPoint); // ✅ 사용된 위치 기록
-            return tilemap.CellToLocal(randomPoint);
-        }
-
-        private async Task<GameObject> SpawnEnemy(GameObject enemy, Vector3 position)
-        {
-            GameObject mob = Instantiate(enemy, position, Quaternion.identity);
-            mob.GetComponent<EnemyController>().stage = _stage;
+            Vector3 local = GetRandomPosition();
+            GameObject mob = Instantiate(enemy, local, Quaternion.identity);
+            mob.GetComponent<EnemyController>().Spawner = this;
             await mob.GetComponent<EnemyStats>().SetStat();
             return mob;
         }
 
+        private bool CheckDuplication(Vector3 position)
+        {
+            if (Physics2D.OverlapCircleAll(position, Constant.SpawnEnemy.SPAWN_DUPLICATION_DISTANCE).Length == 0)
+            {
+                return false;
+            }
 
+            return true;
+        }
+        
         public async void StartStage()
         {
             GameObject child = new GameObject();
             child.transform.parent = transform;
             TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/Wall.asset");
             Tilemap tilemap = child.transform.AddComponent<Tilemap>();
-            child.transform.AddComponent<TilemapRenderer>().sortingOrder = -1;
+            child.transform.AddComponent<TilemapRenderer>();
             child.transform.AddComponent<TilemapCollider2D>();
-            MapManager.Instance.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase,true);
+            MapManager.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase);
             //await SpawnEnemies();
         }
-
+        
         public void EndStage()
         {
             Destroy(transform.GetChild(0).gameObject);

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5410720886722198545}
   - component: {fileID: 8122706781385606940}
   - component: {fileID: 1757427523406434269}
+  - component: {fileID: 3243928953205170348}
   m_Layer: 0
   m_Name: Kappa
   m_TagString: Enemy
@@ -195,6 +196,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99147e0bd014403b348c108d6cac4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3243928953205170348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783177417010643878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6077324bf3cfab84582c811b1cac84d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7565353995710199854

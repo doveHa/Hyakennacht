@@ -1,7 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.Tilemaps;
 
 namespace Enemy
 {
@@ -9,11 +7,10 @@ namespace Enemy
     {
         public Animator Animator { get; private set; }
         private IEnemyState _currentState;
-        public Tilemap stage;
+        public EnemySpawner Spawner { get; set; }
         public Rigidbody2D Rigidbody { get; private set; }
         public Transform Target { get; private set; }
 
-        public bool IsChangeState = true;
         private bool _isLeftSight;
 
         void Awake()
@@ -37,12 +34,9 @@ namespace Enemy
 
         public void ChangeState(IEnemyState newState)
         {
-            if (IsChangeState)
-            {
-                _currentState?.Exit();
-                _currentState = newState;
-                _currentState?.Enter();
-            }
+            _currentState?.Exit();
+            _currentState = newState;
+            _currentState?.Enter();
         }
 
         public void SetTarget(Transform target)
@@ -64,11 +58,6 @@ namespace Enemy
                 _isLeftSight = !_isLeftSight;
                 transform.GetChild(1).localRotation = Quaternion.Euler(0f, _isLeftSight ? 180f : 0f, 0f);
             }
-        }
-
-        public void CanChangeState()
-        {
-            IsChangeState = true;
         }
     }
 }
