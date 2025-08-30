@@ -12,57 +12,63 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
 
-    [Header("Tilemap References")]
-    public Tilemap groundTilemap;
+    [Header("Tilemap References")] public Tilemap groundTilemap;
     public Tilemap wallTilemap;
     public Tilemap emptyMap;
 
+    [SerializeField] public TileBase emptyTile;
+
     //public TileBase groundTile;
-    // ±âÁ¸ groundTile ´ë½Å ¹è¿­·Î ¼±¾ð
+    // ï¿½ï¿½ï¿½ï¿½ groundTile ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public TileBase[] groundTilesByStage;
     public TileBase wallTileHorizontal;
     public TileBase wallTileVertical;
 
-    [Header("Stage Settings")]
-    public int currentStage = 0; // ÇöÀç ½ºÅ×ÀÌÁö
+    [Header("Stage Settings")] public int currentStage = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    [Header("Room Settings")]
-    public int roomCount = 7;
+    [Header("Room Settings")] public int roomCount = 7;
     public int roomWidth = 13;
     public int roomHeight = 13;
 
-    [Header("Spacing Settings")]
-    public int roomSpacing = 25;
+    [Header("Spacing Settings")] public int roomSpacing = 25;
 
-    [Header("Corridor Settings")]
-    public int corridorWidth = 3;
+    [Header("Corridor Settings")] public int corridorWidth = 3;
 
-    [Header("Stair Tiles")]
-    public TileBase stairUpTile;
+    [Header("Stair Tiles")] public TileBase stairUpTile;
     public TileBase stairDownTile;
 
-    [Header("Item Spawn")]
-    public GameObject[] itemPrefabs;
+    [Header("Item Spawn")] public GameObject[] itemPrefabs;
     public int maxItemCount = 10;
 
-    public GameObject shopPrefab; // ÀÎ½ºÆåÅÍ¿¡¼­ »óÁ¡ ÇÁ¸®ÆÕ ÇÒ´ç
-    private GameObject shopInstance; // ÇöÀç ¸Ê¿¡ »ý¼ºµÈ »óÁ¡ ¿ÀºêÁ§Æ® ÂüÁ¶
+    public GameObject shopPrefab; // ï¿½Î½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
+    private GameObject shopInstance; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 
-    // ¸ðµç ¹Ù´Ú Å¸ÀÏ
+    // ï¿½ï¿½ï¿½ ï¿½Ù´ï¿½ Å¸ï¿½ï¿½
     private List<Vector3Int> groundTiles = new List<Vector3Int>();
 
-    const int maxStage = 15; // ÀüÃ¼ ½ºÅ×ÀÌÁö ¼ö
-    const int specialStageCount = 2; // Æ¯¼ö ½ºÅ×ÀÌÁö ¼ö
+    const int maxStage = 15; // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    const int specialStageCount = 2; // Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
+    private List<GameObject> roomGameObjects = new List<GameObject>();
 
-    // ¹æ µ¥ÀÌÅÍ ±¸Á¶
+    //               
     [System.Serializable]
     public class Room
     {
+        public Room(int id, Vector2Int gridPos, GameObject roomObject)
+        {
+            this.id = id;
+            this.gridPos = gridPos;
+            this.roomObject = roomObject;
+            tilemap = roomObject.GetComponent<Tilemap>();
+        }
+
         public int id;
-        public Vector2Int gridPos; // ¸Ê ¹èÄ¡ ÁÂÇ¥
-        public List<Vector3Int> tiles = new List<Vector3Int>(); // ¹æ ³»ºÎ Å¸ÀÏ
+        public Vector2Int gridPos; //      Ä¡   Ç¥
+        public List<Vector3Int> tiles = new List<Vector3Int>(); //         Å¸  
         public List<Vector2Int> connectedRooms = new List<Vector2Int>();
+        public GameObject roomObject;
+        public Tilemap tilemap;
     }
 
     private List<Room> rooms = new List<Room>();
@@ -85,7 +91,7 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        // ½ºÅ×ÀÌÁö 1ºÎÅÍ ½ÃÀÛ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         currentStage = StageManager.CurrentStage;
         if (currentStage < 1) currentStage = 1;
         GenerateMap();
@@ -95,7 +101,6 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-
             //GenerateMap();
             /*            NextStage(true);
                         Debug.Log("Map regenerated");*/
@@ -108,14 +113,20 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    void GenerateMap()
+    Vector2Int GenerateMap()
     {
+        foreach (Room room in rooms)
+        {
+            Destroy(room.roomObject);
+        }
+
+        emptyMap.ClearAllTiles();
         groundTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
         groundTiles.Clear();
         rooms.Clear();
 
-        // 4, 9, 14¹øÂ° ½ºÅ×ÀÌÁö´Â ±¸¿ª 8°³
+        // 4, 9, 14  Â°                 8  
         if (currentStage == 4 || currentStage == 9 || currentStage == 14)
         {
             roomCount = 8;
@@ -132,12 +143,14 @@ public class MapManager : MonoBehaviour
         Queue<Vector2Int> toExplore = new Queue<Vector2Int>();
         toExplore.Enqueue(startPos);
 
-        Room startRoom = new Room { id = 0, gridPos = startPos };
+        int roomIdCounter = 0;
+
+        Room startRoom = RoomObject(startPos, roomIdCounter++);
+        Destroy(startRoom.roomObject.GetComponent<EnemySpawner>());
         roomDict[startPos] = startRoom;
         rooms.Add(startRoom);
         occupied.Add(startPos);
 
-        int roomIdCounter = 1;
 
         while (rooms.Count < roomCount && toExplore.Count > 0)
         {
@@ -152,7 +165,7 @@ public class MapManager : MonoBehaviour
 
                 if (!occupied.Contains(nextPos))
                 {
-                    Room newRoom = new Room { id = roomIdCounter++, gridPos = nextPos };
+                    Room newRoom = RoomObject(nextPos, roomIdCounter++);
                     roomDict[nextPos] = newRoom;
                     rooms.Add(newRoom);
                     occupied.Add(nextPos);
@@ -173,7 +186,7 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        // ¹æ & º¹µµ ±×¸®±â
+        //    &       ×¸   
         foreach (var room in rooms)
         {
             Vector2Int worldPos = room.gridPos * new Vector2Int(roomSpacing, roomSpacing);
@@ -182,26 +195,41 @@ public class MapManager : MonoBehaviour
             foreach (var conn in room.connectedRooms)
             {
                 Vector2Int connWorldPos = conn * new Vector2Int(roomSpacing, roomSpacing);
-                DrawCorridor(worldPos, connWorldPos);
+                DrawCorridor(worldPos, connWorldPos, room);
             }
         }
 
         groundTiles = groundTiles.Distinct().ToList();
 
-        // ¾ÆÀÌÅÛ »ý¼º
+        //            
         SpawnItems();
 
-        // º® »ý¼º
-        GenerateWalls();
+        //        
+        GenerateWalls(emptyMap, wallTilemap);
 
-        // °è´Ü ¹èÄ¡
+        //       Ä¡
         PlaceStairs();
 
-        // »óÁ¡ ÇÁ¸®ÆÕ ¹èÄ¡ (4, 9, 14¹øÂ° ½ºÅ×ÀÌÁö)
+        //               Ä¡ (4, 9, 14  Â°         )
         if (shopPrefab != null && (currentStage == 4 || currentStage == 9 || currentStage == 14))
         {
             shopInstance = PlaceShop();
         }
+
+        return startPos;
+    }
+
+    private Room RoomObject(Vector2Int pos, int roomIdCounter)
+    {
+        GameObject roomObject = new GameObject();
+        roomObject.transform.parent = GameObject.Find("Grid").transform;
+        roomObject.AddComponent<Tilemap>();
+        roomObject.AddComponent<TilemapRenderer>();
+        roomObject.AddComponent<EnemySpawner>();
+        //roomObject.AddComponent<RoomControl>();
+
+        Room room = new Room(roomIdCounter, pos, roomObject);
+        return room;
     }
 
     void DrawRoomFloor(Vector2Int worldPos, int width, int height, Room room)
@@ -216,14 +244,16 @@ public class MapManager : MonoBehaviour
                 Vector3Int tilePos = new Vector3Int(startX + x, startY + y, 0);
 
                 TileBase selectedGroundTile = GetRandomGroundTile();
-                groundTilemap.SetTile(tilePos, selectedGroundTile);
+
+                emptyMap.SetTile(tilePos, selectedGroundTile);
+                room.tilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
                 room.tiles.Add(tilePos);
             }
         }
     }
 
-    void DrawCorridor(Vector2Int from, Vector2Int to)
+    void DrawCorridor(Vector2Int from, Vector2Int to, Room room)
     {
         Vector2Int dir = new Vector2Int(
             to.x > from.x ? 1 : to.x < from.x ? -1 : 0,
@@ -242,24 +272,27 @@ public class MapManager : MonoBehaviour
                     tilePos = new Vector3Int(pos.x + w, pos.y, 0);
 
                 TileBase selectedGroundTile = GetRandomGroundTile();
+                //room.roomObject.GetComponent<Tilemap>().SetTile(tilePos, selectedGroundTile);
+                emptyMap.SetTile(tilePos, selectedGroundTile);
                 groundTilemap.SetTile(tilePos, selectedGroundTile);
                 groundTiles.Add(tilePos);
             }
+
             pos += dir;
         }
     }
 
-    // È®·ü ±â¹Ý Å¸ÀÏ ¼±ÅÃ ÇÔ¼ö
+    // È®       Å¸         Ô¼ 
     TileBase GetRandomGroundTile()
     {
-        // ±âº» Å¸ÀÏ ¿Ü Å¸ÀÏÀÇ µîÀå È®·ü (1~5%)
+        //  âº» Å¸      Å¸          È®   (1~5%)
         float minRate = 0.01f;
         float maxRate = 0.05f;
         float rate = Mathf.Lerp(minRate, maxRate, Mathf.InverseLerp(2, 14, currentStage));
 
-        // ½ºÅ×ÀÌÁöº° µîÀå Å¸ÀÏ ÀÎµ¦½º °áÁ¤
+        //                 Å¸    Îµ        
         int extraStart = 2;
-        int extraEnd = 1; // ±âº»°ª: Ã¹¹øÂ° ½ºÅ×ÀÌÁö´Â Ãß°¡ Å¸ÀÏ ¾øÀ½
+        int extraEnd = 1; //  âº»  : Ã¹  Â°             ß°  Å¸       
 
         if (currentStage >= 2 && currentStage <= 3)
             extraEnd = 2;
@@ -278,15 +311,15 @@ public class MapManager : MonoBehaviour
         else if (currentStage == 15)
             extraEnd = 9;
 
-        // µîÀå Å¸ÀÏ ÀÎµ¦½º ¸®½ºÆ® »ý¼º
+        //      Å¸    Îµ        Æ®     
         List<int> extraTileIndices = new List<int>();
         for (int i = extraStart; i <= extraEnd && i < groundTilesByStage.Length; i++)
             extraTileIndices.Add(i);
 
-        // È®·ü ºÐ¹è
+        // È®    Ð¹ 
         float defaultTileRate = 1f - (rate * extraTileIndices.Count);
         List<float> tileRates = new List<float>();
-        tileRates.Add(defaultTileRate); // 0¹ø Å¸ÀÏ
+        tileRates.Add(defaultTileRate); // 0   Å¸  
 
         for (int i = 1; i < groundTilesByStage.Length; i++)
         {
@@ -296,7 +329,7 @@ public class MapManager : MonoBehaviour
                 tileRates.Add(0f);
         }
 
-        // ·£´ý ¼±ÅÃ
+        //          
         float rand = Random.value;
         float acc = 0f;
         for (int i = 0; i < tileRates.Count; i++)
@@ -305,10 +338,11 @@ public class MapManager : MonoBehaviour
             if (rand < acc)
                 return groundTilesByStage[i];
         }
+
         return groundTilesByStage[0];
     }
 
-    // ½ºÅ×ÀÌÁö º¯°æ ½Ã currentStage °ªÀ» ¹Ù²ãÁÖ°í GenerateMap() È£Ãâ
+    //                  currentStage       Ù²  Ö°  GenerateMap() È£  
     public void NextStage(bool isStairUp)
     {
         ClearItems();
@@ -316,18 +350,6 @@ public class MapManager : MonoBehaviour
         StageManager.AdvanceStage(isStairUp);
         currentStage = StageManager.CurrentStage;
 
-        /*        Debug.Log("Current Stage: " + currentStage);
-
-                if (currentStage == 5 || currentStage == 10 || currentStage == 15)
-                {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("BossMap");
-                    Debug.Log("Boss Stage: " + currentStage);
-
-                    Debug.Log("Ready for Boss Stage: " + currentStage);
-                    return;
-                }
-
-                GenerateMap();*/
 
         if (StageManager.IsBossStage())
         {
@@ -337,10 +359,10 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-        // ÀÏ¹Ý ¸Ê
+        // ï¿½Ï¹ï¿½ ï¿½ï¿½
         string mapScene = StageManager.GetMapScene();
         Debug.Log("Map Stage: " + currentStage + " -> Loading: " + mapScene);
-        GenerateMap(); // ¸Ê Àç»ý¼º
+        GenerateMap(); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     void PlaceStairs()
@@ -367,11 +389,11 @@ public class MapManager : MonoBehaviour
     {
         Vector3Int[] dirs =
         {
-        new Vector3Int(1, 0, 0),
-        new Vector3Int(-1, 0, 0),
-        new Vector3Int(0, 1, 0),
-        new Vector3Int(0, -1, 0)
-    };
+            new Vector3Int(1, 0, 0),
+            new Vector3Int(-1, 0, 0),
+            new Vector3Int(0, 1, 0),
+            new Vector3Int(0, -1, 0)
+        };
 
         int tileCount = Mathf.Clamp(currentStage + 1, 1, groundTilesByStage.Length);
         TileBase[] candidates = groundTilesByStage.Take(tileCount).ToArray();
@@ -382,6 +404,7 @@ public class MapManager : MonoBehaviour
             if (!candidates.Contains(tile))
                 return false;
         }
+
         return true;
     }
 
@@ -401,11 +424,11 @@ public class MapManager : MonoBehaviour
     {
         if (itemPrefabs == null || itemPrefabs.Length == 0) return;
 
-        // »óÁ¡ÀÌ ÀÖ´Â ¹æÀÇ Å¸ÀÏ Á¦¿Ü
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         List<Vector3Int> shopRoomTiles = new List<Vector3Int>();
         if (shopInstance != null)
         {
-            // shopInstance°¡ ÀÖ´Â ¹æ Ã£±â
+            // shopInstanceï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ Ã£ï¿½ï¿½
             Room shopRoom = rooms.FirstOrDefault(r =>
                 r.tiles.Any(t =>
                 {
@@ -418,13 +441,13 @@ public class MapManager : MonoBehaviour
                 shopRoomTiles = shopRoom.tiles;
         }
 
-        // ¹æ ³»ºÎ Å¸ÀÏ¸¸ ´ë»óÀ¸·Î, »óÁ¡ Å¸ÀÏ Á¦¿Ü
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var roomTiles = rooms.SelectMany(r => r.tiles)
-                             .Where(t => !shopRoomTiles.Contains(t))
-                             .Distinct()
-                             .ToList();
+            .Where(t => !shopRoomTiles.Contains(t))
+            .Distinct()
+            .ToList();
 
-        // °è´Ü Å¸ÀÏ Á¦¿Ü
+        // ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var validTiles = roomTiles.Where(tilePos =>
         {
             TileBase tile = groundTilemap.GetTile(tilePos);
@@ -446,11 +469,8 @@ public class MapManager : MonoBehaviour
         }
     }
 
-
     void ClearItems()
     {
-        //MapUIManager.Instance.OnStageStart();
-
         foreach (Transform child in transform)
         {
             if (child.CompareTag("Item"))
@@ -460,51 +480,60 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    void GenerateWalls()
+    public void GenerateWalls(Tilemap emptyMap, Tilemap wallTilemap, TileBase tileBase = null,
+        bool isStageBlock = false)
     {
-        BoundsInt bounds = groundTilemap.cellBounds;
+        BoundsInt bounds = emptyMap.cellBounds;
+
         for (int x = bounds.xMin - 1; x <= bounds.xMax + 1; x++)
         {
             for (int y = bounds.yMin - 1; y <= bounds.yMax + 1; y++)
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
-
-                if (groundTilemap.GetTile(pos) == null) // ¶¥ÀÌ ¾Æ´Ï¸é º® ÈÄº¸
+                if (emptyMap.GetTile(pos) == null)
                 {
-                    if (HasGroundNeighbour(pos))
+                    if (HasGroundNeighbour(pos, emptyMap))
                     {
-                        bool hasHorizontalNeighbour =
-                            groundTilemap.GetTile(new Vector3Int(pos.x - 1, pos.y, 0)) != null ||
-                            groundTilemap.GetTile(new Vector3Int(pos.x + 1, pos.y, 0)) != null;
+                        if (isStageBlock)
+                        {
+                            wallTilemap.SetTile(pos, tileBase);
 
-                        bool hasVerticalNeighbour =
-                            groundTilemap.GetTile(new Vector3Int(pos.x, pos.y - 1, 0)) != null ||
-                            groundTilemap.GetTile(new Vector3Int(pos.x, pos.y + 1, 0)) != null;
-
-                        if (hasHorizontalNeighbour && !hasVerticalNeighbour)
-                            wallTilemap.SetTile(pos, wallTileHorizontal);
-                        else if (hasVerticalNeighbour && !hasHorizontalNeighbour)
-                            wallTilemap.SetTile(pos, wallTileVertical);
+                        }
                         else
-                            wallTilemap.SetTile(pos, wallTileVertical); // ÄÚ³Êµµ vertical·Î ¼³Á¤
+                        {
+                            bool hasHorizontalNeighbour =
+                                groundTilemap.GetTile(new Vector3Int(pos.x - 1, pos.y, 0)) != null ||
+                                groundTilemap.GetTile(new Vector3Int(pos.x + 1, pos.y, 0)) != null;
+
+                            bool hasVerticalNeighbour =
+                                groundTilemap.GetTile(new Vector3Int(pos.x, pos.y - 1, 0)) != null ||
+                                groundTilemap.GetTile(new Vector3Int(pos.x, pos.y + 1, 0)) != null;
+
+                            if (hasHorizontalNeighbour && !hasVerticalNeighbour)
+                                wallTilemap.SetTile(pos, wallTileHorizontal);
+                            else if (hasVerticalNeighbour && !hasHorizontalNeighbour)
+                                wallTilemap.SetTile(pos, wallTileVertical);
+                            else
+                                wallTilemap.SetTile(pos, wallTileVertical); // ï¿½Ú³Êµï¿½ verticalï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                        }
                     }
                 }
             }
         }
     }
 
-
-    bool HasGroundNeighbour(Vector3Int pos)
+    bool HasGroundNeighbour(Vector3Int pos, Tilemap tilemap)
     {
         for (int dx = -1; dx <= 1; dx++)
         {
             for (int dy = -1; dy <= 1; dy++)
             {
                 if (dx == 0 && dy == 0) continue;
-                if (groundTilemap.GetTile(new Vector3Int(pos.x + dx, pos.y + dy, 0)) != null)
+                if (tilemap.GetTile(new Vector3Int(pos.x + dx, pos.y + dy, 0)) != null)
                     return true;
             }
         }
+
         return false;
     }
 
@@ -519,17 +548,18 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    // »óÁ¡ ÇÁ¸®ÆÕÀ» 8¹øÂ° ¹æ Áß¾Ó¿¡ ¹èÄ¡
+    //               8  Â°     ß¾Ó¿    Ä¡
     GameObject PlaceShop()
     {
         if (rooms.Count < 8) return null;
-        Room shopRoom = rooms[7]; // 8¹øÂ° ¹æ (ÀÎµ¦½º 7)
-        // ¹æ Áß¾Ó ÁÂÇ¥ °è»ê
+        Room shopRoom = rooms[7]; // 8  Â°    ( Îµ    7)
+        //     ß¾    Ç¥    
         Vector3 avgWorldPos = Vector3.zero;
         foreach (var tile in shopRoom.tiles)
         {
             avgWorldPos += groundTilemap.CellToWorld(tile) + new Vector3(0.5f, 0.5f, 0);
         }
+
         avgWorldPos /= shopRoom.tiles.Count;
 
         return Instantiate(shopPrefab, avgWorldPos, Quaternion.identity, this.transform);

@@ -127,7 +127,7 @@ namespace Enemy
             Tilemap tilemap = child.transform.AddComponent<Tilemap>();
             child.transform.AddComponent<TilemapRenderer>();
             child.transform.AddComponent<TilemapCollider2D>();
-            MapManager.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase);
+            MapManager.Instance.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase,true);
             //await SpawnEnemies();
         }
 
