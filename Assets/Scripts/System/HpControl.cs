@@ -9,6 +9,12 @@ namespace System
         private int _currentHp;
         private bool _isInvincible;
 
+        //hr
+        public int MaxHp => hpArray.Length;
+        public int CurrentHp => _currentHp;
+        public bool IsFullHp => _currentHp >= MaxHp - 1;
+
+
         void Awake()
         {
             DontDestroyOnLoad(transform.parent.gameObject);
