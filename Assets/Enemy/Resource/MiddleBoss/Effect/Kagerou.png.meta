@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Kagerou_0: -4265688948412950315
+      Kagerou_1: -6628668314162094576
+      Kagerou_2: 3726552437205712875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
