@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Character\Dash.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemBatchSpriteImporter.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
+    <Compile Include="Assets\HR\Script\StallTrigerSimple.cs" />
     <Compile Include="Assets\Scripts\Scripts_Enemy\AnimationEvents.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemSlot.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Assets\ES_Scripts\BonkAttack.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemUIManager.cs" />
     <Compile Include="Assets\Scripts\Scripts_Enemy\States\IdleState.cs" />
+    <Compile Include="Assets\HR\Script\StartWeapon.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemItemListPanel.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemSaveCharacter.cs" />
     <Compile Include="Assets\Test\Script\EmptyEnemyHit.cs" />

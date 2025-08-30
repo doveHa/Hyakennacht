@@ -745,6 +745,61 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &806634673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 806634675}
+  - component: {fileID: 806634674}
+  m_Layer: 0
+  m_Name: StartWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &806634674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806634673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ccd8b846b1c38045917e362f8ea41e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stallWeapons:
+  - {fileID: 8258397277547355638, guid: 89ff57a749600044dbe9db008c6b4260, type: 3}
+  - {fileID: 9153253112000212518, guid: 083bbe3d96d726441bd5f05bfc2f5cf1, type: 3}
+  - {fileID: 6900425341379106424, guid: 9ed633ae5ca811d42bed1be3440ac4c5, type: 3}
+  stallTransforms:
+  - {fileID: 1531303644}
+  - {fileID: 1423316112}
+  - {fileID: 2138815691}
+--- !u!4 &806634675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806634673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.89063215, y: -1.0572567, z: -0.064164296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1531303644}
+  - {fileID: 1423316112}
+  - {fileID: 2138815691}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &966331560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,9 +1463,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1423316112}
   - component: {fileID: 1423316111}
-  - component: {fileID: 1423316115}
   - component: {fileID: 1423316114}
-  - component: {fileID: 1423316113}
+  - component: {fileID: 1423316115}
   m_Layer: 0
   m_Name: yokairound-Photoroom (1)
   m_TagString: Untagged
@@ -1482,39 +1536,12 @@ Transform:
   m_GameObject: {fileID: 1423316110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.8477664, y: -0.28990883, z: 0.054340098}
+  m_LocalPosition: {x: 4.739368, y: 0.0572567, z: 0.064164296}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1916409634}
+  m_Father: {fileID: 806634675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1423316113
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423316110}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &1423316114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1570,11 +1597,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1423316110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428a78d2772401548adb98c18682aa45, type: 3}
+  m_Script: {fileID: 11500000, guid: d4707245145323640a0a3ff170784e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stallIndex: 0
-  shopManager: {fileID: 0}
+  stallIndex: 1
+  selector: {fileID: 806634674}
 --- !u!1 &1531303642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,8 +1613,7 @@ GameObject:
   - component: {fileID: 1531303644}
   - component: {fileID: 1531303643}
   - component: {fileID: 1531303647}
-  - component: {fileID: 1531303646}
-  - component: {fileID: 1531303645}
+  - component: {fileID: 1531303648}
   m_Layer: 0
   m_Name: yokairound-Photoroom
   m_TagString: Untagged
@@ -1659,53 +1685,12 @@ Transform:
   m_GameObject: {fileID: 1531303642}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.7822337, y: -0.28990883, z: 0.054340098}
+  m_LocalPosition: {x: -6.890632, y: 0.0572567, z: 0.064164296}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1916409634}
+  m_Father: {fileID: 806634675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1531303645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531303642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428a78d2772401548adb98c18682aa45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stallIndex: 0
-  shopManager: {fileID: 0}
---- !u!50 &1531303646
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531303642}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &1531303647
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1752,6 +1737,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.2200705, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1531303648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531303642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4707245145323640a0a3ff170784e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stallIndex: 0
+  selector: {fileID: 806634674}
 --- !u!1 &1540564334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,40 +2220,6 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   weaponVisualHolder: {fileID: 0}
   tailFirePoint: {fileID: 0}
---- !u!1 &1916409633
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1916409634}
-  m_Layer: 0
-  m_Name: StartWeapon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1916409634
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916409633}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21776651, y: -0.7100912, z: -0.054340098}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1531303644}
-  - {fileID: 1423316112}
-  - {fileID: 2138815691}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1918699548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,9 +2406,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2138815691}
   - component: {fileID: 2138815690}
-  - component: {fileID: 2138815694}
   - component: {fileID: 2138815693}
-  - component: {fileID: 2138815692}
+  - component: {fileID: 2138815694}
   m_Layer: 0
   m_Name: yokairound-Photoroom (2)
   m_TagString: Untagged
@@ -2515,26 +2479,12 @@ Transform:
   m_GameObject: {fileID: 2138815689}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.21776651, y: -2.289909, z: 0.054340098}
+  m_LocalPosition: {x: -0.89063215, y: -1.9427433, z: 0.064164296}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1916409634}
+  m_Father: {fileID: 806634675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2138815692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138815689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428a78d2772401548adb98c18682aa45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stallIndex: 0
-  shopManager: {fileID: 0}
 --- !u!61 &2138815693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2581,33 +2531,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.2200705, y: 1}
   m_EdgeRadius: 0
---- !u!50 &2138815694
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!114 &2138815694
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138815689}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4707245145323640a0a3ff170784e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stallIndex: 2
+  selector: {fileID: 806634674}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2619,4 +2556,4 @@ SceneRoots:
   - {fileID: 1639863990}
   - {fileID: 1918699550}
   - {fileID: 1194753878}
-  - {fileID: 1916409634}
+  - {fileID: 806634675}
