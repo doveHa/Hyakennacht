@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 7114b28285820cb4985392897892a639
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324890
+  packageName: 2D Character Maker - Pixem
+  packageVersion: 1.1
+  assetPath: Assets/Pixem/Resources/Items/Hair/Hair_0.png
+  uploadId: 772811
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -164,10 +171,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 324890
-  packageName: 2D Character Maker - Pixem
-  packageVersion: 1.1
-  assetPath: Assets/Pixem/Resources/Items/Hair/Hair_0.png
-  uploadId: 772811

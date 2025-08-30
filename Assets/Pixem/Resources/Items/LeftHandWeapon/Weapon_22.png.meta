@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: c133d091a7416754eb6d2faac14110fb
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324890
+  packageName: 2D Character Maker - Pixem
+  packageVersion: 1.1
+  assetPath: Assets/Pixem/Resources/Items/LeftHandWeapon/Weapon_22.png
+  uploadId: 772811
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -164,10 +171,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 324890
-  packageName: 2D Character Maker - Pixem
-  packageVersion: 1.1
-  assetPath: Assets/Pixem/Resources/Items/LeftHandWeapon/Weapon_22.png
-  uploadId: 772811

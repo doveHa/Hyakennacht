@@ -94,7 +94,7 @@ private void SetStat(List<EnemyStat> set)
 
     public void Death()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     private class EnemyStat

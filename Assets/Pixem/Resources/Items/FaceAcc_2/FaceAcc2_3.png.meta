@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: ea546c99508b7fc419459461227e2d8d
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324890
+  packageName: 2D Character Maker - Pixem
+  packageVersion: 1.1
+  assetPath: Assets/Pixem/Resources/Items/FaceAcc_2/FaceAcc2_3.png
+  uploadId: 772811
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -164,10 +171,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 324890
-  packageName: 2D Character Maker - Pixem
-  packageVersion: 1.1
-  assetPath: Assets/Pixem/Resources/Items/FaceAcc_2/FaceAcc2_3.png
-  uploadId: 772811

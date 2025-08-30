@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: c96c74f1fb27b00498206c2151972b9e
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324890
+  packageName: 2D Character Maker - Pixem
+  packageVersion: 1.1
+  assetPath: Assets/Pixem/Resources/Items/Pants/Pants_17.png
+  uploadId: 772811
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -325,10 +332,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 324890
-  packageName: 2D Character Maker - Pixem
-  packageVersion: 1.1
-  assetPath: Assets/Pixem/Resources/Items/Pants/Pants_17.png
-  uploadId: 772811

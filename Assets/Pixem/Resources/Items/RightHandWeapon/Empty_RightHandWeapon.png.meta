@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: b451a246cbe270c47a15363804ea7a95
+AssetOrigin:
+  serializedVersion: 1
+  productId: 324890
+  packageName: 2D Character Maker - Pixem
+  packageVersion: 1.1
+  assetPath: Assets/Pixem/Resources/Items/RightHandWeapon/Empty_RightHandWeapon.png
+  uploadId: 772811
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -233,10 +240,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 324890
-  packageName: 2D Character Maker - Pixem
-  packageVersion: 1.1
-  assetPath: Assets/Pixem/Resources/Items/RightHandWeapon/Empty_RightHandWeapon.png
-  uploadId: 772811

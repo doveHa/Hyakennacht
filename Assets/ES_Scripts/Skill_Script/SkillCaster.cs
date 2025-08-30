@@ -33,9 +33,9 @@ public class SkillCaster : MonoBehaviour
     {
         if (slots == null) return;
 
-        if (Input.GetKeyDown(KeyCode.X)) TryCast(slots.Length > 0 ? slots[0] : null);
-        if (Input.GetKeyDown(KeyCode.C)) TryCast(slots.Length > 1 ? slots[1] : null);
-        if (Input.GetKeyDown(KeyCode.V)) TryCast(slots.Length > 2 ? slots[2] : null);
+        if (Input.GetKeyDown(KeyCode.F)) TryCast(slots.Length > 0 ? slots[0] : null);
+        if (Input.GetKeyDown(KeyCode.G)) TryCast(slots.Length > 1 ? slots[1] : null);
+        if (Input.GetKeyDown(KeyCode.H)) TryCast(slots.Length > 2 ? slots[2] : null);
     }
 
     void TryCast(SkillBase skill)
