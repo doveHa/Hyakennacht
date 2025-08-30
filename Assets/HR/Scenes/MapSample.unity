@@ -165,8 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
-  emptyMap: {fileID: 0}
-  emptyTile: {fileID: 0}
   groundTilesByStage:
   - {fileID: 11400000, guid: de4231a7331db494fba4ba06484c344f, type: 2}
   - {fileID: 11400000, guid: 30ee68ebc51fb98418690a39438c0256, type: 2}
@@ -178,7 +176,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a329a4fba31a2b4791af3a2ee0925cc, type: 2}
   - {fileID: 11400000, guid: fc967a66edf37544a946931c8dc0152a, type: 2}
   - {fileID: 11400000, guid: 534d0cecdbdce584d81c88f96382992c, type: 2}
-  wallTile: {fileID: 0}
+  wallTileHorizontal: {fileID: 0}
+  wallTileVertical: {fileID: 0}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
@@ -600,6 +599,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4703791776115854186, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 354720194}
+    - targetCorrespondingSourceObject: {fileID: 4703791776115854186, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 354720195}
   m_SourcePrefab: {fileID: 100100000, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
 --- !u!1 &354720193 stripped
 GameObject:
@@ -625,6 +627,18 @@ MonoBehaviour:
   gcd: 5
   pool: {fileID: 627268541}
   fx: {fileID: 921121335}
+--- !u!114 &354720195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354720193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bafb4c45183c874b9cb5675736960a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &627268540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -693,9 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f8ad7678191e544a8bba92ba8a07d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  weaponVisualHolder: {fileID: 0}
-  tailFirePoint: {fileID: 0}
 --- !u!1 &823124032
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,8 +738,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
-  emptyMap: {fileID: 0}
-  emptyTile: {fileID: 0}
   groundTilesByStage:
   - {fileID: 11400000, guid: 70b32983aaf43e84d881a07cf3c5d269, type: 2}
   - {fileID: 11400000, guid: c4ffa644345e4cf48abc75c6bde12cf3, type: 2}
@@ -740,7 +749,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e752afccdc4e96843afb0b66a2ad839f, type: 2}
   - {fileID: 11400000, guid: 75f409794530c9c4f8d55a6fcd1e9828, type: 2}
   - {fileID: 11400000, guid: b02d02a46d81d2842aabcfa12e17e1f3, type: 2}
-  wallTile: {fileID: 0}
+  wallTileHorizontal: {fileID: 0}
+  wallTileVertical: {fileID: 0}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
@@ -1094,7 +1104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274b4192dea47049b45251503efbf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinCount: {fileID: 1807317576}
 --- !u!114 &1610339729
 MonoBehaviour:
   m_ObjectHideFlags: 0
