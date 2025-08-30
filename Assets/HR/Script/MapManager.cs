@@ -213,7 +213,7 @@ public class MapManager : MonoBehaviour
         GameObject roomObject = new GameObject();
         roomObject.transform.parent = GameObject.Find("Grid").transform;
         roomObject.AddComponent<Tilemap>();
-        roomObject.AddComponent<TilemapRenderer>().sortingOrder = -1;
+        roomObject.AddComponent<TilemapRenderer>().sortingOrder = -4;
         roomObject.AddComponent<EnemySpawner>();
 
         Room room = new Room(roomIdCounter, pos, roomObject);
