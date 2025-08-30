@@ -7,19 +7,22 @@ using UnityEngine;
 public class SkillCaster : MonoBehaviour
 {
     public SkillBase[] slots;
-    public Transform firePoint;
-    public Transform actor;
-    SpriteRenderer actorSR;
-    Dash actorDash;
 
-    public float gcd = 5;
+    [Header("Actor (실제 모델)")]
+    public Transform actor;      // Witch/Body
+    public Transform firePoint;  // Body/FirePos
 
+    private SpriteRenderer actorSR; // 읽기용
+    private Dash actorDash;         // 읽기용
+
+    private Transform facingProxy;
+
+    public float gcd = 0.2f;
     private readonly Dictionary<string, float> cdEnd = new();
     private float gcdEnd;
 
     public ObjectPool pool;
     public FXRouter fx;
-
 
     void Awake()
     {
@@ -34,7 +37,6 @@ public class SkillCaster : MonoBehaviour
                        : transform;
             actor = root.Find("Body") ?? root;
         }
-
         if (!firePoint)
         {
             firePoint = actor.Find("FirePos");
@@ -43,11 +45,18 @@ public class SkillCaster : MonoBehaviour
 
         actorSR = actor.GetComponentInChildren<SpriteRenderer>(true);
         actorDash = actor.GetComponentInChildren<Dash>(true);
+
+        var proxyGo = new GameObject("FacingProxy");
+        facingProxy = proxyGo.transform;
+        facingProxy.SetParent(actor, worldPositionStays: false);
+        facingProxy.localPosition = Vector3.zero;
+        facingProxy.localRotation = Quaternion.identity;
     }
 
     void Update()
     {
         if (slots == null) return;
+
         if (Input.GetKeyDown(KeyCode.F)) TryCast(slots.Length > 0 ? slots[0] : null);
         if (Input.GetKeyDown(KeyCode.G)) TryCast(slots.Length > 1 ? slots[1] : null);
         if (Input.GetKeyDown(KeyCode.H)) TryCast(slots.Length > 2 ? slots[2] : null);
@@ -65,22 +74,22 @@ public class SkillCaster : MonoBehaviour
 
         float face = isLeft ? -1f : 1f;
 
-        var s = actor.localScale;
-        actor.localScale = new Vector3(Mathf.Abs(s.x) * face, s.y, s.z);
-
-        if (actorSR) actorSR.flipX = false;
+        // === 프록시에만 방향 기록 ===
+        var ps = facingProxy.localScale;
+        facingProxy.localScale = new Vector3((face < 0 ? -1f : 1f), (ps.y == 0 ? 1f : ps.y), (ps.z == 0 ? 1f : ps.z));
+        facingProxy.localPosition = Vector3.zero; 
 
         Vector2 castPos = firePoint ? (Vector2)firePoint.position : (Vector2)actor.position;
         Vector2 forward = new Vector2(face, 0f);
-        Vector2 mouseWorld = Camera.main ? (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition)
-                                         : castPos + forward;
-        Vector2 aimDir = (mouseWorld - castPos).sqrMagnitude > 0.0001f ? (mouseWorld - castPos).normalized
-                                                                           : forward;
+        Vector2 mouseWorld = Camera.main
+            ? (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition)
+            : castPos + forward;
+        Vector2 aimDir = (mouseWorld - castPos).sqrMagnitude > 0.0001f ? (mouseWorld - castPos).normalized : forward;
 
         var ctx = new SkillContext
         {
-            caster = actor,     
-            castPos = castPos,
+            caster = facingProxy, 
+            castPos = castPos,     
             aimDir = aimDir,
             aimPoint = mouseWorld,
             target = null,
