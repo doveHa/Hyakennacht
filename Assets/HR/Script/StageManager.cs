@@ -13,7 +13,7 @@ public static class StageManager
     public static void AdvanceStage(bool isStairUp)
     {
         CurrentStage++;
-        Debug.Log("½ºÅ×ÀÌÁö°¡ Áõ°¡Çß½À´Ï´Ù. ÇöÀç ½ºÅ×ÀÌÁö: " + CurrentStage);
+        Debug.Log("ìŠ¤í…Œì´ì§€ê°€ ì¦ê°€í–ˆìŠµë‹ˆë‹¤. í˜„ì¬ ìŠ¤í…Œì´ì§€: " + CurrentStage);
 
         AdjustDifficulty(isStairUp);
     }
@@ -22,11 +22,11 @@ public static class StageManager
     {
         if (isStairUp)
         {
-            Debug.Log("°è´Ü Up: ³­ÀÌµµ »ó½Â");
+            Debug.Log("ê³„ë‹¨ Up: ë‚œì´ë„ ìƒìŠ¹");
         }
         else
         {
-            Debug.Log("°è´Ü Down: ³­ÀÌµµ ÇÏ¶ô");
+            Debug.Log("ê³„ë‹¨ Down: ë‚œì´ë„ í•˜ë½");
         }
     }
 

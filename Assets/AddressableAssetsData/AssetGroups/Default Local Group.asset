@@ -14,7 +14,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 1098c2a5f1b730f4f9c026ea59451330
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 019a55b51b57a184bb203a9438a82638
+    m_Address: Assets/Enemy/Prefab/Golem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1aef9b24c0fef5341a2eb54b4dd6f3a6
+    m_Address: Assets/Enemy/Prefab/Ghost.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d08ad15449c450189a47f172ce6229c
+    m_Address: Assets/TextAsset/EnemyStats.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8084749f3786d0b4cb3de5ee1ead1ad6
+    m_Address: Assets/Enemy/Prefab/Kappa.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81512889f8a5a3443ae70b957cad66c6
+    m_Address: Assets/Enemy/Prefab/Slime.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98c3869ab8ec0ab4e97e23a843431819
+    m_Address: Assets/Enmy/Resource/Kappa/Effect/WaterBall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99cf8cb51eb472c42a6ee3473f0473b3
+    m_Address: Assets/Enemy/Prefab/Will-o-Wisp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1f1012e997f8bc439a3eee9a7c3f928
+    m_Address: Assets/Tile/Wall.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: daf2b4d07f0ada34d90f6c2edfc2e1f6
+    m_Address: Assets/Tile/256Wall.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1d7c1f2d5d0bc549a72083c6a388bf6
+    m_Address: Assets/Enemy/Prefab/Straw.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d60b6e1c8fcc9e4bbf3ce1d00c69810, type: 2}
   m_SchemaSet:

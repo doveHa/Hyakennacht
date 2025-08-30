@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Item
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - UI
   - Wall
   - Weapon
-  - PlayerParent
-  - PlayerCharacter
+  - Player
+  - 
   - 
   - 
   - 

@@ -10,8 +10,7 @@ namespace Manager
         public static SystemManager Instance { get; private set; }
 
         public HpControl HpControl { get; private set; }
-        //private TextMeshProUGUI _coinCount;
-        public TextMeshProUGUI _coinCount;
+        private TextMeshProUGUI _coinCount;
 
         protected override void Awake()
         {
@@ -23,6 +22,10 @@ namespace Manager
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.KeypadPlus))
+            {
+                HpControl.PlusHp();
+            }
             _coinCount.text = GameManager.Manager.PlayerScript.Coins.ToString();
         }
     }
