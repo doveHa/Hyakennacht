@@ -21,6 +21,7 @@ namespace Enemy.BossStage
         {
             _target = GameManager.Manager.PlayerScript.Target;
             _controller = GetComponent<EnemyController>();
+            _controller.SetTarget(_target);
             SetAction();
         }
         

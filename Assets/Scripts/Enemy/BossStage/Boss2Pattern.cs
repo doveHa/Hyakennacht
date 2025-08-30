@@ -19,7 +19,6 @@ namespace Enemy.BossStage
 
         public IEnumerator PatternSniper()
         {
-            Debug.Log("Sniper");
             float timer = 0f;
             float elapsed = 0f;
             float duration = 4f;
@@ -46,7 +45,6 @@ namespace Enemy.BossStage
 
         public IEnumerator PatternHorizontalWall()
         {
-            Debug.Log("HorizontalWall");
             float timer = 0f;
             float elapsed = 0f;
             float duration = 4f;

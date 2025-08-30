@@ -24,6 +24,7 @@ namespace Enemy
 
         public void Enter()
         {
+            _controller.Flip(_controller.transform.position.x < _controller.Target.position.x);
             _controller.Rigidbody.linearVelocity = Vector3.zero;
             _controller.Animator.SetTrigger("Attack");
             _controller.Animator.SetInteger("PatternIndex", _patternIndex + 1);
@@ -34,6 +35,7 @@ namespace Enemy
 
         public void Update()
         {
+            _controller.Flip(_controller.transform.position.x > _controller.Target.position.x);
             _timer += Time.deltaTime;
             if (_timer >= _duration)
             {
