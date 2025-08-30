@@ -14,13 +14,13 @@ namespace Enemy
         public Transform Target { get; private set; }
 
         public bool IsChangeState = true;
-        private bool _isLeftSight;
+        public bool IsLeftSight;
 
         void Awake()
         {
             Animator = GetComponent<Animator>();
             Rigidbody = GetComponent<Rigidbody2D>();
-            _isLeftSight = false;
+            IsLeftSight = false;
         }
 
         async void Start()
@@ -59,10 +59,10 @@ namespace Enemy
 
         public void Flip(bool isRightDestination)
         {
-            if ((_isLeftSight && isRightDestination) || (!_isLeftSight && !isRightDestination))
+            if ((IsLeftSight && isRightDestination) || (!IsLeftSight && !isRightDestination))
             {
-                _isLeftSight = !_isLeftSight;
-                transform.GetChild(1).localRotation = Quaternion.Euler(0f, _isLeftSight ? 180f : 0f, 0f);
+                IsLeftSight = !IsLeftSight;
+                transform.GetChild(1).localRotation = Quaternion.Euler(0f, IsLeftSight ? 180f : 0f, 0f);
             }
         }
 

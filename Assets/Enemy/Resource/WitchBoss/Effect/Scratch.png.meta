@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 4df216c09ae6aa64ca41ddb823cdca7e
+guid: f975bbdc3deb6f24d9a2e9fc07abcac9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4265688948412950315
-    second: Kagerou_0
+      213: -8540397549773956295
+    second: Scratch_0
   - first:
-      213: -6628668314162094576
-    second: Kagerou_1
+      213: -1860524887900267798
+    second: Scratch_1
   - first:
-      213: 3726552437205712875
-    second: Kagerou_2
+      213: -4811104093488692306
+    second: Scratch_2
+  - first:
+      213: -3949757772788844897
+    second: Scratch_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kagerou_0
+      name: Scratch_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 85
-        width: 754
-        height: 890
+        x: 147
+        y: 143
+        width: 615
+        height: 777
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d85983808a3dc4c0800000000000000
-      internalID: -4265688948412950315
+      spriteID: 93b5b1d6da96a7980800000000000000
+      internalID: -8540397549773956295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kagerou_1
+      name: Scratch_1
       rect:
         serializedVersion: 2
-        x: 907
-        y: 542
-        width: 14
-        height: 25
+        x: 155
+        y: 391
+        width: 470
+        height: 598
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01e1b78d94d3204a0800000000000000
-      internalID: -6628668314162094576
+      spriteID: aea5ee0d8761e26e0800000000000000
+      internalID: -1860524887900267798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kagerou_2
+      name: Scratch_2
       rect:
         serializedVersion: 2
-        x: 119
-        y: 344
-        width: 50
-        height: 47
+        x: 309
+        y: 103
+        width: 587
+        height: 799
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +168,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bef338092bf57b330800000000000000
-      internalID: 3726552437205712875
+      spriteID: ea3cd2a31568b3db0800000000000000
+      internalID: -4811104093488692306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scratch_3
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 83
+        width: 440
+        height: 599
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f96351c7b34af29c0800000000000000
+      internalID: -3949757772788844897
       vertices: []
       indices: 
       edges: []
@@ -184,10 +209,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Kagerou_0: -4265688948412950315
-      Kagerou_1: -6628668314162094576
-      Kagerou_2: 3726552437205712875
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

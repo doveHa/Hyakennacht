@@ -7066,6 +7066,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7044919197027669435, guid: dade74264cc553543bd32fc0d4bb74a3, type: 3}
+      propertyPath: speed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044919197027669435, guid: dade74264cc553543bd32fc0d4bb74a3, type: 3}
+      propertyPath: interval
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044919197027669435, guid: dade74264cc553543bd32fc0d4bb74a3, type: 3}
+      propertyPath: bulletSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044919197027669435, guid: dade74264cc553543bd32fc0d4bb74a3, type: 3}
+      propertyPath: scratchPrefab
+      value: 
+      objectReference: {fileID: 4149262260283064663, guid: ff7554cc34fc7fb4295fc9fa61c6e6e5, type: 3}
     - target: {fileID: 7855453494167686705, guid: dade74264cc553543bd32fc0d4bb74a3, type: 3}
       propertyPath: stage
       value: 

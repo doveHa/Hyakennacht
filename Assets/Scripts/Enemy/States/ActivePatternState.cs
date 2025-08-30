@@ -35,7 +35,7 @@ namespace Enemy
 
         public void Update()
         {
-            _controller.Flip(_controller.transform.position.x > _controller.Target.position.x);
+            _controller.Flip(_controller.transform.position.x < _controller.Target.position.x);
             _timer += Time.deltaTime;
             if (_timer >= _duration)
             {

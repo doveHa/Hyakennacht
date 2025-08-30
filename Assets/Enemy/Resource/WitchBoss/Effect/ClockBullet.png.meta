@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 4df216c09ae6aa64ca41ddb823cdca7e
+guid: f0891d5eb0fe146499b7c805b2086f97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4265688948412950315
-    second: Kagerou_0
-  - first:
-      213: -6628668314162094576
-    second: Kagerou_1
-  - first:
-      213: 3726552437205712875
-    second: Kagerou_2
+      213: -4121229263258010312
+    second: ClockBullet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,67 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kagerou_0
+      name: ClockBullet_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 85
-        width: 754
-        height: 890
+        x: 0
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5d85983808a3dc4c0800000000000000
-      internalID: -4265688948412950315
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kagerou_1
-      rect:
-        serializedVersion: 2
-        x: 907
-        y: 542
-        width: 14
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 01e1b78d94d3204a0800000000000000
-      internalID: -6628668314162094576
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kagerou_2
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 344
-        width: 50
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bef338092bf57b330800000000000000
-      internalID: 3726552437205712875
+      spriteID: 2b39a47606c0d4a4cad90fffabc3fbed
+      internalID: -437811764
       vertices: []
       indices: 
       edges: []
@@ -175,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f7728b29ea09cce45ae3834da272af58
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kagerou_0: -4265688948412950315
-      Kagerou_1: -6628668314162094576
-      Kagerou_2: 3726552437205712875
+      ClockBullet_0: -437811764
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 4df216c09ae6aa64ca41ddb823cdca7e
+guid: 1045bf1cb8568574b8ca3e20fee0763c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4265688948412950315
-    second: Kagerou_0
+      213: -8540397549773956295
+    second: Scratch_0
   - first:
-      213: -6628668314162094576
-    second: Kagerou_1
+      213: -1860524887900267798
+    second: Scratch_1
   - first:
-      213: 3726552437205712875
-    second: Kagerou_2
+      213: -4811104093488692306
+    second: Scratch_2
+  - first:
+      213: -3949757772788844897
+    second: Scratch_3
+  - first:
+      213: -7599132192566816011
+    second: Scratch_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,67 +112,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kagerou_0
+      name: Scratch_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 85
-        width: 754
-        height: 890
+        x: 0
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5d85983808a3dc4c0800000000000000
-      internalID: -4265688948412950315
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kagerou_1
-      rect:
-        serializedVersion: 2
-        x: 907
-        y: 542
-        width: 14
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 01e1b78d94d3204a0800000000000000
-      internalID: -6628668314162094576
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kagerou_2
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 344
-        width: 50
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bef338092bf57b330800000000000000
-      internalID: 3726552437205712875
+      spriteID: 71afdda330fdbe447aa9248790e1edbb
+      internalID: -1404130582
       vertices: []
       indices: 
       edges: []
@@ -175,7 +137,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ea907f88eb2976a4ca166b93fe6aeff0
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +147,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kagerou_0: -4265688948412950315
-      Kagerou_1: -6628668314162094576
-      Kagerou_2: 3726552437205712875
+      Scratch_0: -1404130582
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
