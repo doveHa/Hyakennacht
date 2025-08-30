@@ -1986,6 +1986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cc55a9bc2bb7f42bd53eabe33f2d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isYokai: 0
 --- !u!50 &1918699553
 Rigidbody2D:
   serializedVersion: 5

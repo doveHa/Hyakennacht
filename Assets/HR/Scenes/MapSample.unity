@@ -165,8 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
-  emptyMap: {fileID: 0}
-  emptyTile: {fileID: 0}
   groundTilesByStage:
   - {fileID: 11400000, guid: de4231a7331db494fba4ba06484c344f, type: 2}
   - {fileID: 11400000, guid: 30ee68ebc51fb98418690a39438c0256, type: 2}
@@ -178,7 +176,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a329a4fba31a2b4791af3a2ee0925cc, type: 2}
   - {fileID: 11400000, guid: fc967a66edf37544a946931c8dc0152a, type: 2}
   - {fileID: 11400000, guid: 534d0cecdbdce584d81c88f96382992c, type: 2}
-  wallTile: {fileID: 0}
+  wallTileHorizontal: {fileID: 0}
+  wallTileVertical: {fileID: 0}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
@@ -693,9 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f8ad7678191e544a8bba92ba8a07d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  weaponVisualHolder: {fileID: 0}
-  tailFirePoint: {fileID: 0}
 --- !u!1 &823124032
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,8 +723,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 1858252831}
   wallTilemap: {fileID: 80108514}
-  emptyMap: {fileID: 0}
-  emptyTile: {fileID: 0}
   groundTilesByStage:
   - {fileID: 11400000, guid: 70b32983aaf43e84d881a07cf3c5d269, type: 2}
   - {fileID: 11400000, guid: c4ffa644345e4cf48abc75c6bde12cf3, type: 2}
@@ -740,7 +734,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e752afccdc4e96843afb0b66a2ad839f, type: 2}
   - {fileID: 11400000, guid: 75f409794530c9c4f8d55a6fcd1e9828, type: 2}
   - {fileID: 11400000, guid: b02d02a46d81d2842aabcfa12e17e1f3, type: 2}
-  wallTile: {fileID: 0}
+  wallTileHorizontal: {fileID: 11400000, guid: 43cf9b717e846aa48a99e23b5b95b2ff, type: 2}
+  wallTileVertical: {fileID: 11400000, guid: 4c5e1c76571c2c348b264282cbeb8fcd, type: 2}
   currentStage: 0
   roomCount: 7
   roomWidth: 13
@@ -1075,6 +1070,7 @@ GameObject:
   - component: {fileID: 1610339730}
   - component: {fileID: 1610339729}
   - component: {fileID: 1610339728}
+  - component: {fileID: 1610339733}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1094,7 +1090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0274b4192dea47049b45251503efbf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinCount: {fileID: 1807317576}
 --- !u!114 &1610339729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1141,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1610339733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610339727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c304497d3dff45fba80baa17bb2c2118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1615555840
 GameObject:
   m_ObjectHideFlags: 0
