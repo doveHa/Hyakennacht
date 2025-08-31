@@ -11,6 +11,8 @@ public class SkillData
     public string title;
     public string description;
     public Sprite icon; // JSON에서 Sprite 로드 시, Resources 폴더 사용 추천
+    public string assetName; // JSON에 들어가는 에셋 이름
+
 }
 
 [System.Serializable]
@@ -38,17 +40,21 @@ public class MapUIManager : MonoBehaviour
     [SerializeField] private Button SelectCard2;
     [SerializeField] private Button SelectCard3;
 
-    [SerializeField] private TMP_Text cardTitle1;
-    [SerializeField] private TMP_Text cardDesc1;
+    [SerializeField] private Text cardTitle1;
+    [SerializeField] private Text cardDesc1;
     [SerializeField] private Image cardIcon1;
 
-    [SerializeField] private TMP_Text cardTitle2;
-    [SerializeField] private TMP_Text cardDesc2;
+    [SerializeField] private Text cardTitle2;
+    [SerializeField] private Text cardDesc2;
     [SerializeField] private Image cardIcon2;
 
-    [SerializeField] private TMP_Text cardTitle3;
-    [SerializeField] private TMP_Text cardDesc3;
+    [SerializeField] private Text cardTitle3;
+    [SerializeField] private Text cardDesc3;
     [SerializeField] private Image cardIcon3;
+
+    [Header("Skill Assets")]
+    [SerializeField] private SkillBase[] skillAssets; // Inspector에서 모든 스킬 에셋 연결
+
 
     private List<SkillData> skillList = new List<SkillData>();
     // 선택한 스킬 저장
@@ -94,7 +100,7 @@ public class MapUIManager : MonoBehaviour
             KilledEnemies++;
             StageCoins += 10;
         }
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             PlayerDied = true;
             OnStageEnd(); // 통계창 열기
@@ -182,9 +188,9 @@ public class MapUIManager : MonoBehaviour
         // 특정 스테이지에서만 스킬 선택
 
 
-       if (MapManager.Instance.currentStage == 4 ||
-            MapManager.Instance.currentStage == 9 ||
-            MapManager.Instance.currentStage == 14)
+        if (MapManager.Instance.currentStage == 4 ||
+             MapManager.Instance.currentStage == 9 ||
+             MapManager.Instance.currentStage == 14)
         {
             ShowSkillSelectPanel();
             AfterSkillSelect = true;
@@ -207,7 +213,8 @@ public class MapUIManager : MonoBehaviour
     private void LoadSkillsFromJSON()
     {
         // JSON은 Resources 폴더에 skill.json으로 가정
-        TextAsset json = Resources.Load<TextAsset>("DummyJson");
+        TextAsset json = Resources.Load<TextAsset>("Skills/SkillsInfo");
+
         if (json != null)
         {
             SkillData[] skills = JsonUtility.FromJson<SkillDataArrayWrapper>(json.text).skills;
@@ -255,7 +262,6 @@ public class MapUIManager : MonoBehaviour
 
         currentCards.Clear();
 
-        // 3개 랜덤 선택
         List<int> indices = new List<int>();
         while (indices.Count < 3)
         {
@@ -272,12 +278,13 @@ public class MapUIManager : MonoBehaviour
         SetCardUI(2, currentCards[2]);
     }
 
+
     private void OnCardSelected(int index)
     {
         if (currentCards == null || currentCards.Count < 3)
         {
             Debug.LogWarning($"Tried to select card {index} before initialization. Ignoring.");
-            return; // 그냥 무시
+            return;
         }
 
         if (index < 0 || index >= currentCards.Count)
@@ -289,19 +296,46 @@ public class MapUIManager : MonoBehaviour
         SelectedSkill = currentCards[index];
         skillSelectPanel.SetActive(false);
 
-        Debug.Log($"Selected Skill: {SelectedSkill.title}"); 
-        //여기서 이제 플레이어한테 선택한 스킬 전달
+        Debug.Log($"Selected Skill: {SelectedSkill.title}");
 
-        // skill 선택 후 stage clear 패널 열기
-        if (AfterSkillSelect)
+        if (player != null)
         {
-            statsPanel.SetActive(true);
-            MoveFlag(MapManager.Instance.currentStage);
-            AfterSkillSelect = false;
+            SkillCaster caster = player.GetComponent<SkillCaster>();
 
-            // 스킬 선택 후 다음 스테이지 이동
-            PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
-            cam?.TryInteractWithStairs(); // 선택 후 바로 다음 스테이지로
+            // 배열에서 이름으로 스킬 찾기
+            SkillBase skillAsset = GetSkillByName(SelectedSkill.assetName);
+
+            if (skillAsset != null)
+            {
+                caster.RegisterSkill(0, skillAsset);
+            }
+            else
+            {
+                Debug.LogWarning($"스킬 '{SelectedSkill.title}'을 할당된 배열에서 찾을 수 없습니다.");
+            }
+
+            // skill 선택 후 stage clear 패널 열기
+            if (AfterSkillSelect)
+            {
+                statsPanel.SetActive(true);
+                MoveFlag(MapManager.Instance.currentStage);
+                AfterSkillSelect = false;
+
+                // 스킬 선택 후 다음 스테이지 이동
+                PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
+                cam?.TryInteractWithStairs();
+            }
         }
+    }
+
+    // 이름으로 배열 검색
+    private SkillBase GetSkillByName(string name)
+    {
+        foreach (var skill in skillAssets)
+        {
+            if (skill.name == name) // ScriptableObject 이름과 비교
+                return skill;
+        }
+        return null;
     }
 }
