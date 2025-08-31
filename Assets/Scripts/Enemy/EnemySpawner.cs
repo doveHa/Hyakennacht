@@ -13,7 +13,7 @@ namespace Enemy
     public class EnemySpawner : MonoBehaviour
     {
         private Tilemap _stage;
-        private List<GameObject> _enemyObjects;
+        private static List<GameObject> _enemyObjects;
         private Bounds _bounds;
 
         private GameObject[] _objects;
@@ -23,28 +23,40 @@ namespace Enemy
 
         public GameObject _wall;
 
-        void Awake()
+        public static async Task CreateEnemies()
         {
-            _stage = GetComponent<Tilemap>();
             _enemyObjects = new List<GameObject>();
-            //IsSpawn = false;
-        }
 
-        async void Start()
-        {
             List<string> keys = new List<string>();
             string path = "Assets/Enemy/Prefab/";
-            //keys.Add(path + "Ghost.prefab");
-            keys.Add(path + "Will-o-Wisp.prefab");
-            keys.Add(path + "Straw.prefab");
-            keys.Add(path + "Kappa.prefab");
-            //keys.Add(path + "Slime.prefab");
-            //keys.Add(path + "Golem.prefab");
+
+            if (StageManager.GetMapScene().Equals("YokaiMap"))
+            {
+                keys.Add(path + "Ghost.prefab");
+                keys.Add(path + "Slime.prefab");
+                keys.Add(path + "Golem.prefab");
+            }
+            else
+            {
+                keys.Add(path + "Will-o-Wisp.prefab");
+                keys.Add(path + "Straw.prefab");
+                keys.Add(path + "Kappa.prefab");
+            }
+
             foreach (string key in keys)
             {
                 _enemyObjects.Add(await AddressableManager.Manager.LoadAsset<GameObject>(key));
             }
+        }
 
+        void Awake()
+        {
+            _stage = GetComponent<Tilemap>();
+            //IsSpawn = false;
+        }
+
+        void Start()
+        {
             _stage.CompressBounds();
             _bounds = _stage.localBounds;
         }
@@ -81,11 +93,11 @@ namespace Enemy
                 SpawnEnemies();
             }*/
         }
-        
+
         private async Task SpawnEnemies()
         {
             Random rnd = new Random();
-        
+
             int spawnEnemies = rnd.Next(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
 
@@ -125,7 +137,7 @@ namespace Enemy
             await mob.GetComponent<EnemyStats>().SetStat();
             return mob;
         }
-        
+
         public async Task StartStage()
         {
             _wall = new GameObject();

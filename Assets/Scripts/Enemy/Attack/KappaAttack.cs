@@ -11,7 +11,7 @@ namespace Enemy.Attack
         private GameObject _waterBall;
         public async void Start()
         {
-            _waterBall = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enmy/Resource/Kappa/Effect/WaterBall.prefab");
+            _waterBall = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Resource/Kappa/Effect/WaterBall.prefab");
 
         }
         public override void Attack(Vector3 targetPosition)
