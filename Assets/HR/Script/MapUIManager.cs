@@ -10,7 +10,7 @@ public class SkillData
 {
     public string title;
     public string description;
-    public Sprite icon; // JSON에서 Sprite 로드 시, Resources 폴더 사용 추천
+    public string icon; // JSON에서 Sprite 로드 시, Resources 폴더 사용 추천
     public string assetName; // JSON에 들어가는 에셋 이름
 
 }
@@ -228,12 +228,9 @@ public class MapUIManager : MonoBehaviour
 
     private void SetCardUI(int cardIndex, SkillData skill)
     {
-        // JSON에서 가져온 icon 이름으로 Resources에서 Sprite 로드
         Sprite iconSprite = Resources.Load<Sprite>("Skills/SkillIcons/" + skill.icon);
         if (iconSprite == null)
-        {
             Debug.LogWarning($"스킬 아이콘 '{skill.icon}'을 Resources/Skills/SkillIcons에서 찾을 수 없습니다.");
-        }
 
         switch (cardIndex)
         {
