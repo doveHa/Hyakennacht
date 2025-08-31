@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 8307244948319311780, guid: f86b420c14a430b47b5ff8291a9d8b71, type: 3}
+    - target: {fileID: 1672000836493249890, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
+      propertyPath: startingWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: b4f789ac911738248a8d6c45c8372d85, type: 2}
     - target: {fileID: 4703791776115854186, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: m_Name
       value: Player

@@ -26,7 +26,6 @@ public class ShopManager : MonoBehaviour
 
     // 구매 이벤트 (외부에서 구독 가능)
     public event Action<int, GameObject> OnWeaponPurchased;
-    private string weaponName;
 
     void Start()
     {
@@ -162,6 +161,8 @@ for (int i = 0; i < stallCount; i++)
             var player = FindObjectOfType<Player>();
             if (player != null && player.weaponHandler != null)
             {
+                string weaponName = LastPurchasedWeaponPrefab.name;
+
                 // WeaponData 불러오기
                 WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
                 if (weaponData != null)

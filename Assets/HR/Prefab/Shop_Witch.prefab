@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefabs:
   - {fileID: 8914758360542796921, guid: e29af6462b12caa459d37d7b8c4ee754, type: 3}
-  - {fileID: 7485578837621575502, guid: 324ec69e448dd0f47b9ecc61bf258ae1, type: 3}
+  - {fileID: 7536999885902252784, guid: 6de925961274fdf4887a7148abdedfcd, type: 3}
   - {fileID: 2873882223903997513, guid: 22b52b64b8718374b9f96e735b0e5e9a, type: 3}
   - {fileID: 9025183269850006190, guid: 0e69516390133c54d9ab52578f6d1329, type: 3}
   - {fileID: 175894421978928194, guid: 084523ccc98fe5e4e8761ed49aae6169, type: 3}
