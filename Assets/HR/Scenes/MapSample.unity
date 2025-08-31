@@ -543,13 +543,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1672000836493249890, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 8307244948319311780, guid: f86b420c14a430b47b5ff8291a9d8b71, type: 3}
+    - target: {fileID: 1672000836493249890, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: weaponHandler
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1672000836493249890, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: startingWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 3b68ecbc518d7a54f8fa3881cf3d2b75, type: 2}
+      objectReference: {fileID: 11400000, guid: 82dba0a831bf95b4ebbfa89b06a13580, type: 2}
     - target: {fileID: 4298335347944655996, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -615,9 +619,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1758916978}
     - target: {fileID: 6404072077181073360, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
+      propertyPath: 'slots.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6472393222c67544cadefdd0c5b6000f, type: 2}
+    - target: {fileID: 6404072077181073360, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: 'slots.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 2dbcaef4bba973e47a96273300eaac37, type: 2}
+      objectReference: {fileID: 11400000, guid: dcca9892e530446439bfb3744d539149, type: 2}
     m_RemovedComponents:
     - {fileID: 5353785623274857004, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
     m_RemovedGameObjects: []

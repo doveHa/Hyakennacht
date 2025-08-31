@@ -70,7 +70,7 @@ MonoBehaviour:
   moveSpeed: 5
   turnLerp: 12
   standoffDistance: 0.55
-  damage: 3
+  damage: 5
   attackCooldown: 0.6
   hitFxKey: 
   ignoreSameTargetSeconds: 0.35
