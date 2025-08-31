@@ -228,25 +228,33 @@ public class MapUIManager : MonoBehaviour
 
     private void SetCardUI(int cardIndex, SkillData skill)
     {
+        // JSON에서 가져온 icon 이름으로 Resources에서 Sprite 로드
+        Sprite iconSprite = Resources.Load<Sprite>("Skills/SkillIcons/" + skill.icon);
+        if (iconSprite == null)
+        {
+            Debug.LogWarning($"스킬 아이콘 '{skill.icon}'을 Resources/Skills/SkillIcons에서 찾을 수 없습니다.");
+        }
+
         switch (cardIndex)
         {
             case 0:
                 cardTitle1.text = skill.title;
                 cardDesc1.text = skill.description;
-                cardIcon1.sprite = skill.icon;
+                cardIcon1.sprite = iconSprite;
                 break;
             case 1:
                 cardTitle2.text = skill.title;
                 cardDesc2.text = skill.description;
-                cardIcon2.sprite = skill.icon;
+                cardIcon2.sprite = iconSprite;
                 break;
             case 2:
                 cardTitle3.text = skill.title;
                 cardDesc3.text = skill.description;
-                cardIcon3.sprite = skill.icon;
+                cardIcon3.sprite = iconSprite;
                 break;
         }
     }
+
 
     private List<SkillData> currentCards = new List<SkillData>();
 
