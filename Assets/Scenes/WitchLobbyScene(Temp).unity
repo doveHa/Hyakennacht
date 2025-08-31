@@ -1719,6 +1719,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7435361944314447412, guid: 7dddf7a49e931f744a745873b75ff4e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820163029608255894, guid: 7dddf7a49e931f744a745873b75ff4e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8592220139600154479, guid: 7dddf7a49e931f744a745873b75ff4e3, type: 3}
       propertyPath: m_Pivot.x
       value: 0

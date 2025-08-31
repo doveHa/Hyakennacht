@@ -83,54 +83,51 @@ namespace Enemy
                 SpawnEnemies();
             }*/
         }
-
-        public static Vector3 GetRandomPosition(Tilemap tilemap)
-        {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
-            Bounds bounds = tilemap.localBounds;
-            Vector3 randomPosition;
-
-            int randomX = rnd.NextInt((int)bounds.min.x, (int)bounds.max.x);
-            int randomY = rnd.NextInt((int)bounds.min.y, (int)bounds.max.y);
-            Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
-            randomPosition = tilemap.CellToLocal(randomPoint);
-
-            return randomPosition;
-        }
-
-
+        
         private async Task SpawnEnemies()
         {
             Random rnd = new Random((uint)DateTime.Now.Millisecond);
 
             int spawnEnemies = rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
+
+            HashSet<Vector3Int> usedPositions = new HashSet<Vector3Int>(); // ✅ 사용된 셀 기록
+
             for (int i = 0; i < spawnEnemies; i++)
             {
                 int rndEnemy = rnd.NextInt(_enemyObjects.Count);
-                _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy]);
+                Vector3 spawnPos = GetUniqueRandomPosition(_stage, usedPositions);
+                _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy], spawnPos);
+                _objects[i].transform.parent = _wall.transform;
             }
         }
 
-        private async Task<GameObject> SpawnEnemy(GameObject enemy)
+        private Vector3 GetUniqueRandomPosition(Tilemap tilemap, HashSet<Vector3Int> usedPositions)
         {
-            Vector3 local = GetRandomPosition(_stage);
-            GameObject mob = Instantiate(enemy, local, Quaternion.identity);
+            Random rnd = new Random((uint)DateTime.Now.Millisecond);
+            Bounds bounds = tilemap.localBounds;
+
+            Vector3Int randomPoint;
+
+            do
+            {
+                int randomX = rnd.NextInt((int)bounds.min.x, (int)bounds.max.x);
+                int randomY = rnd.NextInt((int)bounds.min.y, (int)bounds.max.y);
+                randomPoint = new Vector3Int(randomX, randomY, 0);
+            } while (usedPositions.Contains(randomPoint) || !tilemap.HasTile(randomPoint));
+
+            usedPositions.Add(randomPoint); // ✅ 사용된 위치 기록
+            return tilemap.CellToLocal(randomPoint);
+        }
+
+        private async Task<GameObject> SpawnEnemy(GameObject enemy, Vector3 position)
+        {
+            GameObject mob = Instantiate(enemy, position, Quaternion.identity);
             mob.GetComponent<EnemyController>().stage = _stage;
             await mob.GetComponent<EnemyStats>().SetStat();
             return mob;
         }
-
-        private bool CheckDuplication(Vector3 position)
-        {
-            if (Physics2D.OverlapCircleAll(position, Constant.SpawnEnemy.SPAWN_DUPLICATION_DISTANCE).Length == 0)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
+        
         public async Task StartStage()
         {
             _wall = new GameObject();
