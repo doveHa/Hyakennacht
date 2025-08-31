@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ChargeAttack : MonoBehaviour, IWeaponBehavior
+public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
 {
     private WeaponData data;
     private Transform firePoint;
@@ -14,10 +14,17 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
 
     private GameObject currentProjectile;
 
+    [SerializeField] bool invertInput = true;
+
     public void Initialize(WeaponData data, Transform firePoint)
     {
         this.data = data;
         this.firePoint = firePoint;
+    }
+
+    public void SetFacingDirection(bool isLeft)
+    {
+        this.isLeft = invertInput ? !isLeft : isLeft;
     }
 
     public void Attack()
@@ -29,16 +36,15 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if(animator == null)
+            if (animator == null)
                 animator = GetComponentInChildren<Animator>();
 
+            Debug.Log($"Animator 할당됨: {animator?.gameObject.name}");
             isCharging = true;
             chargeTime = 0f;
 
             if (data.weaponName == "마법진")
-            {
                 SpawnMagicCircle();
-            }
 
             if (animator != null)
                 animator.SetBool("isCharging", true);
@@ -55,19 +61,17 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
 
                 CircleCollider2D collider = currentProjectile.GetComponent<CircleCollider2D>();
                 if (collider != null)
-                {
-                    collider.radius = scale * 0.35f; 
-                }
+                    collider.radius = scale * 0.35f;
 
                 Animator projAnim = currentProjectile.GetComponent<Animator>();
                 if (projAnim != null)
                 {
                     if (chargeTime >= chargeThreshold * 0.44f)
-                        projAnim.Play("Stage3"); 
+                        projAnim.Play("Stage3");
                     else if (chargeTime >= chargeThreshold * 0.22f)
                         projAnim.Play("Stage2");
                     else
-                        projAnim.Play("Stage1"); 
+                        projAnim.Play("Stage1");
                 }
             }
         }
@@ -78,7 +82,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
 
             if (data.weaponName == "마법진")
             {
-                Destroy(currentProjectile, 0.2f); 
+                Destroy(currentProjectile, 0.2f);
             }
             else
             {
@@ -97,18 +101,19 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
 
         currentProjectile = Instantiate(data.prefab, firePoint.position, Quaternion.identity);
 
-        float xDir = Mathf.Sign(firePoint.parent.localScale.x);
+        float xDir = isLeft ? -1f : 1f;
 
         Rigidbody2D rb = currentProjectile.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.linearVelocity = new Vector2(xDir * data.attackSpeed, 0f);
+            rb.gravityScale = 0f;
         }
 
         SpriteRenderer sr = currentProjectile.GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
         {
-            sr.flipX = xDir < 0;
+            sr.flipX = isLeft;
         }
 
         Projectile p = currentProjectile.GetComponent<Projectile>();
@@ -116,6 +121,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
         {
             int dmg = fullyCharged ? data.baseDamage * 2 : data.baseDamage;
             p.SetDamage(dmg);
+            p.SetWeaponName(data.weaponName);
         }
     }
 
@@ -124,7 +130,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
         if (data.prefab == null || firePoint == null) return;
 
         Vector3 spawnPos = firePoint.position;
-        spawnPos.y -= 0.5f; 
+        spawnPos.y -= 0.5f;
 
         currentProjectile = Instantiate(data.prefab, spawnPos, Quaternion.identity);
 
