@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
 
 namespace Enemy
 {
@@ -7,17 +9,18 @@ namespace Enemy
     {
         public Animator Animator { get; private set; }
         private IEnemyState _currentState;
-        public EnemySpawner Spawner { get; set; }
+        public Tilemap stage;
         public Rigidbody2D Rigidbody { get; private set; }
         public Transform Target { get; private set; }
 
-        private bool _isLeftSight;
+        public bool IsChangeState = true;
+        public bool IsLeftSight;
 
         void Awake()
         {
             Animator = GetComponent<Animator>();
             Rigidbody = GetComponent<Rigidbody2D>();
-            _isLeftSight = false;
+            IsLeftSight = false;
         }
 
         async void Start()
@@ -34,9 +37,12 @@ namespace Enemy
 
         public void ChangeState(IEnemyState newState)
         {
-            _currentState?.Exit();
-            _currentState = newState;
-            _currentState?.Enter();
+            if (IsChangeState)
+            {
+                _currentState?.Exit();
+                _currentState = newState;
+                _currentState?.Enter();
+            }
         }
 
         public void SetTarget(Transform target)
@@ -53,11 +59,16 @@ namespace Enemy
 
         public void Flip(bool isRightDestination)
         {
-            if ((_isLeftSight && isRightDestination) || (!_isLeftSight && !isRightDestination))
+            if ((IsLeftSight && isRightDestination) || (!IsLeftSight && !isRightDestination))
             {
-                _isLeftSight = !_isLeftSight;
-                transform.GetChild(1).localRotation = Quaternion.Euler(0f, _isLeftSight ? 180f : 0f, 0f);
+                IsLeftSight = !IsLeftSight;
+                transform.GetChild(1).localRotation = Quaternion.Euler(0f, IsLeftSight ? 180f : 0f, 0f);
             }
+        }
+
+        public void CanChangeState()
+        {
+            IsChangeState = true;
         }
     }
 }
