@@ -54,7 +54,7 @@ MonoBehaviour:
   radius: 3.5
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   targetTags:
   - Enemy
   stunSeconds: 1.5

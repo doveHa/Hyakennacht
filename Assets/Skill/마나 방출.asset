@@ -55,7 +55,7 @@ MonoBehaviour:
   baseDamage: 8
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   targetTags:
   - Enemy
   pushBackDist: 3

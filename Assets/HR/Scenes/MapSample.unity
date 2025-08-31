@@ -640,8 +640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots:
-  - {fileID: 11400000, guid: 5d4791b3b2196304182a525492511022, type: 2}
-  - {fileID: 11400000, guid: 02611ce9a816abc4ea4be2a5f1153543, type: 2}
+  - {fileID: 11400000, guid: 1264c7e6e881159419e6c38e31307a4c, type: 2}
+  - {fileID: 11400000, guid: e3790415725b84c489e0234086189ebc, type: 2}
   actor: {fileID: 0}
   firePoint: {fileID: 0}
   gcd: 5
