@@ -56,6 +56,9 @@ namespace Manager
         
         public void GameOver()
         {
+            Time.timeScale = 0f;
+            //MapUIManager.Instance.PlayerDied = false;
+            MapUIManager.Instance.OnStageEnd();
         }
 
         //HR

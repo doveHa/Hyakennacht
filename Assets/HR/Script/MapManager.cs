@@ -263,7 +263,6 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    // Ȯ       Ÿ         Լ 
     TileBase GetRandomGroundTile()
     {
         float minRate = 0.01f;
@@ -524,7 +523,6 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    //               8  °     ߾ӿ    ġ
     GameObject PlaceShop()
     {
         if (rooms.Count < 8) return null;

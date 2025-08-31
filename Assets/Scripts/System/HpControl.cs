@@ -32,11 +32,13 @@ namespace System
         {
             if (!_isInvincible)
             {
-                hpArray[_currentHp--].SetActive(false);
-
-                if (_currentHp <= 0)
+                if (_currentHp < 0)
                 {
                     GameManager.Manager.GameOver();
+                }
+                else
+                {
+                    hpArray[_currentHp--].SetActive(false);
                 }
             }
         }

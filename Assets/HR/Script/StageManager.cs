@@ -59,7 +59,8 @@ public static class StageManager
 
     public static string GetLobbyScene()
     {
-        return IsYokai ? "YokaiLobbyScene(Temp)" : "WitchLobbyScene(Temp)";
+        return "FactionSelectScene";
+        //return IsYokai ? "YokaiLobbyScene(Temp)" : "WitchLobbyScene(Temp)";
     }
 }
 /*
