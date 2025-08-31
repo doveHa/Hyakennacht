@@ -80,14 +80,4 @@ public class Player : MonoBehaviour
         }
         return false;
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log(other.gameObject.name);
-        if (other.gameObject.tag.Equals("Projectile"))
-        {
-            SystemManager.Manager.HpControl.MinusHp();
-            Destroy(other.gameObject);
-        }
-    }
 }

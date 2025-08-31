@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1391105ed3e56e42ac6eb494202341b, type: 3}
+  m_Name: "\uB3C4\uAE68\uBE44 \uBD88"
+  m_EditorClassIdentifier: 
+  weaponName: "\uB3C4\uAE68\uBE44 \uBD88"
+  faction: 0
+  grade: 2
+  category: 1
+  baseDamage: 10
+  attackSpeed: 7
+  behaviorType: 1
+  weaponIcon: {fileID: 0}
+  prefab: {fileID: 8258397277547355638, guid: eb35533d4c37294479e3b0cca45620ae, type: 3}
+  visualPrefab: {fileID: 8258397277547355638, guid: 89ff57a749600044dbe9db008c6b4260, type: 3}

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Linq;
 
 public class StartWeapon : MonoBehaviour
 {
@@ -56,43 +57,58 @@ public class StartWeapon : MonoBehaviour
         Debug.Log($"선택한 무기: {weaponName}");
 
         // Player 스크립트 가져오기
-        var player = FindObjectOfType<Player>();
-        if (player != null && player.weaponHandler != null)
+        var player = FindAnyObjectByType<Player>();
+        if (player != null)
         {
-            // WeaponData 불러오기
-            WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
-            if (weaponData != null)
-            {
-                // Player의 StartingWeapon에 할당
-                player.startingWeapon = weaponData;
+            // Player 자식에서 FirePos, TailPos, WeaponVisualHolder 찾기
+            Transform firePos = player.GetComponentsInChildren<Transform>(true)
+                                     .FirstOrDefault(t => t.name == "FirePos");
+            Transform tailPos = player.GetComponentsInChildren<Transform>(true)
+                                     .FirstOrDefault(t => t.name == "TailPos");
 
-                // WeaponHandler에 장착
-                player.weaponHandler.EquipWeapon(weaponData);
-            }
-            else
+            // WeaponHandler 가져오기
+            var weaponHandler = player.GetComponentInChildren<WeaponHandler>();
+            if (weaponHandler != null)
             {
-                Debug.LogWarning($"WeaponData not found at Resources/Weapons/{weaponName}");
-            }
-
-            // Visual Prefab 불러오기
-            GameObject visualPrefab = Resources.Load<GameObject>($"Weapons/{weaponName}");
-            if (visualPrefab != null)
-            {
-                // WeaponHandler에 비주얼 적용
-                if (player.weaponHandler.weaponVisualHolder != null)
+                // weaponVisualHolder 없으면 생성
+/*                if (weaponHandler.weaponVisualHolder == null)
                 {
-                    // 기존 비주얼 제거
-                    foreach (Transform child in player.weaponHandler.weaponVisualHolder)
-                        Destroy(child.gameObject);
+                    GameObject holder = new GameObject("WeaponVisualHolder");
+                    holder.transform.SetParent(weaponHandler.transform, false);
+                    weaponHandler.weaponVisualHolder = holder.transform;
+                }*/
 
-                    GameObject visual = Instantiate(visualPrefab, player.weaponHandler.weaponVisualHolder);
-                    visual.transform.localPosition = Vector3.zero;
-                    visual.transform.localRotation = Quaternion.identity;
+                if (firePos == null)
+                {
+                    Debug.LogError("FirePos를 찾을 수 없음!");
+                    return;
+                }
+
+                if (tailPos == null)
+                {
+                    Debug.LogWarning("TailPos를 찾을 수 없음!");
+                }
+
+                // WeaponHandler 초기화
+                weaponHandler.Initialize(firePos, weaponHandler.weaponVisualHolder, tailPos);
+
+                // WeaponData 불러오기
+                WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
+                if (weaponData != null)
+                {
+                    player.startingWeapon = weaponData;
+                    weaponHandler.EquipWeapon(weaponData);
+
+                    Debug.Log($"WeaponHandler에 {weaponName} 장착 완료");
+                }
+                else
+                {
+                    Debug.LogWarning($"WeaponData not found at Resources/Weapons/{weaponName}");
                 }
             }
             else
             {
-                Debug.LogWarning($"Visual prefab not found at Resources/Weapons/{weaponName}");
+                Debug.LogError("WeaponHandler를 Player 자식에서 찾을 수 없음!");
             }
         }
 
@@ -100,6 +116,7 @@ public class StartWeapon : MonoBehaviour
         spawnedWeapons[index] = null;
         Destroy(SelectedWeapon);
     }
+
 
 
     private void SetWeaponLayer(GameObject obj)

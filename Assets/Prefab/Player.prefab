@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1593262063411573130}
   - component: {fileID: 7863012626458017566}
   - component: {fileID: 1672000836493249890}
-  - component: {fileID: 6404072077181073360}
+  - component: {fileID: 251836746357048383}
+  - component: {fileID: 1571351556352909497}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -172,3 +173,16 @@ MonoBehaviour:
   gcd: 5
   pool: {fileID: 0}
   fx: {fileID: 0}
+  weaponVisualHolder: {fileID: 0}
+--- !u!114 &1571351556352909497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703791776115854186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b720a00b2380384699c6514c764804b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

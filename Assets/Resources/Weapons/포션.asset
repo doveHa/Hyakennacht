@@ -20,5 +20,5 @@ MonoBehaviour:
   attackSpeed: 1
   behaviorType: 1
   weaponIcon: {fileID: 747369945, guid: bbad2d11a5add6440971aa05b799f090, type: 3}
-  prefab: {fileID: 6511232671806082310, guid: 0670175d6ab681e4683931fba5fd4b9d, type: 3}
-  visualPrefab: {fileID: 6511232671806082310, guid: b3ec490bb9c97ad4cab82bc2c82e354e, type: 3}
+  prefab: {fileID: 6511232671806082310, guid: 678af476ab8c8b94d9394f3bdf95e1af, type: 3}
+  visualPrefab: {fileID: 6511232671806082310, guid: 0670175d6ab681e4683931fba5fd4b9d, type: 3}

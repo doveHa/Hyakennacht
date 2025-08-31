@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 55305386314865973}
   - component: {fileID: 3785110718014006536}
   - component: {fileID: -7640856379123745753}
-  - component: {fileID: 4307640830575648264}
   - component: {fileID: 1896122782562141532}
+  - component: {fileID: 3059872830250719307}
   m_Layer: 0
   m_Name: ClockBullet
   m_TagString: Untagged
@@ -117,18 +117,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4307640830575648264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3930161818077324709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef55b5453f5cffb4f837438ac1cc6ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &1896122782562141532
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -181,3 +169,15 @@ PolygonCollider2D:
       - {x: 1.4543923, y: -0.11351323}
       - {x: 5.068308, y: 0.148482}
   m_UseDelaunayMesh: 0
+--- !u!114 &3059872830250719307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3930161818077324709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969e577d93d863d4eb1b37fed45e2ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
