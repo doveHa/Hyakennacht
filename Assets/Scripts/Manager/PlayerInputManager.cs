@@ -152,5 +152,16 @@ namespace Manager
             _playerInput?.Disable();
         }
 
+        protected void OnDestroy()
+        {
+            if (_playerInput != null)
+            {
+                _playerInput.Disable();
+                _playerInput.Dispose();
+                _playerInput = null;
+            }
+        }
+
+
     }
 }
