@@ -47,8 +47,8 @@ namespace Enemy.BossStage
 
             _isMotionEnd = false;
             // 타일맵 그리드 스냅
-            Vector3Int cellPos = _controller.stage.WorldToCell(_target.position);
-            Vector3 spawnPos = _controller.stage.GetCellCenterWorld(cellPos);
+            Vector3Int cellPos = _controller.Stage.WorldToCell(_target.position);
+            Vector3 spawnPos = _controller.Stage.GetCellCenterWorld(cellPos);
 
             // 1단계: 경고 표시
             GameObject warn = Instantiate(warningPrefab, spawnPos, Quaternion.identity);
@@ -68,8 +68,8 @@ namespace Enemy.BossStage
 
             foreach (var dir in directions)
             {
-                Vector3Int crossCell = _controller.stage.WorldToCell(spawnPos + dir * 3f);
-                Vector3 crossPos = _controller.stage.GetCellCenterWorld(crossCell);
+                Vector3Int crossCell = _controller.Stage.WorldToCell(spawnPos + dir * 3f);
+                Vector3 crossPos = _controller.Stage.GetCellCenterWorld(crossCell);
 
                 // 경고 표시
                 GameObject crossWarn = Instantiate(warningPrefab, crossPos, Quaternion.identity);
@@ -109,7 +109,7 @@ namespace Enemy.BossStage
                 float timer = 0f;
 
                 // 맵 경계 가져오기
-                Bounds stageBounds = _controller.stage.localBounds;
+                Bounds stageBounds = _controller.Stage.localBounds;
 
                 while (timer < dashDuration)
                 {

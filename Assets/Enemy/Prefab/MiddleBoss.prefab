@@ -851,7 +851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: {fileID: 0}
   IsChangeState: 1
   IsLeftSight: 0
 --- !u!114 &6295810517878711896
@@ -928,9 +927,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warningPrefab: {fileID: 142425687856309170, guid: 2e00b93d713482643a9e49bf93ae760f, type: 3}
   lightningPrefab: {fileID: 96755072266579295, guid: 08a0bbb59bf228648b8628e382f42ad3, type: 3}
-  fallingSpeed: 1
+  fallingSpeed: 0.2
   chargeTime: 1
-  dashSpeed: 12
+  dashSpeed: 30
 --- !u!1 &1907922692850032435
 GameObject:
   m_ObjectHideFlags: 0

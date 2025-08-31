@@ -1,19 +1,54 @@
+using System.Threading.Tasks;
+using Enemy;
+using Manager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
     [Header("Game Clear")]
     [SerializeField] private GameObject gameClearPanel;
+
+    public GameObject bossSpawnPoint;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private static GameObject[] bossObjects;
+
+    private GameObject _bossObject;
+    public static async Task SetBossObjects()
+    {
+        bossObjects = new GameObject[2];
+        if (StageManager.GetBossScene() == "WitchBoss")
+        {
+            bossObjects[0] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/Boss1.prefab");
+            bossObjects[1] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/MiddleBoss.prefab");
+        }
+        else
+        {
+            bossObjects[0] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/Boss2.prefab");
+            bossObjects[1] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/WitchBoss.prefab");
+        }
+    }
+    void Awake()
+    {
+       
+    }
+    
     void Start()
     {
-        
+        if (StageManager.CurrentStage == 5)
+        {
+            _bossObject = Instantiate(bossObjects[0], bossSpawnPoint.transform.position, Quaternion.identity);
+        }
+        else if(StageManager.CurrentStage == 10)
+        {
+            _bossObject = Instantiate(bossObjects[1], bossSpawnPoint.transform.position, Quaternion.identity);
+        }
+
+        _bossObject.GetComponent<EnemyController>().Stage = GameObject.Find("Grid/Tilemap").GetComponent<Tilemap>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -28,7 +63,7 @@ public class BossManager : MonoBehaviour
 
     public void OnBossDefeated()
     {
-        if (StageManager.CurrentStage == 15) //½ºÅ×ÀÌÁö 15ÀÎ °æ¿ì
+        if (StageManager.CurrentStage == 15) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 15ï¿½ï¿½ ï¿½ï¿½ï¿½
         {
             gameClearPanel.SetActive(true);
             Debug.Log("Final Boss Defeated");
@@ -37,7 +72,7 @@ public class BossManager : MonoBehaviour
 
         /*            Debug.Log("Boss Defeated");
                     StageManager.CurrentStage++;
-                    Debug.Log("ÇöÀç ½ºÅ×ÀÌÁö: " + StageManager.CurrentStage);
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + StageManager.CurrentStage);
                     SceneManager.LoadScene("MapSample");
         */
 
@@ -50,7 +85,7 @@ public class BossManager : MonoBehaviour
     public void OnBossFailed()
     {
         Debug.Log("Boss Failed");
-        Debug.Log("ÇöÀç ½ºÅ×ÀÌÁö: " + StageManager.CurrentStage);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + StageManager.CurrentStage);
         //SceneManager.LoadScene(1); //WitchLobbyScene
         Debug.Log("Boss Failed -> Returning to Lobby");
         SceneManager.LoadScene(StageManager.GetLobbyScene());
@@ -60,9 +95,14 @@ public class BossManager : MonoBehaviour
     {
         gameClearPanel.SetActive(false);
         Debug.Log("Game Clear to Lobby");
-        //StageManager.CurrentStage = 0; // ¸®¼Â?
+        //StageManager.CurrentStage = 0; // ï¿½ï¿½ï¿½ï¿½?
         //SceneManager.LoadScene(1); //WitchLobbyScene
         StageManager.CurrentStage = 1;
         SceneManager.LoadScene(StageManager.GetLobbyScene());
     }
+
+    void OnEnable()
+    {
+        
+    }   
 }

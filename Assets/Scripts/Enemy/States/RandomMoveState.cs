@@ -42,13 +42,13 @@ namespace Enemy
         public Vector3 GetRandomPosition()
         {
             Random rnd = new Random();
-            Bounds bounds = _controller.stage.localBounds;
+            Bounds bounds = _controller.Stage.localBounds;
             
             int randomX = rnd.Next((int)bounds.min.x + 1, (int)bounds.max.x);
             int randomY = rnd.Next((int)bounds.min.y + 1, (int)bounds.max.y);
             Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
             Debug.Log(randomPoint);
-            return _controller.stage.CellToLocal(randomPoint);
+            return _controller.Stage.CellToLocal(randomPoint);
         }
     }
 }
