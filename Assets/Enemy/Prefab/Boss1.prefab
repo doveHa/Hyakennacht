@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3782929631951379360}
   - component: {fileID: 7929427378953673235}
   - component: {fileID: 2782011665946213251}
-  - component: {fileID: 297686834535347219}
   - component: {fileID: 7855453494167686705}
   - component: {fileID: 6295810517878711896}
   - component: {fileID: 232116486221048034}
@@ -19,6 +18,8 @@ GameObject:
   - component: {fileID: 8635730488989224433}
   - component: {fileID: 8748343652524574646}
   - component: {fileID: 5056812230675933892}
+  - component: {fileID: 5761000566155646059}
+  - component: {fileID: 5616519883436087923}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Untagged
@@ -851,21 +852,6 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 520945707462152971}
---- !u!114 &297686834535347219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d63557bb3ab864e8a3bd9130bd3602, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5730760378704384338, guid: 1e608f60115ba454fa22b689f3b6ba2a, type: 3}
-  patternDuration: 10
-  bulletSpeed: 5
 --- !u!114 &7855453494167686705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 0}
+  IsChangeState: 1
+  IsLeftSight: 0
 --- !u!114 &6295810517878711896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,6 +952,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunnedTint: {r: 1, g: 1, b: 1, a: 0.5}
   debugLog: 0
+--- !u!114 &5761000566155646059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520945707462152971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dd73a131b94cc6a5668d48a569e5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternDuration: 2
+--- !u!114 &5616519883436087923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520945707462152971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04ba3a286df4a85905b90bbd8c9b793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5730760378704384338, guid: 1e608f60115ba454fa22b689f3b6ba2a, type: 3}
+  bulletSpeed: 5
 --- !u!1 &2159096669655434152
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,15 +84,16 @@ namespace Enemy
             }*/
         }
 
-        public Vector3 GetRandomPosition()
+        public static Vector3 GetRandomPosition(Tilemap tilemap)
         {
-            Debug.Log(_bounds.size);
+            Random rnd = new Random((uint)DateTime.Now.Millisecond);
+            Bounds bounds = tilemap.localBounds;
             Vector3 randomPosition;
 
-            int randomX = _rnd.NextInt((int)_bounds.min.x, (int)_bounds.max.x);
-            int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
+            int randomX = rnd.NextInt((int)bounds.min.x, (int)bounds.max.x);
+            int randomY = rnd.NextInt((int)bounds.min.y, (int)bounds.max.y);
             Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
-            randomPosition = _stage.CellToLocal(randomPoint);
+            randomPosition = tilemap.CellToLocal(randomPoint);
 
             return randomPosition;
         }
@@ -100,21 +101,22 @@ namespace Enemy
 
         private async Task SpawnEnemies()
         {
-            int spawnEnemies = _rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
+            Random rnd = new Random((uint)DateTime.Now.Millisecond);
+
+            int spawnEnemies = rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
             for (int i = 0; i < spawnEnemies; i++)
             {
-                int rndEnemy = _rnd.NextInt(_enemyObjects.Count);
+                int rndEnemy = rnd.NextInt(_enemyObjects.Count);
                 _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy]);
-                _objects[i].transform.parent = transform.GetChild(0).transform;
             }
         }
 
         private async Task<GameObject> SpawnEnemy(GameObject enemy)
         {
-            Vector3 local = GetRandomPosition();
+            Vector3 local = GetRandomPosition(_stage);
             GameObject mob = Instantiate(enemy, local, Quaternion.identity);
-            mob.GetComponent<EnemyController>().Spawner = this;
+            mob.GetComponent<EnemyController>().stage = _stage;
             await mob.GetComponent<EnemyStats>().SetStat();
             return mob;
         }
