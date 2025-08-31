@@ -76,4 +76,17 @@ public class WeaponHandler : MonoBehaviour
         Debug.Log("어택 호출 전");
         currentBehavior?.Attack();
     }
+
+    //HR
+    public void ChangeWeaponByPrefab(GameObject visualPrefab, string weaponName)
+    {
+        if (currentVisual != null) Destroy(currentVisual);
+
+        currentVisual = Instantiate(visualPrefab, weaponVisualHolder);
+        currentVisual.transform.localPosition = Vector3.zero;
+        currentVisual.transform.localRotation = Quaternion.identity;
+
+        Debug.Log($"WeaponHandler에 {weaponName} 비주얼 적용 완료");
+    }
+
 }
