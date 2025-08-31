@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 1672000836493249890, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: startingWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: fb04750e087dc0d4392bec83ed1e85be, type: 2}
+      objectReference: {fileID: 11400000, guid: f758d515f3669474b807f169ae8939a1, type: 2}
     - target: {fileID: 4298335347944655996, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -633,8 +633,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots:
-  - {fileID: 11400000, guid: e3790415725b84c489e0234086189ebc, type: 2}
+  - {fileID: 11400000, guid: 51c3588edfaa86b449e5699dfc4d63e0, type: 2}
   - {fileID: 11400000, guid: 6472393222c67544cadefdd0c5b6000f, type: 2}
+  actor: {fileID: 0}
   firePoint: {fileID: 0}
   gcd: 5
   pool: {fileID: 255527579}

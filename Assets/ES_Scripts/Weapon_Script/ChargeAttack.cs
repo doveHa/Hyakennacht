@@ -6,6 +6,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior
     private WeaponData data;
     private Transform firePoint;
     private Animator animator;
+    private bool isLeft;
 
     private bool isCharging = false;
     private float chargeTime = 0f;

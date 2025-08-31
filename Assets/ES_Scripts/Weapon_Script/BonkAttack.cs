@@ -8,7 +8,9 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
 
     private WeaponData data;
     private Transform firePoint;
-    
+
+    private bool isLeft;
+
     private Transform tailFirePoint; 
     private Vector3 originalTailPos;
 

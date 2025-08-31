@@ -1,3 +1,4 @@
+using Character;
 using Manager;
 using UnityEngine;
 using static Constant;
@@ -41,10 +42,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        var playerSpriteRenderer = player.GetComponentInChildren<SpriteRenderer>();
+        bool isLeft = playerSpriteRenderer != null && playerSpriteRenderer.flipX;
+
+        if (weaponHandler != null)
+        {
+            weaponHandler.UpdateWeaponDirection(isLeft);
+        }
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("무기 사용 시도");
-            weaponHandler.UseWeapon();
+            weaponHandler.UseWeapon(isLeft);
         }
     }
 

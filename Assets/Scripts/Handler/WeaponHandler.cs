@@ -19,11 +19,19 @@ public class WeaponHandler : MonoBehaviour
     private GameObject currentVisual;
     private WeaponData currentData;
 
+    private Transform weaponFacingProxy;
+
     public void Initialize(Transform firePoint, Transform weaponVisualHolder, Transform tailFirePoint)
     {
         this.firePoint = firePoint;
         this.weaponVisualHolder = weaponVisualHolder;
         this.tailFirePoint = tailFirePoint;
+
+        var proxyGo = new GameObject("WeaponFacingProxy");
+        weaponFacingProxy = proxyGo.transform;
+        weaponFacingProxy.SetParent(weaponVisualHolder.parent, worldPositionStays: false);
+        weaponFacingProxy.localPosition = Vector3.zero;
+        weaponFacingProxy.localRotation = Quaternion.identity;
     }
 
     public void EquipWeapon(WeaponData data)
@@ -49,7 +57,7 @@ public class WeaponHandler : MonoBehaviour
 
         if (data.visualPrefab != null && weaponVisualHolder != null)
         {
-            currentVisual = Instantiate(data.visualPrefab, weaponVisualHolder);
+            currentVisual = Instantiate(data.visualPrefab, weaponFacingProxy);
             currentVisual.transform.localRotation = Quaternion.identity;
 
             if (data.weaponName == "꼬리" && tailFirePoint != null)
@@ -71,9 +79,23 @@ public class WeaponHandler : MonoBehaviour
         EquipWeapon(newData);
     }
 
-    public void UseWeapon()
+    public void UseWeapon(bool isLeft)
     {
         Debug.Log("어택 호출 전");
-        currentBehavior?.Attack();
+        if (currentBehavior != null)
+        {
+            currentBehavior.Attack();
+        }
+    }
+
+    public void UpdateWeaponDirection(bool flipX)
+    {
+        if (weaponFacingProxy != null)
+        {
+            float faceSign = flipX ? 1f : -1f;
+            Vector3 scale = weaponFacingProxy.localScale;
+
+            weaponFacingProxy.localScale = new Vector3(Mathf.Abs(scale.x) * faceSign, scale.y, scale.z);
+        }
     }
 }
