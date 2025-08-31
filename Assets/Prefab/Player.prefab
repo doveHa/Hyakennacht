@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1593262063411573130}
   - component: {fileID: 7863012626458017566}
   - component: {fileID: 1672000836493249890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -150,4 +150,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 6654459765545817610, guid: 0d6851a08534fed4dbd55eb693efdc04, type: 3}
   weaponHandler: {fileID: 0}
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 11400000, guid: ae6a6549993531547976c0d9718de786, type: 2}

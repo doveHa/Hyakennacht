@@ -71,12 +71,12 @@ public class StartWeapon : MonoBehaviour
             if (weaponHandler != null)
             {
                 // weaponVisualHolder 없으면 생성
-                if (weaponHandler.weaponVisualHolder == null)
+/*                if (weaponHandler.weaponVisualHolder == null)
                 {
                     GameObject holder = new GameObject("WeaponVisualHolder");
                     holder.transform.SetParent(weaponHandler.transform, false);
                     weaponHandler.weaponVisualHolder = holder.transform;
-                }
+                }*/
 
                 if (firePos == null)
                 {
