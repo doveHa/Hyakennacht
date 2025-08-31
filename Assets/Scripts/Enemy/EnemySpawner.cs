@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
-using Random = Unity.Mathematics.Random;
+using Random = System.Random;
 
 namespace Enemy
 {
@@ -17,7 +17,6 @@ namespace Enemy
         private Bounds _bounds;
 
         private GameObject[] _objects;
-        private Random _rnd;
 
         public bool IsSpawn;
         private bool _isStageStart = false;
@@ -26,7 +25,6 @@ namespace Enemy
 
         void Awake()
         {
-            _rnd = new Random((uint)DateTime.Now.Millisecond);
             _stage = GetComponent<Tilemap>();
             _enemyObjects = new List<GameObject>();
             //IsSpawn = false;
@@ -86,16 +84,16 @@ namespace Enemy
         
         private async Task SpawnEnemies()
         {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
-
-            int spawnEnemies = rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
+            Random rnd = new Random();
+        
+            int spawnEnemies = rnd.Next(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
 
             HashSet<Vector3Int> usedPositions = new HashSet<Vector3Int>(); // ✅ 사용된 셀 기록
 
             for (int i = 0; i < spawnEnemies; i++)
             {
-                int rndEnemy = rnd.NextInt(_enemyObjects.Count);
+                int rndEnemy = rnd.Next(_enemyObjects.Count);
                 Vector3 spawnPos = GetUniqueRandomPosition(_stage, usedPositions);
                 _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy], spawnPos);
                 _objects[i].transform.parent = _wall.transform;
@@ -104,15 +102,15 @@ namespace Enemy
 
         private Vector3 GetUniqueRandomPosition(Tilemap tilemap, HashSet<Vector3Int> usedPositions)
         {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
+            Random rnd = new Random();
             Bounds bounds = tilemap.localBounds;
 
             Vector3Int randomPoint;
 
             do
             {
-                int randomX = rnd.NextInt((int)bounds.min.x, (int)bounds.max.x);
-                int randomY = rnd.NextInt((int)bounds.min.y, (int)bounds.max.y);
+                int randomX = rnd.Next((int)bounds.min.x + 1, (int)bounds.max.x);
+                int randomY = rnd.Next((int)bounds.min.y + 1, (int)bounds.max.y);
                 randomPoint = new Vector3Int(randomX, randomY, 0);
             } while (usedPositions.Contains(randomPoint) || !tilemap.HasTile(randomPoint));
 

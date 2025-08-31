@@ -43,13 +43,9 @@ namespace Enemy
         {
             Random rnd = new Random();
             Bounds bounds = _controller.stage.localBounds;
-            int minX = Mathf.Min((int)_controller.stage.localBounds.min.x, (int)_controller.stage.localBounds.max.x);
-            int maxX = Mathf.Max((int)_controller.stage.localBounds.min.x, (int)_controller.stage.localBounds.max.x);
-            int minY = Mathf.Min((int)_controller.stage.localBounds.min.y, (int)_controller.stage.localBounds.max.y);
-            int maxY = Mathf.Max((int)_controller.stage.localBounds.min.y, (int)_controller.stage.localBounds.max.y);
             
-            int randomX = rnd.Next((int)bounds.min.x, (int)bounds.max.x + 1);
-            int randomY = rnd.Next((int)bounds.min.y, (int)bounds.max.y + 1);
+            int randomX = rnd.Next((int)bounds.min.x + 1, (int)bounds.max.x);
+            int randomY = rnd.Next((int)bounds.min.y + 1, (int)bounds.max.y);
             Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
             Debug.Log(randomPoint);
             return _controller.stage.CellToLocal(randomPoint);
