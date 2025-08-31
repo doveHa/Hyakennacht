@@ -20,6 +20,8 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
     {
         this.data = data;
         this.firePoint = firePoint;
+
+        animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
     }
 
     public void SetFacingDirection(bool isLeft)
@@ -37,7 +39,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (animator == null)
-                animator = GetComponentInChildren<Animator>();
+                animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
 
             Debug.Log($"Animator 할당됨: {animator?.gameObject.name}");
             isCharging = true;
@@ -139,5 +141,11 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
         {
             circle.SetDamage(data.baseDamage);
         }
+    }
+
+    private Animator FindAnimatorInWeaponVisual(Transform visualHolder)
+    {
+        if (visualHolder == null) return null;
+        return visualHolder.GetComponentInChildren<Animator>();
     }
 }

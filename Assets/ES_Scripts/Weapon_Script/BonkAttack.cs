@@ -8,6 +8,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
 
     private WeaponData data;
     private Transform firePoint;
+    private Animator animator;
 
     private bool isLeft;
 
@@ -25,6 +26,8 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
             if (tailFirePoint != null) 
                 originalTailPos = tailFirePoint.localPosition; 
         }
+
+        animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
     }
 
     public void Attack()
@@ -33,39 +36,40 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
 
         float range = attackRange;
 
-        Animator anim = GetComponentInChildren<Animator>();
+        if (animator == null)
+            animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
 
         if (data.weaponName == "°¡»þµµÄí·Î")
         {
             range *= 2f; 
-            if (anim != null)
+            if (animator != null)
             {
-                anim.SetTrigger("GashaAttack"); 
+                animator.SetTrigger("GashaAttack"); 
             }
         }
 
         if (data.weaponName == "Ã¤Âï")
         {
             range *= 2f;
-            if (anim != null)
+            if (animator != null)
             {
-                anim.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
             }
         }
 
         if (data.weaponName == "¹ø°³ ¹ßÅé")
         {
-            if (anim != null)
+            if (animator != null)
             {
-                anim.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
             }
         }
 
         if (data.weaponName == "²¿¸®") 
         { 
             range *= 2f; 
-            if (anim != null) 
-                anim.SetTrigger("TaliAttack"); 
+            if (animator != null)
+                animator.SetTrigger("TaliAttack"); 
             if (tailFirePoint != null) 
                 StartCoroutine(MoveTailFirePoint()); 
         }
@@ -141,6 +145,12 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         tailFirePoint.position = transform.position + new Vector3(2.5f * dirX, dirY * 0.5f, 0);
         yield return new WaitForSeconds(0.32f); 
         tailFirePoint.localPosition = originalTailPos; 
+    }
+
+    private Animator FindAnimatorInWeaponVisual(Transform visualHolder)
+    {
+        if (visualHolder == null) return null;
+        return visualHolder.GetComponentInChildren<Animator>();
     }
 }
 

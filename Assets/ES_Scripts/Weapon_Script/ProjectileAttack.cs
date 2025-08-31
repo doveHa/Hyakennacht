@@ -7,6 +7,7 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
     private WeaponData data;
     private Transform firePoint;
     private GameObject soundWave;
+    private Animator animator;
     private bool isLeft;
 
     [SerializeField] bool invertInput = true;
@@ -22,6 +23,8 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
             if (soundWave == null)
                 Debug.LogWarning("SoundWave 프리팹을 찾을 수 없습니다.");
         }
+
+        animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
     }
 
     public void SetFacingDirection(bool isLeft)
@@ -91,11 +94,10 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
             }
             return;
         }
-
-        Animator weaponAnimator = proj.GetComponent<Animator>();
-        if (weaponAnimator != null)
+        
+        if (animator != null)
         {
-            weaponAnimator.SetBool("isAttack", true);
+            animator.SetBool("isAttack", true);
         }
 
         if (rb != null)
@@ -127,6 +129,12 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
                 }
             }
         }
+    }
+
+    private Animator FindAnimatorInWeaponVisual(Transform visualHolder)
+    {
+        if (visualHolder == null) return null;
+        return visualHolder.GetComponentInChildren<Animator>();
     }
 
     private void CameraShake()
