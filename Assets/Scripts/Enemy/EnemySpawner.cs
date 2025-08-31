@@ -6,47 +6,57 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
-using Random = Unity.Mathematics.Random;
+using Random = System.Random;
 
 namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
         private Tilemap _stage;
-        private List<GameObject> _enemyObjects;
+        private static List<GameObject> _enemyObjects;
         private Bounds _bounds;
 
         private GameObject[] _objects;
-        private Random _rnd;
 
         public bool IsSpawn;
         private bool _isStageStart = false;
 
         public GameObject _wall;
 
-        void Awake()
+        public static async Task CreateEnemies()
         {
-            _rnd = new Random((uint)DateTime.Now.Millisecond);
-            _stage = GetComponent<Tilemap>();
             _enemyObjects = new List<GameObject>();
-            //IsSpawn = false;
-        }
 
-        async void Start()
-        {
             List<string> keys = new List<string>();
             string path = "Assets/Enemy/Prefab/";
-            //keys.Add(path + "Ghost.prefab");
-            keys.Add(path + "Will-o-Wisp.prefab");
-            keys.Add(path + "Straw.prefab");
-            keys.Add(path + "Kappa.prefab");
-            //keys.Add(path + "Slime.prefab");
-            //keys.Add(path + "Golem.prefab");
+
+            if (StageManager.GetMapScene().Equals("YokaiMap"))
+            {
+                keys.Add(path + "Ghost.prefab");
+                keys.Add(path + "Slime.prefab");
+                keys.Add(path + "Golem.prefab");
+            }
+            else
+            {
+                keys.Add(path + "Will-o-Wisp.prefab");
+                keys.Add(path + "Straw.prefab");
+                keys.Add(path + "Kappa.prefab");
+            }
+
             foreach (string key in keys)
             {
                 _enemyObjects.Add(await AddressableManager.Manager.LoadAsset<GameObject>(key));
             }
+        }
 
+        void Awake()
+        {
+            _stage = GetComponent<Tilemap>();
+            //IsSpawn = false;
+        }
+
+        void Start()
+        {
             _stage.CompressBounds();
             _bounds = _stage.localBounds;
         }
@@ -83,19 +93,19 @@ namespace Enemy
                 SpawnEnemies();
             }*/
         }
-        
+
         private async Task SpawnEnemies()
         {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
+            Random rnd = new Random();
 
-            int spawnEnemies = rnd.NextInt(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
+            int spawnEnemies = rnd.Next(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
 
             HashSet<Vector3Int> usedPositions = new HashSet<Vector3Int>(); // ✅ 사용된 셀 기록
 
             for (int i = 0; i < spawnEnemies; i++)
             {
-                int rndEnemy = rnd.NextInt(_enemyObjects.Count);
+                int rndEnemy = rnd.Next(_enemyObjects.Count);
                 Vector3 spawnPos = GetUniqueRandomPosition(_stage, usedPositions);
                 _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy], spawnPos);
                 _objects[i].transform.parent = _wall.transform;
@@ -104,15 +114,15 @@ namespace Enemy
 
         private Vector3 GetUniqueRandomPosition(Tilemap tilemap, HashSet<Vector3Int> usedPositions)
         {
-            Random rnd = new Random((uint)DateTime.Now.Millisecond);
+            Random rnd = new Random();
             Bounds bounds = tilemap.localBounds;
 
             Vector3Int randomPoint;
 
             do
             {
-                int randomX = rnd.NextInt((int)bounds.min.x, (int)bounds.max.x);
-                int randomY = rnd.NextInt((int)bounds.min.y, (int)bounds.max.y);
+                int randomX = rnd.Next((int)bounds.min.x + 1, (int)bounds.max.x);
+                int randomY = rnd.Next((int)bounds.min.y + 1, (int)bounds.max.y);
                 randomPoint = new Vector3Int(randomX, randomY, 0);
             } while (usedPositions.Contains(randomPoint) || !tilemap.HasTile(randomPoint));
 
@@ -127,7 +137,7 @@ namespace Enemy
             await mob.GetComponent<EnemyStats>().SetStat();
             return mob;
         }
-        
+
         public async Task StartStage()
         {
             _wall = new GameObject();
