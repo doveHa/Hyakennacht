@@ -34,7 +34,7 @@ namespace System
             {
                 hpArray[_currentHp--].SetActive(false);
 
-                if (_currentHp == 0)
+                if (_currentHp <= 0)
                 {
                     GameManager.Manager.GameOver();
                 }
