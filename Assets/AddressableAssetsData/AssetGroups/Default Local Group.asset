@@ -41,7 +41,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 98c3869ab8ec0ab4e97e23a843431819
-    m_Address: Assets/Enmy/Resource/Kappa/Effect/WaterBall.prefab
+    m_Address: Assets/Enemy/Resource/Kappa/Effect/WaterBall.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -55,13 +55,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dade74264cc553543bd32fc0d4bb74a3
+    m_Address: Assets/Enemy/Prefab/WitchBoss.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: daf2b4d07f0ada34d90f6c2edfc2e1f6
     m_Address: Assets/Tile/256Wall.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0a03d1ab40f23645aa0b1425842e95d
+    m_Address: Assets/Enemy/Prefab/MiddleBoss.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e56f4ba002aad4e4887953fc4c82bd50
+    m_Address: Assets/Enemy/Prefab/Boss1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f1d7c1f2d5d0bc549a72083c6a388bf6
     m_Address: Assets/Enemy/Prefab/Straw.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f24a8cacd11b04540a0f9afd76932a8e
+    m_Address: Assets/Enemy/Prefab/Boss2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -9,7 +9,8 @@ namespace Enemy
     {
         public Animator Animator { get; private set; }
         private IEnemyState _currentState;
-        public Tilemap stage;
+
+        public Tilemap Stage { get; set; }
         public Rigidbody2D Rigidbody { get; private set; }
         public Transform Target { get; private set; }
 

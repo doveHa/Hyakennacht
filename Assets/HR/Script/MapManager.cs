@@ -101,7 +101,7 @@ public class MapManager : MonoBehaviour
             MapUIManager ui = Object.FindFirstObjectByType<MapUIManager>();
             if (ui != null)
             {
-                ui.OnStageEnd();
+                //ui.OnStageEnd();
             }
         }
     }
@@ -318,7 +318,7 @@ public class MapManager : MonoBehaviour
         return groundTilesByStage[0];
     }
 
-    public void NextStage(bool isStairUp)
+    public async Task NextStage(bool isStairUp)
     {
         ClearItems();
 
@@ -328,6 +328,8 @@ public class MapManager : MonoBehaviour
 
         if (StageManager.IsBossStage())
         {
+            await BossManager.SetBossObjects();
+            
             string bossScene = StageManager.GetBossScene();
             Debug.Log("Boss Stage: " + currentStage + " -> Loading: " + bossScene);
             SceneManager.LoadScene(bossScene);

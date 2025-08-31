@@ -1,22 +1,23 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public Transform player; // ÇÃ·¹ÀÌ¾î Transform
+    public Transform player; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Transform
     public Vector3 offset = new Vector3(0, 5, -10);
-    public MapManager mapManager; // Inspector¿¡¼­ ÇÒ´ç
+    public MapManager mapManager; // Inspectorï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
 
     void Awake()
     {
-        // ¾À ÀüÈ¯µÉ ¶§¸¶´Ù ÀÚµ¿ È£ÃâµÇµµ·Ï ÀÌº¥Æ® µî·Ï
+        // ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ È£ï¿½ï¿½Çµï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDestroy()
     {
-        // ¸Þ¸ð¸® ´©¼ö ¹æÁö
+        // ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -52,7 +53,7 @@ public class PlayerCamera : MonoBehaviour
     {
         if (player == null)
         {
-            GameObject playerObj = GameObject.FindWithTag("Player"); // Tag »ç¿ë ±ÇÀå
+            GameObject playerObj = GameObject.FindWithTag("Player"); // Tag ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (playerObj != null)
                 player = playerObj.transform;
         }
@@ -71,20 +72,20 @@ public class PlayerCamera : MonoBehaviour
 
     private Vector3 GetPlayerBottomPosition()
     {
-        // ÇÃ·¹ÀÌ¾î Collider ÇÏ´Ü ±âÁØ À§Ä¡
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Collider ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
         Collider2D col = player.GetComponent<Collider2D>();
         if (col != null)
-            return col.bounds.min + Vector3.up * 0.05f; // ¾à°£ À§·Î offset
+            return col.bounds.min + Vector3.up * 0.05f; // ï¿½à°£ ï¿½ï¿½ï¿½ï¿½ offset
         else
             return player.position;
     }
 
-    public void TryInteractWithStairs()
+    public async Task TryInteractWithStairs()
     {
 
         if (player == null || mapManager == null)
         {
-            Debug.LogWarning("Player ¶Ç´Â MapManager°¡ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("Player ï¿½Ç´ï¿½ MapManagerï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
 
@@ -95,12 +96,12 @@ public class PlayerCamera : MonoBehaviour
 
         if (currentTile == mapManager.stairUpTile)
         {
-            mapManager.NextStage(true); // ³­ÀÌµµ »ó½Â
+            await mapManager.NextStage(true); // ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½
             Debug.Log("Stairs Up interacted. Moving to next stage.");
         }
         else if (currentTile == mapManager.stairDownTile)
         {
-            mapManager.NextStage(false); // ³­ÀÌµµ ÇÏ¶ô
+            await mapManager.NextStage(false); // ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ï¶ï¿½
             Debug.Log("Stairs Down interacted. Moving to previous stage.");
         }
     }

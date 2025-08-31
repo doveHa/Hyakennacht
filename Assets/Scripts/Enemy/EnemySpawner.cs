@@ -133,7 +133,7 @@ namespace Enemy
         private async Task<GameObject> SpawnEnemy(GameObject enemy, Vector3 position)
         {
             GameObject mob = Instantiate(enemy, position, Quaternion.identity);
-            mob.GetComponent<EnemyController>().stage = _stage;
+            mob.GetComponent<EnemyController>().Stage = _stage;
             await mob.GetComponent<EnemyStats>().SetStat();
             return mob;
         }

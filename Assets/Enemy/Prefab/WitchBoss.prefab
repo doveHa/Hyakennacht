@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: {fileID: 0}
+  Stage: {fileID: 0}
   IsChangeState: 1
   IsLeftSight: 0
 --- !u!114 &6295810517878711896
@@ -207,10 +207,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClockBullet: {fileID: 3930161818077324709, guid: 7c73330edfdddfd468b455f4fe597e8f, type: 3}
-  interval: 1
-  bulletSpeed: 2
+  interval: 0.07
+  bulletSpeed: 20
   scratchPrefab: {fileID: 4149262260283064663, guid: ff7554cc34fc7fb4295fc9fa61c6e6e5, type: 3}
-  speed: 5
+  speed: 30
   scratchPoints:
   - {fileID: 5416537670366239695}
   - {fileID: 4822120929855628149}

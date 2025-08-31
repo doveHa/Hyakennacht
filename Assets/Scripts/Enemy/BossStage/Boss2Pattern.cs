@@ -49,7 +49,7 @@ namespace Enemy.BossStage
             float elapsed = 0f;
             float duration = 4f;
             float interval = 2f;
-            int bulletCount = 30;
+            int bulletCount = 10;
             float spacing = 1f;
 
             while (elapsed < duration)
