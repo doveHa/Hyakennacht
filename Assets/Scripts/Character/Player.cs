@@ -18,7 +18,8 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(this);
         //Instantiate(playerPrefab, transform).transform.parent = transform;
         player = Instantiate(playerPrefab, transform);
-        Target = transform.GetChild(0).GetChild(1);
+        player.name = "Character";
+        Target = transform.Find("Character/Shadow");
         Coins = 0;
     }
     
