@@ -4,6 +4,7 @@ using Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class SkillCaster : MonoBehaviour
 {
@@ -71,10 +72,7 @@ public class SkillCaster : MonoBehaviour
         if (exist) facingProxy = exist;
 
         if (!facingProxy)
-        {
-            var stray = transform.root.Find("FacingProxy");
-            facingProxy = stray ? stray : new GameObject("FacingProxy").transform;
-        }
+            facingProxy = new GameObject("FacingProxy").transform;
 
         if (facingProxy.parent != actor)
             facingProxy.SetParent(actor, worldPositionStays: false);
@@ -118,13 +116,12 @@ public class SkillCaster : MonoBehaviour
             (actorSR != null) ? actorSR.flipX :
             (actor.localScale.x < 0f);
 
-        float face = isLeft ? -1f : 1f;
+        float face = isLeft ? 1f : -1f;
 
         var ps = facingProxy.localScale;
-        facingProxy.localScale = new Vector3(face < 0 ? -1f : 1f,
-                                             ps.y == 0 ? 1f : ps.y,
-                                             ps.z == 0 ? 1f : ps.z);
+        facingProxy.localScale = new Vector3(face < 0 ? -1f : 1f, 1f, 1f);
         facingProxy.localPosition = Vector3.zero;
+        facingProxy.localRotation = Quaternion.Euler(0f, 0f, (face > 0f) ? 0f : 180f);
 
         Vector2 castPos = firePoint ? (Vector2)firePoint.position : (Vector2)actor.position;
         Vector2 forward = new Vector2(face, 0f);
@@ -132,6 +129,8 @@ public class SkillCaster : MonoBehaviour
             ? (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition)
             : castPos + forward;
         Vector2 aimDir = (mouseWorld - castPos).sqrMagnitude > 1e-6f ? (mouseWorld - castPos).normalized : forward;
+
+        Debug.Log($"[SkillCaster] parent={facingProxy.parent?.name}, localPos={facingProxy.localPosition}, scaleX={facingProxy.localScale.x}, right={facingProxy.right}");
 
         var ctx = new SkillContext
         {
@@ -189,5 +188,4 @@ public class SkillCaster : MonoBehaviour
         slots[slotIndex] = newSkill;
         Debug.Log($"슬롯 {slotIndex}번에 스킬 {newSkill.name} 등록");
     }
-
 }

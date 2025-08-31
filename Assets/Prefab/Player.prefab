@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 1593262063411573130}
   - component: {fileID: 7863012626458017566}
   - component: {fileID: 1672000836493249890}
-  - component: {fileID: 251836746357048383}
   - component: {fileID: 1571351556352909497}
+  - component: {fileID: 5353785623274857004}
+  - component: {fileID: 8874294186291698656}
+  - component: {fileID: 6404072077181073360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,6 +155,48 @@ MonoBehaviour:
   playerPrefab: {fileID: 6654459765545817610, guid: 0d6851a08534fed4dbd55eb693efdc04, type: 3}
   weaponHandler: {fileID: 0}
   startingWeapon: {fileID: 11400000, guid: f758d515f3669474b807f169ae8939a1, type: 2}
+--- !u!114 &1571351556352909497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703791776115854186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b720a00b2380384699c6514c764804b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5353785623274857004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703791776115854186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0a7799e511b44f847e7498a02c0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots: []
+  actor: {fileID: 0}
+  firePoint: {fileID: 0}
+  gcd: 5
+  pool: {fileID: 0}
+  fx: {fileID: 0}
+--- !u!114 &8874294186291698656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703791776115854186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bafb4c45183c874b9cb5675736960a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6404072077181073360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,23 +210,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots:
-  - {fileID: 11400000, guid: db6b19cfc1167c24fadd1c918f3c38d1, type: 2}
-  - {fileID: 11400000, guid: 5b7cba2028efd4c47a449326e96af0fb, type: 2}
+  - {fileID: 11400000, guid: 6472393222c67544cadefdd0c5b6000f, type: 2}
+  - {fileID: 11400000, guid: ac09378babf0dff4fa63528ed4d97673, type: 2}
   actor: {fileID: 0}
   firePoint: {fileID: 0}
   gcd: 5
   pool: {fileID: 0}
   fx: {fileID: 0}
-  weaponVisualHolder: {fileID: 0}
---- !u!114 &1571351556352909497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4703791776115854186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b720a00b2380384699c6514c764804b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

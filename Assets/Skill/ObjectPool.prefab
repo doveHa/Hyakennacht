@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3464655873441763660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3885141925419955371}
+  - component: {fileID: 4166096770215770487}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3885141925419955371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464655873441763660}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2514215, y: -0.9823611, z: 0.050197896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4166096770215770487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464655873441763660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f8ad7678191e544a8bba92ba8a07d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entries:
+  - key: ClockMarker
+    prefab: {fileID: 8198350090874945037, guid: 41ffe01e6d64c40418988f9fa72b7b7e, type: 3}
+    preload: 10
+  - key: PoisonApple
+    prefab: {fileID: 114625099464172776, guid: 08177aa9b81f42b4796a87ed19ae79fd, type: 3}
+    preload: 1
+  - key: PumpkinMeteor
+    prefab: {fileID: 3540235503808332581, guid: 655f63c05cba6ca4abffb9793e00ed2f, type: 3}
+    preload: 1
+  - key: FirePatch
+    prefab: {fileID: 958884474563481819, guid: 1b8e0fe2d1e796d4c98a7b10648087bc, type: 3}
+    preload: 1
+  - key: Vine of Darkness
+    prefab: {fileID: 6788656307617919268, guid: 90b6b72919aac2f47aa53a1e96306b5f, type: 3}
+    preload: 5
+  - key: DoomMeteor
+    prefab: {fileID: 5235350284887143074, guid: b52014d89eefe2a429c66894ac4e50a3, type: 3}
+    preload: 6
+  - key: mouse
+    prefab: {fileID: 5314250046580678918, guid: a9a7600a62431d74385488f25a8116d2, type: 3}
+    preload: 5
+  - key: DimRift
+    prefab: {fileID: 1778352601956203367, guid: 0d0d39df5eb905448bd4bad8c2a159b7, type: 3}
+    preload: 1
+  - key: liquid medicine
+    prefab: {fileID: 7774575793443670838, guid: dae15aadc7e7bb940b567212ee1861d3, type: 3}
+    preload: 1
+  - key: DokkaebiFire
+    prefab: {fileID: 6947246358062067950, guid: 3917c102805d32d408879bfea27fa499, type: 3}
+    preload: 3
+  - key: CrackWave
+    prefab: {fileID: 18299037067567438, guid: 059f1e689c7bf9d49ac08e640a42df0f, type: 3}
+    preload: 1
+  - key: YokaiSpirit
+    prefab: {fileID: 8027355395094386101, guid: 6c5f75f814805c048bc020767b55c21c, type: 3}
+    preload: 5
+  - key: YokaiSpirit
+    prefab: {fileID: 8027355395094386101, guid: 6c5f75f814805c048bc020767b55c21c, type: 3}
+    preload: 5

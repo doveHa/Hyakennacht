@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
@@ -84,11 +85,11 @@ public class MapManager : MonoBehaviour
             Instance = this;
     }
 
-    void Start()
+    async void Start()
     {
-        //          1         
         currentStage = StageManager.CurrentStage;
         if (currentStage < 1) currentStage = 1;
+        await EnemySpawner.CreateEnemies();
         GenerateMap();
     }
 
@@ -96,9 +97,6 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //GenerateMap();
-            /*            NextStage(true);
-                        Debug.Log("Map regenerated");*/
             NextStage(true);
             MapUIManager ui = Object.FindFirstObjectByType<MapUIManager>();
             if (ui != null)
@@ -108,7 +106,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    Vector2Int GenerateMap()
+    void GenerateMap()
     {
         foreach (Room room in rooms)
         {
@@ -120,7 +118,6 @@ public class MapManager : MonoBehaviour
         groundTiles.Clear();
         rooms.Clear();
 
-        // 4, 9, 14  °                 8  
         if (currentStage == 4 || currentStage == 9 || currentStage == 14)
         {
             roomCount = 8;
@@ -204,8 +201,6 @@ public class MapManager : MonoBehaviour
         {
             shopInstance = PlaceShop();
         }
-
-        return startPos;
     }
 
     private Room RoomObject(Vector2Int pos, int roomIdCounter)
