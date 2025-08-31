@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefabs:
   - {fileID: 8914758360542796921, guid: e29af6462b12caa459d37d7b8c4ee754, type: 3}
-  - {fileID: 7485578837621575502, guid: 324ec69e448dd0f47b9ecc61bf258ae1, type: 3}
+  - {fileID: 7536999885902252784, guid: 6de925961274fdf4887a7148abdedfcd, type: 3}
   - {fileID: 2873882223903997513, guid: 22b52b64b8718374b9f96e735b0e5e9a, type: 3}
   - {fileID: 9025183269850006190, guid: 0e69516390133c54d9ab52578f6d1329, type: 3}
   - {fileID: 175894421978928194, guid: 084523ccc98fe5e4e8761ed49aae6169, type: 3}
@@ -59,14 +59,11 @@ MonoBehaviour:
   - {fileID: 9208696594913934517, guid: a10306556b11de54c821fe4525d329fc, type: 3}
   - {fileID: 5679773163421190857, guid: 7a8a2269c16b565438cd929e0575e4ed, type: 3}
   - {fileID: 731215106427599669, guid: 1a81caa0fce69f9479d87e1ee58152a3, type: 3}
-  - {fileID: 6511232671806082310, guid: 0670175d6ab681e4683931fba5fd4b9d, type: 3}
   stallTransforms:
   - {fileID: 4809750369868454450}
   - {fileID: 2271625278932127590}
   - {fileID: 270916157169708729}
   healthPotionPrefab: {fileID: 2448991724125156059, guid: 935f0cbedd04e3e46aef07d4355e8db0, type: 3}
-  playerCoins: 100
-  coinText: {fileID: 0}
 --- !u!1001 &4460497163283907778
 PrefabInstance:
   m_ObjectHideFlags: 0

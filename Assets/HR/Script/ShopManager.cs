@@ -110,7 +110,7 @@ for (int i = 0; i < stallCount; i++)
             }
         }
         
-        if(Input.GetKeyDown(KeyCode.N))
+        if(Input.GetKeyDown(KeyCode.Y))
         {
             for(int i = 0; i < 20; i++)
                 GameManager.Manager.PlayerScript.PlayerGetCoin();
@@ -156,6 +156,45 @@ for (int i = 0; i < stallCount; i++)
             LastPurchasedStallIndex = index;
             Debug.Log($"가판대 {index + 1} 무기 구매 완료! ({LastPurchasedWeaponPrefab.name}) 남은 코인: {GameManager.Manager.PlayerScript.Coins}");
             OnWeaponPurchased?.Invoke(index, LastPurchasedWeaponPrefab);
+
+            // Player 무기에 장착
+            var player = FindObjectOfType<Player>();
+            if (player != null && player.weaponHandler != null)
+            {
+                string weaponName = LastPurchasedWeaponPrefab.name;
+
+                // WeaponData 불러오기
+                WeaponData weaponData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
+                if (weaponData != null)
+                {
+                    player.startingWeapon = weaponData;
+                    player.weaponHandler.EquipWeapon(weaponData);
+                }
+                else
+                {
+                    Debug.LogWarning($"WeaponData not found at Resources/Weapons/{weaponName}");
+                }
+
+                // Visual Prefab 불러오기
+                GameObject visualPrefab = Resources.Load<GameObject>($"Weapons/{weaponName}");
+                if (visualPrefab != null)
+                {
+                    if (player.weaponHandler.weaponVisualHolder != null)
+                    {
+                        // 기존 비주얼 제거
+                        foreach (Transform child in player.weaponHandler.weaponVisualHolder)
+                            Destroy(child.gameObject);
+
+                        GameObject visual = Instantiate(visualPrefab, player.weaponHandler.weaponVisualHolder);
+                        visual.transform.localPosition = Vector3.zero;
+                        visual.transform.localRotation = Quaternion.identity;
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Visual prefab not found at Resources/Weapons/{weaponName}");
+                }
+            }
         }
 
         Destroy(spawnedWeapons[index]);

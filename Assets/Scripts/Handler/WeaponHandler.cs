@@ -98,4 +98,17 @@ public class WeaponHandler : MonoBehaviour
             weaponFacingProxy.localScale = new Vector3(Mathf.Abs(scale.x) * faceSign, scale.y, scale.z);
         }
     }
+
+    //HR
+    public void ChangeWeaponByPrefab(GameObject visualPrefab, string weaponName)
+    {
+        if (currentVisual != null) Destroy(currentVisual);
+
+        currentVisual = Instantiate(visualPrefab, weaponVisualHolder);
+        currentVisual.transform.localPosition = Vector3.zero;
+        currentVisual.transform.localRotation = Quaternion.identity;
+
+        Debug.Log($"WeaponHandler에 {weaponName} 비주얼 적용 완료");
+    }
+
 }

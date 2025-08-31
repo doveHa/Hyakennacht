@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.LogError("¹«±â ÃÊ±âÈ­ ½ÇÆÐ: ÇÚµé·¯ ¶Ç´Â À§Ä¡ ´©¶ô");
+            Debug.LogError("ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½ï¿½: ï¿½Úµé·¯ ï¿½Ç´ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½");
         }
         weaponHandler.EquipWeapon(startingWeapon);
     }
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("¹«±â »ç¿ë ½Ãµµ");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ãµï¿½");
             weaponHandler.UseWeapon(isLeft);
         }
     }
@@ -75,5 +75,15 @@ public class Player : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.tag.Equals("Projectile"))
+        {
+            SystemManager.Manager.HpControl.MinusHp();
+            Destroy(other.gameObject);
+        }
     }
 }

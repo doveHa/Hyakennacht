@@ -1,3 +1,4 @@
+/*
 using System;
 using Enemy;
 using Manager;
@@ -130,3 +131,4 @@ public class BossBulletPattern : MonoBehaviour
         }
     }
 }
+*/

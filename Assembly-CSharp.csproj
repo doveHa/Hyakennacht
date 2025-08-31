@@ -82,11 +82,13 @@
     <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabListPanel.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\BonkAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\MiddleBossPattern.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\혼돈의 일격\SK_ChaosStrike.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemPrefabSlot.cs" />
     <Compile Include="Assets\Test\Script\BallHit.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Soul.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\ABossPattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\RandomMoveState.cs" />
     <Compile Include="Assets\Test\Script\MotionTransformWriter.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\펌프킨 메테오\PumpkinMeteorPayload.cs" />
@@ -102,8 +104,10 @@
     <Compile Include="Assets\Scripts\Enemy\PlayerRecognize.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\ChasePlayerState.cs" />
     <Compile Include="Assets\Scripts\Character\Skill\Skill1.cs" />
+    <Compile Include="Assets\Enemy\Resource\WitchBoss\Effect\ClockBullet.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\요기 폭발\SK_YokiExplosion.cs" />
     <Compile Include="Assets\Enemy\Resource\Kappa\Effect\WaterBallHit.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\Boss1Pattern.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\차원의 틈\SK_DimensionalRift.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\IAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\SkillCaster.cs" />
@@ -122,6 +126,7 @@
     <Compile Include="Assets\HR\Script\LobbyManager.cs" />
     <Compile Include="Assets\HR\Script\MapManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\GhostAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\BossPatternController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\KappaAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Bell.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
@@ -138,6 +143,7 @@
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ProjectileAttack.cs" />
     <Compile Include="Assets\Enemy\Resource\Straw\Effect\SmallStraw.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\Boss2Pattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Character\Dash.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\차원의 틈\RiftZone2D.cs" />
@@ -147,6 +153,7 @@
     <Compile Include="Assets\ES_Scripts\Weapon_Script\LongStaff.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\SkillBase.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\WitchBossPattern.cs" />
     <Compile Include="Assets\HR\Script\StallTrigerSimple.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\GolemAttack.cs" />
@@ -156,6 +163,7 @@
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
     <Compile Include="Assets\Scripts\System\RoomControl.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\WispAttack.cs" />
+    <Compile Include="Assets\Enemy\Resource\WitchBoss\Effect\ScratchShoot.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\AttackState.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\파멸의 운석\DoomMeteorPayload.cs" />
     <Compile Include="Assets\Enemy\Resource\Will-o-wisp\Effect\WispBoard.cs" />
@@ -164,6 +172,7 @@
     <Compile Include="Assets\Scripts\Manager\AddressableManager.cs" />
     <Compile Include="Assets\HR\Script\BossManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\RandomMove.cs" />
+    <Compile Include="Assets\Enemy\Resource\MiddleBoss\Effect\Lightning.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Pixem\Scripts\PixemCharacter.cs" />
     <Compile Include="Assets\Scripts\Enemy\HitCollider.cs" />

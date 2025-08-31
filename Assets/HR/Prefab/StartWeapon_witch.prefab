@@ -349,10 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd8b846b1c38045917e362f8ea41e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stallWeapons:
+  stallWeaponsPrefabs:
   - {fileID: 6087501251416176840, guid: bfa50b1f0caa9f8498c44d1fc6d2b78c, type: 3}
-  - {fileID: 5679773163421190857, guid: 7a8a2269c16b565438cd929e0575e4ed, type: 3}
   - {fileID: 9208696594913934517, guid: a10306556b11de54c821fe4525d329fc, type: 3}
+  - {fileID: 5679773163421190857, guid: 7a8a2269c16b565438cd929e0575e4ed, type: 3}
   stallTransforms:
   - {fileID: 8480853603325705383}
   - {fileID: 8415713301160407338}
