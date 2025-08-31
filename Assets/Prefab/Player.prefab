@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1593262063411573130}
   - component: {fileID: 7863012626458017566}
   - component: {fileID: 1672000836493249890}
-  - component: {fileID: 251836746357048383}
+  - component: {fileID: 6404072077181073360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,9 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 6654459765545817610, guid: 0d6851a08534fed4dbd55eb693efdc04, type: 3}
-  weaponHandler: {fileID: 251836746357048383}
-  startingWeapon: {fileID: 0}
---- !u!114 &251836746357048383
+  weaponHandler: {fileID: 0}
+  startingWeapon: {fileID: 11400000, guid: f758d515f3669474b807f169ae8939a1, type: 2}
+--- !u!114 &6404072077181073360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,7 +161,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4703791776115854186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8975bf91f740b5aeaa9c320572da74, type: 3}
+  m_Script: {fileID: 11500000, guid: 43b0a7799e511b44f847e7498a02c0a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponVisualHolder: {fileID: 0}
+  slots:
+  - {fileID: 11400000, guid: db6b19cfc1167c24fadd1c918f3c38d1, type: 2}
+  - {fileID: 11400000, guid: 5b7cba2028efd4c47a449326e96af0fb, type: 2}
+  actor: {fileID: 0}
+  firePoint: {fileID: 0}
+  gcd: 5
+  pool: {fileID: 0}
+  fx: {fileID: 0}

@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Bits: 512
   targetTags:
   - Enemy
-  moveSpeed: 6
+  moveSpeed: 5
   turnLerp: 12
   standoffDistance: 0.55
   damage: 3

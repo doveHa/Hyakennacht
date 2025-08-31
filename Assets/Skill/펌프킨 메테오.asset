@@ -61,7 +61,7 @@ MonoBehaviour:
   life: 4
   hitMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 576
   baseImpactDamage: 20
   patchRadius: 2
   patchDuration: 5
