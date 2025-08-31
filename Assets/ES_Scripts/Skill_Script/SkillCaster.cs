@@ -26,6 +26,10 @@ public class SkillCaster : MonoBehaviour
     public ObjectPool pool;
     public FXRouter fx;
 
+
+    //HR: 슬롯 관리용
+    private int nextSlotIndex = 0;
+
     void Awake()
     {
         if (!pool) pool = FindFirstObjectByType<ObjectPool>();
@@ -163,29 +167,71 @@ public class SkillCaster : MonoBehaviour
         s.Execute(ctx);
     }
 
-    public void RegisterSkill(int slotIndex, SkillBase skillName)
+    //원본
+    /*    public void RegisterSkill(int slotIndex, SkillBase skillName)
+        {
+            if (slots == null || slotIndex < 0 || slotIndex >= slots.Length)
+            {
+                Debug.LogWarning("유효하지 않은 슬롯 인덱스");
+                return;
+            }
+
+            string path = "Skills/" + skillName;
+            SkillBase newSkill = Resources.Load<SkillBase>(path);
+
+            if (newSkill == null)
+            {
+                Debug.LogWarning($"스킬 '{skillName}'을 Resources 폴더에서 찾을 수 없습니다.");
+                return;
+            }
+
+            if (slots[slotIndex] != null)
+            {
+                slots[slotIndex] = null;
+            }
+
+            slots[slotIndex] = newSkill;
+            Debug.Log($"슬롯 {slotIndex}번에 스킬 {newSkill.name} 등록");
+        }*/
+
+
+    //작동: 0번 슬롯에만 스킬 등록됨
+    /*    public void RegisterSkill(int slotIndex, SkillBase skill)
+        {
+            if (slots == null || slotIndex < 0 || slotIndex >= slots.Length)
+            {
+                Debug.LogWarning("유효하지 않은 슬롯 인덱스");
+                return;
+            }
+
+            if (skill == null)
+            {
+                Debug.LogWarning("RegisterSkill 호출 시 SkillBase가 null입니다.");
+                return;
+            }
+
+            slots[slotIndex] = skill;
+            Debug.Log($"슬롯 {slotIndex}번에 스킬 {skill.name} 등록");
+        }*/
+
+    public void RegisterNextSkill(SkillBase skill)
     {
-        if (slots == null || slotIndex < 0 || slotIndex >= slots.Length)
+        if (slots == null || nextSlotIndex < 0 || nextSlotIndex >= slots.Length)
         {
-            Debug.LogWarning("유효하지 않은 슬롯 인덱스");
+            Debug.LogWarning("더 이상 슬롯이 없습니다.");
             return;
         }
 
-        string path = "Skills/" + skillName;
-        SkillBase newSkill = Resources.Load<SkillBase>(path);
-
-        if (newSkill == null)
+        if (skill == null)
         {
-            Debug.LogWarning($"스킬 '{skillName}'을 Resources 폴더에서 찾을 수 없습니다.");
+            Debug.LogWarning("RegisterNextSkill 호출 시 SkillBase가 null입니다.");
             return;
         }
 
-        if (slots[slotIndex] != null)
-        {
-            slots[slotIndex] = null;
-        }
+        slots[nextSlotIndex] = skill;
+        Debug.Log($"슬롯 {nextSlotIndex}번에 스킬 {skill.name} 등록");
 
-        slots[slotIndex] = newSkill;
-        Debug.Log($"슬롯 {slotIndex}번에 스킬 {newSkill.name} 등록");
+        nextSlotIndex++;
     }
+
 }

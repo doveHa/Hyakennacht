@@ -8,6 +8,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SkillData
 {
+    public int id; //배열 순서 매칭
     public string title;
     public string description;
     public string icon; // JSON에서 Sprite 로드 시, Resources 폴더 사용 추천
@@ -283,55 +284,62 @@ public class MapUIManager : MonoBehaviour
         SetCardUI(2, currentCards[2]);
     }
 
-
     private void OnCardSelected(int index)
     {
-        if (currentCards == null || currentCards.Count < 3)
-        {
-            Debug.LogWarning($"Tried to select card {index} before initialization. Ignoring.");
-            return;
-        }
-
-        if (index < 0 || index >= currentCards.Count)
-        {
-            Debug.LogError($"Invalid card index: {index}");
-            return;
-        }
-
         SelectedSkill = currentCards[index];
         skillSelectPanel.SetActive(false);
 
-        Debug.Log($"Selected Skill: {SelectedSkill.title}");
+        SkillCaster caster = player.GetComponent<SkillCaster>();
 
-        if (player != null)
+        if (SelectedSkill.id >= 0 && SelectedSkill.id < skillAssets.Length)
         {
-            SkillCaster caster = player.GetComponent<SkillCaster>();
-
-            // 배열에서 이름으로 스킬 찾기
-            SkillBase skillAsset = GetSkillByName(SelectedSkill.assetName);
-
-            if (skillAsset != null)
+            SkillBase skillAsset = skillAssets[SelectedSkill.id];
+            if (skillAsset == null)
             {
-                caster.RegisterSkill(0, skillAsset);
-            }
-            else
-            {
-                Debug.LogWarning($"스킬 '{SelectedSkill.title}'을 할당된 배열에서 찾을 수 없습니다.");
+                Debug.LogWarning($"skillAssets[{SelectedSkill.id}]가 연결되지 않았습니다. JSON assetName: {SelectedSkill.assetName}");
+                return;
             }
 
-            // skill 선택 후 stage clear 패널 열기
-            if (AfterSkillSelect)
-            {
-                statsPanel.SetActive(true);
-                MoveFlag(MapManager.Instance.currentStage);
-                AfterSkillSelect = false;
+            Debug.Log($"선택한 스킬: {SelectedSkill.title}, 배열 인덱스: {SelectedSkill.id}, assetName: {SelectedSkill.assetName}");
 
-                // 스킬 선택 후 다음 스테이지 이동
-                PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
-                cam?.TryInteractWithStairs();
-            }
+            // SkillCaster가 알아서 슬롯 관리
+            caster.RegisterNextSkill(skillAsset);
+        }
+        else
+        {
+            Debug.LogWarning($"스킬 '{SelectedSkill.title}' ID({SelectedSkill.id})가 배열 범위를 벗어났습니다.");
         }
     }
+
+    /*
+     * private void OnCardSelected(int index)
+    {
+        SelectedSkill = currentCards[index];
+        skillSelectPanel.SetActive(false);
+
+        SkillCaster caster = player.GetComponent<SkillCaster>();
+
+        // id 기반으로 배열에서 스킬 찾기
+        if (SelectedSkill.id >= 0 && SelectedSkill.id < skillAssets.Length)
+        {
+            SkillBase skillAsset = skillAssets[SelectedSkill.id];
+
+            if (skillAsset == null)
+            {
+                Debug.LogWarning($"skillAssets[{SelectedSkill.id}]가 연결되지 않았습니다. JSON assetName: {SelectedSkill.assetName}");
+                return;
+            }
+
+            Debug.Log($"[Skill Select] 선택한 스킬: {SelectedSkill.title}, 배열 인덱스: {SelectedSkill.id}, assetName: {SelectedSkill.assetName}");
+            caster.RegisterSkill(0, skillAsset); // Inspector에서 연결된 SkillBase 그대로 사용
+        }
+        else
+        {
+            Debug.LogWarning($"스킬 '{SelectedSkill.title}' ID({SelectedSkill.id})가 배열 범위를 벗어났습니다.");
+        }
+    }
+*/
+
 
     // 이름으로 배열 검색
     private SkillBase GetSkillByName(string name)
