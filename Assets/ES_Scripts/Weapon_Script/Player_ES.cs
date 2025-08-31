@@ -18,7 +18,7 @@ public class Player_ES : MonoBehaviour
         {
             bool isLeft = transform.localScale.x < 0;
             Debug.Log("무기 사용 시도");
-            weaponHandler.UseWeapon(isLeft);
+            weaponHandler.UseWeapon();
         }
     }
 }

@@ -48,12 +48,16 @@ public class Player : MonoBehaviour
         if (weaponHandler != null)
         {
             weaponHandler.UpdateWeaponDirection(isLeft);
+            if (weaponHandler is IFlippableWeapon flippable)
+            {
+                flippable.SetFacingDirection(isLeft);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("���� ��� �õ�");
-            weaponHandler.UseWeapon(isLeft);
+            weaponHandler.UseWeapon();
         }
     }
 

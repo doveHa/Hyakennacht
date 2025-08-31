@@ -553,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 1672000836493249890, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: startingWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 0179df8d2e32b1d49aaf133324651067, type: 2}
+      objectReference: {fileID: 11400000, guid: eae2c9cb27b29e04095eeb3aa7090d35, type: 2}
     - target: {fileID: 4298335347944655996, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: m_Constraints
       value: 4

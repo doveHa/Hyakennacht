@@ -8,6 +8,11 @@ public interface IWeaponBehavior
     void Attack();
 }
 
+public interface IFlippableWeapon
+{
+    void SetFacingDirection(bool isLeft);
+}
+
 public class WeaponHandler : MonoBehaviour
 {
     private Transform firePoint;
@@ -69,17 +74,15 @@ public class WeaponHandler : MonoBehaviour
 
     public WeaponData GetCurrentWeaponData()
     {
-        // 현재 무기 데이터
         return currentData;
     }
 
     public void ChangeWeapon(WeaponData newData)
     {
-        // 무기 바꾸기
         EquipWeapon(newData);
     }
 
-    public void UseWeapon(bool isLeft)
+    public void UseWeapon()
     {
         Debug.Log("어택 호출 전");
         if (currentBehavior != null)
@@ -88,15 +91,19 @@ public class WeaponHandler : MonoBehaviour
         }
     }
 
+    // 이 함수를 수정합니다.
     public void UpdateWeaponDirection(bool flipX)
     {
         if (weaponFacingProxy != null)
         {
-            float faceSign = flipX ? 1f : -1f;
+            float visualDirection = flipX ? 1f : -1f;
             Vector3 scale = weaponFacingProxy.localScale;
 
-            weaponFacingProxy.localScale = new Vector3(Mathf.Abs(scale.x) * faceSign, scale.y, scale.z);
+            weaponFacingProxy.localScale = new Vector3(Mathf.Abs(scale.x) * visualDirection, scale.y, scale.z);
         }
+
+        if (currentScript is IFlippableWeapon flippable)
+            flippable.SetFacingDirection(flipX);
     }
 
     //HR
@@ -110,5 +117,4 @@ public class WeaponHandler : MonoBehaviour
 
         Debug.Log($"WeaponHandler에 {weaponName} 비주얼 적용 완료");
     }
-
 }
