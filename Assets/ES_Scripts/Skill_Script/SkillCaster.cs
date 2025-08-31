@@ -119,4 +119,22 @@ public class SkillCaster : MonoBehaviour
         if (s.useGCD) gcdEnd = Time.time + gcd;
         s.Execute(ctx);
     }
+
+    public void RegisterSkill(int slotIndex, SkillBase newSkill)
+    {
+        if (slots == null || slotIndex < 0 || slotIndex >= slots.Length)
+        {
+            Debug.LogWarning("유효하지 않은 슬롯 인덱스");
+            return;
+        }
+
+        if (slots[slotIndex] != null)
+        {
+            slots[slotIndex] = null;
+        }
+
+        slots[slotIndex] = newSkill;
+        Debug.Log($"슬롯 {slotIndex}번에 스킬 {newSkill.name} 등록");
+    }
+
 }
