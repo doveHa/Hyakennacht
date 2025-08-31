@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4822784228579305570}
   - component: {fileID: 6306549926422573768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Effect
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4339004464982605782}
   - component: {fileID: 6225522926680783216}
   - component: {fileID: 2250497831539088801}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Will-o-Wisp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -239,6 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 0}
+  IsChangeState: 1
+  IsLeftSight: 0
 --- !u!114 &4659562302849844744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +340,7 @@ GameObject:
   - component: {fileID: 8189435711326889104}
   - component: {fileID: 6639981158707822246}
   - component: {fileID: 3843105175951561946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RecognizeArea
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -419,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6542079290499850024}
   - component: {fileID: 3033131221922334554}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitBox_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -510,6 +513,10 @@ PrefabInstance:
       value: Will-o-wisp_psb
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: d06a7ad68e3320a468cc7ebfe78441f6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: d06a7ad68e3320a468cc7ebfe78441f6, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -570,12 +577,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1778081591861917125, guid: d06a7ad68e3320a468cc7ebfe78441f6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1778081591861917125, guid: d06a7ad68e3320a468cc7ebfe78441f6, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -606927876215112773, guid: d06a7ad68e3320a468cc7ebfe78441f6, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.190604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820188334255038932, guid: d06a7ad68e3320a468cc7ebfe78441f6, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7820188334255038932, guid: d06a7ad68e3320a468cc7ebfe78441f6, type: 3}
       propertyPath: m_TagString

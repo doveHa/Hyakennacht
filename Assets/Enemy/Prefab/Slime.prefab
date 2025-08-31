@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 2642079693118808992}
   - component: {fileID: -3563647526903280057}
   - component: {fileID: -740528820498765275}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 0}
+  IsChangeState: 1
+  IsLeftSight: 0
 --- !u!114 &7882218621186000282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +252,7 @@ GameObject:
   - component: {fileID: 8189435711326889104}
   - component: {fileID: 6639981158707822246}
   - component: {fileID: 3843105175951561946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RecognizeArea
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -334,6 +337,10 @@ PrefabInstance:
       value: Slime_psb
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 9a34d8faa04ab20478946ab5ed3ff979, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 9a34d8faa04ab20478946ab5ed3ff979, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -386,12 +393,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3611460500472092917, guid: 9a34d8faa04ab20478946ab5ed3ff979, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -3611460500472092917, guid: 9a34d8faa04ab20478946ab5ed3ff979, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -606927876215112773, guid: 9a34d8faa04ab20478946ab5ed3ff979, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.392086
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820188334255038932, guid: 9a34d8faa04ab20478946ab5ed3ff979, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7820188334255038932, guid: 9a34d8faa04ab20478946ab5ed3ff979, type: 3}
       propertyPath: m_TagString

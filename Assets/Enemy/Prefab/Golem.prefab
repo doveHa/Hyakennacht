@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9045465902765895497}
   - component: {fileID: 2770667958384248107}
   - component: {fileID: 7608341832472866435}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitBox_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7130580059078733404}
   - component: {fileID: 5863030376987905508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Effect
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 3177028985729368039}
   - component: {fileID: 4792758032376816396}
   - component: {fileID: 1249747730990818771}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitBox_2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: -5613460764438756362}
   - component: {fileID: -3918753857294405385}
   - component: {fileID: -93889335676445538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Golem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -422,6 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 0}
+  IsChangeState: 1
+  IsLeftSight: 0
 --- !u!114 &4659562302849844744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +523,7 @@ GameObject:
   - component: {fileID: 8189435711326889104}
   - component: {fileID: 6639981158707822246}
   - component: {fileID: 3843105175951561946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RecognizeArea
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -601,6 +604,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2316976659988654998}
     m_Modifications:
     - target: {fileID: -8695416825521746284, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8695416825521746284, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -609,8 +616,16 @@ PrefabInstance:
       value: Golem_psb
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -8286969786277680935, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8286969786277680935, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
@@ -665,36 +680,72 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6256735849071891160, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256735849071891160, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -4848303770202303421, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4848303770202303421, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: -4578786000105500013, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4578786000105500013, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 284057867448817042, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 284057867448817042, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1596357972171728719, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596357972171728719, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769465101944927738, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1769465101944927738, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2947414824929455936, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947414824929455936, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3204228191306438580, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204228191306438580, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820188334255038932, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7820188334255038932, guid: e1d87aca18862634d8a419cc89278d4e, type: 3}
       propertyPath: m_TagString

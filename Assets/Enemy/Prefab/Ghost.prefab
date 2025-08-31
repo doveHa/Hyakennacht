@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -2981073537043424801}
   - component: {fileID: -2626484067030549637}
   - component: {fileID: -1698039297181864255}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ghost
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 0}
+  IsChangeState: 1
+  IsLeftSight: 0
 --- !u!114 &4659562302849844744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +252,7 @@ GameObject:
   - component: {fileID: 8189435711326889104}
   - component: {fileID: 6639981158707822246}
   - component: {fileID: 5716603087811639707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RecognizeArea
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -334,6 +337,10 @@ PrefabInstance:
       value: Ghost_psb
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 6bc3f2f11a1b99d459e3c03c9faaad7e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 6bc3f2f11a1b99d459e3c03c9faaad7e, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -386,8 +393,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7820188334255038932, guid: 6bc3f2f11a1b99d459e3c03c9faaad7e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820188334255038932, guid: 6bc3f2f11a1b99d459e3c03c9faaad7e, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422101984039322079, guid: 6bc3f2f11a1b99d459e3c03c9faaad7e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8422101984039322079, guid: 6bc3f2f11a1b99d459e3c03c9faaad7e, type: 3}
       propertyPath: m_TagString

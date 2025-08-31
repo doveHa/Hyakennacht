@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 7992639868892031145}
   - component: {fileID: 2295448253604587303}
   - component: {fileID: 8905547646611674986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: {fileID: 0}
   IsChangeState: 1
+  IsLeftSight: 0
 --- !u!114 &6295810517878711896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4160596728950711436}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,9 +241,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3782929631951379360}
     m_Modifications:
+    - target: {fileID: -8695416825521746284, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
       propertyPath: m_Name
       value: Boss_2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -283,6 +292,46 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6256735849071891160, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4848303770202303421, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1240721892719223032, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 284057867448817042, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596357972171728719, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769465101944927738, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775251896502485894, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947414824929455936, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204228191306438580, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820188334255038932, guid: d1381c33f5f8c2c4a9aa3535e4aeeb20, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
