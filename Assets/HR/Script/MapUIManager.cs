@@ -113,14 +113,15 @@ public class MapUIManager : MonoBehaviour
 
         // 플레이어가 죽은 상태라면 스테이지 진행 없이 로비 복귀
         //SceneManager.LoadScene(1);
-        Application.Quit();
+        if(PlayerDied)
+            Application.Quit();
+
         /*
         Time.timeScale = 1f;
 
         SceneManager.LoadScene(StageManager.GetLobbyScene());
 */
 
-/*
         // 카메라에서 TryInteractWithStairs 호출
         PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
         if (cam != null)
@@ -130,7 +131,7 @@ public class MapUIManager : MonoBehaviour
         else
         {
             Debug.LogWarning("PlayerCamera not found!");
-        }*/
+        }
     }
 
     public void OnCardClick()
