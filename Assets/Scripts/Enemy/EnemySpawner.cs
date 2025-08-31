@@ -20,6 +20,9 @@ namespace Enemy
         private Random _rnd;
 
         public bool IsSpawn;
+        private bool _isStageStart = false;
+
+        public GameObject _wall;
 
         void Awake()
         {
@@ -43,25 +46,32 @@ namespace Enemy
             {
                 _enemyObjects.Add(await AddressableManager.Manager.LoadAsset<GameObject>(key));
             }
-            
+
             _stage.CompressBounds();
             _bounds = _stage.localBounds;
         }
 
-        void Update()
+        async void Update()
         {
             Vector3Int playerPoint = _stage.WorldToCell(GameManager.Manager.Player.transform.position);
             if (!IsSpawn && _stage.HasTile(playerPoint))
             {
                 IsSpawn = true;
-                StartStage();
-                SpawnEnemies();
+                await StartStage();
+                await SpawnEnemies();
+                _isStageStart = true;
+            }
+
+            if (_isStageStart && _wall.transform.childCount <= 0)
+            {
+                EndStage();
             }
 
             if (Input.GetKeyDown(KeyCode.Delete))
             {
                 EndStage();
             }
+
             /*
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -83,7 +93,7 @@ namespace Enemy
             int randomY = _rnd.NextInt((int)_bounds.min.y, (int)_bounds.max.y);
             Vector3Int randomPoint = new Vector3Int(randomX, randomY, 0);
             randomPosition = _stage.CellToLocal(randomPoint);
-            
+
             return randomPosition;
         }
 
@@ -96,6 +106,7 @@ namespace Enemy
             {
                 int rndEnemy = _rnd.NextInt(_enemyObjects.Count);
                 _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy]);
+                _objects[i].transform.parent = transform.GetChild(0).transform;
             }
         }
 
@@ -117,19 +128,18 @@ namespace Enemy
 
             return true;
         }
-        
-        public async void StartStage()
+
+        public async Task StartStage()
         {
-            GameObject child = new GameObject();
-            child.transform.parent = transform;
+            _wall = new GameObject();
+            _wall.transform.parent = transform;
+            Tilemap tilemap = _wall.transform.AddComponent<Tilemap>();
+            _wall.transform.AddComponent<TilemapRenderer>();
+            _wall.transform.AddComponent<TilemapCollider2D>();
             TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/Wall.asset");
-            Tilemap tilemap = child.transform.AddComponent<Tilemap>();
-            child.transform.AddComponent<TilemapRenderer>();
-            child.transform.AddComponent<TilemapCollider2D>();
             MapManager.Instance.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase);
-            //await SpawnEnemies();
         }
-        
+
         public void EndStage()
         {
             Destroy(transform.GetChild(0).gameObject);
