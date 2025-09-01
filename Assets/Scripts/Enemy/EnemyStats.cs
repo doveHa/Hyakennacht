@@ -41,8 +41,8 @@ public class EnemyStats : MonoBehaviour
 
     public async Task SetStat()
     {
-        TextAsset textAsset = await AddressableManager.Manager.LoadAsset<TextAsset>("Assets/TextAsset/EnemyStats.json");
-        OnJsonLoaded(textAsset);
+        //TextAsset textAsset = await AddressableManager.Manager.LoadAsset<TextAsset>("Assets/TextAsset/EnemyStats.json");
+        //OnJsonLoaded(textAsset);
     }
 
     private void OnJsonLoaded(TextAsset textAsset)
@@ -51,9 +51,9 @@ public class EnemyStats : MonoBehaviour
 
         List<EnemyStat> set = JsonSerializer.Deserialize<List<EnemyStat>>(json);
         EnemyStat stat = set.Find(e => e.Name == enemyName.ToString());
-        Health = stat.Health;
-        MaxHealth = stat.Health;
-        Speed = stat.Speed;
+        Health = 20;
+        MaxHealth = 20;
+        Speed = 2;
     }
 
 /*

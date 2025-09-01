@@ -26,10 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HR/Scenes/YokaiBoss.unity
     guid: e111fb0af91d32d4c8892d0942380f99
-  - enabled: 1
+  - enabled: 0
     path: Assets/HR/Scenes/MapSample.unity
     guid: f44e100cfdffe2f43937e059763b2cfc
-  - enabled: 1
+  - enabled: 0
     path: Assets/HR/Scenes/BossMap.unity
     guid: 2508b548525d582469a310b9fbc11b1c
   m_configObjects:

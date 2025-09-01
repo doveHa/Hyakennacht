@@ -13,7 +13,7 @@ namespace Enemy
     public class EnemySpawner : MonoBehaviour
     {
         private Tilemap _stage;
-        private static List<GameObject> _enemyObjects;
+        private List<GameObject> _enemyObjects;
         private Bounds _bounds;
 
         private GameObject[] _objects;
@@ -22,32 +22,6 @@ namespace Enemy
         private bool _isStageStart = false;
 
         public GameObject _wall;
-
-        public static async Task CreateEnemies()
-        {
-            _enemyObjects = new List<GameObject>();
-
-            List<string> keys = new List<string>();
-            string path = "Assets/Enemy/Prefab/";
-
-            if (StageManager.GetMapScene().Equals("YokaiMap"))
-            {
-                keys.Add(path + "Ghost.prefab");
-                keys.Add(path + "Slime.prefab");
-                keys.Add(path + "Golem.prefab");
-            }
-            else
-            {
-                keys.Add(path + "Will-o-Wisp.prefab");
-                keys.Add(path + "Straw.prefab");
-                keys.Add(path + "Kappa.prefab");
-            }
-
-            foreach (string key in keys)
-            {
-                _enemyObjects.Add(await AddressableManager.Manager.LoadAsset<GameObject>(key));
-            }
-        }
 
         void Awake()
         {
@@ -59,6 +33,13 @@ namespace Enemy
         {
             _stage.CompressBounds();
             _bounds = _stage.localBounds;
+            
+            _enemyObjects = new List<GameObject>();
+            
+            foreach (GameObject enemy in EnemyPrefabs.Instance.EnemyPrefab)
+            {
+                _enemyObjects.Add(enemy);
+            }
         }
 
         async void Update()
@@ -143,9 +124,9 @@ namespace Enemy
             _wall = new GameObject();
             _wall.transform.parent = transform;
             Tilemap tilemap = _wall.transform.AddComponent<Tilemap>();
-            _wall.transform.AddComponent<TilemapRenderer>();
+            _wall.transform.AddComponent<TilemapRenderer>().sortingOrder = 1;
             _wall.transform.AddComponent<TilemapCollider2D>();
-            TileBase tileBase = await AddressableManager.Manager.LoadAsset<TileBase>("Assets/Tile/Wall.asset");
+            TileBase tileBase = MapManager.Instance.wallTileHorizontal;
             MapManager.Instance.GenerateWalls(GetComponent<Tilemap>(), tilemap, tileBase);
         }
 

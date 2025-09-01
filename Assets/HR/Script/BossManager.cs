@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enemy;
 using Manager;
@@ -8,40 +9,33 @@ using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
-    [Header("Game Clear")]
-    [SerializeField] private GameObject gameClearPanel;
+    [Header("Game Clear")] [SerializeField]
+    private GameObject gameClearPanel;
 
     public GameObject bossSpawnPoint;
-    
-    private static GameObject[] bossObjects;
+
+    private List<GameObject> bossObjects;
 
     private GameObject _bossObject;
-    public static async Task SetBossObjects()
-    {
-        bossObjects = new GameObject[2];
-        if (StageManager.GetBossScene() == "WitchBoss")
-        {
-            bossObjects[0] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/Boss1.prefab");
-            bossObjects[1] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/MiddleBoss.prefab");
-        }
-        else
-        {
-            bossObjects[0] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/Boss2.prefab");
-            bossObjects[1] = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Prefab/WitchBoss.prefab");
-        }
-    }
+
+
     void Awake()
     {
-       
+        bossObjects = new List<GameObject>();
     }
-    
+
     void Start()
     {
+        foreach (GameObject boss in BossPrefab.Instance.BossPrefabs)
+        {
+            bossObjects.Add(boss);
+        }
+        
         if (StageManager.CurrentStage == 5)
         {
             _bossObject = Instantiate(bossObjects[0], bossSpawnPoint.transform.position, Quaternion.identity);
         }
-        else if(StageManager.CurrentStage == 10)
+        else if (StageManager.CurrentStage == 10)
         {
             _bossObject = Instantiate(bossObjects[1], bossSpawnPoint.transform.position, Quaternion.identity);
         }
@@ -55,6 +49,7 @@ public class BossManager : MonoBehaviour
         {
             OnBossDefeated();
         }
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             StageManager.CurrentStage = 15;
@@ -103,6 +98,5 @@ public class BossManager : MonoBehaviour
 
     void OnEnable()
     {
-        
-    }   
+    }
 }
