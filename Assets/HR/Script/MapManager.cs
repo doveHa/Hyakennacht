@@ -85,11 +85,10 @@ public class MapManager : MonoBehaviour
             Instance = this;
     }
 
-    async void Start()
+    void Start()
     {
         currentStage = StageManager.CurrentStage;
         if (currentStage < 1) currentStage = 1;
-        await EnemySpawner.CreateEnemies();
         GenerateMap();
     }
 
@@ -327,8 +326,6 @@ public class MapManager : MonoBehaviour
 
         if (StageManager.IsBossStage())
         {
-            await BossManager.SetBossObjects();
-            
             string bossScene = StageManager.GetBossScene();
             Debug.Log("Boss Stage: " + currentStage + " -> Loading: " + bossScene);
             SceneManager.LoadScene(bossScene);
