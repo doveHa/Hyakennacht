@@ -94,6 +94,8 @@ public class MapUIManager : MonoBehaviour
         PlayerDied = false;
 
         skillSelectPanel.SetActive(false);
+
+        OnStageStart();
     }
 
     void Update()
@@ -144,7 +146,7 @@ public class MapUIManager : MonoBehaviour
     {
         if (flag == null || progressLine == null) return;
 
-        float visibleRatio = 0.8f; // 실제 보이는 길이 비율
+        float visibleRatio = 0.4f; // 실제 보이는 길이 비율
         float lineWidth = progressLine.rect.width * visibleRatio;
         float ratio = (stage - 1f) / (totalStage - 1f); // 1~15
         float newX = -lineWidth / 2 + ratio * lineWidth;
