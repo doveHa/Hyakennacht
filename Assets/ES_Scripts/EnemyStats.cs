@@ -52,6 +52,7 @@ public class EnemyStats : MonoBehaviour
     {
         _controller.Animator.SetTrigger("Hit");
         _currentHp -= dmg;
+        Debug.Log(_currentHp);
         if (_currentHp <= 0)
         {
             Die();

@@ -22,7 +22,8 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyStats>()?.TakeDamage(damage);
+            Debug.Log(other.name);
+            other.GetComponentInParent<EnemyStats>()?.TakeDamage(damage);
             Debug.Log("�߻� �Ϸ�");
 
             if (weaponName != "����") 

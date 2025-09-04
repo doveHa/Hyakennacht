@@ -10,6 +10,7 @@ namespace Character
         public static bool IsMoving;
         public Vector2 MoveVector { get; set; } // 외부 입력 세팅
         [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float rayDistance = 0.2f;
 
         private Rigidbody2D rb;
         //private Transform parentTransform;
@@ -28,15 +29,17 @@ namespace Character
         {
             if (MoveVector != Vector2.zero)
             {
-                Vector2 targetPos = rb.position + MoveVector * moveSpeed * Time.fixedDeltaTime;
-                // 벽 체크 (Raycast)
+                float distance = moveSpeed * Time.fixedDeltaTime;
+                Vector2 targetPos = rb.position + MoveVector * distance;
                 rb.MovePosition(targetPos);
+                
                 /*
-                RaycastHit2D hit = Physics2D.Raycast(rb.position, MoveVector, moveSpeed * Time.fixedDeltaTime);
 
                 if (hit.collider == null) // 벽 없음
                 {
-                }*/
+                    GameManager.Manager.Player.transform.position += (Vector3)MoveVector * distance;
+                }
+                */
 
                 IsMoving = true;
             }
