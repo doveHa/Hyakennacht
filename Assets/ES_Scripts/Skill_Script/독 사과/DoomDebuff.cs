@@ -24,9 +24,9 @@ public class DoomDebuff : MonoBehaviour
         if (Time.time >= _endTime)
         {
             _armed = false;
-            var enemy = GetComponent<Enemy_ES>();
-            if (enemy != null) enemy.Die();     // Áï»ç
-            // µð¹öÇÁ´Â 1È¸¼º ¡æ ÀÚ½Å Á¦°ÅÇØµµ OK
+            var enemy = GetComponent<EnemyStats>();
+            if (enemy != null) enemy.Die();     // ï¿½ï¿½ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ OK
             Destroy(this);
         }
     }
@@ -35,12 +35,12 @@ public class DoomDebuff : MonoBehaviour
 public class PoisonApplePayload : MonoBehaviour, IThrownPayload
 {
     [Header("Config")]
-    public float doomSeconds = 3f;       // NÃÊ ÈÄ »ç¸Á
-    public string bubbleFxKey;           // µ¶ °ÅÇ° FX
+    public float doomSeconds = 3f;       // Nï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
+    public string bubbleFxKey;           // ï¿½ï¿½ ï¿½ï¿½Ç° FX
 
     public void OnImpact(Transform owner, Collider2D hit, Vector2 point)
     {
-        var enemy = hit.GetComponentInParent<Enemy_ES>();
+        var enemy = hit.GetComponentInParent<EnemyStats>();
         if (!enemy) return;
 
         var doom = enemy.GetComponent<DoomDebuff>();

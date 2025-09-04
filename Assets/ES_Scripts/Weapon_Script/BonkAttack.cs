@@ -20,7 +20,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         this.data = data;
         this.firePoint = firePoint;
 
-        if (data.weaponName == "²¿¸®") 
+        if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½") 
         { 
             tailFirePoint = GameObject.FindWithTag("Player")?.GetComponentInChildren<WeaponHandler>()?.weaponVisualHolder; 
             if (tailFirePoint != null) 
@@ -39,7 +39,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         if (animator == null)
             animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
 
-        if (data.weaponName == "°¡»þµµÄí·Î")
+        if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
         {
             range *= 2f; 
             if (animator != null)
@@ -48,7 +48,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
             }
         }
 
-        if (data.weaponName == "Ã¤Âï")
+        if (data.weaponName == "Ã¤ï¿½ï¿½")
         {
             range *= 2f;
             if (animator != null)
@@ -57,7 +57,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
             }
         }
 
-        if (data.weaponName == "¹ø°³ ¹ßÅé")
+        if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")
         {
             if (animator != null)
             {
@@ -65,7 +65,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
             }
         }
 
-        if (data.weaponName == "²¿¸®") 
+        if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½") 
         { 
             range *= 2f; 
             if (animator != null)
@@ -74,7 +74,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
                 StartCoroutine(MoveTailFirePoint()); 
         }
 
-        Transform attackEffect = FindDeepChild(transform, "°ø°Ý");
+        Transform attackEffect = FindDeepChild(transform, "ï¿½ï¿½ï¿½ï¿½");
         if (attackEffect != null)
         {
             attackEffect.gameObject.SetActive(true);
@@ -86,20 +86,20 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         {
             if (hit.CompareTag("Enemy"))
             {
-                Enemy_ES enemy = hit.GetComponent<Enemy_ES>();
+                EnemyStats enemy = hit.GetComponent<EnemyStats>();
                 if (enemy != null) 
                 {
-                    hit.GetComponent<Enemy_ES>()?.TakeDamage(data.baseDamage);
-                    Debug.Log($"Àû È÷Æ®: {hit.name}");
+                    hit.GetComponent<EnemyStats>()?.TakeDamage(data.baseDamage);
+                    Debug.Log($"ï¿½ï¿½ ï¿½ï¿½Æ®: {hit.name}");
 
-                    if (data.weaponName == "¹ø°³ ¹ßÅé")
+                    if (data.weaponName == "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")
                     {
                         if (!enemy.GetComponent<Dot>())
                             enemy.gameObject.AddComponent<Dot>().Initialize(3, 1f, "Electric");
 
                         /*
-                        // ÆÄÆ¼Å¬ ÀÌÆåÆ® »ý¼º
-                        GameObject fx = Resources.Load<GameObject>("Effects/Ãæ°Ý");
+                        // ï¿½ï¿½Æ¼Å¬ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+                        GameObject fx = Resources.Load<GameObject>("Effects/ï¿½ï¿½ï¿½");
                         if (fx != null)
                             GameObject.Instantiate(fx, enemy.transform.position, Quaternion.identity);
                         */

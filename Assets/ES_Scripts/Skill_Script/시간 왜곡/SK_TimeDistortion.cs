@@ -1,19 +1,19 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Skills/AoE/½Ã°£ ¿Ö°î")]
+[CreateAssetMenu(menuName = "Skills/AoE/ï¿½Ã°ï¿½ ï¿½Ö°ï¿½")]
 public class SK_TimeDistortion : SkillBase
 {
     [Header("AoE")]
-    public float radius = 3.5f;                  // ¹üÀ§
+    public float radius = 3.5f;                  // ï¿½ï¿½ï¿½ï¿½
     public LayerMask enemyMask;
     public string[] targetTags = new[] { "Enemy" };
 
     [Header("Stun")]
-    public float stunSeconds = 1.5f;             // ½ºÅÏ Áö¼Ó ½Ã°£
+    public float stunSeconds = 1.5f;             // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 
     [Header("Clock Marker")]
-    public string clockPoolKey = "ClockMarker";  // ¿ÀºêÁ§Æ® Ç® Å°
-    public Vector2 clockOffset = new Vector2(0f, 1.5f); // ¸Ó¸® À§ À§Ä¡
+    public string clockPoolKey = "ClockMarker";  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ç® Å°
+    public Vector2 clockOffset = new Vector2(0f, 1.5f); // ï¿½Ó¸ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡
 
     public override void Execute(SkillContext ctx)
     {
@@ -31,7 +31,7 @@ public class SK_TimeDistortion : SkillBase
             var co = buf[i];
             if (!co) continue;
 
-            // ÅÂ±× ÇÊÅÍ
+            // ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (targetTags != null && targetTags.Length > 0)
             {
                 bool ok = false;
@@ -44,7 +44,7 @@ public class SK_TimeDistortion : SkillBase
                 if (!ok) continue;
             }
 
-            var enemy = co.GetComponentInParent<Enemy_ES>();
+            var enemy = co.GetComponentInParent<EnemyStats>();
             if (!enemy) continue;
 
             var stun = enemy.GetComponent<Stunnable>();

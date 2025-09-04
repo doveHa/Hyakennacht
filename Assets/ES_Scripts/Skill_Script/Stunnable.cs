@@ -4,11 +4,11 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Stunnable : MonoBehaviour
 {
-    [Header("¿¬Ãâ ¿É¼Ç")]
-    public Color stunnedTint = new Color(1f, 1f, 1f, 0.5f); // ½ºÅÏ ½Ã ºñÁÖ¾ó
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½É¼ï¿½")]
+    public Color stunnedTint = new Color(1f, 1f, 1f, 0.5f); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¾ï¿½
     public bool debugLog = false;
 
-    // »óÅÂ
+    // ï¿½ï¿½ï¿½ï¿½
     public bool IsStunned { get; private set; }
     private float originalSpeed;
     private SpriteRenderer[] srs;
@@ -41,28 +41,28 @@ public class Stunnable : MonoBehaviour
             enemyMove.moveSpeed = 0f;
         }
         */
-        var enemyMove = GetComponent<Enemy_ES>();
+        var enemyMove = GetComponent<EnemyStats>();
         if (enemyMove != null)
         {
-            originalSpeed = enemyMove.moveSpeed;
-            enemyMove.moveSpeed = 0f;
+            originalSpeed = enemyMove.Speed;
+            enemyMove.Speed = 0f;
         }
 
         for (int i = 0; i < srs.Length; i++)
             if (srs[i]) srs[i].color = stunnedTint;
 
-        if (debugLog) Debug.Log($"{name} ½ºÅÏ ½ÃÀÛ ({sec:F1}ÃÊ)");
+        if (debugLog) Debug.Log($"{name} ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ({sec:F1}ï¿½ï¿½)");
 
         yield return new WaitForSeconds(sec);
 
-        // ¿ø·¡ ¼Óµµ·Î º¹¿ø
-        if (enemyMove != null) enemyMove.moveSpeed = originalSpeed;
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        if (enemyMove != null) enemyMove.Speed = originalSpeed;
 
-        // »ö»ó º¹±¸
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < srs.Length; i++)
             if (srs[i]) srs[i].color = origColors[i];
 
-        if (debugLog) Debug.Log($"{name} ½ºÅÏ Á¾·á");
+        if (debugLog) Debug.Log($"{name} ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 
         IsStunned = false;
         stunRoutine = null;

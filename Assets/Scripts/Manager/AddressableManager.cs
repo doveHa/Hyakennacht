@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -21,4 +21,4 @@ namespace Manager
             return t;
         }
     }
-}*/
+}

@@ -16,7 +16,7 @@ public class Potion : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy_ES enemy = other.GetComponent<Enemy_ES>();
+            EnemyStats enemy = other.GetComponent<EnemyStats>();
             if (enemy != null)
             {
                 ApplyEffect(enemy);
@@ -32,7 +32,7 @@ public class Potion : MonoBehaviour
         }
     }
 
-    private void ApplyEffect(Enemy_ES enemy)
+    private void ApplyEffect(EnemyStats enemy)
     {
         switch (potionType)
         {
@@ -64,10 +64,10 @@ public class Potion : MonoBehaviour
     {
         switch (type)
         {
-            case PotionEffectType.Heal: return "Effects/È¸º¹";
-            case PotionEffectType.Poison: return "Effects/µ¶";
-            case PotionEffectType.Fire: return "Effects/ºÒ";
-            case PotionEffectType.Hit: return "Effects/±âº» Æ÷¼Ç";
+            case PotionEffectType.Heal: return "Effects/È¸ï¿½ï¿½";
+            case PotionEffectType.Poison: return "Effects/ï¿½ï¿½";
+            case PotionEffectType.Fire: return "Effects/ï¿½ï¿½";
+            case PotionEffectType.Hit: return "Effects/ï¿½âº» ï¿½ï¿½ï¿½ï¿½";
             //case PotionType.Death: return "Effects/DeathEffect";
             default: return "";
         }

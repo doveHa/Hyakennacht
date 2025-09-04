@@ -70,7 +70,7 @@ public class TrapPlant2D : MonoBehaviour
     {
         if (!_armed) return;
 
-        // ·¹ÀÌ¾î/ÅÂ±× ÇÊÅÍ
+        // ï¿½ï¿½ï¿½Ì¾ï¿½/ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (((1 << other.gameObject.layer) & _enemyMask.value) == 0) return;
         if (_targetTags.Length > 0)
         {
@@ -87,7 +87,7 @@ public class TrapPlant2D : MonoBehaviour
         var enemyRoot = other.GetComponentInParent<Transform>();
         if (!enemyRoot) return;
 
-        var enemy = enemyRoot.GetComponent<Enemy_ES>();
+        var enemy = enemyRoot.GetComponent<EnemyStats>();
         if (enemy && _damage > 0) enemy.TakeDamage(_damage);
 
         var stun = enemyRoot.GetComponent<Stunnable>();
@@ -98,7 +98,7 @@ public class TrapPlant2D : MonoBehaviour
         if (enemyAnim && !string.IsNullOrEmpty(enemyGrabbedBool))
             enemyAnim.SetBool(enemyGrabbedBool, true);
 
-        // µ£ ¹ßµ¿ ¿¬Ãâ
+        // ï¿½ï¿½ ï¿½ßµï¿½ ï¿½ï¿½ï¿½ï¿½
         if (trapAnimator)
         {
             if (!string.IsNullOrEmpty(armedBool)) trapAnimator.SetBool(armedBool, false);
@@ -111,7 +111,7 @@ public class TrapPlant2D : MonoBehaviour
         _armed = false;
         _col.enabled = false;
 
-        // ½ºÅÏ ³¡³ª¸é Àû ¾Ö´Ï¸ÞÀÌ¼Ç ¿øº¹ + µ£ È¸¼ö
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ È¸ï¿½ï¿½
         StartCoroutine(CoRelease(enemyAnim));
     }
 

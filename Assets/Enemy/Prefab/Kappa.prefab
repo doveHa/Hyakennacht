@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 858537675387258698}
   - component: {fileID: 4059183156551638637}
   - component: {fileID: 6472350457789080868}
-  - component: {fileID: 4659562302849844744}
   - component: {fileID: 5410720886722198545}
   - component: {fileID: 8122706781385606940}
   - component: {fileID: 3243928953205170348}
@@ -151,19 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsChangeState: 1
   IsLeftSight: 0
---- !u!114 &4659562302849844744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783177417010643878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bcda79897de08409f3136ab04d9c6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: 2
 --- !u!114 &5410720886722198545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6077324bf3cfab84582c811b1cac84d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 2
 --- !u!114 &-1234735226641542117
 MonoBehaviour:
   m_ObjectHideFlags: 0

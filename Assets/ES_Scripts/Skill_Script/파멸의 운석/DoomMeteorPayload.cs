@@ -1,16 +1,16 @@
 using UnityEngine;
 
-/// ÆÄ¸êÀÇ ¿î¼® Àü¿ë ÆäÀÌ·Îµå: Àû¿¡ ´êÀ¸¸é Áï½Ã ÇÇÇØ, ³¡.
+/// ï¿½Ä¸ï¿½ï¿½ï¿½ ï¿½î¼® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì·Îµï¿½: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½.
 public class DoomMeteorPayload : MonoBehaviour, IFallPayload
 {
     [Header("Impact Damage")]
-    public int impactDamage = 80;   // SO¿¡¼­ ÃÖÁ¾ ÁÖÀÔ
+    public int impactDamage = 80;   // SOï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public void OnImpact(Transform owner, Vector2 hitPoint, Collider2D hit)
     {
-        var enemy = hit.GetComponentInParent<Enemy_ES>();
+        var enemy = hit.GetComponentInParent<EnemyStats>();
         if (enemy && impactDamage > 0)
             enemy.TakeDamage(impactDamage);
-        // Ãß°¡ ÀÌÆåÆ®/³Ë¹é ¾È ÇÔ. FallingProjectile2D°¡ ¹Ù·Î ReturnToPool Ã³¸®.
+        // ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®/ï¿½Ë¹ï¿½ ï¿½ï¿½ ï¿½ï¿½. FallingProjectile2Dï¿½ï¿½ ï¿½Ù·ï¿½ ReturnToPool Ã³ï¿½ï¿½.
     }
 }

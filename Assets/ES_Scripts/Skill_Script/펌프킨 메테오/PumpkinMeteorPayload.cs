@@ -3,13 +3,13 @@ using UnityEngine;
 public class PumpkinMeteorPayload : MonoBehaviour, IFallPayload
 {
     [Header("Impact Damage")]
-    public int impactDamage = 0;             // ¡ç SO¿¡¼­ ÃÖÁ¾°ª ¼¼ÆÃ
+    public int impactDamage = 0;             // ï¿½ï¿½ SOï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     [Header("Fire Patch")]
     public string firePatchKey = "FirePatch";
     public float patchRadius = 2.0f;
     public float patchDuration = 5f;
-    public int patchDps = 3;                 // "ÃÊ ´ç 3"
+    public int patchDps = 3;                 // "ï¿½ï¿½ ï¿½ï¿½ 3"
     public float tickInterval = 1.0f;
     public LayerMask enemyMask;
     public string[] targetTags = new[] { "Enemy" };
@@ -17,14 +17,14 @@ public class PumpkinMeteorPayload : MonoBehaviour, IFallPayload
 
     public void OnImpact(Transform owner, Vector2 hitPoint, Collider2D hit)
     {
-        // 1) Ãæµ¹ ´ë»ó¿¡ Áï½Ã ÇÇÇØ
-        var enemy = hit.GetComponentInParent<Enemy_ES>();
+        // 1) ï¿½æµ¹ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        var enemy = hit.GetComponentInParent<EnemyStats>();
         if (enemy && impactDamage > 0)
         {
             enemy.TakeDamage(impactDamage);
         }
 
-        // 2) Ãæµ¹ ÁöÁ¡¿¡ ºÒ ÀåÆÇ »ý¼º
+        // 2) ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (!owner) return;
         var caster = owner.GetComponent<SkillCaster>();
         if (caster == null || caster.pool == null) return;

@@ -18,8 +18,8 @@ public class CrackWave2D : MonoBehaviour
     System.Action<string, Vector2> _playFxAt;
 
     readonly Collider2D[] _buf = new Collider2D[64];
-    readonly HashSet<Enemy_ES> _hitOnce = new();
-    Enemy_ES _primaryTarget;
+    readonly HashSet<EnemyStats> _hitOnce = new();
+    EnemyStats _primaryTarget;
     float _t0;
     bool _armed;
 
@@ -55,9 +55,9 @@ public class CrackWave2D : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    Enemy_ES FindPrimaryTarget()
+    EnemyStats FindPrimaryTarget()
     {
-        // ¾ÆÁÖ ¾ãÀº ¹Ú½º·Î "°¡Àå °¡±î¿î Àü¹æ" Å½»ö
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" Å½ï¿½ï¿½
         float probeLen = _maxLength;
         Vector2 center = _origin + _forward * (probeLen * 0.5f);
         Vector2 size = new Vector2(probeLen, _width * 0.6f);
@@ -66,18 +66,18 @@ public class CrackWave2D : MonoBehaviour
         int n = Phys2DCompat.OverlapBox(center, size, angle, _buf, _enemyMask, includeTriggers: true);
 
         float best = float.MaxValue;
-        Enemy_ES bestE = null;
+        EnemyStats bestE = null;
         for (int i = 0; i < n; i++)
         {
             var col = _buf[i];
             if (!col) continue;
             if (!TagOk(col.transform.root.gameObject)) continue;
 
-            var e = col.GetComponentInParent<Enemy_ES>();
+            var e = col.GetComponentInParent<EnemyStats>();
             if (!e) continue;
 
             float d = Vector2.Dot((Vector2)e.transform.position - _origin, _forward);
-            if (d < 0f) continue; // µÚ´Â Á¦¿Ü
+            if (d < 0f) continue; // ï¿½Ú´ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (d < best) { best = d; bestE = e; }
         }
         return bestE;
@@ -90,7 +90,7 @@ public class CrackWave2D : MonoBehaviour
             float u = Mathf.Clamp01((Time.time - _t0) / _duration);
             float len = _maxLength * u;
 
-            // ÇöÀç ±æÀÌ¿¡ ÇØ´çÇÏ´Â ¹Ú½º ¿µ¿ª
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Vector2 center = _origin + _forward * (len * 0.5f);
             Vector2 size = new Vector2(len, _width);
             float angle = Vector2.SignedAngle(Vector2.right, _forward);
@@ -102,22 +102,22 @@ public class CrackWave2D : MonoBehaviour
                 if (!col) continue;
                 if (!TagOk(col.transform.root.gameObject)) continue;
 
-                var enemy = col.GetComponentInParent<Enemy_ES>();
+                var enemy = col.GetComponentInParent<EnemyStats>();
                 if (!enemy) continue;
-                if (_hitOnce.Contains(enemy)) continue; // 1È¸¸¸
+                if (_hitOnce.Contains(enemy)) continue; // 1È¸ï¿½ï¿½
 
-                // Å¸°Ý Ã³¸®
+                // Å¸ï¿½ï¿½ Ã³ï¿½ï¿½
                 int dmg = (enemy == _primaryTarget && _primaryDamage > 0) ? _primaryDamage : _sweepDamage;
                 if (dmg > 0) enemy.TakeDamage(dmg);
 
-                // ½ºÅÏ
+                // ï¿½ï¿½ï¿½ï¿½
                 if (_stunSec > 0f && (enemy == _primaryTarget || !_stunPrimaryOnly))
                 {
                     var st = enemy.GetComponent<Stunnable>();
                     if (st) st.ApplyStun(_stunSec);
                 }
 
-                // ÇÇ°Ý FX
+                // ï¿½Ç°ï¿½ FX
                 if (!string.IsNullOrEmpty(_hitFxKey))
                     _playFxAt?.Invoke(_hitFxKey, col.bounds.center);
 
@@ -148,7 +148,7 @@ public class CrackWave2D : MonoBehaviour
         _armed = false;
         StopAllCoroutines();
 
-        // Ç® ¹Ý³³
+        // Ç® ï¿½Ý³ï¿½
         var token = GetComponent<PooledObject>();
         if (token != null) token.ReturnToPool();
         else gameObject.SetActive(false);

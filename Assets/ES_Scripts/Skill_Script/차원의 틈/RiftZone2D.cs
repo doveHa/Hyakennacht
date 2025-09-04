@@ -152,7 +152,7 @@ public class RiftZone2D : MonoBehaviour
                 if (tick > 0)
                 {
                     // �� �θ���� ã�Ƽ� Enemy ����
-                    var enemy = col.GetComponentInParent<Enemy_ES>();
+                    var enemy = col.GetComponentInParent<EnemyStats>();
                     if (enemy != null)
                     {
                         enemy.TakeDamage(tick);
@@ -200,7 +200,7 @@ public class RiftZone2D : MonoBehaviour
         }
 
         // Enemy ������Ʈ(�θ����)
-        return col.GetComponentInParent<Enemy_ES>() != null;
+        return col.GetComponentInParent<EnemyStats>() != null;
     }
 
     void Finish()

@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 858537675387258698}
   - component: {fileID: 4059183156551638637}
   - component: {fileID: 6472350457789080868}
-  - component: {fileID: 4659562302849844744}
   - component: {fileID: 8421628071658003861}
   - component: {fileID: 3934575932197490353}
   - component: {fileID: 4339004464982605782}
@@ -238,22 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: {fileID: 0}
   IsChangeState: 1
   IsLeftSight: 0
---- !u!114 &4659562302849844744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783177417010643878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bcda79897de08409f3136ab04d9c6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: 0
 --- !u!114 &8421628071658003861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6077324bf3cfab84582c811b1cac84d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 5
 --- !u!114 &6225522926680783216
 MonoBehaviour:
   m_ObjectHideFlags: 0

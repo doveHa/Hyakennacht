@@ -32,11 +32,11 @@ public class Dot : MonoBehaviour
             timer = 0f;
             ticksRemaining--;
 
-            GetComponent<Enemy_ES>()?.TakeDamage(damage);
+            GetComponent<EnemyStats>()?.TakeDamage(damage);
 
             if (effectType == "Electric")
             {
-                GameObject fx = Resources.Load<GameObject>("Effects/Ãæ°Ý");
+                GameObject fx = Resources.Load<GameObject>("Effects/ï¿½ï¿½ï¿½");
                 if (fx != null)
                     Instantiate(fx, transform.position, Quaternion.identity);
             }

@@ -1,19 +1,19 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Skills/AoE/¿ä±â Æø¹ß(ÂªÀº ¹ÐÄ§)")]
+[CreateAssetMenu(menuName = "Skills/AoE/ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Âªï¿½ï¿½ ï¿½ï¿½Ä§)")]
 public class SK_YokiExplosion : SkillBase
 {
     [Header("AoE")]
-    public float radius = 2.0f;                 // Æø¹ß ¹Ý°æ
-    public int baseDamage = 8;                  // ¼Ò·® ÇÇÇØ
-    public LayerMask enemyMask;                 // Àû ·¹ÀÌ¾î
+    public float radius = 2.0f;                 // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½
+    public int baseDamage = 8;                  // ï¿½Ò·ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public LayerMask enemyMask;                 // ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
     public string[] targetTags = new[] { "Enemy" };
 
     [Header("Push")]
-    public float pushBackDist = 3f;           // µÚ·Î ¹Ð¾î³¾ °Å¸®
+    public float pushBackDist = 3f;           // ï¿½Ú·ï¿½ ï¿½Ð¾î³¾ ï¿½Å¸ï¿½
 
     [Header("FX")]
-    public bool useCasterCenter = true;         // ÇÃ·¹ÀÌ¾î Áß½É
+    public bool useCasterCenter = true;         // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ß½ï¿½
 
     public override void Execute(SkillContext ctx)
     {
@@ -47,11 +47,11 @@ public class SK_YokiExplosion : SkillBase
                 if (!ok) continue;
             }
 
-            // µ¥¹ÌÁö
-            var enemy = co.GetComponentInParent<Enemy_ES>();
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            var enemy = co.GetComponentInParent<EnemyStats>();
             if (enemy) enemy.TakeDamage(dmg);
 
-            // ÇÑ ¹ø¸¸ µÚ·Î ¹Ð±â
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ ï¿½Ð±ï¿½
             Vector2 to = (Vector2)co.bounds.center - center;
             Vector2 dir = (to.sqrMagnitude > 0.0001f) ? to.normalized : Vector2.right;
             co.transform.position += (Vector3)(dir * pushBackDist);

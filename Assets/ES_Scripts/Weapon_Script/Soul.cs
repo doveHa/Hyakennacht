@@ -22,7 +22,7 @@ public class Soul : MonoBehaviour
     {
         if (target == null && other.CompareTag("Enemy"))
         {
-            Enemy_ES enemy = other.GetComponent<Enemy_ES>();
+            EnemyStats enemy = other.GetComponent<EnemyStats>();
             if (enemy != null)
             {
                 target = other.transform;
@@ -48,7 +48,7 @@ public class Soul : MonoBehaviour
         }
     }
 
-    private IEnumerator ApplyDot(Enemy_ES enemy)
+    private IEnumerator ApplyDot(EnemyStats enemy)
     {
         float elapsed = 0f;
         while (elapsed < duration)

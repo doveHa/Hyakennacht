@@ -26,6 +26,7 @@ namespace Enemy
         public void Update()
         {
             Vector3 direction = (_destination - _controller.transform.position).normalized;
+            Debug.Log(direction);
             _controller.Rigidbody.linearVelocity = direction * _enemySpeed;
             if (Vector3.Distance(_destination, _controller.transform.position) < 3f)
             {

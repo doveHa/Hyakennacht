@@ -45,7 +45,7 @@ public class FirePatch2D : MonoBehaviour
     IEnumerator CoTick()
     {
         float end = Time.time + _duration;
-        float dmgPerTickF = _dps * _tickInterval; // ÃÊ´ç dps ¡æ Æ½´ç
+        float dmgPerTickF = _dps * _tickInterval; // ï¿½Ê´ï¿½ dps ï¿½ï¿½ Æ½ï¿½ï¿½
         int baseTick = Mathf.FloorToInt(dmgPerTickF);
         float carry = dmgPerTickF - baseTick;
 
@@ -72,7 +72,7 @@ public class FirePatch2D : MonoBehaviour
                 int tick = baseTick + ((carry > 0f && Random.value < carry) ? 1 : 0);
                 if (tick > 0)
                 {
-                    var enemy = co.GetComponentInParent<Enemy_ES>();
+                    var enemy = co.GetComponentInParent<EnemyStats>();
                     if (enemy) enemy.TakeDamage(tick);
                     if (!string.IsNullOrEmpty(_tickFx)) _fx?.Invoke(_tickFx, co.bounds.center);
                 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public float destroyTime = 2f; // ÀÚµ¿ ÆÄ±« ½Ã°£
+    public float destroyTime = 2f; // ï¿½Úµï¿½ ï¿½Ä±ï¿½ ï¿½Ã°ï¿½
     private int damage;
 
     public void SetDamage(int dmg) => damage = dmg;
 
     private void Start()
     {
-        Debug.Log("Æ®·¦ »ý¼ºµÊ, ÆÄ±« ¿¹¾àµÊ");
+        Debug.Log("Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
         Destroy(gameObject, destroyTime);
     }
 
@@ -19,11 +19,11 @@ public class Trap : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy_ES enemy = other.GetComponent<Enemy_ES>();
+            EnemyStats enemy = other.GetComponent<EnemyStats>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                Debug.Log($"Æ®·¦ ÀûÁß! {other.name}¿¡°Ô {damage} µ¥¹ÌÁö");
+                Debug.Log($"Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! {other.name}ï¿½ï¿½ï¿½ï¿½ {damage} ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             }
 
             Destroy(gameObject);
