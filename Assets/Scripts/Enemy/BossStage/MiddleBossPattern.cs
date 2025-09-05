@@ -76,7 +76,7 @@ namespace Enemy.BossStage
 
                 StartCoroutine(DelayedLightning(crossWarn, crossPos, fallingSpeed));
             }
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
         IEnumerator DelayedLightning(GameObject warning, Vector3 pos, float delay)
@@ -135,7 +135,7 @@ namespace Enemy.BossStage
                     yield return null;
                 }
             }
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
             _controller.Animator.SetBool("EndDash",true);
         }
     }

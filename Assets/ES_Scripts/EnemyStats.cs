@@ -32,6 +32,10 @@ public class EnemyStats : MonoBehaviour
         _controller = GetComponent<EnemyController>();
     }
 
+    void Update()
+    {
+    }
+
     public async Task SetStat()
     {
         TextAsset textAsset = await AddressableManager.Manager.LoadAsset<TextAsset>("Assets/TextAsset/EnemyStats.json");
@@ -45,12 +49,13 @@ public class EnemyStats : MonoBehaviour
         List<EnemyStat> set = JsonSerializer.Deserialize<List<EnemyStat>>(json);
         EnemyStat stat = set.Find(e => e.Name == name.ToString());
         _maxHp = stat.Health;
+        _currentHp = _maxHp;
         Speed = stat.Speed;
     }
 
     public void TakeDamage(int dmg)
     {
-        _controller.Animator.SetTrigger("Hit");
+        _controller.ChangeState(new HitState(_controller,_controller.CurrentState));
         _currentHp -= dmg;
         Debug.Log(_currentHp);
         if (_currentHp <= 0)
@@ -66,7 +71,16 @@ public class EnemyStats : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        _controller.Animator.SetTrigger("Death");
+        GetComponentInParent<EnemySpawner>().KillCount++;
+        Destroy(GetComponentInChildren<PlayerRecognize>());
+        Destroy(GetComponent<EnemyController>());
+        foreach (Collider2D cd in GetComponentsInChildren<Collider2D>())
+        {
+            Destroy(cd);
+        }
+        
+        Destroy(GetComponent<EnemyStats>());
     }
 
     private class EnemyStat

@@ -2,32 +2,32 @@
   {
     "Name": "Ghost",
     "Speed": 1,
-    "Health": 20
+    "Health": 10
   },
   {
     "Name": "Golem",
     "Speed": 0.5,
-    "Health": 20
+    "Health": 10
   },
   {
     "Name": "Kappa",
     "Speed": 1,
-    "Health": 20
+    "Health": 10
   },
   {
     "Name": "Slime",
     "Speed": 1,
-    "Health": 20
+    "Health": 10
   },
   {
     "Name": "Straw",
     "Speed": 1,
-    "Health": 20
+    "Health": 10
   },
   {
     "Name": "Wisp",
     "Speed": 1,
-    "Health": 20
+    "Health": 10
   },{
   "Name": "Boss1",
   "Speed": 0.5,

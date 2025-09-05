@@ -35,7 +35,6 @@ namespace Enemy
         {
             _controller.Rigidbody.linearVelocity = Vector3.zero;
             _controller.Animator.SetBool("IsWalk", false);
-
         }
     }
 }

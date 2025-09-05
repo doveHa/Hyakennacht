@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
@@ -8,19 +9,20 @@ namespace Enemy
     public class EnemyController : MonoBehaviour
     {
         public Animator Animator { get; private set; }
-        private IEnemyState _currentState;
+        public IEnemyState CurrentState { get; private set; }
 
         public Tilemap Stage { get; set; }
         public Rigidbody2D Rigidbody { get; private set; }
         public Transform Target { get; private set; }
 
-        public bool IsChangeState = true;
+        public bool IsChangeState { get; set; }
         public bool IsLeftSight;
 
         void Awake()
         {
             Animator = GetComponent<Animator>();
             Rigidbody = GetComponent<Rigidbody2D>();
+            IsChangeState = true;
             IsLeftSight = false;
         }
 
@@ -33,16 +35,16 @@ namespace Enemy
 
         void Update()
         {
-            _currentState?.Update();
+            CurrentState?.Update();
         }
 
         public void ChangeState(IEnemyState newState)
         {
             if (IsChangeState)
             {
-                _currentState?.Exit();
-                _currentState = newState;
-                _currentState?.Enter();
+                CurrentState?.Exit();
+                CurrentState = newState;
+                CurrentState?.Enter();
             }
         }
 
@@ -66,10 +68,11 @@ namespace Enemy
                 transform.GetChild(1).localRotation = Quaternion.Euler(0f, IsLeftSight ? 180f : 0f, 0f);
             }
         }
-
+/*
         public void CanChangeState()
         {
             IsChangeState = true;
         }
+*/
     }
 }

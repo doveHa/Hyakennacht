@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Enemy\BossStage\MiddleBossPattern.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\혼돈의 일격\SK_ChaosStrike.cs" />
+    <Compile Include="Assets\Scripts\Enemy\States\HitState.cs" />
     <Compile Include="Assets\Test\Script\BallHit.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Soul.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\ABossPattern.cs" />

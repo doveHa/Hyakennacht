@@ -24,8 +24,6 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log(other.name);
             other.GetComponentInParent<EnemyStats>()?.TakeDamage(damage);
-            Debug.Log("�߻� �Ϸ�");
-
             if (weaponName != "����") 
             {
                 Destroy(gameObject);

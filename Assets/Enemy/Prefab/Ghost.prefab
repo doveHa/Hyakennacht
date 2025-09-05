@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsChangeState: 1
   IsLeftSight: 0
 --- !u!114 &4150735064233852001
 MonoBehaviour:

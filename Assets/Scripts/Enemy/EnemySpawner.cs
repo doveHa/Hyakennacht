@@ -21,21 +21,22 @@ namespace Enemy
         public bool IsSpawn;
         private bool _isStageStart = false;
 
-        public GameObject _wall;
+        private int _enemyCount;
+        public int KillCount { get; set; } = -1;
+        private GameObject _wall,_enemies;
 
         void Awake()
         {
             _stage = GetComponent<Tilemap>();
-            //IsSpawn = false;
         }
 
         void Start()
         {
             _stage.CompressBounds();
             _bounds = _stage.localBounds;
-            
+
             _enemyObjects = new List<GameObject>();
-            
+
             foreach (GameObject enemy in EnemyPrefabs.Instance.EnemyPrefab)
             {
                 _enemyObjects.Add(enemy);
@@ -51,28 +52,13 @@ namespace Enemy
                 await StartStage();
                 await SpawnEnemies();
                 _isStageStart = true;
+                KillCount = 0;
             }
 
-            if (_isStageStart && _wall.transform.childCount <= 0)
+            if (KillCount == _enemyCount)
             {
                 EndStage();
             }
-
-            if (Input.GetKeyDown(KeyCode.Delete))
-            {
-                EndStage();
-            }
-
-            /*
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                foreach (GameObject obj in _objects)
-                {
-                    Destroy(obj);
-                }
-
-                SpawnEnemies();
-            }*/
         }
 
         private async Task SpawnEnemies()
@@ -89,7 +75,8 @@ namespace Enemy
                 int rndEnemy = rnd.Next(_enemyObjects.Count);
                 Vector3 spawnPos = GetUniqueRandomPosition(_stage, usedPositions);
                 _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy], spawnPos);
-                _objects[i].transform.parent = _wall.transform;
+                _objects[i].transform.parent = _enemies.transform;
+                _enemyCount++;
             }
         }
 
@@ -123,6 +110,11 @@ namespace Enemy
         {
             _wall = new GameObject();
             _wall.transform.parent = transform;
+            _wall.name = "Wall";
+            _enemies = new GameObject();
+            _enemies.transform.parent = transform;
+            _enemies.name = "Enemies";
+            
             Tilemap tilemap = _wall.transform.AddComponent<Tilemap>();
             _wall.transform.AddComponent<TilemapRenderer>().sortingOrder = 1;
             _wall.transform.AddComponent<TilemapCollider2D>();
@@ -132,7 +124,7 @@ namespace Enemy
 
         public void EndStage()
         {
-            Destroy(transform.GetChild(0).gameObject);
+            Destroy(transform.Find("Wall").gameObject);
             Destroy(this);
         }
     }
