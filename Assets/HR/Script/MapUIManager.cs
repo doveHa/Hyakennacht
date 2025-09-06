@@ -193,12 +193,20 @@ public class MapUIManager : MonoBehaviour
             MapManager.Instance.currentStage == 9 ||
             MapManager.Instance.currentStage == 14)
         {
-            ShowSkillSelectPanel();
-            AfterSkillSelect = true;
-            return; // 스킬 선택 끝날 때까지 stage clear 패널은 안 열림
+            //ShowSkillSelectPanel();
+            //AfterSkillSelect = true;
+            //return; // 스킬 선택 끝날 때까지 stage clear 패널은 안 열림
+            if (!skillSelectPanel.activeSelf)
+            {
+                ShowSkillSelectPanel();
+            }
+        }
+        else
+        {
+            statsPanel.SetActive(true); // 통계창 열기
         }
 
-        statsPanel.SetActive(true); // 통계창 열기
+            //statsPanel.SetActive(true); // 통계창 열기
 
         MoveFlag(MapManager.Instance.currentStage);
     }
@@ -288,6 +296,8 @@ public class MapUIManager : MonoBehaviour
     {
         SelectedSkill = currentCards[index];
         skillSelectPanel.SetActive(false);
+
+        statsPanel.SetActive(true); // 스킬 선택 후 통계창 열기
 
         SkillCaster caster = player.GetComponent<SkillCaster>();
 
