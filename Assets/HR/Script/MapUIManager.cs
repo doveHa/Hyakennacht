@@ -110,17 +110,17 @@ public class MapUIManager : MonoBehaviour
     {
         Debug.Log("Play button clicked!");
         statsPanel.SetActive(false); // 통계창 닫기
+        
+        if (PlayerDied)
+        {
+            Debug.Log("Player died, returning to lobby.");
+            SceneManager.LoadScene(StageManager.GetLobbyScene());
+            PlayerDied = false;
+            Time.timeScale = 1f;
+            return;
+        }
 
-        // 플레이어가 죽은 상태라면 스테이지 진행 없이 로비 복귀
-        //SceneManager.LoadScene(1);
-        if(PlayerDied)
-            Application.Quit();
-
-        /*
         Time.timeScale = 1f;
-
-        SceneManager.LoadScene(StageManager.GetLobbyScene());
-*/
 
         // 카메라에서 TryInteractWithStairs 호출
         PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();

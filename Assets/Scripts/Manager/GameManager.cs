@@ -57,7 +57,8 @@ namespace Manager
         public void GameOver()
         {
             Time.timeScale = 0f;
-            MapUIManager.Instance.PlayerDied = false;
+            MapUIManager.Instance.PlayerDied = true;  //HR false -> true
+            Debug.Log(MapUIManager.Instance.PlayerDied);
             MapUIManager.Instance.OnStageEnd();
         }
 
