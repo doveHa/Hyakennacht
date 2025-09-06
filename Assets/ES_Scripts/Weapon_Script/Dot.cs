@@ -32,7 +32,7 @@ public class Dot : MonoBehaviour
             timer = 0f;
             ticksRemaining--;
 
-            GetComponent<EnemyStats>()?.TakeDamage(damage);
+            GetComponent<AEnemyStats>()?.TakeDamage(damage);
 
             if (effectType == "Electric")
             {

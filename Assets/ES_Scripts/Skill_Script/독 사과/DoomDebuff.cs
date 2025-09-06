@@ -24,7 +24,7 @@ public class DoomDebuff : MonoBehaviour
         if (Time.time >= _endTime)
         {
             _armed = false;
-            var enemy = GetComponent<EnemyStats>();
+            var enemy = GetComponent<AEnemyStats>();
             if (enemy != null) enemy.Die();     // ���
             // ������� 1ȸ�� �� �ڽ� �����ص� OK
             Destroy(this);
@@ -40,7 +40,7 @@ public class PoisonApplePayload : MonoBehaviour, IThrownPayload
 
     public void OnImpact(Transform owner, Collider2D hit, Vector2 point)
     {
-        var enemy = hit.GetComponentInParent<EnemyStats>();
+        var enemy = hit.GetComponentInParent<AEnemyStats>();
         if (!enemy) return;
 
         var doom = enemy.GetComponent<DoomDebuff>();

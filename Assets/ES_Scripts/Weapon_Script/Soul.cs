@@ -22,8 +22,8 @@ public class Soul : MonoBehaviour
     {
         if (target == null && other.CompareTag("Enemy"))
         {
-            EnemyStats enemy = other.GetComponent<EnemyStats>();
-            if (enemy != null)
+            AEnemyStats aEnemy = other.GetComponent<AEnemyStats>();
+            if (aEnemy != null)
             {
                 target = other.transform;
                 transform.SetParent(target);
@@ -43,17 +43,17 @@ public class Soul : MonoBehaviour
                 if (animator != null)
                     animator.SetTrigger("Attach");
 
-                StartCoroutine(ApplyDot(enemy));
+                StartCoroutine(ApplyDot(aEnemy));
             }
         }
     }
 
-    private IEnumerator ApplyDot(EnemyStats enemy)
+    private IEnumerator ApplyDot(AEnemyStats aEnemy)
     {
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            enemy.TakeDamage(damage);
+            aEnemy.TakeDamage(damage);
             yield return new WaitForSeconds(tickInterval);
             elapsed += tickInterval;
         }

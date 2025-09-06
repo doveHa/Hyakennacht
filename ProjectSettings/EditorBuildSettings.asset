@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Temp/WitchMap(Temp).unity
     guid: 3b91db1f07f9a014a8edd95c4d78f2a9
+  - enabled: 1
+    path: Assets/Temp/WitchBoss(Temp).unity
+    guid: a1490e6e690179244910b409441055b9
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 9021b487ee25596439e8727faa6f514c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -326,7 +326,8 @@ public class MapManager : MonoBehaviour
 
         if (StageManager.IsBossStage())
         {
-            string bossScene = StageManager.GetBossScene();
+            string bossScene = "WitchBoss(Temp)";
+            //string bossScene = StageManager.GetBossScene();
             Debug.Log("Boss Stage: " + currentStage + " -> Loading: " + bossScene);
             SceneManager.LoadScene(bossScene);
             return;

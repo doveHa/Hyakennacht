@@ -41,7 +41,7 @@ public class Stunnable : MonoBehaviour
             enemyMove.moveSpeed = 0f;
         }
         */
-        var enemyMove = GetComponent<EnemyStats>();
+        var enemyMove = GetComponent<AEnemyStats>();
         if (enemyMove != null)
         {
             originalSpeed = enemyMove.Speed;

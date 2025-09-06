@@ -63,7 +63,7 @@ public class ProjectileExplode2D : MonoBehaviour
         for (int i = 0; i < cols.Length; i++)
         {
             // Enemy�� �θ� ���� ���� �����Ƿ� InParent��
-            var enemy = cols[i].GetComponentInParent<EnemyStats>();
+            var enemy = cols[i].GetComponentInParent<AEnemyStats>();
             if (enemy != null)
                 enemy.TakeDamage(_damage);
         }

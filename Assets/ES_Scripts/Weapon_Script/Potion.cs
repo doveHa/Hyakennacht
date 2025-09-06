@@ -16,15 +16,15 @@ public class Potion : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            EnemyStats enemy = other.GetComponent<EnemyStats>();
-            if (enemy != null)
+            AEnemyStats aEnemy = other.GetComponent<AEnemyStats>();
+            if (aEnemy != null)
             {
-                ApplyEffect(enemy);
+                ApplyEffect(aEnemy);
                 string effectPath = GetEffectPath(potionType);
                 GameObject effectPrefab = Resources.Load<GameObject>(effectPath);
                 if (effectPrefab != null)
                 {
-                    Instantiate(effectPrefab, enemy.transform.position, Quaternion.identity, enemy.transform);
+                    Instantiate(effectPrefab, aEnemy.transform.position, Quaternion.identity, aEnemy.transform);
                 }
             }
 
@@ -32,30 +32,30 @@ public class Potion : MonoBehaviour
         }
     }
 
-    private void ApplyEffect(EnemyStats enemy)
+    private void ApplyEffect(AEnemyStats aEnemy)
     {
         switch (potionType)
         {
             case PotionEffectType.Heal:
-                enemy.Heal(3); 
+                aEnemy.Heal(3); 
                 break;
 
             case PotionEffectType.Poison:
-                if (!enemy.GetComponent<Dot>())
-                    enemy.gameObject.AddComponent<Dot>().Initialize(5, 1f, "Poison");
+                if (!aEnemy.GetComponent<Dot>())
+                    aEnemy.gameObject.AddComponent<Dot>().Initialize(5, 1f, "Poison");
                 break;
 
             case PotionEffectType.Fire:
-                if (!enemy.GetComponent<Dot>())
-                    enemy.gameObject.AddComponent<Dot>().Initialize(7, 1f, "Fire");
+                if (!aEnemy.GetComponent<Dot>())
+                    aEnemy.gameObject.AddComponent<Dot>().Initialize(7, 1f, "Fire");
                 break;
 
             case PotionEffectType.Hit:
-                enemy.TakeDamage(10);
+                aEnemy.TakeDamage(10);
                 break;
 
             case PotionEffectType.Death:
-                enemy.Die(); 
+                aEnemy.Die(); 
                 break;
         }
     }

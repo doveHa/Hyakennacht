@@ -160,7 +160,7 @@ public class SpiritMinion2D : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & _enemyMask.value) == 0) return;
 
-        var enemy = other.GetComponentInParent<EnemyStats>();
+        var enemy = other.GetComponentInParent<AEnemyStats>();
         if (!enemy) return;
         if (Time.time < _nextAttackTime) return;
         _nextAttackTime = Time.time + _atkCD;

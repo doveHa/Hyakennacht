@@ -44,7 +44,7 @@ public class SK_TimeDistortion : SkillBase
                 if (!ok) continue;
             }
 
-            var enemy = co.GetComponentInParent<EnemyStats>();
+            var enemy = co.GetComponentInParent<AEnemyStats>();
             if (!enemy) continue;
 
             var stun = enemy.GetComponent<Stunnable>();

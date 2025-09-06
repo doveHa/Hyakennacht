@@ -18,7 +18,7 @@ public class PumpkinMeteorPayload : MonoBehaviour, IFallPayload
     public void OnImpact(Transform owner, Vector2 hitPoint, Collider2D hit)
     {
         // 1) �浹 ��� ��� ����
-        var enemy = hit.GetComponentInParent<EnemyStats>();
+        var enemy = hit.GetComponentInParent<AEnemyStats>();
         if (enemy && impactDamage > 0)
         {
             enemy.TakeDamage(impactDamage);

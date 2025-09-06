@@ -102,7 +102,7 @@ namespace Enemy
         {
             GameObject mob = Instantiate(enemy, position, Quaternion.identity);
             mob.GetComponent<EnemyController>().Stage = _stage;
-            await mob.GetComponent<EnemyStats>().SetStat();
+            await mob.GetComponent<AEnemyStats>().SetStat();
             return mob;
         }
 

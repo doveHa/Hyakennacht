@@ -11,7 +11,7 @@ namespace Enemy
         public ChasePlayerState(EnemyController controller)
         {
             _controller = controller;
-            _enemySpeed = _controller.transform.GetComponent<EnemyStats>().Speed;
+            _enemySpeed = _controller.transform.GetComponent<AEnemyStats>().Speed;
         }
         
         public void Enter()

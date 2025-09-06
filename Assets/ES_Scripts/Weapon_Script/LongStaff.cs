@@ -72,10 +72,10 @@ public class LongStaff : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            EnemyStats enemy = other.GetComponent<EnemyStats>();
-            if (enemy != null)
+            AEnemyStats aEnemy = other.GetComponent<AEnemyStats>();
+            if (aEnemy != null)
             {
-                enemy.TakeDamage(damage);
+                aEnemy.TakeDamage(damage);
             }
 
             Destroy(gameObject);

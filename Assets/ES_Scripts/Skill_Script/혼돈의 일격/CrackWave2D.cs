@@ -18,8 +18,8 @@ public class CrackWave2D : MonoBehaviour
     System.Action<string, Vector2> _playFxAt;
 
     readonly Collider2D[] _buf = new Collider2D[64];
-    readonly HashSet<EnemyStats> _hitOnce = new();
-    EnemyStats _primaryTarget;
+    readonly HashSet<AEnemyStats> _hitOnce = new();
+    AEnemyStats _primaryTarget;
     float _t0;
     bool _armed;
 
@@ -55,7 +55,7 @@ public class CrackWave2D : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    EnemyStats FindPrimaryTarget()
+    AEnemyStats FindPrimaryTarget()
     {
         // ���� ���� �ڽ��� "���� ����� ����" Ž��
         float probeLen = _maxLength;
@@ -66,14 +66,14 @@ public class CrackWave2D : MonoBehaviour
         int n = Phys2DCompat.OverlapBox(center, size, angle, _buf, _enemyMask, includeTriggers: true);
 
         float best = float.MaxValue;
-        EnemyStats bestE = null;
+        AEnemyStats bestE = null;
         for (int i = 0; i < n; i++)
         {
             var col = _buf[i];
             if (!col) continue;
             if (!TagOk(col.transform.root.gameObject)) continue;
 
-            var e = col.GetComponentInParent<EnemyStats>();
+            var e = col.GetComponentInParent<AEnemyStats>();
             if (!e) continue;
 
             float d = Vector2.Dot((Vector2)e.transform.position - _origin, _forward);
@@ -102,7 +102,7 @@ public class CrackWave2D : MonoBehaviour
                 if (!col) continue;
                 if (!TagOk(col.transform.root.gameObject)) continue;
 
-                var enemy = col.GetComponentInParent<EnemyStats>();
+                var enemy = col.GetComponentInParent<AEnemyStats>();
                 if (!enemy) continue;
                 if (_hitOnce.Contains(enemy)) continue; // 1ȸ��
 

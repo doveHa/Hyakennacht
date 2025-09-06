@@ -14,7 +14,7 @@ namespace Enemy
         {
             _controller = controller;
             _controller.Animator.SetBool("IsWalk", true);
-            _enemySpeed = _controller.transform.GetComponent<EnemyStats>().Speed;
+            _enemySpeed = _controller.transform.GetComponent<AEnemyStats>().Speed;
         }
 
         public void Enter()

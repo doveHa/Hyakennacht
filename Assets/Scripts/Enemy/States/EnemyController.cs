@@ -26,11 +26,9 @@ namespace Enemy
             IsLeftSight = false;
         }
 
-        async void Start()
+        void Start()
         {
-            EnemyStats stat = GetComponent<EnemyStats>();
-            await stat.SetStat();
-            ChangeState(new RandomMoveState(this));
+           ChangeState(new RandomMoveState(this));
         }
 
         void Update()

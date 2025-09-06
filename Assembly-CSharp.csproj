@@ -46,6 +46,7 @@
     <Analyzer Include="E:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy\BossStage\BossStat.cs" />
     <Compile Include="Assets\HR\Script\MapUIManager.cs" />
     <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\AutoDestroy.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Test\Script\BallHit.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Soul.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\ABossPattern.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossStage\BossHpBar.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\RandomMoveState.cs" />
     <Compile Include="Assets\Test\Script\MotionTransformWriter.cs" />
     <Compile Include="Assets\Scripts\EnemyPrefabs.cs" />
@@ -93,7 +95,6 @@
     <Compile Include="Assets\Scripts\Enemy\BossStage\Boss1Pattern.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\차원의 틈\SK_DimensionalRift.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\IAttack.cs" />
-    <Compile Include="Assets\ZombiSoft\TinyHealthSystem\HealthSystem.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\SkillCaster.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Projectile.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ChargeAttack.cs" />
@@ -101,7 +102,6 @@
     <Compile Include="Assets\Scripts\Manager\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimationEvents.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\InstallAttack.cs" />
-    <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\PopupText.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\독 사과\SK_PoisonApple.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\도깨비불\ProjectileExplode2D.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\파멸의 운석\SK_DoomMeteor.cs" />
@@ -112,6 +112,7 @@
     <Compile Include="Assets\HR\Script\MapManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\GhostAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\BossPatternController.cs" />
+    <Compile Include="Assets\ES_Scripts\AEnemyStats.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\KappaAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Bell.cs" />
     <Compile Include="Assets\Scripts\Handler\WeaponHandler.cs" />
@@ -128,9 +129,9 @@
     <Compile Include="Assets\Scripts\Enemy\BossStage\Boss2Pattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Character\Dash.cs" />
-    <Compile Include="Assets\ES_Scripts\EnemyStats.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\차원의 틈\RiftZone2D.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Player_ES.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\LongStaff.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\SkillBase.cs" />
@@ -141,7 +142,6 @@
     <Compile Include="Assets\Scripts\Enemy\Attack\GolemAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\백귀야행\SpiritMinion2D.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\ActivePatternState.cs" />
-    <Compile Include="Assets\ZombiSoft\TinyHealthSystem\Demo\Demo.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\시간 왜곡\ClockMarker.cs" />
     <Compile Include="Assets\Test\Script\HeartPlusHealth.cs" />
     <Compile Include="Assets\Scripts\System\RoomControl.cs" />

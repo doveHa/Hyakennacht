@@ -86,16 +86,16 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         {
             if (hit.CompareTag("Enemy"))
             {
-                EnemyStats enemy = hit.GetComponent<EnemyStats>();
-                if (enemy != null) 
+                AEnemyStats aEnemy = hit.GetComponent<AEnemyStats>();
+                if (aEnemy != null) 
                 {
-                    hit.GetComponent<EnemyStats>()?.TakeDamage(data.baseDamage);
+                    hit.GetComponent<AEnemyStats>()?.TakeDamage(data.baseDamage);
                     Debug.Log($"�� ��Ʈ: {hit.name}");
 
                     if (data.weaponName == "���� ����")
                     {
-                        if (!enemy.GetComponent<Dot>())
-                            enemy.gameObject.AddComponent<Dot>().Initialize(3, 1f, "Electric");
+                        if (!aEnemy.GetComponent<Dot>())
+                            aEnemy.gameObject.AddComponent<Dot>().Initialize(3, 1f, "Electric");
 
                         /*
                         // ��ƼŬ ����Ʈ ����

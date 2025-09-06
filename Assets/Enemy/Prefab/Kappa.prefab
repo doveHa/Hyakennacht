@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6472350457789080868}
   - component: {fileID: 5410720886722198545}
   - component: {fileID: 8122706781385606940}
-  - component: {fileID: 3243928953205170348}
+  - component: {fileID: 3572735703323085219}
   - component: {fileID: -1234735226641542117}
   - component: {fileID: -3068131559051141766}
   - component: {fileID: 6972659384740595105}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 300
---- !u!114 &3243928953205170348
+--- !u!114 &3572735703323085219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,10 +139,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6783177417010643878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6077324bf3cfab84582c811b1cac84d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 92e54c04a6584de5936b1c0f0c9fb894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 2
+  enemyName: 2
 --- !u!114 &-1234735226641542117
 MonoBehaviour:
   m_ObjectHideFlags: 0

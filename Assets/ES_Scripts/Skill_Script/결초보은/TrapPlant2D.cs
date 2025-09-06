@@ -87,7 +87,7 @@ public class TrapPlant2D : MonoBehaviour
         var enemyRoot = other.GetComponentInParent<Transform>();
         if (!enemyRoot) return;
 
-        var enemy = enemyRoot.GetComponent<EnemyStats>();
+        var enemy = enemyRoot.GetComponent<AEnemyStats>();
         if (enemy && _damage > 0) enemy.TakeDamage(_damage);
 
         var stun = enemyRoot.GetComponent<Stunnable>();

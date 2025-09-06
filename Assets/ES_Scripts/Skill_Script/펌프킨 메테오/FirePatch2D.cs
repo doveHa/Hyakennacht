@@ -72,7 +72,7 @@ public class FirePatch2D : MonoBehaviour
                 int tick = baseTick + ((carry > 0f && Random.value < carry) ? 1 : 0);
                 if (tick > 0)
                 {
-                    var enemy = co.GetComponentInParent<EnemyStats>();
+                    var enemy = co.GetComponentInParent<AEnemyStats>();
                     if (enemy) enemy.TakeDamage(tick);
                     if (!string.IsNullOrEmpty(_tickFx)) _fx?.Invoke(_tickFx, co.bounds.center);
                 }

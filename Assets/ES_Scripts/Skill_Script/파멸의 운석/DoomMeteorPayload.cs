@@ -8,7 +8,7 @@ public class DoomMeteorPayload : MonoBehaviour, IFallPayload
 
     public void OnImpact(Transform owner, Vector2 hitPoint, Collider2D hit)
     {
-        var enemy = hit.GetComponentInParent<EnemyStats>();
+        var enemy = hit.GetComponentInParent<AEnemyStats>();
         if (enemy && impactDamage > 0)
             enemy.TakeDamage(impactDamage);
         // �߰� ����Ʈ/�˹� �� ��. FallingProjectile2D�� �ٷ� ReturnToPool ó��.

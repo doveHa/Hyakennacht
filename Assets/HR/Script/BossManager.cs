@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enemy;
+using Enemy.BossStage;
 using Manager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,13 +19,14 @@ public class BossManager : MonoBehaviour
 
     private GameObject _bossObject;
 
-
+    public BossHpBar bossHpBar;
+    
     void Awake()
     {
         bossObjects = new List<GameObject>();
     }
 
-    void Start()
+    async void Start()
     {
         foreach (GameObject boss in BossPrefab.Instance.BossPrefabs)
         {
@@ -39,21 +41,14 @@ public class BossManager : MonoBehaviour
         {
             _bossObject = Instantiate(bossObjects[1], bossSpawnPoint.transform.position, Quaternion.identity);
         }
-
         _bossObject.GetComponent<EnemyController>().Stage = GameObject.Find("Grid/Tilemap").GetComponent<Tilemap>();
+        await _bossObject.GetComponent<AEnemyStats>().SetStat();
+        _bossObject.GetComponent<BossStat>().SetBossHpBar(bossHpBar);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            OnBossDefeated();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StageManager.CurrentStage = 15;
-        }
+    
     }
 
     public void OnBossDefeated()

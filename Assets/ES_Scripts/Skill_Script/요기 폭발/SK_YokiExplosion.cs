@@ -48,7 +48,7 @@ public class SK_YokiExplosion : SkillBase
             }
 
             // ������
-            var enemy = co.GetComponentInParent<EnemyStats>();
+            var enemy = co.GetComponentInParent<AEnemyStats>();
             if (enemy) enemy.TakeDamage(dmg);
 
             // �� ���� �ڷ� �б�
