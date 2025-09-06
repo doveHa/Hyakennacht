@@ -18,7 +18,7 @@ TagManager:
   - Weapon
   - Player
   - Enemy
-  - 
+  - Shop
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Items
     uniqueID: 1138805775
+    locked: 0
+  - name: Shop
+    uniqueID: 3800440615
     locked: 0
   m_RenderingLayers:
   - Default

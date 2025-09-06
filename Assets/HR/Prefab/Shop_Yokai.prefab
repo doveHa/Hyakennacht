@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4435832067734652231}
   - component: {fileID: 5169478003850330723}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shop_Yokai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,8 +68,6 @@ MonoBehaviour:
   - {fileID: 1193835491420263060}
   - {fileID: 1177495329482918117}
   healthPotionPrefab: {fileID: 2448991724125156059, guid: 935f0cbedd04e3e46aef07d4355e8db0, type: 3}
-  playerCoins: 100
-  coinText: {fileID: 0}
 --- !u!1001 &138995495974872446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,6 +79,14 @@ PrefabInstance:
     - target: {fileID: 294459921519735698, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
       propertyPath: m_Name
       value: WS_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 294459921519735698, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050579242270348130, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2758795743769308498, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
       propertyPath: m_LocalScale.x
@@ -160,6 +166,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: YS2
       objectReference: {fileID: 0}
+    - target: {fileID: 1150337146076752746, guid: 47fba19d6f7a9654fbbfc7b4f662a8fb, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3679610861024197542, guid: 47fba19d6f7a9654fbbfc7b4f662a8fb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7475362068876714180, guid: 47fba19d6f7a9654fbbfc7b4f662a8fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -221,6 +235,14 @@ PrefabInstance:
     - target: {fileID: 294459921519735698, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
       propertyPath: m_Name
       value: WS_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 294459921519735698, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050579242270348130, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2758795743769308498, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
       propertyPath: m_LocalScale.x
@@ -291,6 +313,14 @@ PrefabInstance:
     - target: {fileID: 294459921519735698, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
       propertyPath: m_Name
       value: WS_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 294459921519735698, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050579242270348130, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2758795743769308498, guid: b1e747d10263e50439ffcd3d5c81fe16, type: 3}
       propertyPath: m_LocalScale.x

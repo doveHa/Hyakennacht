@@ -414,17 +414,27 @@ public class MapManager : MonoBehaviour
                 shopRoomTiles = shopRoom.tiles;
         }
 
-        //         Ÿ ϸ         ,      Ÿ       
-        var roomTiles = rooms.SelectMany(r => r.tiles)
-            .Where(t => !shopRoomTiles.Contains(t))
-            .Distinct()
-            .ToList();
+        // 방 타일과 복도 타일을 명확히 구분하여 처리하는 새로운 방법
+        List<Vector3Int> roomOnlyTiles = new List<Vector3Int>();
+        foreach (var room in rooms)
+        {
+            // 각 방 타일들을 순회하며 복도와 인접하지 않은 타일만 추가
+            foreach (var tile in room.tiles)
+            {
+                // 타일 주변 8방향 중 복도 타일이 없는지 확인
+                if (!IsCorridorOrEntranceNeighbour(tile))
+                {
+                    roomOnlyTiles.Add(tile);
+                }
+            }
+        }
 
-        //     Ÿ       
-        var validTiles = roomTiles.Where(tilePos =>
+        // 계단 타일이 아니고, 상점 타일도 아니며, 복도와 인접하지 않은 타일만 선택
+        var validTiles = roomOnlyTiles.Where(tilePos =>
         {
             TileBase tile = groundTilemap.GetTile(tilePos);
-            return tile != stairUpTile && tile != stairDownTile;
+            // 계단 타일과 상점 방에 있는 타일을 제외
+            return tile != stairUpTile && tile != stairDownTile && !shopRoomTiles.Contains(tilePos);
         }).ToList();
 
         int spawnCount = Mathf.Min(maxItemCount, validTiles.Count);
@@ -432,6 +442,7 @@ public class MapManager : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
+            if (i >= shuffled.Count) break; // 혹시 모를 예외 방지
             Vector3Int tilePos = shuffled[i];
             Vector3 worldPos = groundTilemap.CellToWorld(tilePos) + new Vector3(0.5f, 0.5f, 0);
 
@@ -440,6 +451,46 @@ public class MapManager : MonoBehaviour
 
             Instantiate(selectedPrefab, worldPos, Quaternion.identity, this.transform);
         }
+    }
+
+    // 타일이 복도나 방 입구와 인접한지 확인하는 함수
+    private bool IsCorridorOrEntranceNeighbour(Vector3Int tilePos)
+    {
+        // 복도 타일의 기준:
+        // 1. 방 타일 리스트에는 없지만 groundTiles 리스트에는 있는 타일
+        // 2. 여러 방에 속한 타일 (이 경우는 구현이 더 복잡하므로 단순화)
+
+        // 복도와 방 입구는 겹치는 지점이므로, 간단하게 방 외부에 있는 바닥 타일과 인접한 경우를 확인
+
+        Vector3Int[] directions = {
+        new Vector3Int(1, 0, 0), new Vector3Int(-1, 0, 0),
+        new Vector3Int(0, 1, 0), new Vector3Int(0, -1, 0),
+        new Vector3Int(1, 1, 0), new Vector3Int(1, -1, 0),
+        new Vector3Int(-1, 1, 0), new Vector3Int(-1, -1, 0)
+    };
+
+        foreach (var dir in directions)
+        {
+            Vector3Int neighborPos = tilePos + dir;
+
+            // 현재 타일이 속한 방을 찾습니다.
+            Room currentRoom = rooms.FirstOrDefault(r => r.tiles.Contains(tilePos));
+            if (currentRoom == null) continue; // 방에 속하지 않는 타일이면 건너뜀
+
+            // 이웃 타일이 현재 방에 속하지 않으면서도 바닥 타일인 경우
+            if (!currentRoom.tiles.Contains(neighborPos) && groundTiles.Contains(neighborPos))
+            {
+                // 이웃 타일이 다른 방 타일인지 확인
+                Room neighborRoom = rooms.FirstOrDefault(r => r.tiles.Contains(neighborPos));
+
+                // 이웃 타일이 다른 방에 속하거나, 어느 방에도 속하지 않는 경우 (복도)
+                if (neighborRoom != null && neighborRoom.id != currentRoom.id || neighborRoom == null)
+                {
+                    return true; // 복도와 인접한 타일이므로 아이템 생성 불가
+                }
+            }
+        }
+        return false; // 복도와 인접하지 않으므로 아이템 생성 가능
     }
 
     void ClearItems()
