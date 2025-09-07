@@ -64,7 +64,7 @@ public class MapUIManager : MonoBehaviour
     public SkillData SelectedSkill { get; private set; }
     public bool AfterSkillSelect = false;
 
-    private int totalStage = 15;
+    private int totalStage = 10; //15 -> 10
 
     private float stageStartTime;
     public int KilledEnemies { get; private set; }
@@ -144,7 +144,7 @@ public class MapUIManager : MonoBehaviour
     {
         if (flag == null || progressLine == null) return;
 
-        float visibleRatio = 0.8f; // 실제 보이는 길이 비율
+        float visibleRatio = 0.8f; // 실제 보이는 길이 비율 0.8f -> 0.7f
         float lineWidth = progressLine.rect.width * visibleRatio;
         float ratio = (stage - 1f) / (totalStage - 1f); // 1~15
         float newX = -lineWidth / 2 + ratio * lineWidth;
@@ -322,36 +322,6 @@ public class MapUIManager : MonoBehaviour
             Debug.LogWarning($"스킬 '{SelectedSkill.title}' ID({SelectedSkill.id})가 배열 범위를 벗어났습니다.");
         }
     }
-
-    /*
-     * private void OnCardSelected(int index)
-    {
-        SelectedSkill = currentCards[index];
-        skillSelectPanel.SetActive(false);
-
-        SkillCaster caster = player.GetComponent<SkillCaster>();
-
-        // id 기반으로 배열에서 스킬 찾기
-        if (SelectedSkill.id >= 0 && SelectedSkill.id < skillAssets.Length)
-        {
-            SkillBase skillAsset = skillAssets[SelectedSkill.id];
-
-            if (skillAsset == null)
-            {
-                Debug.LogWarning($"skillAssets[{SelectedSkill.id}]가 연결되지 않았습니다. JSON assetName: {SelectedSkill.assetName}");
-                return;
-            }
-
-            Debug.Log($"[Skill Select] 선택한 스킬: {SelectedSkill.title}, 배열 인덱스: {SelectedSkill.id}, assetName: {SelectedSkill.assetName}");
-            caster.RegisterSkill(0, skillAsset); // Inspector에서 연결된 SkillBase 그대로 사용
-        }
-        else
-        {
-            Debug.LogWarning($"스킬 '{SelectedSkill.title}' ID({SelectedSkill.id})가 배열 범위를 벗어났습니다.");
-        }
-    }
-*/
-
 
     // 이름으로 배열 검색
     private SkillBase GetSkillByName(string name)
