@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: mana bangchul
   displayName: "\uB9C8\uB098 \uBC29\uCD9C"
+  icon: {fileID: 5481379804582958030, guid: 0ae4d8b083402c54cba6ec6614b5d336, type: 3}
   factionGate: 0
   tier: 2
   exec: 0

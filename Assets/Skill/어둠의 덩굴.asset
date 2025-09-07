@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: Vine of Darkness
   displayName: "\uC5B4\uB460\uC758 \uB369\uAD74"
+  icon: {fileID: -7291548183758358180, guid: e9a22248b535fb94d93f4afe949fff56, type: 3}
   factionGate: 1
   tier: 0
   exec: 6

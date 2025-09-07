@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: YokaiSpirit
   displayName: "\uBC31\uADC0\uC57C\uD589"
+  icon: {fileID: 7420332859853831038, guid: 4e009acb5540dcf468b642cc57b897a5, type: 3}
   factionGate: 0
   tier: 2
   exec: 7

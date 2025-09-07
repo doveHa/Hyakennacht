@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: liquid medicine
   displayName: "\uBB3C\uC57D \uD22C\uCC99"
+  icon: {fileID: -7282230495661846387, guid: d064d03df92a45e419c10c8537a0a32b, type: 3}
   factionGate: 0
   tier: 1
   exec: 0

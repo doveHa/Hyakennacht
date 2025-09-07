@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Enemy\BossStage\MiddleBossPattern.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\혼돈의 일격\SK_ChaosStrike.cs" />
+    <Compile Include="Assets\ES_Scripts\Skill_UI\SkillBarUI.cs" />
     <Compile Include="Assets\Test\Script\BallHit.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Soul.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\ABossPattern.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Assets\Enemy\Resource\Boss1\Effect\BossBulletPattern.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\펌프킨 메테오\FirePatch2D.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attack\StrawAttack.cs" />
+    <Compile Include="Assets\ES_Scripts\Skill_UI\SkillSlotUI.cs" />
     <Compile Include="Assets\Enemy\Resource\Boss1\Effect\Bullet.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ProjectileAttack.cs" />
     <Compile Include="Assets\Enemy\Resource\Straw\Effect\SmallStraw.cs" />

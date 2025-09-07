@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: mouse
   displayName: "\uC950 \uC18C\uD658"
+  icon: {fileID: -3939685627102339408, guid: b6466de2a9b1b3a42a6611d60ac81ffd, type: 3}
   factionGate: 1
   tier: 0
   exec: 7

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: yokai_DokkaebiFire
   displayName: "\uB3C4\uAE68\uBE44\uBD88"
+  icon: {fileID: -6258606838711358674, guid: 2295e4fed68553e4283101a18516d1ed, type: 3}
   factionGate: 0
   tier: 1
   exec: 0

@@ -161,9 +161,27 @@ public class SkillCaster : MonoBehaviour
         CastNow(s, ctx);
     }
 
+    // Skill_UI
+    public float GetCooldown(string id)
+    {
+        if (string.IsNullOrEmpty(id)) return 0f;
+        return cdEnd.TryGetValue(id, out var end) ? Mathf.Max(0f, end - Time.time) : 0f;
+    }
+
+    public float GetGCD()
+    {
+        return Mathf.Max(0f, gcdEnd - Time.time);
+    }
+
+    public float GetGCDTotal() => gcd;           // 총 GCD 길이
+    public SkillBase[] GetSlots() => slots;      // UI에서 슬롯 배열 접근용
+
+    public System.Action<SkillBase> OnSkillCast;
+
     void CastNow(SkillBase s, SkillContext ctx)
     {
         if (s.useGCD) gcdEnd = Time.time + gcd;
+        OnSkillCast?.Invoke(s);
         s.Execute(ctx);
     }
 
@@ -233,5 +251,4 @@ public class SkillCaster : MonoBehaviour
 
         nextSlotIndex++;
     }
-
 }

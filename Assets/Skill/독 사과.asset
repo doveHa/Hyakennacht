@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: PoisonApple
   displayName: "\uB3C5 \uC0AC\uACFC"
+  icon: {fileID: 2920244845866486137, guid: e7be3b36cef72b046a36d5dfae2baa74, type: 3}
   factionGate: 1
   tier: 2
   exec: 0

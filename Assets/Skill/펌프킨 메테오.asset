@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: PumpkinMeteor
   displayName: "\uD38C\uD504\uD0A8 \uBA54\uD14C\uC624"
+  icon: {fileID: 1667474349014976156, guid: a99857264399ab24d8d66a991b67d786, type: 3}
   factionGate: 1
   tier: 1
   exec: 0

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: DoomMeteor
   displayName: "\uD30C\uBA78\uC758 \uC6B4\uC11D"
+  icon: {fileID: 2170816902757958772, guid: 20bae61d45f4e4c4f9b6c7c6f26609e2, type: 3}
   factionGate: 1
   tier: 1
   exec: 0

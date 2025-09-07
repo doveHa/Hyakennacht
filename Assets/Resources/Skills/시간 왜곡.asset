@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: ClockMarker
   displayName: "\uC2DC\uAC04 \uC65C\uACE1"
+  icon: {fileID: -5206440548656088776, guid: 5d86bf0cc81624743b039e980a26f2a7, type: 3}
   factionGate: 1
   tier: 0
   exec: 5

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c83beac103d9a940a8380e9f422370a, type: 3}
   m_Name: "\uC694\uAE30 \uD3ED\uBC1C"
   m_EditorClassIdentifier: 
-  skillId: 
+  skillId: yogi pogbal
   displayName: "\uC694\uAE30 \uD3ED\uBC1C"
+  icon: {fileID: -549360371524788206, guid: 8ff86883c6346ec498ae30bdc9b1d67e, type: 3}
   factionGate: 0
   tier: 0
   exec: 0

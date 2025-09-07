@@ -10,6 +10,7 @@ public abstract class SkillBase : ScriptableObject
     [Header("ID & Meta")]
     public string skillId;
     public string displayName;
+    public Sprite icon;
     public Faction factionGate;
     public Tier tier;
     public Exec exec;
