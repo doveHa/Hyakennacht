@@ -42,7 +42,7 @@ public class MapManager : MonoBehaviour
     //      ٴ  Ÿ  
     private List<Vector3Int> groundTiles = new List<Vector3Int>();
 
-    const int maxStage = 15; //   ü            
+    const int maxStage = 10; //15 -> 10       
     const int specialStageCount = 2; // Ư              
 
     private List<GameObject> roomGameObjects = new List<GameObject>();
@@ -196,7 +196,7 @@ public class MapManager : MonoBehaviour
 
         PlaceStairs();
 
-        if (shopPrefab != null && (currentStage == 4 || currentStage == 9 || currentStage == 14))
+        if (shopPrefab != null && (currentStage == 4 || currentStage == 9)) // || currentStage == 14
         {
             shopInstance = PlaceShop();
         }

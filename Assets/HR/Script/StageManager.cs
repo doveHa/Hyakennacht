@@ -44,7 +44,7 @@ public static class StageManager
 
     public static bool IsBossStage()
     {
-        return CurrentStage == 5 || CurrentStage == 10 || CurrentStage == 15;
+        return CurrentStage == 5 || CurrentStage == 10; //|| CurrentStage == 15
     }
 
     public static string GetMapScene()

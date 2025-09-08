@@ -958,6 +958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6772494000088799371, guid: 4a5c1826d813afb4391f3459967f1303, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

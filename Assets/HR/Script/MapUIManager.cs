@@ -54,6 +54,10 @@ public class MapUIManager : MonoBehaviour
     [SerializeField] private Text cardDesc3;
     [SerializeField] private Image cardIcon3;
 
+    [Header("GameEnd")] [SerializeField]
+    private GameObject gameEndPanel;
+    [SerializeField] private Button EndBtn;
+
     [Header("Skill Assets")] [SerializeField]
     private SkillBase[] skillAssets; // Inspector에서 모든 스킬 에셋 연결
 
@@ -99,10 +103,12 @@ public class MapUIManager : MonoBehaviour
     void Update()
     {
         // 테스트 용도로 Z키로 킬 카운트 증가
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            KilledEnemies++;
-            StageCoins += 10;
+            /*KilledEnemies++;
+            StageCoins += 10;*/
+            Debug.Log("V key pressed: Simulating game end.");
+            OnGameEnd();
         }
     }
 
@@ -190,8 +196,7 @@ public class MapUIManager : MonoBehaviour
 
 
         if (MapManager.Instance.currentStage == 4 ||
-            MapManager.Instance.currentStage == 9 ||
-            MapManager.Instance.currentStage == 14)
+            MapManager.Instance.currentStage == 9)  //|| MapManager.Instance.currentStage == 14
         {
             //ShowSkillSelectPanel();
             //AfterSkillSelect = true;
@@ -333,5 +338,21 @@ public class MapUIManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    // 게임 종료
+    public void OnGameEnd()
+    {
+        Debug.Log("Game End: Activating Game End Panel.");
+        gameEndPanel.SetActive(true);
+        Time.timeScale = 0f; // 게임을 멈춤
+    }
+
+    public void OnEndBtnClick()
+    {
+        Debug.Log("End button clicked! Returning to lobby.");
+        string lobbySceneName = StageManager.GetLobbyScene();
+        SceneManager.LoadScene(lobbySceneName);
+        Time.timeScale = 1f;
     }
 }
