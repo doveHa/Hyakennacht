@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Manager;
 
 
 [System.Serializable]
@@ -54,8 +55,7 @@ public class MapUIManager : MonoBehaviour
     [SerializeField] private Text cardDesc3;
     [SerializeField] private Image cardIcon3;
 
-    [Header("GameEnd")] [SerializeField]
-    private GameObject gameEndPanel;
+    [Header("GameEnd")] [SerializeField] private GameObject gameEndPanel;
     [SerializeField] private Button EndBtn;
 
     [Header("Skill Assets")] [SerializeField]
@@ -116,10 +116,14 @@ public class MapUIManager : MonoBehaviour
     {
         Debug.Log("Play button clicked!");
         statsPanel.SetActive(false); // 통계창 닫기
-        
+
         if (PlayerDied)
         {
             Debug.Log("Player died, returning to lobby.");
+            Destroy(GameObject.Find("Player").gameObject);
+            Destroy(GameObject.Find("Manager").gameObject);
+            Destroy(GameObject.Find("GameSystem").gameObject);
+            SystemManager.Manager.HpControl.ResetHealth();
             SceneManager.LoadScene(StageManager.GetLobbyScene());
             PlayerDied = false;
             Time.timeScale = 1f;
@@ -196,7 +200,7 @@ public class MapUIManager : MonoBehaviour
 
 
         if (MapManager.Instance.currentStage == 4 ||
-            MapManager.Instance.currentStage == 9)  //|| MapManager.Instance.currentStage == 14
+            MapManager.Instance.currentStage == 9) //|| MapManager.Instance.currentStage == 14
         {
             //ShowSkillSelectPanel();
             //AfterSkillSelect = true;
@@ -211,7 +215,7 @@ public class MapUIManager : MonoBehaviour
             statsPanel.SetActive(true); // 통계창 열기
         }
 
-            //statsPanel.SetActive(true); // 통계창 열기
+        //statsPanel.SetActive(true); // 통계창 열기
 
         MoveFlag(MapManager.Instance.currentStage);
     }

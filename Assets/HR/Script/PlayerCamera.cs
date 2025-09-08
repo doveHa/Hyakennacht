@@ -21,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FindPlayer();
     }
@@ -80,9 +80,8 @@ public class PlayerCamera : MonoBehaviour
             return player.position;
     }
 
-    public async Task TryInteractWithStairs()
+    public void TryInteractWithStairs()
     {
-
         if (player == null || mapManager == null)
         {
             Debug.LogWarning("Player �Ǵ� MapManager�� �Ҵ���� �ʾҽ��ϴ�.");
@@ -96,12 +95,12 @@ public class PlayerCamera : MonoBehaviour
 
         if (currentTile == mapManager.stairUpTile)
         {
-            await mapManager.NextStage(true); // ���̵� ���
+            mapManager.NextStage(true); // ���̵� ���
             Debug.Log("Stairs Up interacted. Moving to next stage.");
         }
         else if (currentTile == mapManager.stairDownTile)
         {
-            await mapManager.NextStage(false); // ���̵� �϶�
+            mapManager.NextStage(false); // ���̵� �϶�
             Debug.Log("Stairs Down interacted. Moving to previous stage.");
         }
     }

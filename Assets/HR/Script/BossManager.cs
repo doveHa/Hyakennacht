@@ -15,6 +15,8 @@ public class BossManager : MonoBehaviour
 
     public GameObject bossSpawnPoint;
 
+    public GameObject nextRoom;
+    
     private List<GameObject> bossObjects;
 
     private GameObject _bossObject;
@@ -26,7 +28,7 @@ public class BossManager : MonoBehaviour
         bossObjects = new List<GameObject>();
     }
 
-    async void Start()
+    void Start()
     {
         foreach (GameObject boss in BossPrefab.Instance.BossPrefabs)
         {
@@ -45,52 +47,27 @@ public class BossManager : MonoBehaviour
         _bossObject.GetComponent<BossStat>().SetBossHpBar(bossHpBar);
     }
 
-    void Update()
-    {
-    
-    }
-
     public void OnBossDefeated()
     {
-        if (StageManager.CurrentStage == 15) //�������� 15�� ���
+        if (StageManager.CurrentStage == 15)
         {
             gameClearPanel.SetActive(true);
-            Debug.Log("Final Boss Defeated");
             return;
         }
 
-        /*            Debug.Log("Boss Defeated");
-                    StageManager.CurrentStage++;
-                    Debug.Log("���� ��������: " + StageManager.CurrentStage);
-                    SceneManager.LoadScene("MapSample");
-        */
-
+        nextRoom.SetActive(true);
+        /*
         StageManager.AdvanceStage();
         string nextMap = StageManager.GetMapScene();
-        Debug.Log("Boss Defeated -> Loading Map: " + nextMap);
-        SceneManager.LoadScene(nextMap);
+        SceneManager.LoadScene(nextMap);*/
     }
-
-    public void OnBossFailed()
-    {
-        Debug.Log("Boss Failed");
-        Debug.Log("���� ��������: " + StageManager.CurrentStage);
-        //SceneManager.LoadScene(1); //WitchLobbyScene
-        Debug.Log("Boss Failed -> Returning to Lobby");
-        SceneManager.LoadScene(StageManager.GetLobbyScene());
-    }
-
+    
     public void GameClearToLobby()
     {
+        Destroy(GameObject.Find("Player").gameObject);
+        Destroy(GameObject.Find("Manager").gameObject);
         gameClearPanel.SetActive(false);
-        Debug.Log("Game Clear to Lobby");
-        //StageManager.CurrentStage = 0; // ����?
-        //SceneManager.LoadScene(1); //WitchLobbyScene
         StageManager.CurrentStage = 1;
         SceneManager.LoadScene(StageManager.GetLobbyScene());
-    }
-
-    void OnEnable()
-    {
     }
 }

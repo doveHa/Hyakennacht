@@ -47,5 +47,15 @@ namespace System
         {
             _isInvincible = isInvincible;
         }
+
+        public void ResetHealth()
+        {
+            foreach (GameObject hp in hpArray)
+            {
+                hp.SetActive(true);
+            }
+
+            _currentHp = 4;
+        }
     }
 }

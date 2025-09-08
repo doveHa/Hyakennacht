@@ -31,7 +31,7 @@ public class LobbyManager : MonoBehaviour
 
         // �� ��ȯ ���� Input ��Ȱ��ȭ
         var inputManager = Object.FindFirstObjectByType<Manager.PlayerInputManager>();
-        inputManager?.DisableInput();
+        //inputManager?.DisableInput();
 
         string nextMap = StageManager.GetMapScene();
         Debug.Log("Lobby -> Loading Map: " + nextMap);

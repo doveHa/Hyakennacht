@@ -9,10 +9,16 @@ namespace Enemy.BossStage
     public class BossStat : AEnemyStats
     {
         private BossHpBar _bossHpBar;
+        private BossManager _bossManager;
         
         protected override void Awake()
         {
             base.Awake();
+        }
+
+        void Start()
+        {
+            _bossManager = FindFirstObjectByType<BossManager>();
         }
         
         public override void TakeDamage(float dmg)
@@ -38,6 +44,7 @@ namespace Enemy.BossStage
             }
 
             Destroy(GetComponent<AEnemyStats>());
+            _bossManager.OnBossDefeated();
         }
 
         public void SetBossHpBar(BossHpBar bossHpBar)

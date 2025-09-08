@@ -316,7 +316,7 @@ public class MapManager : MonoBehaviour
         return groundTilesByStage[0];
     }
 
-    public async Task NextStage(bool isStairUp)
+    public void NextStage(bool isStairUp)
     {
         ClearItems();
 
@@ -332,7 +332,6 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-        //  Ϲ    
         string mapScene = StageManager.GetMapScene();
         Debug.Log("Map Stage: " + currentStage + " -> Loading: " + mapScene);
         GenerateMap(); //         
@@ -397,11 +396,9 @@ public class MapManager : MonoBehaviour
     {
         if (itemPrefabs == null || itemPrefabs.Length == 0) return;
 
-        //         ִ       Ÿ       
         List<Vector3Int> shopRoomTiles = new List<Vector3Int>();
         if (shopInstance != null)
         {
-            // shopInstance    ִ     ã  
             Room shopRoom = rooms.FirstOrDefault(r =>
                 r.tiles.Any(t =>
                 {

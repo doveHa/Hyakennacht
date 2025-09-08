@@ -26,7 +26,7 @@ namespace Manager
             _playerInput.Attack.ActiveSkill1.started += RunActiveSkill1;
             _playerInput.Attack.ActiveSkill2.started += RunActiveSkill2;
         }
-
+/*
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -36,6 +36,7 @@ namespace Manager
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
+        
         private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
         {
             var player = GameObject.FindGameObjectWithTag("Player");
@@ -44,8 +45,7 @@ namespace Manager
                 GameManager.Manager.SetPlayer(player);
             }
         }
-
-
+        */
         private void StartMove(InputAction.CallbackContext ctx)
         {
             Movement.IsMoving = true;
@@ -145,6 +145,7 @@ namespace Manager
         {
             _activeSkill2 = skill;
         }
+        
 
         //HR: 씬 전환을 위해 추가
         public void DisableInput()

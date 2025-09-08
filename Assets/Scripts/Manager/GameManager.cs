@@ -30,10 +30,10 @@ namespace Manager
 
         public void RefreshPlayerReference()
         {
-            var scenePlayer = GameObject.FindGameObjectWithTag("Player");
-            if (scenePlayer != null)
+            if (Player == null)
             {
-                Player = scenePlayer;
+                Debug.Log("GameManager"+Time.time);
+                Player = GameObject.FindGameObjectWithTag("Player");
                 PlayerScript = Player.GetComponent<Player>();
             }
         }
@@ -53,11 +53,11 @@ namespace Manager
                 Player.GetComponentInChildren<Dash>().IsLeftSight = isLeft;
             }
         }
-        
+
         public void GameOver()
         {
             Time.timeScale = 0f;
-            MapUIManager.Instance.PlayerDied = true;  //HR false -> true
+            MapUIManager.Instance.PlayerDied = true; //HR false -> true
             Debug.Log(MapUIManager.Instance.PlayerDied);
             MapUIManager.Instance.OnStageEnd();
         }
@@ -68,6 +68,5 @@ namespace Manager
             Player = player;
             PlayerScript = player.GetComponent<Player>();
         }
-
     }
 }
