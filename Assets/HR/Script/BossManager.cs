@@ -42,7 +42,6 @@ public class BossManager : MonoBehaviour
             _bossObject = Instantiate(bossObjects[1], bossSpawnPoint.transform.position, Quaternion.identity);
         }
         _bossObject.GetComponent<EnemyController>().Stage = GameObject.Find("Grid/Tilemap").GetComponent<Tilemap>();
-        await _bossObject.GetComponent<AEnemyStats>().SetStat();
         _bossObject.GetComponent<BossStat>().SetBossHpBar(bossHpBar);
     }
 

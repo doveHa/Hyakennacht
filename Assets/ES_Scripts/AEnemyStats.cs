@@ -34,29 +34,13 @@ public abstract class AEnemyStats : MonoBehaviour
     protected virtual void Awake()
     {
         Controller = GetComponent<EnemyController>();
-    }
-
-    void Update()
-    {
-    }
-
-    public async Task SetStat()
-    {
-        TextAsset textAsset = await AddressableManager.Manager.LoadAsset<TextAsset>("Assets/TextAsset/EnemyStats.json");
-        OnJsonLoaded(textAsset);
-    }
-
-    private void OnJsonLoaded(TextAsset textAsset)
-    {
-        string json = textAsset.text;
-
-        List<EnemyStat> set = JsonSerializer.Deserialize<List<EnemyStat>>(json);
-        EnemyStat stat = set.Find(e => e.Name == enemyName.ToString());
+        
+        AddressableManager.EnemyStat stat = AddressableManager.Manager.GetStatByName(enemyName.ToString());
         MaxHp = stat.Health;
         CurrentHp = MaxHp;
         Speed = stat.Speed;
     }
-
+    
     public abstract void TakeDamage(float dmg);
 
     public void Heal(int amount)
@@ -65,11 +49,5 @@ public abstract class AEnemyStats : MonoBehaviour
     }
 
     public abstract void Die();
-
-    private class EnemyStat
-    {
-        public string Name { get; set; }
-        public float Speed { get; set; }
-        public float Health { get; set; }
-    }
+    
 }
