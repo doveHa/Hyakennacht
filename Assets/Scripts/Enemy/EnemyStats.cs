@@ -1,106 +1,37 @@
-using System.Collections.Generic;
-using UnityEngine;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Manager;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+﻿using UnityEngine;
 
-public class EnemyStats : MonoBehaviour
+namespace Enemy
 {
-    public enum EnemyName
+    public class EnemyStats : AEnemyStats
     {
-        Ghost,
-        Golem,
-        Kappa,
-        Slime,
-        Straw,
-        Wisp,
-        Boss1
-    }
-
-    public EnemyName enemyName;
-    // ES
-    public float Health { get; private set; }
-    public float MaxHealth { get; private set; }
-    public float Speed { get; set; }
-
-    public bool IsDead => Health <= 0f;
-
-
-    void Awake()
-    {
-        /* Resource, StreamReader, Addressables 비교
-        using (StreamReader reader = new StreamReader(new FileStream(Constant.Path.ENEMYJSON, FileMode.Open)))
+        protected override void Awake()
         {
-            string jsonString = reader.ReadToEnd();
-            Debug.Log(jsonString);
-            SetStat(JsonSerializer.Deserialize<List<EnemyStat>>(jsonString));
-        }*/
-    }
-
-    public async Task SetStat()
-    {
-        //TextAsset textAsset = await AddressableManager.Manager.LoadAsset<TextAsset>("Assets/TextAsset/EnemyStats.json");
-        //OnJsonLoaded(textAsset);
-    }
-
-    private void OnJsonLoaded(TextAsset textAsset)
-    {
-        string json = textAsset.text;
-
-        List<EnemyStat> set = JsonSerializer.Deserialize<List<EnemyStat>>(json);
-        EnemyStat stat = set.Find(e => e.Name == enemyName.ToString());
-        Health = 20;
-        MaxHealth = 20;
-        Speed = 2;
-    }
-
-/*
-private void SetStat(List<EnemyStat> set)
-{
-    foreach (EnemyStat enemyStat in set)
-    {
-        if (enemyStat.Name.Equals(enemyName.ToString()))
-        {
-            _health = enemyStat.Health;
-            Speed = enemyStat.Speed;
-            Debug.Log(enemyName.ToString());
-            return;
+            base.Awake();
         }
-    }
-}*/
 
-    void Start()
-    {
-    }
+        public override void TakeDamage(float dmg)
+        {
+            Controller.ChangeState(new HitState(Controller, Controller.CurrentState));
+            CurrentHp -= dmg;
+            Debug.Log(CurrentHp);
+            if (CurrentHp <= 0)
+            {
+                Die();
+            }
+        }
 
-    void Update()
-    {
-    }
+        public override void Die()
+        {
+            Controller.Animator.SetTrigger("Death");
+            GetComponentInParent<EnemySpawner>().KillCount++;
+            Destroy(GetComponentInChildren<PlayerRecognize>());
+            Destroy(GetComponent<EnemyController>());
+            foreach (Collider2D cd in GetComponentsInChildren<Collider2D>())
+            {
+                Destroy(cd);
+            }
 
-    public void Hurt(float damage)
-    {
-        if (IsDead) return;
-        Health = Mathf.Max(0f, Health - Mathf.Max(0f, damage));
-        if (IsDead) Death();
-    }
-
-    public void Heal(float amount)
-    {
-        if (IsDead) return;
-        Health = Mathf.Min(MaxHealth, Health + Mathf.Max(0f, amount));
-    }
-
-    public void Death()
-    {
-        Destroy(gameObject);
-    }
-
-    private class EnemyStat
-    {
-        public string Name { get; set; }
-        public float Speed { get; set; }
-        public float Health { get; set; }
+            Destroy(GetComponent<AEnemyStats>());
+        }
     }
 }

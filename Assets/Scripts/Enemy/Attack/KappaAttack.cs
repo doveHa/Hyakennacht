@@ -9,18 +9,18 @@ namespace Enemy.Attack
     public class KappaAttack : IAttack
     {
         public float ballSpeed;
-        public GameObject waterBall;
-        public async void Start()
+        private Vector3 _direction;
+        public void InstantiateWaterBall()
         {
-            //waterBall = await AddressableManager.Manager.LoadAsset<GameObject>("Assets/Enemy/Resource/Kappa/Effect/WaterBall.prefab");
-
+            GameObject waterBall = transform.Find("WaterBall").gameObject;
+            GameObject cloneBall = Instantiate(waterBall, waterBall.transform.position, waterBall.transform.rotation);
+            cloneBall.SetActive(true);
+            cloneBall.GetComponent<Rigidbody2D>().AddForce(_direction * ballSpeed);
         }
+    
         public override void Attack(Vector3 targetPosition)
         {
-            Vector3 direction = targetPosition - transform.position;
-            direction = direction.normalized;
-            GameObject ball = Instantiate(waterBall, transform.position, transform.rotation);
-            ball.GetComponent<Rigidbody2D>().AddForce(direction * ballSpeed);
+            _direction = (targetPosition - transform.position).normalized;
         }
 
         public override void Exit()

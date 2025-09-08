@@ -13,15 +13,15 @@ public class MagicCircle : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy_ES enemy = other.GetComponent<Enemy_ES>();
-            if (enemy != null)
+            AEnemyStats aEnemy = other.GetComponent<AEnemyStats>();
+            if (aEnemy != null)
             {
                 damageAccumulator += damage * Time.deltaTime;
 
                 if (damageAccumulator >= 1f)
                 {
                     int intDamage = Mathf.FloorToInt(damageAccumulator);
-                    enemy.TakeDamage(intDamage);
+                    aEnemy.TakeDamage(intDamage);
                     damageAccumulator -= intDamage;
                 }
             }

@@ -18,7 +18,7 @@ public class LongStaff : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("ÆÄ±« ½ÇÇà");
+        Debug.Log("ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½");
         Destroy(gameObject, destroyTime);
     }
 
@@ -45,7 +45,7 @@ public class LongStaff : MonoBehaviour
         if (target != null)
         {
             Vector2 toTarget = ((Vector2)target.position - (Vector2)transform.position).normalized;
-            direction = Vector2.Lerp(direction, toTarget, 0.02f); // ºÎµå·´°Ô ¹æÇâ º¸Á¤
+            direction = Vector2.Lerp(direction, toTarget, 0.02f); // ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
 
         Vector2 offset = new Vector2(0, Mathf.Sin(time * frequency) * amplitude);
@@ -72,10 +72,10 @@ public class LongStaff : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy_ES enemy = other.GetComponent<Enemy_ES>();
-            if (enemy != null)
+            AEnemyStats aEnemy = other.GetComponent<AEnemyStats>();
+            if (aEnemy != null)
             {
-                enemy.TakeDamage(damage);
+                aEnemy.TakeDamage(damage);
             }
 
             Destroy(gameObject);

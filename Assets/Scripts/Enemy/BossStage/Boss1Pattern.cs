@@ -53,7 +53,7 @@ namespace Enemy.BossStage
                 yield return null;
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
         private IEnumerator PatternSpiral()
@@ -86,7 +86,7 @@ namespace Enemy.BossStage
                 yield return null;
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
         public IEnumerator PatternFan()
@@ -123,7 +123,7 @@ namespace Enemy.BossStage
                 yield return null;
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
         public void SpawnBullet(Vector3 direction, bool isDirection = true)

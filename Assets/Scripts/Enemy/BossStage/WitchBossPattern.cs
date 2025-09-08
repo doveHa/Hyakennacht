@@ -92,7 +92,7 @@ namespace Enemy.BossStage
                 }
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
         public GameObject scratchPrefab; // 스크레치 프리팹
@@ -112,7 +112,7 @@ namespace Enemy.BossStage
                 scratch.GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Enemy
         public ChasePlayerState(EnemyController controller)
         {
             _controller = controller;
-            _enemySpeed = _controller.transform.GetComponent<EnemyStats>().Speed;
+            _enemySpeed = _controller.transform.GetComponent<AEnemyStats>().Speed;
         }
         
         public void Enter()
@@ -35,7 +35,6 @@ namespace Enemy
         {
             _controller.Rigidbody.linearVelocity = Vector3.zero;
             _controller.Animator.SetBool("IsWalk", false);
-
         }
     }
 }

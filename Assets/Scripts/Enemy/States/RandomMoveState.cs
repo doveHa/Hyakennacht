@@ -14,7 +14,7 @@ namespace Enemy
         {
             _controller = controller;
             _controller.Animator.SetBool("IsWalk", true);
-            _enemySpeed = _controller.transform.GetComponent<EnemyStats>().Speed;
+            _enemySpeed = _controller.transform.GetComponent<AEnemyStats>().Speed;
         }
 
         public void Enter()
@@ -26,6 +26,7 @@ namespace Enemy
         public void Update()
         {
             Vector3 direction = (_destination - _controller.transform.position).normalized;
+            Debug.Log(direction);
             _controller.Rigidbody.linearVelocity = direction * _enemySpeed;
             if (Vector3.Distance(_destination, _controller.transform.position) < 3f)
             {

@@ -39,7 +39,7 @@ namespace Enemy.BossStage
                 yield return null;
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
 
@@ -71,7 +71,7 @@ namespace Enemy.BossStage
                 yield return null;
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
         public IEnumerator PatternAcceleratingSpiral()
@@ -107,7 +107,7 @@ namespace Enemy.BossStage
                 yield return null;
             }
 
-            _controller.CanChangeState();
+            _controller.IsChangeState = true;
         }
 
 

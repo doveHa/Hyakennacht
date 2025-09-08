@@ -9,9 +9,9 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {
-        // StageManager.CurrentStage = 0; // ÇÊ¿ä½Ã ÃÊ±âÈ­
+        // StageManager.CurrentStage = 0; // ï¿½Ê¿ï¿½ï¿½ ï¿½Ê±ï¿½È­
         StageManager.SetTheme(isYokai);
-        Debug.Log("ÇöÀç ½ºÅ×ÀÌÁö: " + StageManager.CurrentStage);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + StageManager.CurrentStage);
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class LobbyManager : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        // ¾À ÀüÈ¯ Àü¿¡ Input ºñÈ°¼ºÈ­
+        // ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½ Input ï¿½ï¿½È°ï¿½ï¿½È­
         var inputManager = Object.FindFirstObjectByType<Manager.PlayerInputManager>();
         inputManager?.DisableInput();
 

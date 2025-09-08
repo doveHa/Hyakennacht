@@ -12,14 +12,11 @@ GameObject:
   - component: {fileID: 7929427378953673235}
   - component: {fileID: 2782011665946213251}
   - component: {fileID: 7855453494167686705}
-  - component: {fileID: 6295810517878711896}
   - component: {fileID: 232116486221048034}
   - component: {fileID: 7992639868892031145}
   - component: {fileID: 3501195384758044562}
   - component: {fileID: 2074384033869655418}
-  - component: {fileID: 8994336313330940655}
-  - component: {fileID: 4508697613475938081}
-  - component: {fileID: 2867492416936227296}
+  - component: {fileID: 6739903479495407722}
   m_Layer: 9
   m_Name: MiddleBoss
   m_TagString: Enemy
@@ -854,21 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a4a884624b58f4ba9680c5cf343594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsChangeState: 1
   IsLeftSight: 0
---- !u!114 &6295810517878711896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bcda79897de08409f3136ab04d9c6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: 6
 --- !u!95 &232116486221048034
 Animator:
   serializedVersion: 7
@@ -933,7 +916,7 @@ MonoBehaviour:
   fallingSpeed: 0.2
   chargeTime: 1
   dashSpeed: 30
---- !u!114 &8994336313330940655
+--- !u!114 &6739903479495407722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -942,35 +925,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 520945707462152971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6077324bf3cfab84582c811b1cac84d9, type: 3}
+  m_Script: {fileID: 11500000, guid: ccf17834ea774c7a86232350e10cb1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4508697613475938081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e12198b08ab9d647975137c6fd8fc93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunnedTint: {r: 1, g: 1, b: 1, a: 0.5}
-  debugLog: 0
---- !u!114 &2867492416936227296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846b8377da2a145478afdda90b1e59af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  enemyName: 8
 --- !u!1 &1907922692850032435
 GameObject:
   m_ObjectHideFlags: 0

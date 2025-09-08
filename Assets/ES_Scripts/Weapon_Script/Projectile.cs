@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("ÆÄ±« ½ÇÇà");
+        Debug.Log("ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½");
         Destroy(gameObject, destroyTime);
     }
 
@@ -22,10 +22,9 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy_ES>()?.TakeDamage(damage);
-            Debug.Log("¹ß»ç ¿Ï·á");
-
-            if (weaponName != "°¡½Ã") 
+            Debug.Log(other.name);
+            other.GetComponentInParent<AEnemyStats>()?.TakeDamage(damage);
+            if (weaponName != "ï¿½ï¿½ï¿½ï¿½") 
             {
                 Destroy(gameObject);
             }
