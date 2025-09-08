@@ -33,8 +33,7 @@ public class LobbyManager : MonoBehaviour
         var inputManager = Object.FindFirstObjectByType<Manager.PlayerInputManager>();
         inputManager?.DisableInput();
 
-        //string nextMap = StageManager.GetMapScene();
-        string nextMap = "WitchMap(Temp)";
+        string nextMap = StageManager.GetMapScene();
         Debug.Log("Lobby -> Loading Map: " + nextMap);
         SceneManager.LoadScene(nextMap);
     }
