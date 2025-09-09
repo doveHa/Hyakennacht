@@ -10,19 +10,21 @@ public class SkillCaster : MonoBehaviour
 {
     public SkillBase[] slots;
 
-    [Header("Actor (���� ��)")]
+    [Header("Actor (실제 모델)")]
     public Transform actor;      // Witch/Body
     public Transform firePoint;  // Body/FirePos
 
-    private SpriteRenderer actorSR; // �б��
-    private Dash actorDash;         // �б��
+    private SpriteRenderer actorSR; 
+    private Dash actorDash;         
 
     private Transform facingProxy;
 
+    [Header("Cooldowns")]
     public float gcd = 0.2f;
     private readonly Dictionary<string, float> cdEnd = new();
     private float gcdEnd;
 
+    [Header("Refs")]
     public ObjectPool pool;
     public FXRouter fx;
 
@@ -102,12 +104,12 @@ public class SkillCaster : MonoBehaviour
     {
         if (slots == null) return;
 
-        if (Input.GetKeyDown(KeyCode.F)) TryCast(slots.Length > 0 ? slots[0] : null);
-        if (Input.GetKeyDown(KeyCode.G)) TryCast(slots.Length > 1 ? slots[1] : null);
-        if (Input.GetKeyDown(KeyCode.H)) TryCast(slots.Length > 2 ? slots[2] : null);
+        //if (Input.GetKeyDown(KeyCode.K)) TryCast(slots.Length > 0 ? slots[0] : null);
+        //if (Input.GetKeyDown(KeyCode.L)) TryCast(slots.Length > 1 ? slots[1] : null);
+        //if (Input.GetKeyDown(KeyCode.H)) TryCast(slots.Length > 2 ? slots[2] : null);
     }
 
-    void TryCast(SkillBase skill)
+    public void TryCast(SkillBase skill)
     {
         if (!skill) return;
         if (skill.useGCD && Time.time < gcdEnd) return;

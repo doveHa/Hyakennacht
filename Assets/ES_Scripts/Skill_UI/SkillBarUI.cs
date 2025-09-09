@@ -11,7 +11,7 @@ public class SkillBarUI : MonoBehaviour
     public Transform container;          // HorizontalLayoutGroup 권장
 
     [Header("Keys (선택)")]
-    public string[] keyLabels = new[] { "F", "G", "H", "J", "K" };
+    public string[] keyLabels = new[] { "K", "L", ":" };
 
     [Header("Empty Icon (선택)")]
     public Sprite emptyIcon;

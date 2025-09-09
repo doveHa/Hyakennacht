@@ -11,11 +11,14 @@ namespace Manager
     public class PlayerInputManager : AbstractManager<PlayerInputManager>
     {
         private PlayerInput _playerInput;
+        [SerializeField] private SkillCaster _caster;
         private SkillBase _activeSkill1, _activeSkill2;
 
         protected override void Awake()
         {
             base.Awake();
+
+            if (!_caster) _caster = FindFirstObjectByType<SkillCaster>(FindObjectsInactive.Include);
 
             _playerInput = new PlayerInput();
             _playerInput.Enable();
@@ -122,11 +125,17 @@ namespace Manager
 
         private void RunActiveSkill1(InputAction.CallbackContext ctx)
         {
-            if (_activeSkill1 != null)
+            Debug.Log("[Input] K pressed");
+            if (_activeSkill1 == null)
             {
-                //_activeSkill1.Run();
+                var slots = _caster.GetSlots();
+                if (slots != null && slots.Length > 0) _activeSkill1 = slots[0];
             }
+            if (_caster && _activeSkill1) _caster.TryCast(_activeSkill1);
         }
+
+        //public void ChangeActiveSkill1(SkillBase skill) => _activeSkill1 = skill;
+        //public void ChangeActiveSkill2(SkillBase skill) => _activeSkill2 = skill;
 
         public void ChangeActiveSkill1(SkillBase skill)
         {
@@ -138,10 +147,13 @@ namespace Manager
 
         private void RunActiveSkill2(InputAction.CallbackContext ctx)
         {
-            if (_activeSkill2 != null)
+            Debug.Log("[Input] L pressed");
+            if (_activeSkill2 == null)
             {
-                //_activeSkill2.Run();
+                var slots = _caster.GetSlots();
+                if (slots != null && slots.Length > 1) _activeSkill2 = slots[1];
             }
+            if (_caster && _activeSkill2) _caster.TryCast(_activeSkill2);
         }
 
         public void ChangeActiveSkill2(SkillBase skill)
@@ -162,6 +174,8 @@ namespace Manager
         {
             if (_playerInput != null)
             {
+                _playerInput.Attack.ActiveSkill1.started -= RunActiveSkill1;
+                _playerInput.Attack.ActiveSkill2.started -= RunActiveSkill2;
                 _playerInput.Disable();
                 _playerInput.Dispose();
                 _playerInput = null;

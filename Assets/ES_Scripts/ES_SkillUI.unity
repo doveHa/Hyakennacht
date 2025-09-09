@@ -678,11 +678,11 @@ PrefabInstance:
     - target: {fileID: 6404072077181073360, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: 'slots.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 6472393222c67544cadefdd0c5b6000f, type: 2}
+      objectReference: {fileID: 11400000, guid: 1264c7e6e881159419e6c38e31307a4c, type: 2}
     - target: {fileID: 6404072077181073360, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
       propertyPath: 'slots.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: dcca9892e530446439bfb3744d539149, type: 2}
+      objectReference: {fileID: 11400000, guid: 2dbcaef4bba973e47a96273300eaac37, type: 2}
     m_RemovedComponents:
     - {fileID: 5353785623274857004, guid: bfd275c50fd57074fa9d7095a2a15d8e, type: 3}
     m_RemovedGameObjects: []
@@ -1255,6 +1255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1312fd00c645c2989429a256030dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _caster: {fileID: 1548764343}
 --- !u!114 &1610339731
 MonoBehaviour:
   m_ObjectHideFlags: 0
