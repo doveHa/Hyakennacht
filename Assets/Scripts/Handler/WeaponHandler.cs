@@ -65,10 +65,21 @@ public class WeaponHandler : MonoBehaviour
             currentVisual = Instantiate(data.visualPrefab, weaponFacingProxy);
             currentVisual.transform.localRotation = Quaternion.identity;
 
+            Vector3 offset = Vector3.zero;
+
             if (data.weaponName == "꼬리" && tailFirePoint != null)
                 currentVisual.transform.localPosition = tailFirePoint.localPosition;
             else
-                currentVisual.transform.localPosition = Vector3.zero;
+            {
+                // BonkSwinger가 있으면 위치 오프셋을 받아옴
+                var swinger = currentVisual.GetComponent<Swinger>();
+                if (swinger != null)
+                {
+                    Vector2 customOffset = swinger.GetSpawnOffset();
+                    offset = new Vector3(customOffset.x, customOffset.y, 0f);
+                }
+            }
+            currentVisual.transform.localPosition = offset;
         }
     }
 

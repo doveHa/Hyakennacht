@@ -34,6 +34,8 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
     {
         Debug.Log("Bonk Attack!");
 
+        GetComponentInChildren<Swinger>()?.Swing();
+
         float range = attackRange;
 
         if (animator == null)

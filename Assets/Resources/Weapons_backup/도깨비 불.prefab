@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6627484423842207213}
   - component: {fileID: 1944707305608363705}
   - component: {fileID: 4171864670238910972}
+  - component: {fileID: -1646491683872561668}
   m_Layer: 0
   m_Name: "\uB3C4\uAE68\uBE44 \uBD88"
   m_TagString: Untagged
@@ -110,3 +111,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1646491683872561668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258397277547355638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98e544a96bd8e64bb5e20bfdd49c063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingAngle: 0
+  swingDuration: 0.2
+  invertDirection: 0
+  spawnOffset: {x: -0.08, y: -0.16}

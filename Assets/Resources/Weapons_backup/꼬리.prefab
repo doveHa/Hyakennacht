@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 827999998511996233}
   - component: {fileID: 1559928515569011590}
   - component: {fileID: 3731608257887234133}
+  - component: {fileID: 900645183516782990}
   m_Layer: 7
   m_Name: "\uAF2C\uB9AC"
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.53, y: -1.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,3 +149,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.92, y: 1.36}
   m_Direction: 0
+--- !u!114 &900645183516782990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821437004985664120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98e544a96bd8e64bb5e20bfdd49c063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingAngle: 0
+  swingDuration: 0.2
+  invertDirection: 0
+  spawnOffset: {x: -0.21, y: 0}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7193975769358891786}
   - component: {fileID: 2377231551037238628}
+  - component: {fileID: -75799201678083239}
   m_Layer: 0
   m_Name: "\uC0AC\uACFC \uBC14\uAD6C\uB2C8"
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.694979, y: 3.2489166, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,3 +88,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-75799201678083239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697287533329720088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98e544a96bd8e64bb5e20bfdd49c063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingAngle: -30
+  swingDuration: 0.2
+  invertDirection: 0
+  spawnOffset: {x: 0, y: -0.09}

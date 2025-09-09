@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6419035228137750597}
   - component: {fileID: 6402838855904020164}
   - component: {fileID: 8549065204959353787}
+  - component: {fileID: -6958893220719568438}
   m_Layer: 7
   m_Name: "\uBC88\uAC1C \uBC1C\uD1B1"
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.1, y: -7.13, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,7 +127,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.37492672, y: 0.7274995}
     oldSize: {x: 1.19, y: 0.945}
     newSize: {x: 4.76, y: 3.78}
     adaptiveTilingThreshold: 0.5
@@ -157,3 +158,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6958893220719568438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663852383067464539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98e544a96bd8e64bb5e20bfdd49c063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingAngle: 80
+  swingDuration: 0.2
+  invertDirection: 0
+  spawnOffset: {x: -0.07, y: -0.14}

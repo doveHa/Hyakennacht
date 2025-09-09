@@ -36,6 +36,8 @@ public class ProjectileAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
     {
         Debug.Log("어택 호출 완료");
 
+        GetComponentInChildren<Swinger>()?.Swing();
+
         if (data.prefab == null)
         {
             Debug.LogWarning("무기 프리팹이 없습니다.");
