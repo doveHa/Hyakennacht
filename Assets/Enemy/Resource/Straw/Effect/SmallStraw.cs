@@ -47,13 +47,5 @@ public class SmallStraw : MonoBehaviour
             SystemManager.Manager.HpControl.MinusHp();
             Destroy(gameObject);
         }
-        else if(collision.gameObject.tag.Equals("Enemy"))
-        {
-        }
-        else
-        {
-            Destroy(gameObject);
-
-        }
     }
 }

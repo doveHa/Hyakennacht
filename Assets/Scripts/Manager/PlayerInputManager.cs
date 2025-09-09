@@ -26,6 +26,7 @@ namespace Manager
             _playerInput.Attack.ActiveSkill1.started += RunActiveSkill1;
             _playerInput.Attack.ActiveSkill2.started += RunActiveSkill2;
         }
+
 /*
         private void OnEnable()
         {
@@ -36,7 +37,7 @@ namespace Manager
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
-        
+
         private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
         {
             var player = GameObject.FindGameObjectWithTag("Player");
@@ -114,10 +115,9 @@ namespace Manager
         private void StartBasicAttack(InputAction.CallbackContext ctx)
         {
             Player playerScript = GameManager.Manager.PlayerScript;
-            
+
             if (playerScript != null)
                 playerScript.weaponHandler.UseWeapon();
-            
         }
 
         private void RunActiveSkill1(InputAction.CallbackContext ctx)
@@ -130,7 +130,9 @@ namespace Manager
 
         public void ChangeActiveSkill1(SkillBase skill)
         {
-            
+            _playerInput.Attack.ActiveSkill1.started -= RunActiveSkill1;
+            _activeSkill1 = skill;
+            _playerInput.Attack.ActiveSkill1.started += RunActiveSkill1;
             //_activeSkill1 = skill;
         }
 
@@ -144,9 +146,11 @@ namespace Manager
 
         public void ChangeActiveSkill2(SkillBase skill)
         {
+            _playerInput.Attack.ActiveSkill2.started -= RunActiveSkill2;
             _activeSkill2 = skill;
+            _playerInput.Attack.ActiveSkill2.started += RunActiveSkill2;
         }
-        
+
 
         //HR: 씬 전환을 위해 추가
         public void DisableInput()
@@ -163,7 +167,5 @@ namespace Manager
                 _playerInput = null;
             }
         }
-
-
     }
 }
