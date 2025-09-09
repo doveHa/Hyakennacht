@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class WaterBallHit : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody;
+    public float cooldown = 20f;
+    private float startTime;
 
-    void Awake()
+    void Update()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        if (startTime + cooldown < Time.time)
+        {
+            Destroy(gameObject);
+        }
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
             SystemManager.Manager.HpControl.MinusHp();
             Destroy(gameObject);
-        }else if (other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Projectile"))
-        {
-            
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+    }
+    
+    void OnEnable()
+    {
+        startTime = Time.time;
     }
 }

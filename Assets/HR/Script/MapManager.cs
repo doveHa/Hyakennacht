@@ -47,6 +47,7 @@ public class MapManager : MonoBehaviour
 
     private List<GameObject> roomGameObjects = new List<GameObject>();
 
+    private Room _startRoom;
     //               
     [System.Serializable]
     public class Room
@@ -87,6 +88,7 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         currentStage = StageManager.CurrentStage;
         if (currentStage < 1) currentStage = 1;
         GenerateMap();
@@ -111,7 +113,7 @@ public class MapManager : MonoBehaviour
         {
             Destroy(room.roomObject);
         }
-
+        
         groundTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
         groundTiles.Clear();
@@ -135,12 +137,13 @@ public class MapManager : MonoBehaviour
 
         int roomIdCounter = 0;
 
-        Room startRoom = RoomObject(startPos, roomIdCounter++);
-        Destroy(startRoom.roomObject.GetComponent<EnemySpawner>());
-        roomDict[startPos] = startRoom;
-        rooms.Add(startRoom);
+        _startRoom = RoomObject(startPos, roomIdCounter++);
+        Destroy(_startRoom.roomObject.GetComponent<EnemySpawner>());
+        roomDict[startPos] = _startRoom;
+        rooms.Add(_startRoom);
         occupied.Add(startPos);
-
+        
+        GameManager.Manager.Player.transform.position = _startRoom.roomObject.transform.position;
 
         while (rooms.Count < roomCount && toExplore.Count > 0)
         {
@@ -342,19 +345,24 @@ public class MapManager : MonoBehaviour
         if (rooms.Count < 2) return;
 
         var shuffledRooms = rooms.OrderBy(r => Random.value).ToList();
-        Room upRoom = shuffledRooms[0];
-        Room downRoom = shuffledRooms[1];
-
+        var availableRooms = shuffledRooms.Where(r => r != _startRoom).ToList();
+        Room upRoom = availableRooms[0];
+        Room downRoom = availableRooms[1];
+        
         var upRoomTiles = upRoom.tiles.Where(t => IsInsideRoom(t)).ToList();
         var downRoomTiles = downRoom.tiles.Where(t => IsInsideRoom(t)).ToList();
 
         if (upRoomTiles.Count == 0 || downRoomTiles.Count == 0) return;
 
-        Vector3Int upPos = upRoomTiles[Random.Range(0, upRoomTiles.Count)];
-        Vector3Int downPos = downRoomTiles[Random.Range(0, downRoomTiles.Count)];
-
+        Vector3Int upPos = upRoomTiles[Random.Range(1, upRoomTiles.Count - 1)];
+        Vector3Int downPos = downRoomTiles[Random.Range(1, downRoomTiles.Count - 1)];
+        Vector3 offset = new Vector3(0.5f, 0.5f, 0);
+        Instantiate(AddressableManager.Manager.GetPrefabByName("UpStair"), upPos + offset, Quaternion.identity).transform.parent = upRoom.roomObject.transform;
+        Instantiate(AddressableManager.Manager.GetPrefabByName("DownStair"), downPos + offset, Quaternion.identity).transform.parent = downRoom.roomObject.transform;
+        /*
         PlaceStairArea(upPos, stairUpTile);
         PlaceStairArea(downPos, stairDownTile);
+        */
     }
 
     bool IsInsideRoom(Vector3Int tilePos)

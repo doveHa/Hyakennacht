@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public float distance;
+    public GameObject GuideKey;
     private bool _isInvincible = false;
+    
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            Debug.Log("Enemy");
             SystemManager.Manager.HpControl.MinusHp();
             if (!_isInvincible)
             {
@@ -20,11 +21,20 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic)
+        if (other.tag.Equals("InteractionAble"))
         {
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            GuideKey.transform.position = other.transform.position + new Vector3(distance, 0, 0);
+            GuideKey.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag.Equals("InteractionAble"))
+        {
+            GuideKey.SetActive(false);
         }
     }
 

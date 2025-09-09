@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public static class Constant
 {
@@ -37,4 +38,10 @@ public static class Constant
         public static string WITCHLOBBY = "WitchLobbyScene(Temp)";
         public static string YOKAILOBBY = "YokaiLobbyScene(Temp)";
     }
+
+    public static string[] PREFAB_PATHS =
+    {
+        "Assets/Prefab/DownStair.prefab",
+        "Assets/Prefab/UpStair.prefab"
+    };
 }

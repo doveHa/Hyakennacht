@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enemy;
@@ -56,6 +57,11 @@ public class BossManager : MonoBehaviour
         }
 
         nextRoom.SetActive(true);
+        foreach (UpDownStair script in nextRoom.GetComponentsInChildren<UpDownStair>())
+        {
+            script.IsEndStage = true;
+        }
+        
         /*
         StageManager.AdvanceStage();
         string nextMap = StageManager.GetMapScene();
