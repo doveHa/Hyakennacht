@@ -4,7 +4,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Stunnable : MonoBehaviour
 {
-    [Header("���� �ɼ�")]
+    [Header("스턴 색상")]
     public Color stunnedTint = new Color(1f, 1f, 1f, 0.5f); // ���� �� ���־�
     public bool debugLog = false;
 

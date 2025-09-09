@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log(other.name);
             other.GetComponentInParent<AEnemyStats>()?.TakeDamage(damage);
-            if (weaponName != "����") 
+            if (weaponName != "가시") 
             {
                 Destroy(gameObject);
             }

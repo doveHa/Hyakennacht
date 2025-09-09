@@ -20,7 +20,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         this.data = data;
         this.firePoint = firePoint;
 
-        if (data.weaponName == "����") 
+        if (data.weaponName == "꼬리") 
         { 
             tailFirePoint = GameObject.FindWithTag("Player")?.GetComponentInChildren<WeaponHandler>()?.weaponVisualHolder; 
             if (tailFirePoint != null) 
@@ -39,7 +39,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         if (animator == null)
             animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
 
-        if (data.weaponName == "����������")
+        if (data.weaponName == "가샤도쿠로")
         {
             range *= 2f; 
             if (animator != null)
@@ -48,7 +48,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
             }
         }
 
-        if (data.weaponName == "ä��")
+        if (data.weaponName == "채찍")
         {
             range *= 2f;
             if (animator != null)
@@ -57,7 +57,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
             }
         }
 
-        if (data.weaponName == "���� ����")
+        if (data.weaponName == "번개 발톱")
         {
             if (animator != null)
             {
@@ -65,7 +65,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
             }
         }
 
-        if (data.weaponName == "����") 
+        if (data.weaponName == "꼬리") 
         { 
             range *= 2f; 
             if (animator != null)
@@ -74,7 +74,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
                 StartCoroutine(MoveTailFirePoint()); 
         }
 
-        Transform attackEffect = FindDeepChild(transform, "����");
+        Transform attackEffect = FindDeepChild(transform, "공격");
         if (attackEffect != null)
         {
             attackEffect.gameObject.SetActive(true);
@@ -90,9 +90,9 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
                 if (aEnemy != null) 
                 {
                     hit.GetComponent<AEnemyStats>()?.TakeDamage(data.baseDamage);
-                    Debug.Log($"�� ��Ʈ: {hit.name}");
+                    Debug.Log($"적 히트Ʈ: {hit.name}");
 
-                    if (data.weaponName == "���� ����")
+                    if (data.weaponName == "번개 발톱")
                     {
                         if (!aEnemy.GetComponent<Dot>())
                             aEnemy.gameObject.AddComponent<Dot>().Initialize(3, 1f, "Electric");
