@@ -86,10 +86,10 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
         {
             if (hit.CompareTag("Enemy"))
             {
-                AEnemyStats aEnemy = hit.GetComponent<AEnemyStats>();
+                AEnemyStats aEnemy = hit.GetComponentInParent<AEnemyStats>();
                 if (aEnemy != null) 
                 {
-                    hit.GetComponent<AEnemyStats>()?.TakeDamage(data.baseDamage);
+                    hit.GetComponentInParent<AEnemyStats>()?.TakeDamage(data.baseDamage);
                     Debug.Log($"적 히트Ʈ: {hit.name}");
 
                     if (data.weaponName == "번개 발톱")
