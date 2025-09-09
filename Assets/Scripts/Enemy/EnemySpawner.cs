@@ -23,7 +23,7 @@ namespace Enemy
 
         private int _enemyCount;
         public int KillCount { get; set; } = -1;
-        private GameObject _wall,_enemies;
+        private GameObject _wall, _enemies;
 
         void Awake()
         {
@@ -55,7 +55,7 @@ namespace Enemy
                 KillCount = 0;
             }
 
-            if (KillCount == _enemyCount)
+            if (KillCount >= _enemyCount)
             {
                 EndStage();
             }
@@ -113,7 +113,7 @@ namespace Enemy
             _enemies = new GameObject();
             _enemies.transform.parent = transform;
             _enemies.name = "Enemies";
-            
+
             Tilemap tilemap = _wall.transform.AddComponent<Tilemap>();
             _wall.transform.AddComponent<TilemapRenderer>().sortingOrder = 1;
             _wall.transform.AddComponent<TilemapCollider2D>();
@@ -123,6 +123,12 @@ namespace Enemy
 
         public void EndStage()
         {
+            UpDownStair stair = GetComponentInChildren<UpDownStair>();
+            if (stair != null)
+            {
+                stair.IsEndStage = true;
+            }
+
             Destroy(transform.Find("Wall").gameObject);
             Destroy(this);
         }

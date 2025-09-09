@@ -49,7 +49,7 @@ namespace Manager
         {
             if (Player != null)
             {
-                Player.GetComponentInChildren<SpriteRenderer>().flipX = !isLeft;
+                Player.transform.Find("Character/Body").GetComponent<SpriteRenderer>().flipX = !isLeft;
                 Player.GetComponentInChildren<Dash>().IsLeftSight = isLeft;
             }
         }

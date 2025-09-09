@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06363acd91298a24b9c28cc7d16e387b
+    m_Address: Assets/Prefab/DownStair.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1aef9b24c0fef5341a2eb54b4dd6f3a6
     m_Address: Assets/Enemy/Prefab/Ghost.prefab
     m_ReadOnly: 0
@@ -47,6 +52,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99cf8cb51eb472c42a6ee3473f0473b3
     m_Address: Assets/Enemy/Prefab/Will-o-Wisp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b04a291d1be3ff6439c61f118335ceeb
+    m_Address: Assets/Prefab/UpStair.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

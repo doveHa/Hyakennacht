@@ -73,6 +73,7 @@
     <Compile Include="Assets\ES_Scripts\Skill_Script\혼돈의 일격\CrackWave2D.cs" />
     <Compile Include="Assets\Scripts\System\AddCoin.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\Stunnable.cs" />
+    <Compile Include="Assets\Scripts\System\UpDownStair.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\독 사과\ThrownProjectile2D.cs" />
     <Compile Include="Assets\Scripts\Manager\AbstractManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\IdleState.cs" />

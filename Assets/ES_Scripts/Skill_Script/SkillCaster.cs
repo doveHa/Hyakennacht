@@ -10,12 +10,12 @@ public class SkillCaster : MonoBehaviour
 {
     public SkillBase[] slots;
 
-    [Header("Actor (½ÇÁ¦ ¸ðµ¨)")]
+    [Header("Actor (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)")]
     public Transform actor;      // Witch/Body
     public Transform firePoint;  // Body/FirePos
 
-    private SpriteRenderer actorSR; // ÀÐ±â¿ë
-    private Dash actorDash;         // ÀÐ±â¿ë
+    private SpriteRenderer actorSR; // ï¿½Ð±ï¿½ï¿½
+    private Dash actorDash;         // ï¿½Ð±ï¿½ï¿½
 
     private Transform facingProxy;
 
@@ -27,7 +27,7 @@ public class SkillCaster : MonoBehaviour
     public FXRouter fx;
 
 
-    //HR: ½½·Ô °ü¸®¿ë
+    //HR: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private int nextSlotIndex = 0;
 
     void Awake()
@@ -42,7 +42,7 @@ public class SkillCaster : MonoBehaviour
 
     IEnumerator RebindNextFrame()
     {
-        yield return null; // ÇÑ ÇÁ·¹ÀÓ ´ë±â ÈÄ, Witch/Body°¡ »ý¼ºµÈ µÚ ´Ù½Ã ¹ÙÀÎµù
+        yield return null; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½, Witch/Bodyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
         EnsureActorRefs(force: true);
         EnsureFacingProxy();
     }
@@ -53,10 +53,10 @@ public class SkillCaster : MonoBehaviour
                        ? GameManager.Manager.Player.transform
                        : transform;
 
-        // Body¸¦ ±íÀÌ °Ë»ö
+        // Bodyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
         if (force || actor == null || actor.name != "Body")
         {
-            actor = FindDeepChildByName(gmPlayer, "Body") ?? gmPlayer;  // ½ÇÆÐ ½Ã Player·Î Æú¹é
+            actor = FindDeepChildByName(gmPlayer, "Body") ?? gmPlayer;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Playerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
 
         if (force || firePoint == null || firePoint.name != "FirePos")
@@ -173,8 +173,8 @@ public class SkillCaster : MonoBehaviour
         return Mathf.Max(0f, gcdEnd - Time.time);
     }
 
-    public float GetGCDTotal() => gcd;           // ÃÑ GCD ±æÀÌ
-    public SkillBase[] GetSlots() => slots;      // UI¿¡¼­ ½½·Ô ¹è¿­ Á¢±Ù¿ë
+    public float GetGCDTotal() => gcd;           // ï¿½ï¿½ GCD ï¿½ï¿½ï¿½ï¿½
+    public SkillBase[] GetSlots() => slots;      // UIï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½Ù¿ï¿½
 
     public System.Action<SkillBase> OnSkillCast;
 
@@ -185,12 +185,12 @@ public class SkillCaster : MonoBehaviour
         s.Execute(ctx);
     }
 
-    //¿øº»
+    //ï¿½ï¿½ï¿½ï¿½
     /*    public void RegisterSkill(int slotIndex, SkillBase skillName)
         {
             if (slots == null || slotIndex < 0 || slotIndex >= slots.Length)
             {
-                Debug.LogWarning("À¯È¿ÇÏÁö ¾ÊÀº ½½·Ô ÀÎµ¦½º");
+                Debug.LogWarning("ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½");
                 return;
             }
 
@@ -199,7 +199,7 @@ public class SkillCaster : MonoBehaviour
 
             if (newSkill == null)
             {
-                Debug.LogWarning($"½ºÅ³ '{skillName}'À» Resources Æú´õ¿¡¼­ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+                Debug.LogWarning($"ï¿½ï¿½Å³ '{skillName}'ï¿½ï¿½ Resources ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
                 return;
             }
 
@@ -209,45 +209,45 @@ public class SkillCaster : MonoBehaviour
             }
 
             slots[slotIndex] = newSkill;
-            Debug.Log($"½½·Ô {slotIndex}¹ø¿¡ ½ºÅ³ {newSkill.name} µî·Ï");
+            Debug.Log($"ï¿½ï¿½ï¿½ï¿½ {slotIndex}ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ {newSkill.name} ï¿½ï¿½ï¿½");
         }*/
 
 
-    //ÀÛµ¿: 0¹ø ½½·Ô¿¡¸¸ ½ºÅ³ µî·ÏµÊ
+    //ï¿½Ûµï¿½: 0ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½Ïµï¿½
     /*    public void RegisterSkill(int slotIndex, SkillBase skill)
         {
             if (slots == null || slotIndex < 0 || slotIndex >= slots.Length)
             {
-                Debug.LogWarning("À¯È¿ÇÏÁö ¾ÊÀº ½½·Ô ÀÎµ¦½º");
+                Debug.LogWarning("ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½");
                 return;
             }
 
             if (skill == null)
             {
-                Debug.LogWarning("RegisterSkill È£Ãâ ½Ã SkillBase°¡ nullÀÔ´Ï´Ù.");
+                Debug.LogWarning("RegisterSkill È£ï¿½ï¿½ ï¿½ï¿½ SkillBaseï¿½ï¿½ nullï¿½Ô´Ï´ï¿½.");
                 return;
             }
 
             slots[slotIndex] = skill;
-            Debug.Log($"½½·Ô {slotIndex}¹ø¿¡ ½ºÅ³ {skill.name} µî·Ï");
+            Debug.Log($"ï¿½ï¿½ï¿½ï¿½ {slotIndex}ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ {skill.name} ï¿½ï¿½ï¿½");
         }*/
 
     public void RegisterNextSkill(SkillBase skill)
     {
         if (slots == null || nextSlotIndex < 0 || nextSlotIndex >= slots.Length)
         {
-            Debug.LogWarning("´õ ÀÌ»ó ½½·ÔÀÌ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
 
         if (skill == null)
         {
-            Debug.LogWarning("RegisterNextSkill È£Ãâ ½Ã SkillBase°¡ nullÀÔ´Ï´Ù.");
+            Debug.LogWarning("RegisterNextSkill È£ï¿½ï¿½ ï¿½ï¿½ SkillBaseï¿½ï¿½ nullï¿½Ô´Ï´ï¿½.");
             return;
         }
 
         slots[nextSlotIndex] = skill;
-        Debug.Log($"½½·Ô {nextSlotIndex}¹ø¿¡ ½ºÅ³ {skill.name} µî·Ï");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ {nextSlotIndex}ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ {skill.name} ï¿½ï¿½ï¿½");
 
         nextSlotIndex++;
     }

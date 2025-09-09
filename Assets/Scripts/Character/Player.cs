@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private GameObject player;
 
     void Awake()
-    {  
+    {
         DontDestroyOnLoad(this);
         //Instantiate(playerPrefab, transform).transform.parent = transform;
         player = Instantiate(playerPrefab, transform);
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         Target = transform.Find("Character/Shadow");
         Coins = 0;
     }
-    
+
     void Start()
     {
         weaponHandler = player.GetComponent<WeaponHandler>();
@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("���� �ʱ�ȭ ����: �ڵ鷯 �Ǵ� ��ġ ����");
         }
+
         weaponHandler.EquipWeapon(startingWeapon);
     }
 
@@ -54,18 +55,20 @@ public class Player : MonoBehaviour
                 flippable.SetFacingDirection(isLeft);
             }
         }
-
+/*
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("���� ��� �õ�");
             weaponHandler.UseWeapon();
         }
+ */
     }
 
     public void Hit()
     {
         SystemManager.Manager.HpControl.MinusHp();
     }
+
     public void PlayerGetCoin()
     {
         Coins++;
@@ -79,6 +82,7 @@ public class Player : MonoBehaviour
             Coins -= amount;
             return true;
         }
+
         return false;
     }
 }
