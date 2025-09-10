@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Manager;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
@@ -14,12 +12,10 @@ namespace Enemy
     {
         private Tilemap _stage;
         private List<GameObject> _enemyObjects;
-        private Bounds _bounds;
 
         private GameObject[] _objects;
 
-        public bool IsSpawn;
-        private bool _isStageStart = false;
+        private bool _isSpawn;
 
         private int _enemyCount;
         public int KillCount { get; set; } = -1;
@@ -33,25 +29,25 @@ namespace Enemy
         void Start()
         {
             _stage.CompressBounds();
-            _bounds = _stage.localBounds;
 
             _enemyObjects = new List<GameObject>();
 
-            foreach (GameObject enemy in EnemyPrefabs.Instance.EnemyPrefab)
+            string[] nameArray = StageManager.IsYokai ? Constant.EnemyName.Yokaimap : Constant.EnemyName.Witchmap;
+
+            foreach (string enemy in nameArray)
             {
-                _enemyObjects.Add(enemy);
+                _enemyObjects.Add(AddressableManager.Manager.GetPrefabByName(enemy));
             }
         }
 
-        async void Update()
+        void Update()
         {
             Vector3Int playerPoint = _stage.WorldToCell(GameManager.Manager.Player.transform.position);
-            if (!IsSpawn && _stage.HasTile(playerPoint))
+            if (!_isSpawn && _stage.HasTile(playerPoint))
             {
-                IsSpawn = true;
-                await StartStage();
-                await SpawnEnemies();
-                _isStageStart = true;
+                _isSpawn = true;
+                StartStage();
+                SpawnEnemies();
                 KillCount = 0;
             }
 
@@ -61,7 +57,7 @@ namespace Enemy
             }
         }
 
-        private async Task SpawnEnemies()
+        private void SpawnEnemies()
         {
             Random rnd = new Random();
 
@@ -74,7 +70,7 @@ namespace Enemy
             {
                 int rndEnemy = rnd.Next(_enemyObjects.Count);
                 Vector3 spawnPos = GetUniqueRandomPosition(_stage, usedPositions);
-                _objects[i] = await SpawnEnemy(_enemyObjects[rndEnemy], spawnPos);
+                _objects[i] = SpawnEnemy(_enemyObjects[rndEnemy], spawnPos);
                 _objects[i].transform.parent = _enemies.transform;
                 _enemyCount++;
             }
@@ -98,14 +94,14 @@ namespace Enemy
             return tilemap.CellToLocal(randomPoint);
         }
 
-        private async Task<GameObject> SpawnEnemy(GameObject enemy, Vector3 position)
+        private GameObject SpawnEnemy(GameObject enemy, Vector3 position)
         {
             GameObject mob = Instantiate(enemy, position, Quaternion.identity);
             mob.GetComponent<EnemyController>().Stage = _stage;
             return mob;
         }
 
-        public async Task StartStage()
+        public void StartStage()
         {
             _wall = new GameObject();
             _wall.transform.parent = transform;

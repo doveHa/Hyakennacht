@@ -33,5 +33,20 @@
     "Name": "Boss1",
     "Speed": 0.5,
     "Health": 40
+  },
+  {
+    "Name": "Boss2",
+    "Speed": 0.5,
+    "Health": 40
+  },
+  {
+    "Name": "MiddleBoss",
+    "Speed": 0.5,
+    "Health": 40
+  },
+  {
+    "Name": "WitchBoss",
+    "Speed": 0.5,
+    "Health": 40
   }
 ]

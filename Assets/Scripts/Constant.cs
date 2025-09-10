@@ -39,9 +39,43 @@ public static class Constant
         public static string YOKAILOBBY = "YokaiLobbyScene(Temp)";
     }
 
+    public static class Stage
+    {
+        public static int MIDDLE_BOSS = 5;
+        public static int FINAL_BOSS = 10;
+    }
+
     public static string[] PREFAB_PATHS =
     {
         "Assets/Prefab/DownStair.prefab",
-        "Assets/Prefab/UpStair.prefab"
+        "Assets/Prefab/UpStair.prefab",
+        "Assets/Enemy/Prefab/Boss1.prefab",
+        "Assets/Enemy/Prefab/Boss2.prefab",
+        "Assets/Enemy/Prefab/Ghost.prefab",
+        "Assets/Enemy/Prefab/Golem.prefab",
+        "Assets/Enemy/Prefab/Kappa.prefab",
+        "Assets/Enemy/Prefab/MiddleBoss.prefab",
+        "Assets/Enemy/Prefab/Slime.prefab",
+        "Assets/Enemy/Prefab/Straw.prefab",
+        "Assets/Enemy/Prefab/Will-o-Wisp.prefab",
+        "Assets/Enemy/Prefab/WitchBoss.prefab"
     };
+
+    public static class EnemyName
+    {
+        public static string[] Yokaimap =
+        {
+            "Ghost", "Slime", "Golem"
+        };
+
+        public static string[] Witchmap =
+        {
+            "Will-o-Wisp", "Kappa", "Straw"
+        };
+
+        public static string YOKAI_MIDDLE_BOSS = "Boss2";
+        public static string YOKAI_FINAL_BOSS = "WitchBoss";
+        public static string WITCH_MIDDLE_BOSS = "Boss1";
+        public static string WITCH_FINAL_BOSS = "MiddleBoss";
+    }
 }
