@@ -10,15 +10,28 @@ public class Swinger : MonoBehaviour
     private Quaternion originalRotation;
     [SerializeField] private Vector2 spawnOffset = Vector2.zero;
 
+    private Animator _animator;
+
     private void Awake()
     {
         originalRotation = transform.localRotation;
+        if (TryGetComponent<Animator>(out Animator animator))
+        {
+            _animator = animator;
+        }
     }
 
     public void Swing()
     {
-        StopAllCoroutines();
-        StartCoroutine(SwingRoutine());
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Attack");
+        }
+        else
+        {
+            StopAllCoroutines();
+            StartCoroutine(SwingRoutine());
+        }
     }
 
     private IEnumerator SwingRoutine()

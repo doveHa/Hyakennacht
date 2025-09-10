@@ -29,26 +29,15 @@ public class Bell : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             hasHit = true;
-
+            StopAllCoroutines();
+            
+            Bomb();
             AEnemyStats aEnemy = other.GetComponentInParent<AEnemyStats>();
             if (aEnemy != null)
             {
                 aEnemy.TakeDamage(damage);
             }
 
-            if (anim != null)
-                anim.SetTrigger("Hit");
-
-            transform.localScale *= 2f;
-
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector2.zero;
-                rb.bodyType = RigidbodyType2D.Kinematic;
-                rb.simulated = false;
-            }
-
-            StartCoroutine(DestroyAfterDelay());
         }
     }
 
@@ -80,5 +69,30 @@ public class Bell : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x = Mathf.Abs(scale.x) * (xDir < 0 ? -1 : 1);
         transform.localScale = scale;
+    }
+
+    private IEnumerator NoHit()
+    {
+        yield return new WaitForSeconds(0.65f);
+        Bomb();
+    }
+
+    private void Bomb()
+    {
+        anim.SetTrigger("Hit");
+        transform.localScale *= 2f;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.simulated = false;
+        }
+        StartCoroutine(DestroyAfterDelay());  
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(NoHit());
     }
 }
