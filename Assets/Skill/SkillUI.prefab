@@ -181,9 +181,9 @@ MonoBehaviour:
   slotPrefab: {fileID: 6203058307366471801, guid: dbc3061e16237a64f90364a445de0d87, type: 3}
   container: {fileID: 6957585102178489730}
   keyLabels:
-  - F
-  - G
-  - H
-  - J
   - K
+  - L
+  - ':'
+  - '"'
+  - Enter
   emptyIcon: {fileID: 0}
