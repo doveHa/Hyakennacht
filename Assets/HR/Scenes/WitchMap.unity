@@ -749,6 +749,10 @@ MonoBehaviour:
   - {fileID: 3637678046420177704, guid: 1775649717ff87c4eace2822a4c645c0, type: 3}
   - {fileID: 4742936697191783173, guid: 658840571885c564bad5190fafcbe55e, type: 3}
   maxItemCount: 30
+  largeRoomCount: 8
+  normalRoomCount: 7
+  shopRoomIndex: 6
+  tileDataByStage: []
   shopPrefab: {fileID: 6428129230551053248, guid: 4723bcdc5b3b0a74b9032b63415ee7d7, type: 3}
 --- !u!4 &932916884
 Transform:
@@ -1007,6 +1011,10 @@ MonoBehaviour:
   - {fileID: 2678927989458112558, guid: d70648995a9f4b2488a2a0d40b1fe9a1, type: 3}
   - {fileID: 3861259102929350419, guid: ea51817384b13814fa23527c54060111, type: 3}
   maxItemCount: 10
+  largeRoomCount: 8
+  normalRoomCount: 7
+  shopRoomIndex: 7
+  tileDataByStage: []
   shopPrefab: {fileID: 6428129230551053248, guid: 4d5ad57b1103f5d4a848fd18e53fd42e, type: 3}
 --- !u!4 &1077984872
 Transform:

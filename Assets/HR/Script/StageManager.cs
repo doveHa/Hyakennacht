@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public static class StageManager
 {
@@ -9,6 +10,11 @@ public static class StageManager
 
     public static bool IsYokai { get; private set; } = true;
 
+    //게임의 스테이지 관련 설정을 중앙에서 관리
+    public const int MaxStage = 6;
+    public static readonly List<int> BossStages = new List<int> { 3, 6 };
+    public static readonly List<int> SkillSelectStages = new List<int> { 2, 5 };
+    public static readonly List<int> ShopStages = new List<int> { 2, 5 };
 
     public static void AdvanceStage(bool isStairUp)
     {
@@ -44,7 +50,8 @@ public static class StageManager
 
     public static bool IsBossStage()
     {
-        return CurrentStage == 5 || CurrentStage == 10; //|| CurrentStage == 15
+        //return CurrentStage == 5 || CurrentStage == 10; //|| CurrentStage == 15
+        return BossStages.Contains(CurrentStage);
     }
 
     public static string GetMapScene()
@@ -63,10 +70,16 @@ public static class StageManager
         //return "FactionSelectScene";
         return IsYokai ? "YokaiLobbyScene(Temp)" : "WitchLobbyScene(Temp)";
     }
+
+    //추가
+    public static bool IsSkillSelectStage()
+    {
+        return SkillSelectStages.Contains(CurrentStage);
+    }
+
+    public static bool IsShopStage()
+    {
+        return ShopStages.Contains(CurrentStage);
+    }
+
 }
-/*
-public enum MapTheme
-{
-    Yokai,
-    Witch
-}*/

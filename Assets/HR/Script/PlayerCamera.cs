@@ -7,7 +7,7 @@ public class PlayerCamera : MonoBehaviour
 {
     public Transform player; // �÷��̾� Transform
     public Vector3 offset = new Vector3(0, 5, -10);
-    public MapManager mapManager; // Inspector���� �Ҵ�
+    //public MapManager mapManager; // Inspector���� �Ҵ�
 
     void Awake()
     {
@@ -42,11 +42,11 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+/*        if (Input.GetKeyDown(KeyCode.E))
         {
             //TryInteractWithStairs();
             MapUIManager.Instance.OnStageEnd();
-        }
+        }*/ // ??
     }
 
     void FindPlayer()
@@ -59,6 +59,7 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
+/* Hr: 이건 내가 주석처리
     private bool IsOnStairs()
     {
         if (player == null || mapManager == null) return false;
@@ -68,7 +69,7 @@ public class PlayerCamera : MonoBehaviour
 
         TileBase currentTile = mapManager.groundTilemap.GetTile(tilePos);
         return (currentTile == mapManager.stairUpTile || currentTile == mapManager.stairDownTile);
-    }
+    }*/
 
     private Vector3 GetPlayerBottomPosition()
     {

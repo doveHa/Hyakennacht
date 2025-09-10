@@ -39,6 +39,10 @@ public class MapUIManager : MonoBehaviour
     [Header("Skill Select")] [SerializeField]
     private GameObject skillSelectPanel;
 
+    //스킬 선택 스테이지를 관리할 리스트 변수 추가
+    [Header("Dynamic Settings")]
+    public List<int> skillSelectStages = new List<int> { 4, 9 };
+
     [SerializeField] private Button SelectCard1;
     [SerializeField] private Button SelectCard2;
     [SerializeField] private Button SelectCard3;
@@ -55,7 +59,8 @@ public class MapUIManager : MonoBehaviour
     [SerializeField] private Text cardDesc3;
     [SerializeField] private Image cardIcon3;
 
-    [Header("GameEnd")] [SerializeField] private GameObject gameEndPanel;
+    [Header("GameEnd")] 
+    [SerializeField] private GameObject gameEndPanel;
     [SerializeField] private Button EndBtn;
 
     [Header("Skill Assets")] [SerializeField]
@@ -68,7 +73,7 @@ public class MapUIManager : MonoBehaviour
     public SkillData SelectedSkill { get; private set; }
     public bool AfterSkillSelect = false;
 
-    private int totalStage = 10; //15 -> 10
+    private int totalStage; //15 -> 10 -> awake에서 6으로 변경
 
     private float stageStartTime;
     public int KilledEnemies { get; private set; }
@@ -79,6 +84,8 @@ public class MapUIManager : MonoBehaviour
 
     void Awake()
     {
+        totalStage = StageManager.MaxStage;
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -132,17 +139,26 @@ public class MapUIManager : MonoBehaviour
         }
 
         Time.timeScale = 1f;
-/*
+
         // 카메라에서 TryInteractWithStairs 호출
-        PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
-        if (cam != null)
+        /*        PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
+                if (cam != null)
+                {
+                    cam.TryInteractWithStairs();
+                }
+                else
+                {
+                    Debug.LogWarning("PlayerCamera not found!");
+                }*/
+
+        if (player != null)
         {
-            //cam.TryInteractWithStairs();
+            player.TryInteractWithStairs();
         }
         else
         {
-            Debug.LogWarning("PlayerCamera not found!");
-        }*/
+            Debug.LogWarning("Player not found!");
+        }
     }
 
     public void OnCardClick()
@@ -200,23 +216,19 @@ public class MapUIManager : MonoBehaviour
         // 특정 스테이지에서만 스킬 선택
 
 
-        if (StageManager.CurrentStage == 4 ||
-            StageManager.CurrentStage == 9) //|| MapManager.Instance.currentStage == 14
+        // StageManager의 IsSkillSelectStage()를 사용하여 스킬 선택 조건 확인
+        if (StageManager.IsSkillSelectStage())
         {
-            //ShowSkillSelectPanel();
-            //AfterSkillSelect = true;
-            //return; // 스킬 선택 끝날 때까지 stage clear 패널은 안 열림
-            if (!skillSelectPanel.activeSelf)
-            {
-                ShowSkillSelectPanel();
-            }
+            // 스킬 선택 스테이지일 경우, 스킬 선택 패널을 보여줍니다.
+            ShowSkillSelectPanel();
+            // 스킬 선택이 끝난 후 statsPanel이 활성화됩니다. (OnCardSelected 함수 참고)
         }
         else
         {
-            statsPanel.SetActive(true); // 통계창 열기
+            // 스킬 선택 스테이지가 아닐 경우, statsPanel을 보여줍니다.
+            // 이는 일반 스테이지 클리어 or 플레이어 사망 시에도 해당됩니다.
+            statsPanel.SetActive(true);
         }
-
-        //statsPanel.SetActive(true); // 통계창 열기
 
         MoveFlag(StageManager.CurrentStage);
     }
