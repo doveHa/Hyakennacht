@@ -50,15 +50,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefabs:
   - {fileID: 8914758360542796921, guid: e29af6462b12caa459d37d7b8c4ee754, type: 3}
-  - {fileID: 7536999885902252784, guid: 6de925961274fdf4887a7148abdedfcd, type: 3}
   - {fileID: 2873882223903997513, guid: 22b52b64b8718374b9f96e735b0e5e9a, type: 3}
   - {fileID: 9025183269850006190, guid: 0e69516390133c54d9ab52578f6d1329, type: 3}
   - {fileID: 175894421978928194, guid: 084523ccc98fe5e4e8761ed49aae6169, type: 3}
   - {fileID: 8697287533329720088, guid: 9108f1a90f17a0e4fb172ed5750f7435, type: 3}
   - {fileID: 1592574143970570617, guid: 9ee0acf0d8cbed1498466c68810b507f, type: 3}
-  - {fileID: 9208696594913934517, guid: a10306556b11de54c821fe4525d329fc, type: 3}
-  - {fileID: 5679773163421190857, guid: 7a8a2269c16b565438cd929e0575e4ed, type: 3}
   - {fileID: 731215106427599669, guid: 1a81caa0fce69f9479d87e1ee58152a3, type: 3}
+  - {fileID: 2229748209186494281, guid: b985950265a7bf3468e895b3bd0d0b82, type: 3}
+  - {fileID: 6511232671806082310, guid: b3ec490bb9c97ad4cab82bc2c82e354e, type: 3}
   stallTransforms:
   - {fileID: 4809750369868454450}
   - {fileID: 2271625278932127590}

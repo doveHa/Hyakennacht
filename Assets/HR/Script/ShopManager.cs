@@ -100,6 +100,13 @@ for (int i = 0; i < stallCount; i++)
                 BuyWeapon(i);
             }
         }
+
+        
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            for(int i = 0; i < 20; i++)
+                GameManager.Manager.PlayerScript.PlayerGetCoin();
+        }
     }
 
     private void BuyWeapon(int index)
