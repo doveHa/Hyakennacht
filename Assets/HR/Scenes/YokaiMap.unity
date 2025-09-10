@@ -1324,12 +1324,7 @@ SceneRoots:
   - {fileID: 1420652616}
   - {fileID: 256121716}
   - {fileID: 648626225}
-<<<<<<< HEAD
-<<<<<<< HEAD
   - {fileID: 560789697}
   - {fileID: 392033812}
-=======
->>>>>>> 18107086b08471f1a4de0e44adab7b430bf5feb3
-=======
   - {fileID: 560789697}
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
+parent of 1810708 (Addressable로 load 방식 변경)

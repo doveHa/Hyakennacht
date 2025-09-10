@@ -871,10 +871,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a5c1826d813afb4391f3459967f1303, type: 3}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
+parent of 1810708 (Addressable로 load 방식 변경)
 --- !u!1 &1019065555
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +920,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1001 &1042243514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1020,11 +1016,8 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 68545cff97f784041bab76b7ddb13554, type: 3}
-=======
->>>>>>> 18107086b08471f1a4de0e44adab7b430bf5feb3
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
+  m_SourcePrefab: {fileID: 100100000, guid: 68545cff97f784041bab76b7ddb13554, type: 3} 18107086b08471f1a4de0e44adab7b430bf5feb3
+parent of 1810708 (Addressable로 load 방식 변경)
 --- !u!1 &1074618817
 GameObject:
   m_ObjectHideFlags: 0

@@ -288,10 +288,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6310368053905249302, guid: 4a5c1826d813afb4391f3459967f1303, type: 3}
   m_PrefabInstance: {fileID: 329252000}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
+parent of 1810708 (Addressable로 load 방식 변경)
 --- !u!114 &426336008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,10 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1312fd00c645c2989429a256030dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  _caster: {fileID: 0}
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
+parent of 1810708 (Addressable로 load 방식 변경)
 --- !u!114 &452519656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,11 +996,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameClearPanel: {fileID: 329252001}
   bossSpawnPoint: {fileID: 203470169}
-<<<<<<< HEAD
   nextRoom: {fileID: 0}
   bossHpBar: {fileID: 0}
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
+parent of 1810708 (Addressable로 load 방식 변경)
 --- !u!4 &1123358341
 Transform:
   m_ObjectHideFlags: 0
@@ -7403,19 +7395,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
->>>>>>> 18107086b08471f1a4de0e44adab7b430bf5feb3
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
   - {fileID: 976072233}
   - {fileID: 1123358341}
   - {fileID: 1940003057}
@@ -7426,16 +7409,3 @@ SceneRoots:
   - {fileID: 329252000}
   - {fileID: 1390260731}
   - {fileID: 2101618878}
-<<<<<<< HEAD
-  - {fileID: 1813057515}
-=======
-  - {fileID: 566983394}
-  - {fileID: 1118514028}
-  - {fileID: 1049789817}
-  - {fileID: 2086671535}
-  - {fileID: 1224762972}
-  - {fileID: 1047074379}
-  - {fileID: 1521315501}
->>>>>>> 18107086b08471f1a4de0e44adab7b430bf5feb3
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
