@@ -41,8 +41,10 @@ public static class Constant
 
     public static class Stage
     {
-        public static int MIDDLE_BOSS = 5;
-        public static int FINAL_BOSS = 10;
+        //public static int MIDDLE_BOSS = 5;
+        //public static int FINAL_BOSS = 10;
+        public static int MIDDLE_BOSS = 3;
+        public static int FINAL_BOSS = 6;
     }
 
     public static string[] PREFAB_PATHS =

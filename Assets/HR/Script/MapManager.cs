@@ -36,6 +36,26 @@ public class MapManager : MonoBehaviour
     [Header("Item Spawn")] public GameObject[] itemPrefabs;
     public int maxItemCount = 10;
 
+    [Header("Dynamic Settings")]
+    [SerializeField] private int largeRoomCount = 8; // 방 개수가 많은 스테이지의 방 수
+    [SerializeField] private int normalRoomCount = 7; // 일반 스테이지의 방 수
+    [SerializeField] private int shopRoomIndex = 6;  // 상점 방이 생성될 rooms 리스트 인덱스
+
+    //[Header("Tile Settings")]
+    //[SerializeField] private int minTileStage = 2; // 타일 확률 계산 시작 스테이지
+    //[SerializeField] private int maxTileStage = 14; // 타일 확률 계산 끝 스테이지
+
+    [System.Serializable]
+    public class TileStageData
+    {
+        public int endStage; // 해당 데이터가 적용되는 마지막 스테이지
+        public int extraTileIndexEnd; // 추가 타일 인덱스 범위의 마지막
+        public float tileRate; // 추가 타일이 나올 확률
+    }
+
+    [Header("Tile Settings")]
+    public List<TileStageData> tileDataByStage;
+
     public GameObject shopPrefab;
     private GameObject shopInstance;
 
@@ -100,13 +120,14 @@ public class MapManager : MonoBehaviour
 
     void GenerateMap()
     {
-        if (StageManager.CurrentStage == 4 || StageManager.CurrentStage == 9 || StageManager.CurrentStage == 14)
+        // StageManager의 보스 스테이지 정보를 사용하여 방 개수 설정
+        if (StageManager.IsBossStage())
         {
-            roomCount = 8;
+            roomCount = largeRoomCount;
         }
         else
         {
-            roomCount = 7;
+            roomCount = normalRoomCount;
         }
 
         Dictionary<Vector2Int, Room> roomDict = new Dictionary<Vector2Int, Room>();
@@ -180,8 +201,7 @@ public class MapManager : MonoBehaviour
 
         PlaceStairs();
 
-        if (shopPrefab != null &&
-            (StageManager.CurrentStage == 4 || StageManager.CurrentStage == 9)) // || currentStage == 14
+        if (shopPrefab != null && StageManager.IsShopStage())
         {
             shopInstance = PlaceShop();
         }
@@ -249,37 +269,34 @@ public class MapManager : MonoBehaviour
 
     TileBase GetRandomGroundTile()
     {
-        float minRate = 0.01f;
-        float maxRate = 0.05f;
-        float rate = Mathf.Lerp(minRate, maxRate, Mathf.InverseLerp(2, 14, StageManager.CurrentStage));
-
-        int extraStart = 2;
+        float rate = 0f;
         int extraEnd = 1;
 
-        if (StageManager.CurrentStage >= 2 && StageManager.CurrentStage <= 3)
-            extraEnd = 2;
-        else if (StageManager.CurrentStage >= 4 && StageManager.CurrentStage <= 5)
-            extraEnd = 3;
-        else if (StageManager.CurrentStage >= 6 && StageManager.CurrentStage <= 7)
-            extraEnd = 4;
-        else if (StageManager.CurrentStage >= 8 && StageManager.CurrentStage <= 9)
-            extraEnd = 5;
-        else if (StageManager.CurrentStage >= 10 && StageManager.CurrentStage <= 11)
-            extraEnd = 6;
-        else if (StageManager.CurrentStage >= 12 && StageManager.CurrentStage <= 13)
-            extraEnd = 7;
-        else if (StageManager.CurrentStage == 14)
-            extraEnd = 8;
-        else if (StageManager.CurrentStage == 15)
-            extraEnd = 9;
+        // 현재 스테이지에 맞는 타일 데이터를 찾습니다.
+        foreach (var stageData in tileDataByStage)
+        {
+            if (StageManager.CurrentStage <= stageData.endStage)
+            {
+                rate = stageData.tileRate;
+                extraEnd = stageData.extraTileIndexEnd;
+                break; // 데이터를 찾았으니 루프를 빠져나갑니다.
+            }
+        }
+
+        // 타일 데이터가 설정되지 않았을 경우를 위한 안전장치
+        if (rate == 0f)
+        {
+            rate = 0.01f;
+            extraEnd = 1;
+        }
 
         List<int> extraTileIndices = new List<int>();
-        for (int i = extraStart; i <= extraEnd && i < groundTilesByStage.Length; i++)
+        for (int i = 2; i <= extraEnd && i < groundTilesByStage.Length; i++)
             extraTileIndices.Add(i);
 
         float defaultTileRate = 1f - (rate * extraTileIndices.Count);
         List<float> tileRates = new List<float>();
-        tileRates.Add(defaultTileRate); // 0   Ÿ  
+        tileRates.Add(defaultTileRate); // 기본 타일 확률
 
         for (int i = 1; i < groundTilesByStage.Length; i++)
         {
@@ -330,6 +347,7 @@ public class MapManager : MonoBehaviour
 
         Vector3Int upPos = upRoomTiles[Random.Range(1, upRoomTiles.Count - 1)];
         Vector3Int downPos = downRoomTiles[Random.Range(1, downRoomTiles.Count - 1)];
+
         Vector3 offset = new Vector3(0.5f, 0.5f, 0);
         Instantiate(AddressableManager.Manager.GetPrefabByName("UpStair"), upPos + offset, Quaternion.identity)
             .transform.parent = upRoom.roomObject.transform;
@@ -541,8 +559,13 @@ public class MapManager : MonoBehaviour
 
     GameObject PlaceShop()
     {
-        if (rooms.Count < 8) return null;
-        Room shopRoom = rooms[7]; 
+        if (shopRoomIndex < 0 || shopRoomIndex >= rooms.Count)
+        {
+            Debug.LogError($"Shop room index is out of range! Index: {shopRoomIndex}, Room Count: {rooms.Count}");
+            return null;
+        }
+
+        Room shopRoom = rooms[shopRoomIndex];
         Vector3 avgWorldPos = Vector3.zero;
         foreach (var tile in shopRoom.tiles)
         {
