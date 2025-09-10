@@ -58,7 +58,8 @@ public static class Constant
         "Assets/Enemy/Prefab/Slime.prefab",
         "Assets/Enemy/Prefab/Straw.prefab",
         "Assets/Enemy/Prefab/Will-o-Wisp.prefab",
-        "Assets/Enemy/Prefab/WitchBoss.prefab"
+        "Assets/Enemy/Prefab/WitchBoss.prefab",
+        "Assets/Prefab/Coin.prefab"
     };
 
     public static class EnemyName

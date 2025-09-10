@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Manager;
+using UnityEngine;
 
 namespace Enemy
 {
@@ -26,12 +27,16 @@ namespace Enemy
             GetComponentInParent<EnemySpawner>().KillCount++;
             Destroy(GetComponentInChildren<PlayerRecognize>());
             Destroy(GetComponent<EnemyController>());
+            foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
+            {
+                renderer.sortingOrder = 1;
+            }
             foreach (Collider2D cd in GetComponentsInChildren<Collider2D>())
             {
                 Destroy(cd);
             }
-
             Destroy(GetComponent<AEnemyStats>());
+            Instantiate(AddressableManager.Manager.GetPrefabByName("Coin"), transform.position, Quaternion.identity);
         }
     }
 }

@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca4f8ff792f55284f933ad6ac60f52d4
+    m_Address: Assets/Prefab/Coin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dade74264cc553543bd32fc0d4bb74a3
     m_Address: Assets/Enemy/Prefab/WitchBoss.prefab
     m_ReadOnly: 0
