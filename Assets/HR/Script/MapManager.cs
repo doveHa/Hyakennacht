@@ -20,7 +20,7 @@ public class MapManager : MonoBehaviour
     public TileBase wallTileHorizontal;
     public TileBase wallTileVertical;
 
-    [Header("Stage Settings")] public int currentStage = 0; //              
+    //[Header("Stage Settings")] public int currentStage = 0;
 
     [Header("Room Settings")] public int roomCount = 7;
     public int roomWidth = 13;
@@ -36,19 +36,13 @@ public class MapManager : MonoBehaviour
     [Header("Item Spawn")] public GameObject[] itemPrefabs;
     public int maxItemCount = 10;
 
-    public GameObject shopPrefab; //  ν    Ϳ                 Ҵ 
-    private GameObject shopInstance; //       ʿ                    Ʈ     
+    public GameObject shopPrefab;
+    private GameObject shopInstance;
 
-    //      ٴ  Ÿ  
     private List<Vector3Int> groundTiles = new List<Vector3Int>();
 
-    const int maxStage = 10; //15 -> 10       
-    const int specialStageCount = 2; // Ư              
-
-    private List<GameObject> roomGameObjects = new List<GameObject>();
-
     private Room _startRoom;
-    //               
+
     [System.Serializable]
     public class Room
     {
@@ -88,9 +82,6 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        currentStage = StageManager.CurrentStage;
-        if (currentStage < 1) currentStage = 1;
         GenerateMap();
     }
 
@@ -109,17 +100,7 @@ public class MapManager : MonoBehaviour
 
     void GenerateMap()
     {
-        foreach (Room room in rooms)
-        {
-            Destroy(room.roomObject);
-        }
-        
-        groundTilemap.ClearAllTiles();
-        wallTilemap.ClearAllTiles();
-        groundTiles.Clear();
-        rooms.Clear();
-
-        if (currentStage == 4 || currentStage == 9 || currentStage == 14)
+        if (StageManager.CurrentStage == 4 || StageManager.CurrentStage == 9 || StageManager.CurrentStage == 14)
         {
             roomCount = 8;
         }
@@ -142,7 +123,7 @@ public class MapManager : MonoBehaviour
         roomDict[startPos] = _startRoom;
         rooms.Add(_startRoom);
         occupied.Add(startPos);
-        
+
         GameManager.Manager.Player.transform.position = _startRoom.roomObject.transform.position;
 
         while (rooms.Count < roomCount && toExplore.Count > 0)
@@ -199,7 +180,8 @@ public class MapManager : MonoBehaviour
 
         PlaceStairs();
 
-        if (shopPrefab != null && (currentStage == 4 || currentStage == 9)) // || currentStage == 14
+        if (shopPrefab != null &&
+            (StageManager.CurrentStage == 4 || StageManager.CurrentStage == 9)) // || currentStage == 14
         {
             shopInstance = PlaceShop();
         }
@@ -269,26 +251,26 @@ public class MapManager : MonoBehaviour
     {
         float minRate = 0.01f;
         float maxRate = 0.05f;
-        float rate = Mathf.Lerp(minRate, maxRate, Mathf.InverseLerp(2, 14, currentStage));
+        float rate = Mathf.Lerp(minRate, maxRate, Mathf.InverseLerp(2, 14, StageManager.CurrentStage));
 
         int extraStart = 2;
-        int extraEnd = 1; //  ⺻  : ù  °             ߰  Ÿ       
+        int extraEnd = 1;
 
-        if (currentStage >= 2 && currentStage <= 3)
+        if (StageManager.CurrentStage >= 2 && StageManager.CurrentStage <= 3)
             extraEnd = 2;
-        else if (currentStage >= 4 && currentStage <= 5)
+        else if (StageManager.CurrentStage >= 4 && StageManager.CurrentStage <= 5)
             extraEnd = 3;
-        else if (currentStage >= 6 && currentStage <= 7)
+        else if (StageManager.CurrentStage >= 6 && StageManager.CurrentStage <= 7)
             extraEnd = 4;
-        else if (currentStage >= 8 && currentStage <= 9)
+        else if (StageManager.CurrentStage >= 8 && StageManager.CurrentStage <= 9)
             extraEnd = 5;
-        else if (currentStage >= 10 && currentStage <= 11)
+        else if (StageManager.CurrentStage >= 10 && StageManager.CurrentStage <= 11)
             extraEnd = 6;
-        else if (currentStage >= 12 && currentStage <= 13)
+        else if (StageManager.CurrentStage >= 12 && StageManager.CurrentStage <= 13)
             extraEnd = 7;
-        else if (currentStage == 14)
+        else if (StageManager.CurrentStage == 14)
             extraEnd = 8;
-        else if (currentStage == 15)
+        else if (StageManager.CurrentStage == 15)
             extraEnd = 9;
 
         List<int> extraTileIndices = new List<int>();
@@ -319,25 +301,17 @@ public class MapManager : MonoBehaviour
         return groundTilesByStage[0];
     }
 
-    public void NextStage(bool isStairUp)
+    public static void NextStage(bool isStairUp)
     {
-        ClearItems();
-
         StageManager.AdvanceStage(isStairUp);
-        currentStage = StageManager.CurrentStage;
-
-
         if (StageManager.IsBossStage())
         {
             string bossScene = StageManager.GetBossScene();
-            Debug.Log("Boss Stage: " + currentStage + " -> Loading: " + bossScene);
             SceneManager.LoadScene(bossScene);
             return;
         }
 
-        string mapScene = StageManager.GetMapScene();
-        Debug.Log("Map Stage: " + currentStage + " -> Loading: " + mapScene);
-        GenerateMap(); //         
+        SceneManager.LoadScene(StageManager.GetMapScene());
     }
 
     void PlaceStairs()
@@ -348,7 +322,7 @@ public class MapManager : MonoBehaviour
         var availableRooms = shuffledRooms.Where(r => r != _startRoom).ToList();
         Room upRoom = availableRooms[0];
         Room downRoom = availableRooms[1];
-        
+
         var upRoomTiles = upRoom.tiles.Where(t => IsInsideRoom(t)).ToList();
         var downRoomTiles = downRoom.tiles.Where(t => IsInsideRoom(t)).ToList();
 
@@ -357,12 +331,10 @@ public class MapManager : MonoBehaviour
         Vector3Int upPos = upRoomTiles[Random.Range(1, upRoomTiles.Count - 1)];
         Vector3Int downPos = downRoomTiles[Random.Range(1, downRoomTiles.Count - 1)];
         Vector3 offset = new Vector3(0.5f, 0.5f, 0);
-        Instantiate(AddressableManager.Manager.GetPrefabByName("UpStair"), upPos + offset, Quaternion.identity).transform.parent = upRoom.roomObject.transform;
-        Instantiate(AddressableManager.Manager.GetPrefabByName("DownStair"), downPos + offset, Quaternion.identity).transform.parent = downRoom.roomObject.transform;
-        /*
-        PlaceStairArea(upPos, stairUpTile);
-        PlaceStairArea(downPos, stairDownTile);
-        */
+        Instantiate(AddressableManager.Manager.GetPrefabByName("UpStair"), upPos + offset, Quaternion.identity)
+            .transform.parent = upRoom.roomObject.transform;
+        Instantiate(AddressableManager.Manager.GetPrefabByName("DownStair"), downPos + offset, Quaternion.identity)
+            .transform.parent = downRoom.roomObject.transform;
     }
 
     bool IsInsideRoom(Vector3Int tilePos)
@@ -375,7 +347,7 @@ public class MapManager : MonoBehaviour
             new Vector3Int(0, -1, 0)
         };
 
-        int tileCount = Mathf.Clamp(currentStage + 1, 1, groundTilesByStage.Length);
+        int tileCount = Mathf.Clamp(StageManager.CurrentStage + 1, 1, groundTilesByStage.Length);
         TileBase[] candidates = groundTilesByStage.Take(tileCount).ToArray();
 
         foreach (var dir in dirs)
@@ -467,12 +439,13 @@ public class MapManager : MonoBehaviour
 
         // 복도와 방 입구는 겹치는 지점이므로, 간단하게 방 외부에 있는 바닥 타일과 인접한 경우를 확인
 
-        Vector3Int[] directions = {
-        new Vector3Int(1, 0, 0), new Vector3Int(-1, 0, 0),
-        new Vector3Int(0, 1, 0), new Vector3Int(0, -1, 0),
-        new Vector3Int(1, 1, 0), new Vector3Int(1, -1, 0),
-        new Vector3Int(-1, 1, 0), new Vector3Int(-1, -1, 0)
-    };
+        Vector3Int[] directions =
+        {
+            new Vector3Int(1, 0, 0), new Vector3Int(-1, 0, 0),
+            new Vector3Int(0, 1, 0), new Vector3Int(0, -1, 0),
+            new Vector3Int(1, 1, 0), new Vector3Int(1, -1, 0),
+            new Vector3Int(-1, 1, 0), new Vector3Int(-1, -1, 0)
+        };
 
         foreach (var dir in directions)
         {
@@ -495,18 +468,8 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
-        return false; // 복도와 인접하지 않으므로 아이템 생성 가능
-    }
 
-    void ClearItems()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.CompareTag("Item"))
-            {
-                Destroy(child.gameObject);
-            }
-        }
+        return false; // 복도와 인접하지 않으므로 아이템 생성 가능
     }
 
     public void GenerateWalls(Tilemap flowTilemap, Tilemap generateWallTilemap, TileBase tileBase = null,
@@ -579,8 +542,7 @@ public class MapManager : MonoBehaviour
     GameObject PlaceShop()
     {
         if (rooms.Count < 8) return null;
-        Room shopRoom = rooms[7]; // 8  °    ( ε    7)
-        //     ߾    ǥ    
+        Room shopRoom = rooms[7]; 
         Vector3 avgWorldPos = Vector3.zero;
         foreach (var tile in shopRoom.tiles)
         {

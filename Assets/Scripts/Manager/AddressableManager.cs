@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -11,7 +12,7 @@ namespace Manager
     {
         private List<EnemyStat> _enemyStats;
         private List<GameObject> _prefabs;
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -33,7 +34,7 @@ namespace Manager
             return _prefabs.Find(e => prefabName.Equals(e.name));
         }
 
-        
+
         private async Task LoadEnemyStat()
         {
             TextAsset textAsset = await LoadAsset<TextAsset>("Assets/TextAsset/EnemyStats.json");
@@ -49,14 +50,12 @@ namespace Manager
                 _prefabs.Add(await LoadAsset<GameObject>(path));
             }
         }
-        
+
         private async Task<T> LoadAsset<T>(string key)
         {
             AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(key);
             await handle.Task;
-            T t = handle.Result;
-            Addressables.Release(handle);
-            return t;
+            return handle.Result;
         }
 
 

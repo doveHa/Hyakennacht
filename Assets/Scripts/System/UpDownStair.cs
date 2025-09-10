@@ -8,21 +8,33 @@ namespace System
     public class UpDownStair : MonoBehaviour
     {
         public bool isUpStair;
-
         public bool IsEndStage { get; set; } = false;
-
-        void OnTriggerStay2D(Collider2D other)
+        private bool _isPlayerInStair = false;
+        
+        void OnTriggerEnter2D(Collider2D other)
         {
-            if (!IsEndStage)
+            if (other.tag.Equals("Player"))
             {
-                return;
+                _isPlayerInStair = true;
             }
-            
-            if (other.tag.Equals("Player") && Input.GetKeyDown(KeyCode.F))
+        }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.tag.Equals("Player"))
+            {
+                _isPlayerInStair = false;
+            }
+        }
+
+        void Update()
+        {
+            if (IsEndStage && Input.GetKeyDown(KeyCode.F))
             {
                 GameManager.Manager.Player.GetComponent<PlayerCollision>().GuideKey.SetActive(false);
-                MapManager.Instance.NextStage(isUpStair);
+                MapManager.NextStage(isUpStair);;
             }
+            
         }
     }
 }
