@@ -65,13 +65,13 @@ public class Player : MonoBehaviour
                 flippable.SetFacingDirection(isLeft);
             }
         }
-/*
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("���� ��� �õ�");
-            weaponHandler.UseWeapon();
-        }
- */
+        /*
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    Debug.Log("���� ��� �õ�");
+                    weaponHandler.UseWeapon();
+                }
+         */
     }
 
     public void Hit()
@@ -94,33 +94,5 @@ public class Player : MonoBehaviour
         }
 
         return false;
-    }
-
-    // HR: 계단 상호작용을 시도하는 함수
-    public void TryInteractWithStairs()
-    {
-        if (mapManager == null)
-        {
-            Debug.LogWarning("MapManager가 할당되지 않았습니다.");
-            return;
-        }
-
-        Vector3Int playerCellPosition = mapManager.groundTilemap.WorldToCell(transform.position);
-        TileBase currentTile = mapManager.groundTilemap.GetTile(playerCellPosition);
-
-        if (currentTile == mapManager.stairUpTile)
-        {
-            MapManager.NextStage(true);
-            Debug.Log("계단(위)과 상호작용: 다음 스테이지로 이동");
-        }
-        else if (currentTile == mapManager.stairDownTile)
-        {
-            MapManager.NextStage(false);
-            Debug.Log("계단(아래)과 상호작용: 이전 스테이지로 이동");
-        }
-        else
-        {
-            Debug.Log("계단 위에 있지 않습니다. 상호작용 불가");
-        }
     }
 }

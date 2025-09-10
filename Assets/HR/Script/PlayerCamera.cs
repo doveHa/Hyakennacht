@@ -46,7 +46,7 @@ public class PlayerCamera : MonoBehaviour
         {
             //TryInteractWithStairs();
             MapUIManager.Instance.OnStageEnd();
-        }*/ // ??
+        }*/ // Player로 이동
     }
 
     void FindPlayer()

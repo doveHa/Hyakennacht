@@ -29,12 +29,19 @@ namespace System
 
         void Update()
         {
-            if (IsEndStage && Input.GetKeyDown(KeyCode.F))
+            /*if (IsEndStage && Input.GetKeyDown(KeyCode.F))
             {
                 GameManager.Manager.Player.GetComponent<PlayerCollision>().GuideKey.SetActive(false);
                 MapManager.NextStage(isUpStair);;
+            }*/
+            if (_isPlayerInStair && Input.GetKeyDown(KeyCode.F))
+            {
+                // HR: 인자 있는 OnStageEnd 함수를 호출
+                if (MapUIManager.Instance != null)
+                {
+                    MapUIManager.Instance.OnStageEnd(isUpStair);
+                }
             }
-            
         }
     }
 }

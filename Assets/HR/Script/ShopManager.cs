@@ -100,22 +100,6 @@ for (int i = 0; i < stallCount; i++)
                 BuyWeapon(i);
             }
         }
-
-        // 테스트: M키로 HP 감소
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            if (SystemManager.Instance.HpControl != null)
-            {
-                SystemManager.Instance.HpControl.MinusHp();
-                Debug.Log($"HP 1 감소! HP: {SystemManager.Instance.HpControl.CurrentHp}");
-            }
-        }
-        
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            for(int i = 0; i < 20; i++)
-                GameManager.Manager.PlayerScript.PlayerGetCoin();
-        }
     }
 
     private void BuyWeapon(int index)

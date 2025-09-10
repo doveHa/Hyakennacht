@@ -82,6 +82,8 @@ public class MapUIManager : MonoBehaviour
     private Player player;
     public bool PlayerDied; // 플레이어가 죽었는지 여부 (임시, HP 시스템 알면 제거)
 
+    private bool _currentIsUpStair; //isUpStair 전달용 임시 변수
+
     void Awake()
     {
         totalStage = StageManager.MaxStage;
@@ -151,20 +153,7 @@ public class MapUIManager : MonoBehaviour
                     Debug.LogWarning("PlayerCamera not found!");
                 }*/
 
-        if (player != null)
-        {
-            player.TryInteractWithStairs();
-        }
-        else
-        {
-            Debug.LogWarning("Player not found!");
-        }
-    }
-
-    public void OnCardClick()
-    {
-        Debug.Log("Card clicked!");
-        // Add logic to show card details or perform an action
+        MapManager.NextStage(_currentIsUpStair);
     }
 
     private void MoveFlag(int stage)
@@ -205,8 +194,10 @@ public class MapUIManager : MonoBehaviour
         if (coinText) coinText.text = "0";
     }
 
-    public void OnStageEnd()
+    public void OnStageEnd(bool isUpStair)
     {
+        _currentIsUpStair = isUpStair;
+
         float playTime = Time.time - stageStartTime;
 
         if (timeText) timeText.text = $"{playTime:F1}";
@@ -229,6 +220,19 @@ public class MapUIManager : MonoBehaviour
             // 이는 일반 스테이지 클리어 or 플레이어 사망 시에도 해당됩니다.
             statsPanel.SetActive(true);
         }
+
+        MoveFlag(StageManager.CurrentStage);
+    }
+
+    public void OnStageEnd() //플레이어 사망 시 OnStageEnd 호출용 오버로드
+    {
+        float playTime = Time.time - stageStartTime;
+
+        if (timeText) timeText.text = $"{playTime:F1}";
+        if (killText) killText.text = $"{KilledEnemies}";
+        if (coinText) coinText.text = $"{StageCoins}";
+
+        statsPanel.SetActive(true);
 
         MoveFlag(StageManager.CurrentStage);
     }
