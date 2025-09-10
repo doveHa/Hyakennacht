@@ -379,7 +379,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e1312fd00c645c2989429a256030dd6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
 parent of 1810708 (Addressable로 load 방식 변경)
 --- !u!114 &452519656
 MonoBehaviour:
@@ -6857,7 +6856,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-<<<<<<< HEAD
 --- !u!1001 &1813057515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6955,8 +6953,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68545cff97f784041bab76b7ddb13554, type: 3}
-=======
->>>>>>> parent of 1810708 (Addressable로 load 방식 변경)
+arent of 1810708 (Addressable로 load 방식 변경)
 --- !u!1 &1900224008
 GameObject:
   m_ObjectHideFlags: 0
