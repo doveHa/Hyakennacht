@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Enemy;
 
 public static class StageManager
 {
@@ -28,11 +29,11 @@ public static class StageManager
     {
         if (isStairUp)
         {
-            Debug.Log("계단 Up: 난이도 상승");
+            StairUp();
         }
         else
         {
-            Debug.Log("계단 Down: 난이도 하락");
+            StairDown();
         }
     }
 
@@ -82,4 +83,15 @@ public static class StageManager
         return ShopStages.Contains(CurrentStage);
     }
 
+    private static void StairUp()
+    {
+        EnemySpawner.ToEasy();
+        AEnemyStats.ToEasy();
+    }
+    
+    private static void StairDown()
+    {
+        EnemySpawner.ToHard();
+        AEnemyStats.ToHard();
+    }
 }

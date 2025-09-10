@@ -8,6 +8,8 @@ using UnityEngine.Serialization;
 
 public abstract class AEnemyStats : MonoBehaviour
 {
+    private static float MAX_HP_COFF = 1;
+
     private enum EnemyName
     {
         Ghost,
@@ -28,19 +30,19 @@ public abstract class AEnemyStats : MonoBehaviour
 
     protected EnemyController Controller;
     protected float CurrentHp;
-    protected float MaxHp;
+    public float MaxHp;
     private bool _isDead;
 
     protected virtual void Awake()
     {
         Controller = GetComponent<EnemyController>();
-        
+
         AddressableManager.EnemyStat stat = AddressableManager.Manager.GetStatByName(enemyName.ToString());
-        MaxHp = stat.Health;
+        MaxHp = stat.Health * MAX_HP_COFF;
         CurrentHp = MaxHp;
         Speed = stat.Speed;
     }
-    
+
     public abstract void TakeDamage(float dmg);
 
     public void Heal(int amount)
@@ -49,5 +51,19 @@ public abstract class AEnemyStats : MonoBehaviour
     }
 
     public abstract void Die();
-    
+
+    public static void ToHard()
+    {
+        MAX_HP_COFF += 0.3f;
+    }
+
+    public static void ToEasy()
+    {
+        MAX_HP_COFF = Mathf.Max(0, MAX_HP_COFF - 0.3f);
+    }
+
+    public static void LevelInitialize()
+    {
+        MAX_HP_COFF = 1;
+    }
 }

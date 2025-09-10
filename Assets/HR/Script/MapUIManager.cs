@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Enemy;
 using Manager;
 
 
@@ -135,6 +136,8 @@ public class MapUIManager : MonoBehaviour
             StageManager.CurrentStage = 1;
             SystemManager.Manager.HpControl.ResetHealth();
             SceneManager.LoadScene(StageManager.GetLobbyScene());
+            EnemySpawner.LevelInitialize();
+            AEnemyStats.LevelInitialize();
             PlayerDied = false;
             Time.timeScale = 1f;
             return;
