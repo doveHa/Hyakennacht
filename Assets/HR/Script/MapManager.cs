@@ -205,6 +205,12 @@ public class MapManager : MonoBehaviour
         {
             shopInstance = PlaceShop();
         }
+
+        // 새로운 씬이 로드된 후 MapUIManager의 OnStageStart()를 호출
+        if (MapUIManager.Instance != null)
+        {
+            MapUIManager.Instance.OnStageStart();
+        }
     }
 
     private Room RoomObject(Vector2Int pos, int roomIdCounter)

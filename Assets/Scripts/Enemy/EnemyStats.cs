@@ -25,6 +25,13 @@ namespace Enemy
         {
             Controller.Animator.SetTrigger("Death");
             GetComponentInParent<EnemySpawner>().KillCount++;
+
+            // HR: MapUIManager의 킬 카운트도 증가
+            if (MapUIManager.Instance != null)
+            {
+                MapUIManager.Instance.AddKilledEnemy();
+            }
+
             Destroy(GetComponentInChildren<PlayerRecognize>());
             Destroy(GetComponent<EnemyController>());
             foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())

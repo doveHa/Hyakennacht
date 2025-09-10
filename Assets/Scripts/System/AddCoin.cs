@@ -8,8 +8,14 @@ public class AddCoin : MonoBehaviour
         if (other.gameObject.tag.Equals("Player"))
         {
             GameManager.Manager.PlayerScript.PlayerGetCoin();
-            Destroy(gameObject);
 
+            //HR
+            if (MapUIManager.Instance != null)
+            {
+                MapUIManager.Instance.AddStageCoins(1); // 코인을 1씩 추가
+            }
+
+            Destroy(gameObject);
         }
     }
 }

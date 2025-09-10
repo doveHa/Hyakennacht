@@ -208,8 +208,6 @@ public class MapUIManager : MonoBehaviour
         if (coinText) coinText.text = $"{StageCoins}";
 
         // 특정 스테이지에서만 스킬 선택
-
-
         // StageManager의 IsSkillSelectStage()를 사용하여 스킬 선택 조건 확인
         if (StageManager.IsSkillSelectStage())
         {

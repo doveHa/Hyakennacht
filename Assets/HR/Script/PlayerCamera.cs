@@ -42,11 +42,6 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-/*        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //TryInteractWithStairs();
-            MapUIManager.Instance.OnStageEnd();
-        }*/ // Player로 이동
     }
 
     void FindPlayer()
@@ -59,18 +54,6 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-/* Hr: 이건 내가 주석처리
-    private bool IsOnStairs()
-    {
-        if (player == null || mapManager == null) return false;
-
-        Vector3 checkPos = GetPlayerBottomPosition();
-        Vector3Int tilePos = mapManager.groundTilemap.WorldToCell(checkPos);
-
-        TileBase currentTile = mapManager.groundTilemap.GetTile(tilePos);
-        return (currentTile == mapManager.stairUpTile || currentTile == mapManager.stairDownTile);
-    }*/
-
     private Vector3 GetPlayerBottomPosition()
     {
         // �÷��̾� Collider �ϴ� ���� ��ġ
@@ -81,29 +64,4 @@ public class PlayerCamera : MonoBehaviour
             return player.position;
     }
 
-    /*
-    public void TryInteractWithStairs()
-    {
-        if (player == null || mapManager == null)
-        {
-            Debug.LogWarning("Player �Ǵ� MapManager�� �Ҵ���� �ʾҽ��ϴ�.");
-            return;
-        }
-
-        Vector3 checkPos = GetPlayerBottomPosition();
-        Vector3Int tilePos = mapManager.groundTilemap.WorldToCell(checkPos);
-
-        TileBase currentTile = mapManager.groundTilemap.GetTile(tilePos);
-
-        if (currentTile == mapManager.stairUpTile)
-        {
-            mapManager.NextStage(true); // ���̵� ���
-            Debug.Log("Stairs Up interacted. Moving to next stage.");
-        }
-        else if (currentTile == mapManager.stairDownTile)
-        {
-            mapManager.NextStage(false); // ���̵� �϶�
-            Debug.Log("Stairs Down interacted. Moving to previous stage.");
-        }
-    }*/
 }
