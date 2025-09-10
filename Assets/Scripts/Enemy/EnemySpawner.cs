@@ -10,6 +10,9 @@ namespace Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
+        private static int MIN_ENEMIES = Constant.SpawnEnemy.MIN_ENEMIES;
+        private static int MAX_ENEMIES = Constant.SpawnEnemy.MAX_ENEMIES;
+
         private Tilemap _stage;
         private List<GameObject> _enemyObjects;
 
@@ -61,7 +64,7 @@ namespace Enemy
         {
             Random rnd = new Random();
 
-            int spawnEnemies = rnd.Next(Constant.SpawnEnemy.MIN_ENEMIES, Constant.SpawnEnemy.MAX_ENEMIES);
+            int spawnEnemies = rnd.Next(MIN_ENEMIES, MAX_ENEMIES);
             _objects = new GameObject[spawnEnemies];
 
             HashSet<Vector3Int> usedPositions = new HashSet<Vector3Int>(); // ✅ 사용된 셀 기록
@@ -127,6 +130,24 @@ namespace Enemy
 
             Destroy(transform.Find("Wall").gameObject);
             Destroy(this);
+        }
+
+        public static void ToHard()
+        {
+            MIN_ENEMIES += 3;
+            MAX_ENEMIES += 3;
+        }
+
+        public static void ToEasy()
+        {
+            MIN_ENEMIES = Mathf.Max(1, MIN_ENEMIES - 3);
+            MAX_ENEMIES = Mathf.Max(3, MAX_ENEMIES - 3);
+        }
+
+        public static void LevelInitialize()
+        {
+            MIN_ENEMIES = Constant.SpawnEnemy.MIN_ENEMIES;
+            MAX_ENEMIES = Constant.SpawnEnemy.MAX_ENEMIES;
         }
     }
 }
