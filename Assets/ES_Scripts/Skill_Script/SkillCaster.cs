@@ -102,6 +102,9 @@ public class SkillCaster : MonoBehaviour
 
     void Update()
     {
+        if (!pool) pool = FindFirstObjectByType<ObjectPool>();
+        if (!fx) fx = FindFirstObjectByType<FXRouter>();
+
         if (slots == null) return;
 
         //if (Input.GetKeyDown(KeyCode.K)) TryCast(slots.Length > 0 ? slots[0] : null);
