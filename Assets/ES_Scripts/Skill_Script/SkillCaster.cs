@@ -28,6 +28,7 @@ public class SkillCaster : MonoBehaviour
     public ObjectPool pool;
     public FXRouter fx;
 
+    public SkillBarUI skillBarUI;
 
     //HR: ���� ������
     private int nextSlotIndex = 0;
@@ -104,6 +105,7 @@ public class SkillCaster : MonoBehaviour
     {
         if (!pool) pool = FindFirstObjectByType<ObjectPool>();
         if (!fx) fx = FindFirstObjectByType<FXRouter>();
+        if (!skillBarUI) skillBarUI = FindFirstObjectByType<SkillBarUI>();
 
         if (slots == null) return;
 
@@ -254,6 +256,7 @@ public class SkillCaster : MonoBehaviour
         slots[nextSlotIndex] = skill;
         Debug.Log($"���� {nextSlotIndex}���� ��ų {skill.name} ���");
 
+        skillBarUI.Rebuild();
         nextSlotIndex++;
     }
 }
