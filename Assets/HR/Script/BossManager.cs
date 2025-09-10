@@ -14,48 +14,43 @@ public class BossManager : MonoBehaviour
     [Header("Game Clear")] [SerializeField]
     private GameObject gameClearPanel;
 
-    public GameObject bossSpawnPoint, playerSpawnPoint;
+    public GameObject bossSpawnPoint;
 
     public GameObject nextRoom;
+    
+    private List<GameObject> bossObjects;
 
-    private GameObject _middleBossPrefab, _finalBossPrefab, _bossObject;
+    private GameObject _bossObject;
 
     public BossHpBar bossHpBar;
-
+    
     void Awake()
     {
+        bossObjects = new List<GameObject>();
     }
 
     void Start()
     {
-        if (StageManager.IsYokai)
+        foreach (GameObject boss in BossPrefab.Instance.BossPrefabs)
         {
-            _middleBossPrefab = AddressableManager.Manager.GetPrefabByName(Constant.EnemyName.YOKAI_MIDDLE_BOSS);
-            _finalBossPrefab = AddressableManager.Manager.GetPrefabByName(Constant.EnemyName.YOKAI_FINAL_BOSS);
+            bossObjects.Add(boss);
         }
-        else
+        
+        if (StageManager.CurrentStage == 5)
         {
-            _middleBossPrefab = AddressableManager.Manager.GetPrefabByName(Constant.EnemyName.WITCH_MIDDLE_BOSS);
-            _finalBossPrefab = AddressableManager.Manager.GetPrefabByName(Constant.EnemyName.WITCH_FINAL_BOSS);
+            _bossObject = Instantiate(bossObjects[0], bossSpawnPoint.transform.position, Quaternion.identity);
         }
-
-        if (StageManager.CurrentStage == Constant.Stage.MIDDLE_BOSS)
+        else if (StageManager.CurrentStage == 10)
         {
-            _bossObject = Instantiate(_middleBossPrefab, bossSpawnPoint.transform.position, Quaternion.identity);
+            _bossObject = Instantiate(bossObjects[1], bossSpawnPoint.transform.position, Quaternion.identity);
         }
-        else if (StageManager.CurrentStage == Constant.Stage.FINAL_BOSS)
-        {
-            _bossObject = Instantiate(_finalBossPrefab, bossSpawnPoint.transform.position, Quaternion.identity);
-        }
-
-        GameManager.Manager.Player.transform.position = playerSpawnPoint.transform.position;
         _bossObject.GetComponent<EnemyController>().Stage = GameObject.Find("Grid/Tilemap").GetComponent<Tilemap>();
         _bossObject.GetComponent<BossStat>().SetBossHpBar(bossHpBar);
     }
 
     public void OnBossDefeated()
     {
-        if (StageManager.CurrentStage == Constant.Stage.FINAL_BOSS)
+        if (StageManager.CurrentStage == 15)
         {
             gameClearPanel.SetActive(true);
             return;
@@ -66,8 +61,13 @@ public class BossManager : MonoBehaviour
         {
             script.IsEndStage = true;
         }
+        
+        /*
+        StageManager.AdvanceStage();
+        string nextMap = StageManager.GetMapScene();
+        SceneManager.LoadScene(nextMap);*/
     }
-
+    
     public void GameClearToLobby()
     {
         Destroy(GameObject.Find("Player").gameObject);

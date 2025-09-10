@@ -80,7 +80,6 @@ public class PlayerCamera : MonoBehaviour
             return player.position;
     }
 
-    /*
     public void TryInteractWithStairs()
     {
         if (player == null || mapManager == null)
@@ -104,5 +103,5 @@ public class PlayerCamera : MonoBehaviour
             mapManager.NextStage(false); // ���̵� �϶�
             Debug.Log("Stairs Down interacted. Moving to previous stage.");
         }
-    }*/
+    }
 }

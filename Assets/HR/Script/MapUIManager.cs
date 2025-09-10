@@ -123,7 +123,6 @@ public class MapUIManager : MonoBehaviour
             Destroy(GameObject.Find("Player").gameObject);
             Destroy(GameObject.Find("Manager").gameObject);
             Destroy(GameObject.Find("GameSystem").gameObject);
-            StageManager.CurrentStage = 1;
             SystemManager.Manager.HpControl.ResetHealth();
             SceneManager.LoadScene(StageManager.GetLobbyScene());
             PlayerDied = false;
@@ -132,17 +131,17 @@ public class MapUIManager : MonoBehaviour
         }
 
         Time.timeScale = 1f;
-/*
+
         // 카메라에서 TryInteractWithStairs 호출
         PlayerCamera cam = Object.FindFirstObjectByType<PlayerCamera>();
         if (cam != null)
         {
-            //cam.TryInteractWithStairs();
+            cam.TryInteractWithStairs();
         }
         else
         {
             Debug.LogWarning("PlayerCamera not found!");
-        }*/
+        }
     }
 
     public void OnCardClick()
@@ -200,8 +199,8 @@ public class MapUIManager : MonoBehaviour
         // 특정 스테이지에서만 스킬 선택
 
 
-        if (StageManager.CurrentStage == 4 ||
-            StageManager.CurrentStage == 9) //|| MapManager.Instance.currentStage == 14
+        if (MapManager.Instance.currentStage == 4 ||
+            MapManager.Instance.currentStage == 9) //|| MapManager.Instance.currentStage == 14
         {
             //ShowSkillSelectPanel();
             //AfterSkillSelect = true;
@@ -218,7 +217,7 @@ public class MapUIManager : MonoBehaviour
 
         //statsPanel.SetActive(true); // 통계창 열기
 
-        MoveFlag(StageManager.CurrentStage);
+        MoveFlag(MapManager.Instance.currentStage);
     }
 
     //스킬 선택
