@@ -176,6 +176,7 @@
     <Compile Include="Assets\HR\Script\BossManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\RandomMove.cs" />
     <Compile Include="Assets\Enemy\Resource\MiddleBoss\Effect\Lightning.cs" />
+    <Compile Include="Assets\Enemy\AutoDestroyCoroutine.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\HitCollider.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\독 사과\DoomDebuff.cs" />

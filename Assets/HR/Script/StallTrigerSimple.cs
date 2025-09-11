@@ -9,8 +9,14 @@ public class StallTrigerSimple : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            selector.SetPlayerInRange(stallIndex, true);
-            Debug.Log($"플레이어가 가판대 {stallIndex + 1} 범위 안으로 들어왔습니다.");
+            /*            selector.SetPlayerInRange(stallIndex, true);
+                        Debug.Log($"플레이어가 가판대 {stallIndex + 1} 범위 안으로 들어왔습니다.");*/
+            Player player = other.GetComponent<Player>();
+            if (player != null && selector != null)
+            {
+                player.SetCurrentInteractable(selector, stallIndex);
+                UnityEngine.Debug.Log($"플레이어가 가판대 {stallIndex + 1} 범위 안으로 들어왔습니다.");
+            }
         }
     }
 
@@ -18,8 +24,15 @@ public class StallTrigerSimple : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            selector.SetPlayerInRange(stallIndex, false);
-            Debug.Log($"플레이어가 가판대 {stallIndex + 1} 범위에서 나갔습니다.");
+            /*            selector.SetPlayerInRange(stallIndex, false);
+                        Debug.Log($"플레이어가 가판대 {stallIndex + 1} 범위에서 나갔습니다.");*/
+            Player player = other.GetComponent<Player>();
+            if (player != null)
+            {
+                // 플레이어의 현재 상호작용 객체를 초기화합니다.
+                player.ClearCurrentInteractable();
+                UnityEngine.Debug.Log($"플레이어가 가판대 {stallIndex + 1} 범위에서 나갔습니다.");
+            }
         }
     }
 }

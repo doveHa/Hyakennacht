@@ -6,7 +6,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : MonoBehaviour, IInteractable
 {
     [Header("무기 프리팹 리스트")]
     public GameObject[] weaponPrefabs;
@@ -94,20 +94,26 @@ for (int i = 0; i < stallCount; i++)
 
     void Update()
     {
-        for (int i = 0; i < playerInRange.Length; i++)
+/*        for (int i = 0; i < playerInRange.Length; i++)
         {
             if (playerInRange[i] && Input.GetKeyDown(KeyCode.Q))
             {
                 BuyWeapon(i);
             }
-        }
-
+        }*/
+        //Player에서 Q 관리
         
         if(Input.GetKeyDown(KeyCode.Y))
         {
             for(int i = 0; i < 20; i++)
                 GameManager.Manager.PlayerScript.PlayerGetCoin();
         }
+    }
+
+    // IInteractable 인터페이스 구현
+    public void Interact(int index)
+    {
+        BuyWeapon(index);
     }
 
     /*private void BuyWeapon(int index)

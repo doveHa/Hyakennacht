@@ -3,12 +3,8 @@ using UnityEngine;
 
 public class SmallStraw : MonoBehaviour
 {
-    private Vector3 _targetPosition;
     private Rigidbody2D _rigidbody2D;
-
-    public float cooldown = 20f;
-    private float startTime;
-
+    
     public float speed;
 
     void Start()
@@ -18,26 +14,9 @@ public class SmallStraw : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (startTime + cooldown < Time.time)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _rigidbody2D.AddForce(
-                (GameManager.Manager.PlayerScript.Target.position - transform.position).normalized * speed,
-                ForceMode2D.Impulse);
-        }
-    }
-
-    public void SetTarget(Vector3 targetPosition)
-    {
-        _targetPosition = targetPosition;
-    }
-
-    void OnEnable()
-    {
-        startTime = Time.time;
+        _rigidbody2D.AddForce(
+            (GameManager.Manager.PlayerScript.Target.position - transform.position).normalized * speed,
+            ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

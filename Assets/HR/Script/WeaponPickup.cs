@@ -1,10 +1,31 @@
+using System.Diagnostics;
 using UnityEngine;
 using static Constant;
 
-public class WeaponPickup : MonoBehaviour
+public class WeaponPickup : MonoBehaviour, IInteractable
 {
     private WeaponData weaponData;
     private bool playerInRange = false;
+
+    public void Interact(int index)
+    {
+        // 무기를 줍는 로직을 실행
+        PickupWeapon();
+    }
+
+    private void PickupWeapon()
+    {
+        var player = FindAnyObjectByType<Player>();
+        if (player != null)
+        {
+            var weaponHandler = player.weaponHandler;
+            if (weaponHandler != null && weaponData != null)
+            {
+                weaponHandler.SwapWeapon(this.weaponData, player.transform.position);
+                Destroy(gameObject);
+            }
+        }
+    }
 
     public void SetWeaponData(WeaponData data)
     {
@@ -15,8 +36,13 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
-            Debug.Log("Q 키를 눌러 무기를 획득하세요.");
+            var player = other.GetComponent<Player>();
+            if (player != null)
+            {
+                // 오버로딩된 메소드를 사용하여 인덱스 없이 호출합니다.
+                player.SetCurrentInteractable(this);
+                UnityEngine.Debug.Log("Q 키를 눌러 무기를 획득하세요.");
+            }
         }
     }
 
@@ -24,11 +50,15 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
+            var player = other.GetComponent<Player>();
+            if (player != null)
+            {
+                player.ClearCurrentInteractable();
+            }
         }
     }
 
-    private void Update()
+/*    private void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.Q))
         {
@@ -39,12 +69,12 @@ public class WeaponPickup : MonoBehaviour
                 if (weaponHandler != null)
                 {
                     // 먼저 weaponData가 null인지 확인합니다.
-                    /*                    if (weaponData == null)
+                    *//*                    if (weaponData == null)
                                         {
                                             Debug.LogWarning("WeaponPickup: 무기 데이터가 유효하지 않아 무기를 주울 수 없습니다.");
                                             Destroy(gameObject); // 유효하지 않은 무기는 제거
                                             return;
-                                        }*/
+                                        }*//*
 
                     WeaponData currentEquippedWeaponData = weaponHandler.currentData; // or weaponHandler.GetCurrentWeaponData();
 
@@ -56,5 +86,5 @@ public class WeaponPickup : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

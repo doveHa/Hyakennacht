@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Linq;
 
-public class StartWeapon : MonoBehaviour
+public class StartWeapon : MonoBehaviour, IInteractable
 {
     [Header("가판대 무기")]
     public GameObject[] stallWeaponsPrefabs; // 각 가판대 원본 프리팹
@@ -38,13 +38,19 @@ public class StartWeapon : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < 3; i++)
+/*        for (int i = 0; i < 3; i++)
         {
             if (playerInRange[i] && Input.GetKeyDown(KeyCode.Q))
             {
                 SelectWeapon(i);
             }
-        }
+        }*/  //Player에서 관리
+    }
+
+    // IInteractable 인터페이스 구현
+    public void Interact(int index)
+    {
+        SelectWeapon(index);
     }
 
     /*    private void SelectWeapon(int index)
