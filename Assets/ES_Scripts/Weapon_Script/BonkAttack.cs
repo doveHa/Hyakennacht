@@ -58,7 +58,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
                 animator.SetTrigger("Attack");
             }
         }
-
+/*
         if (data.weaponName == "번개 발톱")
         {
             if (animator != null)
@@ -66,7 +66,7 @@ public class BonkAttack : MonoBehaviour, IWeaponBehavior
                 animator.SetTrigger("Attack");
             }
         }
-
+*/
         if (data.weaponName == "꼬리") 
         { 
             range *= 2f; 

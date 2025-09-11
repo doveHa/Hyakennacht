@@ -76,6 +76,7 @@
     <Compile Include="Assets\ES_Scripts\Weapon_Script\Soul.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\ABossPattern.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\BossHpBar.cs" />
+    <Compile Include="Assets\Scripts\Enemy\States\DieState.cs" />
     <Compile Include="Assets\Scripts\Enemy\States\RandomMoveState.cs" />
     <Compile Include="Assets\Test\Script\MotionTransformWriter.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_Script\펌프킨 메테오\PumpkinMeteorPayload.cs" />

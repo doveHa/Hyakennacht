@@ -23,6 +23,7 @@ namespace Enemy
 
         public override void Die()
         {
+            Controller.ChangeState(new DieState(Controller));
             Controller.Animator.SetTrigger("Death");
             GetComponentInParent<EnemySpawner>().KillCount++;
 

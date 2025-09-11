@@ -97,89 +97,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2
+      name: "\uBC88\uAC1C \uBC1C\uD1B1_0"
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 512
-        height: 340
-      alignment: 9
-      pivot: {x: 0.45478037, y: 0.7140144}
+        y: 0
+        width: 1879
+        height: 1629
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82dc0bebb07cdf04ab5f4b4729f1070c
-      internalID: 2143229547
+      spriteID: 8010c46c41b0d0b44aaffb3a6736609e
+      internalID: -1936091970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1
+      name: "\uBC88\uAC1C \uBC1C\uD1B1_1"
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 490
-        height: 366
-      alignment: 9
-      pivot: {x: 0.45275006, y: 0.7078481}
+        x: 1879
+        y: 0
+        width: 1879
+        height: 1629
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08223387ec727744f8f2a74b632249c4
-      internalID: 1622361491
+      spriteID: 08e1267e394e7e043834e24168a650cc
+      internalID: 112149218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0
+      name: "\uBC88\uAC1C \uBC1C\uD1B1_2"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 133
-        width: 476
-        height: 378
-      alignment: 9
-      pivot: {x: 0.37492672, y: 0.7274995}
+        x: 3758
+        y: 0
+        width: 1879
+        height: 1629
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e0c138e11dbf0d43b319baf3967b6e2
-      internalID: -492766503
+      spriteID: a586d9cd73bc62d45adf480644737e0d
+      internalID: -1181705168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: "\uBC88\uAC1C \uBC1C\uD1B1_3"
       rect:
         serializedVersion: 2
-        x: 512
-        y: 132
-        width: 450
-        height: 363
-      alignment: 9
-      pivot: {x: 0.30155042, y: 0.7369004}
+        x: 5637
+        y: 0
+        width: 1879
+        height: 1629
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f05a721577f4481458599e5e77433e6c
-      internalID: 1990745434
+      spriteID: 578e41ed603ec404da634b0492f04dae
+      internalID: -19649081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uBC88\uAC1C \uBC1C\uD1B1_4"
+      rect:
+        serializedVersion: 2
+        x: 7516
+        y: 0
+        width: 1879
+        height: 1629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 104ed4febbe7dbe408132520c11933ab
+      internalID: 1399432762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uBC88\uAC1C \uBC1C\uD1B1_5"
+      rect:
+        serializedVersion: 2
+        x: 9395
+        y: 0
+        width: 1879
+        height: 1629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517495c991ee72043b9144a0a94e8268
+      internalID: 201431941
       vertices: []
       indices: 
       edges: []
@@ -198,10 +242,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      0: -492766503
-      1: 1622361491
-      2: 2143229547
-      3: 1990745434
+      "\uBC88\uAC1C \uBC1C\uD1B1_0": -1936091970
+      "\uBC88\uAC1C \uBC1C\uD1B1_1": 112149218
+      "\uBC88\uAC1C \uBC1C\uD1B1_2": -1181705168
+      "\uBC88\uAC1C \uBC1C\uD1B1_3": -19649081
+      "\uBC88\uAC1C \uBC1C\uD1B1_4": 1399432762
+      "\uBC88\uAC1C \uBC1C\uD1B1_5": 201431941
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
