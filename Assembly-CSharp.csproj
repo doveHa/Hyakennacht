@@ -142,6 +142,7 @@
     <Compile Include="Assets\Scripts\Enemy\Attack\StrawAttack.cs" />
     <Compile Include="Assets\ES_Scripts\Skill_UI\SkillSlotUI.cs" />
     <Compile Include="Assets\Enemy\Resource\Boss1\Effect\Bullet.cs" />
+    <Compile Include="Assets\HR\Script\WeaponPickup.cs" />
     <Compile Include="Assets\ES_Scripts\Weapon_Script\ProjectileAttack.cs" />
     <Compile Include="Assets\Enemy\Resource\Straw\Effect\SmallStraw.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossStage\Boss2Pattern.cs" />
