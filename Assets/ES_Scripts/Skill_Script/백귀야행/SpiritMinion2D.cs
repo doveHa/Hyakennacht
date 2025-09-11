@@ -7,7 +7,6 @@ public class SpiritMinion2D : MonoBehaviour
 {
     public struct Config
     {
-        // ����
         public Transform owner;
         public float life;
         public float moveSpeed;
@@ -30,9 +29,11 @@ public class SpiritMinion2D : MonoBehaviour
 
         public float standoffDistance;
 
-        public bool despawnOnHit;                                // ���� ������ ��� �ݳ�
-        public System.Action<SpiritMinion2D> onReturned;         // �ݳ� ����
-        public System.Func<string, GameObject> poolSpawn;        // (Ȯ���)
+        public bool despawnOnHit;
+        public System.Action<SpiritMinion2D> onReturned;
+        public System.Func<string, GameObject> poolSpawn;
+
+        public string[] ignoreNameContains;  
     }
 
     [Header("Blink on Hit (unused in one-shot)")]
@@ -57,6 +58,8 @@ public class SpiritMinion2D : MonoBehaviour
     string _hitFxKey; System.Action<string, Vector2> _playFxAt;
     System.Action<SpiritMinion2D> _onReturned;
     bool _despawnOnHit;
+
+    string[] _ignoreNameContains;           
 
     Rigidbody2D _rb; Collider2D _col; Animator _anim;
 
@@ -102,7 +105,9 @@ public class SpiritMinion2D : MonoBehaviour
 
         _despawnOnHit = c.despawnOnHit;
         _onReturned = c.onReturned;
-        _playFxAt = null; 
+        _playFxAt = null;
+
+        _ignoreNameContains = c.ignoreNameContains;   
 
         _nextAttackTime = Time.time;
         transform.right = Vector2.right;
@@ -160,6 +165,8 @@ public class SpiritMinion2D : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & _enemyMask.value) == 0) return;
 
+        if (ShouldIgnoreByName(other.transform)) return;
+
         var enemy = other.GetComponentInParent<AEnemyStats>();
         if (!enemy) return;
         if (Time.time < _nextAttackTime) return;
@@ -173,10 +180,7 @@ public class SpiritMinion2D : MonoBehaviour
         _lastHitTargetId = enemy.GetInstanceID();
         _ignoreUntil = Time.time + _ignoreSameTargetSeconds;
 
-        if (_despawnOnHit)
-        {
-            ReturnToPool(); 
-        }
+        if (_despawnOnHit) ReturnToPool();
     }
 
     Transform AcquireTarget(Vector2 origin, float radius)
@@ -189,6 +193,8 @@ public class SpiritMinion2D : MonoBehaviour
         {
             var col = buf[i];
             if (!col) continue;
+
+            if (ShouldIgnoreByName(col.transform)) continue;
 
             if (_targetTags != null && _targetTags.Length > 0)
             {
@@ -206,6 +212,20 @@ public class SpiritMinion2D : MonoBehaviour
             if (sq < bestSqr) { bestSqr = sq; best = col.transform.root; }
         }
         return best;
+    }
+
+    bool ShouldIgnoreByName(Transform t)
+    {
+        if (_ignoreNameContains == null || _ignoreNameContains.Length == 0 || !t) return false;
+        string self = t.name;
+        string root = t.root ? t.root.name : string.Empty;
+        for (int i = 0; i < _ignoreNameContains.Length; i++)
+        {
+            var key = _ignoreNameContains[i];
+            if (string.IsNullOrEmpty(key)) continue;
+            if (self.Contains(key) || root.Contains(key)) return true;
+        }
+        return false;
     }
 
     public void ForceReturnToPool() => ReturnToPool();

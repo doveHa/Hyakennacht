@@ -4,20 +4,20 @@ using UnityEngine;
 public class SK_HyakkiYako : SkillBase
 {
     [Header("Pools & VFX")]
-    public string spiritKey = "YokaiSpirit"; // 혼령 프리팹 풀 키
-    public string fogSpawnFxKey;             // 소환 시 발 연무 FX
+    public string spiritKey = "YokaiSpirit";
+    public string fogSpawnFxKey;
 
     [Header("Lifetime")]
     public float duration = 6f;
 
     [Header("Counts")]
-    public int combatCount = 5;              // 적 있을 때 마릿수
-    public bool singleWhenNoEnemy = true;    // 적 없으면 1마리만
+    public int combatCount = 5;
+    public bool singleWhenNoEnemy = true;
 
     [Header("Spawn/Idle (feet semicircle)")]
-    public float footYOffset = -0.2f;        // 발 위치 보정
-    public float spawnRadius = 1.0f;         // 최초 스폰 반경
-    public float idleSlotRadius = 0.8f;      // 대기 슬롯 반경(아래 반원)
+    public float footYOffset = -0.2f;
+    public float spawnRadius = 1.0f;
+    public float idleSlotRadius = 0.8f;
     [Range(0, 360)] public float spawnArcStartDeg = 200f;
     [Range(0, 360)] public float spawnArcEndDeg = 340f;
 
@@ -26,10 +26,13 @@ public class SK_HyakkiYako : SkillBase
     public LayerMask enemyMask;
     public string[] targetTags = new[] { "Enemy" };
 
+    [Header("Ignore (name contains)")]
+    public string[] ignoreNameContains = new[] { "SmallStraw" };
+
     [Header("Move")]
     public float moveSpeed = 6f;
     public float turnLerp = 12f;
-    public float standoffDistance = 0.55f;   // 적과 최소거리
+    public float standoffDistance = 0.55f;
 
     [Header("Attack")]
     public int damage = 10;
@@ -39,18 +42,14 @@ public class SK_HyakkiYako : SkillBase
 
     public override void Execute(SkillContext ctx)
     {
-        // 쿨타임 시작
         ctx.StartCooldown?.Invoke(skillId, cooldown);
 
-        // 컨트롤러가 없으면 추가, 있으면 갱신
         var ctrl = ctx.caster.GetComponent<HyakkiController2D>();
         if (!ctrl) ctrl = ctx.caster.gameObject.AddComponent<HyakkiController2D>();
 
-        // 발 연무 FX(선택)
         if (!string.IsNullOrEmpty(fogSpawnFxKey))
             ctx.PlayFXAt?.Invoke(fogSpawnFxKey, ctx.castPos + new Vector2(0f, footYOffset));
 
-        // 레벨/티어 스케일 적용
         int dmg = Mathf.RoundToInt(damage * powerByLevel.Evaluate(ctx.casterLevel) * TierMul());
 
         ctrl.Arm(new HyakkiController2D.Config
@@ -73,6 +72,7 @@ public class SK_HyakkiYako : SkillBase
             detectRadius = detectRadius,
             enemyMask = enemyMask,
             targetTags = targetTags,
+            ignoreNameContains = ignoreNameContains,   
 
             moveSpeed = moveSpeed,
             turnLerp = turnLerp,
