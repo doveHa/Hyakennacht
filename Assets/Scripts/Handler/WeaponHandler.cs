@@ -21,8 +21,8 @@ public class WeaponHandler : MonoBehaviour
 
     private IWeaponBehavior currentBehavior;
     private MonoBehaviour currentScript;
-    private GameObject currentVisual;
-    private WeaponData currentData;
+    public GameObject currentVisual; //HR: private -> public 외부에서 접근 가능
+    public WeaponData currentData; //HR: private -> public 외부에서 접근 가능
 
     private Transform weaponFacingProxy;
 
@@ -41,6 +41,13 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipWeapon(WeaponData data)
     {
+        //HR: 유효성 검사 추가
+        if (data == null)
+        {
+            Debug.LogWarning("EquipWeapon: 전달된 WeaponData가 유효하지 않아 장착할 수 없습니다.");
+            return;
+        }
+
         if (currentScript != null)
             Destroy(currentScript);
 
@@ -81,6 +88,13 @@ public class WeaponHandler : MonoBehaviour
             }
             currentVisual.transform.localPosition = offset;
         }
+        else //HR: 디버그 메시지 추가
+        {
+            // visualPrefab이 null일 경우 디버그 메시지를 남기고 currentVisual을 null로 설정
+            Debug.LogWarning($"EquipWeapon: {data.weaponName}의 비주얼 프리팹이 할당되지 않았습니다. 비주얼 없이 장착합니다.");
+            currentVisual = null;
+        }
+
     }
 
     public WeaponData GetCurrentWeaponData()
@@ -118,6 +132,37 @@ public class WeaponHandler : MonoBehaviour
     }
 
     //HR
+    /*    public void ChangeWeaponByPrefab(GameObject visualPrefab, string weaponName)
+        {
+            if (currentVisual != null) Destroy(currentVisual);
+
+            currentVisual = Instantiate(visualPrefab, weaponVisualHolder);
+            currentVisual.transform.localPosition = Vector3.zero;
+            currentVisual.transform.localRotation = Quaternion.identity;
+
+            Debug.Log($"WeaponHandler에 {weaponName} 비주얼 적용 완료");
+        }*/
+
+    // 현재 무기를 드랍하고 새로운 무기를 장착하는 역할을 합니다.
+    public void SwapWeapon(WeaponData newWeaponData, Vector3 dropPosition)
+    {
+        // 1. 현재 무기(currentData)가 있으면 드랍합니다.
+        if (currentData != null)
+        {
+            // currentData의 비주얼 프리팹을 사용하여 새 GameObject를 생성합니다.
+            GameObject droppedVisual = Instantiate(currentData.visualPrefab, dropPosition, Quaternion.identity);
+
+            // 생성된 GameObject에 WeaponPickup 스크립트를 추가하고 WeaponData를 설정합니다.
+            var pickupScript = droppedVisual.AddComponent<WeaponPickup>();
+            pickupScript.SetWeaponData(currentData);
+            Debug.Log($"드랍된 무기: {currentData.weaponName}");
+        }
+
+        // 2. 새 무기를 장착합니다.
+        EquipWeapon(newWeaponData);
+    }
+
+    // 이 메소드는 WeaponData가 아닌 visualPrefab으로 바로 장착할 때 사용합니다.
     public void ChangeWeaponByPrefab(GameObject visualPrefab, string weaponName)
     {
         if (currentVisual != null) Destroy(currentVisual);

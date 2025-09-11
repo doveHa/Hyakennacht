@@ -351,7 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stallWeaponsPrefabs:
   - {fileID: 6087501251416176840, guid: bfa50b1f0caa9f8498c44d1fc6d2b78c, type: 3}
-  - {fileID: 9208696594913934517, guid: a10306556b11de54c821fe4525d329fc, type: 3}
+  - {fileID: 9208696594913934517, guid: be9fe7c15bf4014479b8d7f25e7cfade, type: 3}
   - {fileID: 5679773163421190857, guid: 7a8a2269c16b565438cd929e0575e4ed, type: 3}
   stallTransforms:
   - {fileID: 8480853603325705383}
