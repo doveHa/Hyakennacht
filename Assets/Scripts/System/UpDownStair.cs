@@ -32,7 +32,11 @@ namespace System
             if (IsEndStage && Input.GetKeyDown(KeyCode.F))
             {
                 GameManager.Manager.Player.GetComponent<PlayerCollision>().GuideKey.SetActive(false);
-                MapManager.NextStage(isUpStair); ;
+                //MapManager.NextStage(isUpStair);
+                if (MapUIManager.Instance != null)
+                {
+                    MapUIManager.Instance.OnStageEnd(isUpStair);
+                }
             }
             /*            if (_isPlayerInStair && Input.GetKeyDown(KeyCode.F))
                         {

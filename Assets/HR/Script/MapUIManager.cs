@@ -201,27 +201,16 @@ public class MapUIManager : MonoBehaviour
     {
         _currentIsUpStair = isUpStair;
 
-        float playTime = Time.time - stageStartTime;
-
-        if (timeText) timeText.text = $"{playTime:F1}";
-        if (killText) killText.text = $"{KilledEnemies}";
-        if (coinText) coinText.text = $"{StageCoins}";
-
-        // 특정 스테이지에서만 스킬 선택
-        // StageManager의 IsSkillSelectStage()를 사용하여 스킬 선택 조건 확인
         if (StageManager.IsSkillSelectStage())
         {
-            // 스킬 선택 스테이지일 경우, 스킬 선택 패널을 보여줍니다.
+            Time.timeScale = 0f;
             ShowSkillSelectPanel();
-            // 스킬 선택이 끝난 후 statsPanel이 활성화됩니다. (OnCardSelected 함수 참고)
         }
-        else
+        else // 일반 스테이지 클리어
         {
-            // 스킬 선택 스테이지가 아닐 경우, statsPanel을 보여줍니다.
-            // 이는 일반 스테이지 클리어 or 플레이어 사망 시에도 해당됩니다.
-            
-            //매번 패널 나오는게 아니었다고..? 기억 조작 어디서 당한거임
-            statsPanel.SetActive(true);
+            // HR: NextStage를 호출하기 전에 스테이지를 증가
+            StageManager.AdvanceStage(isUpStair);
+            MapManager.NextStage(isUpStair);
         }
 
         MoveFlag(StageManager.CurrentStage);
@@ -323,10 +312,11 @@ public class MapUIManager : MonoBehaviour
 
     private void OnCardSelected(int index)
     {
+
         SelectedSkill = currentCards[index];
         skillSelectPanel.SetActive(false);
 
-        statsPanel.SetActive(true); // 스킬 선택 후 통계창 열기
+        //statsPanel.SetActive(true); // 스킬 선택 후 통계창 열기
 
         SkillCaster caster = player.GetComponent<SkillCaster>();
 
@@ -350,6 +340,10 @@ public class MapUIManager : MonoBehaviour
         {
             Debug.LogWarning($"스킬 '{SelectedSkill.title}' ID({SelectedSkill.id})가 배열 범위를 벗어났습니다.");
         }
+
+        Time.timeScale = 1f;
+        StageManager.AdvanceStage(_currentIsUpStair);
+        MapManager.NextStage(_currentIsUpStair);
     }
 
     // 이름으로 배열 검색
