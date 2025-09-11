@@ -26,6 +26,7 @@ namespace Manager
             _playerInput.Movement.Move.canceled += EndMove;
             _playerInput.Movement.Roll.started += StartRoll;
             _playerInput.Attack.Basic.started += StartBasicAttack;
+            _playerInput.Attack.Basic.canceled += EndBasicAttack;
             _playerInput.Attack.ActiveSkill1.started += RunActiveSkill1;
             _playerInput.Attack.ActiveSkill2.started += RunActiveSkill2;
         }
@@ -125,11 +126,26 @@ namespace Manager
 
                 if (behavior is ChargeAttack chargeAttack)
                 {
-                    chargeAttack.OnBasicAttack(ctx);
+                    chargeAttack.StartCharge();
                 }
                 else
                 {
                     playerScript.weaponHandler.UseWeapon();
+                }
+            }
+        }
+
+        private void EndBasicAttack(InputAction.CallbackContext ctx)
+        {
+            Player playerScript = GameManager.Manager.PlayerScript;
+
+            if (playerScript != null)
+            {
+                var behavior = playerScript.weaponHandler.GetCurrentBehavior();
+
+                if (behavior is ChargeAttack chargeAttack)
+                {
+                    chargeAttack.EndCharge();
                 }
             }
         }
@@ -142,6 +158,7 @@ namespace Manager
                 var slots = _caster.GetSlots();
                 if (slots != null && slots.Length > 0) _activeSkill1 = slots[0];
             }
+
             if (_caster && _activeSkill1) _caster.TryCast(_activeSkill1);
         }
 
@@ -164,6 +181,7 @@ namespace Manager
                 var slots = _caster.GetSlots();
                 if (slots != null && slots.Length > 1) _activeSkill2 = slots[1];
             }
+
             if (_caster && _activeSkill2) _caster.TryCast(_activeSkill2);
         }
 

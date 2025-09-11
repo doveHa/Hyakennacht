@@ -63,7 +63,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
         }
     }
 
-    private void StartCharge()
+    public void StartCharge()
     {
         if (animator == null)
             animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
@@ -80,7 +80,7 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
             animator.SetBool("isCharging", true);
     }
 
-    private void EndCharge()
+    public void EndCharge()
     {
         isCharging = false;
 
