@@ -21,6 +21,14 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Projectile"))
+        {
+            SystemManager.Manager.HpControl.MinusHp();
+            Destroy(collision.gameObject);
+        }
+    }
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag.Equals("InteractionAble"))

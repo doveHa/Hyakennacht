@@ -29,10 +29,11 @@ namespace System
 
         void Update()
         {
-            if (IsEndStage && Input.GetKeyDown(KeyCode.F))
+            if (_isPlayerInStair && IsEndStage && Input.GetKeyDown(KeyCode.F))
             {
                 GameManager.Manager.Player.GetComponent<PlayerCollision>().GuideKey.SetActive(false);
-                MapManager.NextStage(isUpStair); ;
+                MapManager.NextStage(isUpStair);
+                
             }
             /*            if (_isPlayerInStair && Input.GetKeyDown(KeyCode.F))
                         {
