@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4881998511801614492}
   - component: {fileID: 6270840885146930567}
   - component: {fileID: 1882390732549753082}
+  - component: {fileID: -8313338039020353949}
   m_Layer: 0
   m_Name: WaterBall
   m_TagString: Projectile
@@ -768,3 +769,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969e577d93d863d4eb1b37fed45e2ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8313338039020353949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4098029044508243359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41033a2ce6c1fee4893ddcc8d11afc45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2

@@ -14,7 +14,6 @@ namespace Enemy.Attack
         }
         public override void Attack(Vector3 targetPosition)
         {
-            transform.GetChild(2).GetComponent<SmallStraw>().SetTarget(targetPosition);
         }
 
         public override void Exit()

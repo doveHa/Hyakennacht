@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: -4261676413725790950}
   - component: {fileID: 6428137459167022185}
   - component: {fileID: 6508716434634625742}
+  - component: {fileID: 388627983289267992}
   m_Layer: 0
   m_Name: SmallStraw
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,3 +269,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
+--- !u!114 &388627983289267992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7071598035148941944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41033a2ce6c1fee4893ddcc8d11afc45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2
