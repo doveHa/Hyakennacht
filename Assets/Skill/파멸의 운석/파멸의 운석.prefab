@@ -155,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &450946308556671108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702a89bffc87d7c458eeda23900f496f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visualRoot: {fileID: 8824929676088157442}
+  lockVisualRotation: 1
+  flipVisualByX: 1
 --- !u!114 &3071693326059289206
 MonoBehaviour:
   m_ObjectHideFlags: 0
