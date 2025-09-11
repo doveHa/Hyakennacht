@@ -18,7 +18,6 @@ public class LongStaff : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("�ı� ����");
         Destroy(gameObject, destroyTime);
     }
 
@@ -38,14 +37,13 @@ public class LongStaff : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        // Soft Homing
         if (target == null)
             target = FindClosestEnemy();
 
         if (target != null)
         {
             Vector2 toTarget = ((Vector2)target.position - (Vector2)transform.position).normalized;
-            direction = Vector2.Lerp(direction, toTarget, 0.02f); // �ε巴�� ���� ����
+            direction = Vector2.Lerp(direction, toTarget, 0.02f);
         }
 
         Vector2 offset = new Vector2(0, Mathf.Sin(time * frequency) * amplitude);
@@ -72,6 +70,7 @@ public class LongStaff : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            Debug.Log("Enemy와 충돌 확인");
             AEnemyStats aEnemy = other.GetComponentInParent<AEnemyStats>();
             if (aEnemy != null)
             {
