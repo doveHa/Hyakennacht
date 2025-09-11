@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
 {
@@ -36,65 +37,65 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (!isCharging) return;
+
+        chargeTime += Time.deltaTime;
+
+        if (data.weaponName == "마법진" && currentProjectile != null)
         {
-            if (animator == null)
-                animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
+            float scale = Mathf.Lerp(1f, 2.5f, chargeTime / chargeThreshold);
+            currentProjectile.transform.localScale = new Vector3(scale, scale, 1);
 
-            Debug.Log($"Animator 할당됨: {animator?.gameObject.name}");
-            isCharging = true;
-            chargeTime = 0f;
+            CircleCollider2D collider = currentProjectile.GetComponent<CircleCollider2D>();
+            if (collider != null)
+                collider.radius = scale * 0.35f;
 
-            if (data.weaponName == "마법진")
-                SpawnMagicCircle();
-
-            if (animator != null)
-                animator.SetBool("isCharging", true);
-        }
-
-        if (isCharging && Input.GetKey(KeyCode.Z))
-        {
-            chargeTime += Time.deltaTime;
-
-            if (data.weaponName == "마법진" && currentProjectile != null)
+            Animator projAnim = currentProjectile.GetComponent<Animator>();
+            if (projAnim != null)
             {
-                float scale = Mathf.Lerp(1f, 2.5f, chargeTime / chargeThreshold);
-                currentProjectile.transform.localScale = new Vector3(scale, scale, 1);
-
-                CircleCollider2D collider = currentProjectile.GetComponent<CircleCollider2D>();
-                if (collider != null)
-                    collider.radius = scale * 0.35f;
-
-                Animator projAnim = currentProjectile.GetComponent<Animator>();
-                if (projAnim != null)
-                {
-                    if (chargeTime >= chargeThreshold * 0.44f)
-                        projAnim.Play("Stage3");
-                    else if (chargeTime >= chargeThreshold * 0.22f)
-                        projAnim.Play("Stage2");
-                    else
-                        projAnim.Play("Stage1");
-                }
+                if (chargeTime >= chargeThreshold * 0.44f)
+                    projAnim.Play("Stage3");
+                else if (chargeTime >= chargeThreshold * 0.22f)
+                    projAnim.Play("Stage2");
+                else
+                    projAnim.Play("Stage1");
             }
         }
+    }
 
-        if (isCharging && Input.GetKeyUp(KeyCode.Z))
+    private void StartCharge()
+    {
+        if (animator == null)
+            animator = FindAnimatorInWeaponVisual(firePoint?.parent?.Find("WeaponFacingProxy"));
+
+        Debug.Log($"Animator 할당됨: {animator?.gameObject.name}");
+
+        isCharging = true;
+        chargeTime = 0f;
+
+        if (data.weaponName == "마법진")
+            SpawnMagicCircle();
+
+        if (animator != null)
+            animator.SetBool("isCharging", true);
+    }
+
+    private void EndCharge()
+    {
+        isCharging = false;
+
+        if (data.weaponName == "마법진")
         {
-            isCharging = false;
-
-            if (data.weaponName == "마법진")
-            {
-                Destroy(currentProjectile, 0.2f);
-            }
-            else
-            {
-                bool fullyCharged = chargeTime >= chargeThreshold;
-                FireProjectile(fullyCharged);
-            }
-
-            if (animator != null)
-                animator.SetBool("isCharging", false);
+            Destroy(currentProjectile, 0.2f);
         }
+        else
+        {
+            bool fullyCharged = chargeTime >= chargeThreshold;
+            FireProjectile(fullyCharged);
+        }
+
+        if (animator != null)
+            animator.SetBool("isCharging", false);
     }
 
     private void FireProjectile(bool fullyCharged)
@@ -147,5 +148,17 @@ public class ChargeAttack : MonoBehaviour, IWeaponBehavior, IFlippableWeapon
     {
         if (visualHolder == null) return null;
         return visualHolder.GetComponentInChildren<Animator>();
+    }
+
+    public void OnBasicAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            StartCharge();
+        }
+        else if (context.canceled)
+        {
+            EndCharge();
+        }
     }
 }

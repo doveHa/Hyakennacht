@@ -26,6 +26,7 @@ namespace Manager
             _playerInput.Movement.Move.canceled += EndMove;
             _playerInput.Movement.Roll.started += StartRoll;
             _playerInput.Attack.Basic.started += StartBasicAttack;
+            _playerInput.Attack.Basic.canceled += StartBasicAttack;
             _playerInput.Attack.ActiveSkill1.started += RunActiveSkill1;
             _playerInput.Attack.ActiveSkill2.started += RunActiveSkill2;
         }
@@ -120,7 +121,18 @@ namespace Manager
             Player playerScript = GameManager.Manager.PlayerScript;
 
             if (playerScript != null)
-                playerScript.weaponHandler.UseWeapon();
+            {
+                var behavior = playerScript.weaponHandler.GetCurrentBehavior();
+
+                if (behavior is ChargeAttack chargeAttack)
+                {
+                    chargeAttack.OnBasicAttack(ctx);
+                }
+                else
+                {
+                    playerScript.weaponHandler.UseWeapon();
+                }
+            }
         }
 
         private void RunActiveSkill1(InputAction.CallbackContext ctx)

@@ -128,4 +128,6 @@ public class WeaponHandler : MonoBehaviour
 
         Debug.Log($"WeaponHandler에 {weaponName} 비주얼 적용 완료");
     }
+
+    public IWeaponBehavior GetCurrentBehavior() => currentBehavior;
 }

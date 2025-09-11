@@ -64,10 +64,10 @@ public class Potion : MonoBehaviour
     {
         switch (type)
         {
-            case PotionEffectType.Heal: return "Effects/ȸ��";
-            case PotionEffectType.Poison: return "Effects/��";
-            case PotionEffectType.Fire: return "Effects/��";
-            case PotionEffectType.Hit: return "Effects/�⺻ ����";
+            case PotionEffectType.Heal: return "Effects/회복";
+            case PotionEffectType.Poison: return "Effects/독";
+            case PotionEffectType.Fire: return "Effects/불";
+            case PotionEffectType.Hit: return "Effects/기본 포션";
             //case PotionType.Death: return "Effects/DeathEffect";
             default: return "";
         }

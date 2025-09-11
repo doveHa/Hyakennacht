@@ -36,7 +36,7 @@ public class Dot : MonoBehaviour
 
             if (effectType == "Electric")
             {
-                GameObject fx = Resources.Load<GameObject>("Effects/���");
+                GameObject fx = Resources.Load<GameObject>("Effects/충격");
                 if (fx != null)
                     Instantiate(fx, transform.position, Quaternion.identity);
             }
