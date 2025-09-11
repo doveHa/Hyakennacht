@@ -55,7 +55,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -202,66 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: 7
-  MaxHp: 0
-<<<<<<< HEAD
-=======
---- !u!114 &8784429648405956054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846b8377da2a145478afdda90b1e59af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1411834605358350398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e12198b08ab9d647975137c6fd8fc93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunnedTint: {r: 1, g: 1, b: 1, a: 0.5}
-  debugLog: 0
->>>>>>> dd67de14601fff00a311dffc0c6a2b898fc534c2
-  MaxHp: 0
-<<<<<<< HEAD
-=======
---- !u!114 &8784429648405956054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846b8377da2a145478afdda90b1e59af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1411834605358350398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520945707462152971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e12198b08ab9d647975137c6fd8fc93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunnedTint: {r: 1, g: 1, b: 1, a: 0.5}
-  debugLog: 0
->>>>>>> dd67de14601fff00a311dffc0c6a2b898fc534c2
   MaxHp: 0
 --- !u!114 &8784429648405956054
 MonoBehaviour:
