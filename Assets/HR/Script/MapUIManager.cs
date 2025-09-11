@@ -219,6 +219,8 @@ public class MapUIManager : MonoBehaviour
         {
             // 스킬 선택 스테이지가 아닐 경우, statsPanel을 보여줍니다.
             // 이는 일반 스테이지 클리어 or 플레이어 사망 시에도 해당됩니다.
+            
+            //매번 패널 나오는게 아니었다고..? 기억 조작 어디서 당한거임
             statsPanel.SetActive(true);
         }
 
