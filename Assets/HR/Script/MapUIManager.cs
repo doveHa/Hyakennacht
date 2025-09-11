@@ -317,6 +317,9 @@ public class MapUIManager : MonoBehaviour
         skillSelectPanel.SetActive(false);
 
         //statsPanel.SetActive(true); // 스킬 선택 후 통계창 열기
+        Time.timeScale = 1f;
+        //StageManager.AdvanceStage(_currentIsUpStair);
+        MapManager.NextStage(_currentIsUpStair);
 
         SkillCaster caster = player.GetComponent<SkillCaster>();
 
@@ -340,10 +343,6 @@ public class MapUIManager : MonoBehaviour
         {
             Debug.LogWarning($"스킬 '{SelectedSkill.title}' ID({SelectedSkill.id})가 배열 범위를 벗어났습니다.");
         }
-
-        Time.timeScale = 1f;
-        StageManager.AdvanceStage(_currentIsUpStair);
-        MapManager.NextStage(_currentIsUpStair);
     }
 
     // 이름으로 배열 검색
