@@ -88,7 +88,6 @@ public class HyakkiController2D : MonoBehaviour
             var co = buf[i];
             if (!co) continue;
 
-            // ★ 이름 기준 무시
             if (ShouldIgnoreByName(co.transform, _c.ignoreNameContains)) continue;
 
             if (_c.targetTags == null || _c.targetTags.Length == 0) return true;
