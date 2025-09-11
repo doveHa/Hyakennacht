@@ -26,7 +26,6 @@ namespace Manager
             _playerInput.Movement.Move.canceled += EndMove;
             _playerInput.Movement.Roll.started += StartRoll;
             _playerInput.Attack.Basic.started += StartBasicAttack;
-            _playerInput.Attack.Basic.canceled += StartBasicAttack;
             _playerInput.Attack.ActiveSkill1.started += RunActiveSkill1;
             _playerInput.Attack.ActiveSkill2.started += RunActiveSkill2;
         }
