@@ -327,7 +327,8 @@ public class MapManager : MonoBehaviour
 
     public static void NextStage(bool isStairUp)
     {
-        //StageManager.AdvanceStage(isStairUp);
+        StageManager.AdvanceStage(isStairUp);
+        
         if (StageManager.IsBossStage())
         {
             string bossScene = StageManager.GetBossScene();
