@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
          */
 
         // HR: Q 키 입력은 여기서만 처리
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.F)) // Q -> F
         {
             if (currentInteractable != null)
             {

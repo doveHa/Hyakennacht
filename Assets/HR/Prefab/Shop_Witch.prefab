@@ -91,6 +91,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WS__1_0_0
       objectReference: {fileID: 0}
+    - target: {fileID: 9008798356015598338, guid: eba4489528200c449b65855546563f49, type: 3}
+      propertyPath: m_TagString
+      value: InteractionAble
+      objectReference: {fileID: 0}
     - target: {fileID: 9176494306620137200, guid: eba4489528200c449b65855546563f49, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -251,6 +255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WS__1_0_1
       objectReference: {fileID: 0}
+    - target: {fileID: 9008798356015598338, guid: eba4489528200c449b65855546563f49, type: 3}
+      propertyPath: m_TagString
+      value: InteractionAble
+      objectReference: {fileID: 0}
     - target: {fileID: 9176494306620137200, guid: eba4489528200c449b65855546563f49, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -336,6 +344,10 @@ PrefabInstance:
     - target: {fileID: 9008798356015598338, guid: eba4489528200c449b65855546563f49, type: 3}
       propertyPath: m_Name
       value: WS__1_0_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008798356015598338, guid: eba4489528200c449b65855546563f49, type: 3}
+      propertyPath: m_TagString
+      value: InteractionAble
       objectReference: {fileID: 0}
     - target: {fileID: 9176494306620137200, guid: eba4489528200c449b65855546563f49, type: 3}
       propertyPath: m_LocalScale.x
