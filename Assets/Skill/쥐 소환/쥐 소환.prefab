@@ -213,6 +213,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80c585c90356904d99b8b8ef819e11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkFrontOffsetX: 0
-  blinkFrontOffsetY: -0.2
-  postBlinkDelay: 0.06
+  visualRoot: {fileID: 208647270094644535}

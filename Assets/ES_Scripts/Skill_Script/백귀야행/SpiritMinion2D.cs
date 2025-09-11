@@ -1,3 +1,4 @@
+using Manager;
 using System.Collections;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class SpiritMinion2D : MonoBehaviour
         public Transform owner;
         public float life;
         public float moveSpeed;
-        public float turnLerp;      
+        public float turnLerp;
         public float detectRadius;
         public LayerMask enemyMask;
         public string[] targetTags;
@@ -35,12 +36,12 @@ public class SpiritMinion2D : MonoBehaviour
 
         public string[] ignoreNameContains;
 
-        public bool mirrorYWhenLeft;   // default: true 권장
+        // 왼쪽일 때 상하 반전이 필요하면 true
+        public bool mirrorYWhenLeft;
     }
 
-    [Header("Visual (optional)")]
-    [SerializeField] Transform visualRoot;      
-    [SerializeField] SpriteRenderer mainSR;    
+    [Header("Optional visual root (비워도 됨)")]
+    [SerializeField] Transform visualRoot;
 
     Transform _owner;
     float _lifeEnd;
@@ -63,27 +64,24 @@ public class SpiritMinion2D : MonoBehaviour
     float _nextAttackTime;
     int _lastHitTargetId = -1; float _ignoreUntil = 0f; float _ignoreSameTargetSeconds = 0.3f;
 
-    Character.Dash _ownerDash; 
-    SpriteRenderer _ownerSR;
+    Character.Dash _playerDash;
+    SpriteRenderer _playerSR;
+
+    SpriteRenderer[] _allSRs;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<Collider2D>();
-        _anim = GetComponentInChildren<Animator>();
+        _anim = GetComponentInChildren<Animator>(true);
 
         _rb.gravityScale = 0f;
-        _rb.freezeRotation = true; // 회전 고정
+        _rb.freezeRotation = true;
         _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         _col.isTrigger = true;
 
-        if (!visualRoot)
-        {
-            var sr = GetComponentInChildren<SpriteRenderer>(true);
-            if (sr) { mainSR = sr; visualRoot = sr.transform; }
-        }
-        if (!mainSR && visualRoot)
-            mainSR = visualRoot.GetComponentInChildren<SpriteRenderer>(true);
+        _allSRs = GetComponentsInChildren<SpriteRenderer>(true);
+        RebindPlayerFacingRefs(); // 처음 한 번 바인딩
     }
 
     public void Arm(Config c)
@@ -102,11 +100,11 @@ public class SpiritMinion2D : MonoBehaviour
         _hitFxKey = c.hitFxKey;
         _ignoreSameTargetSeconds = (c.ignoreSameTargetSeconds > 0f) ? c.ignoreSameTargetSeconds : 0.3f;
 
+        _orbitDir = c.orbitClockwise ? -1 : 1;
         _footYOffset = c.footYOffset;
         _idleSlotRadius = (c.idleSlotRadius > 0f) ? c.idleSlotRadius : 0.8f;
         _slotIndex = Mathf.Max(0, c.slotIndex);
         _slotCount = Mathf.Max(1, c.slotCount);
-
         _standoffDistance = Mathf.Max(0f, c.standoffDistance);
 
         _despawnOnHit = c.despawnOnHit;
@@ -116,22 +114,22 @@ public class SpiritMinion2D : MonoBehaviour
         _ignoreNameContains = c.ignoreNameContains;
         _mirrorYWhenLeft = c.mirrorYWhenLeft;
 
-        if (_owner)
-        {
-            _ownerDash = _owner.GetComponentInChildren<Character.Dash>(true);
-            _ownerSR = _owner.GetComponentInChildren<SpriteRenderer>(true);
-        }
+        _allSRs = GetComponentsInChildren<SpriteRenderer>(true);
+
+        RebindPlayerFacingRefs();
+
+        SyncVisualFacingWithPlayer(force: true);
 
         _nextAttackTime = Time.time;
-
-        if (visualRoot) visualRoot.localRotation = Quaternion.identity;
-
         gameObject.SetActive(true);
     }
 
     void Update()
     {
         if (Time.time >= _lifeEnd) { ReturnToPool(); return; }
+
+        if ((_playerDash == null && _playerSR == null) || GameManager.Manager == null || GameManager.Manager.Player == null)
+            RebindPlayerFacingRefs();
 
         var target = AcquireTarget(transform.position, _detectRadius);
         if (target)
@@ -146,49 +144,96 @@ public class SpiritMinion2D : MonoBehaviour
         {
             Vector2 to = (Vector2)target.position - (Vector2)transform.position;
             float dist = to.magnitude;
-
             Vector2 desiredDir = (_standoffDistance > 0f && dist <= _standoffDistance)
-                ? new Vector2(-to.y, to.x).normalized * (_orbitDir == 0 ? 1 : _orbitDir)
-                : to.sqrMagnitude > 1e-6f ? to.normalized : Vector2.zero;
+                ? new Vector2(-to.y, to.x).normalized * _orbitDir
+                : (to.sqrMagnitude > 1e-6f ? to.normalized : Vector2.zero);
 
             vel = Vector2.Lerp(_rb.linearVelocity, desiredDir * _speed, Time.deltaTime * _turnLerp);
         }
-        else
+        else if (_owner)
         {
-            if (_owner)
-            {
-                Vector2 anchor = (Vector2)_owner.position + new Vector2(0f, _footYOffset);
-                float ang = ((_slotIndex + 0.5f) / _slotCount) * Mathf.PI;
-                Vector2 home = anchor + new Vector2(Mathf.Cos(ang), Mathf.Sin(ang)) * _idleSlotRadius;
+            Vector2 anchor = (Vector2)_owner.position + new Vector2(0f, _footYOffset);
+            float ang = ((_slotIndex + 0.5f) / _slotCount) * Mathf.PI;
+            Vector2 home = anchor + new Vector2(Mathf.Cos(ang), Mathf.Sin(ang)) * _idleSlotRadius;
 
-                Vector2 toHome = home - (Vector2)transform.position;
-                if (toHome.sqrMagnitude >= 1e-6f)
-                {
-                    Vector2 desired = toHome.normalized * (_speed * 0.6f);
-                    vel = Vector2.Lerp(_rb.linearVelocity, desired, Time.deltaTime * (_turnLerp * 0.5f));
-                }
+            Vector2 toHome = home - (Vector2)transform.position;
+            if (toHome.sqrMagnitude >= 1e-6f)
+            {
+                Vector2 desired = toHome.normalized * (_speed * 0.6f);
+                vel = Vector2.Lerp(_rb.linearVelocity, desired, Time.deltaTime * (_turnLerp * 0.5f));
             }
         }
 
         _rb.linearVelocity = vel;
 
-        SyncVisualFacingWithOwner();
+        SyncVisualFacingWithPlayer();
+    }
+
+    void RebindPlayerFacingRefs()
+    {
+        var player = GameManager.Manager ? GameManager.Manager.Player : null;
+        if (!player) { _playerDash = null; _playerSR = null; return; }
+
+        _playerDash = player.GetComponentInChildren<Character.Dash>(true);
+
+        var body = FindDeepChildByName(player.transform, "Body");
+        if (body)
+            _playerSR = body.GetComponentInChildren<SpriteRenderer>(true);
+        else
+            _playerSR = player.GetComponentInChildren<SpriteRenderer>(true);
+    }
+
+    void SyncVisualFacingWithPlayer(bool force = false)
+    {
+        if (_allSRs == null || _allSRs.Length == 0) return;
+
+        bool got, isLeft;
+        (got, isLeft) = TryGetPlayerFacingLeft();
+
+        if (!got) return;
+
+        bool flipX = isLeft;
+        bool flipY = _mirrorYWhenLeft ? isLeft : false;
+
+        for (int i = 0; i < _allSRs.Length; i++)
+        {
+            var sr = _allSRs[i];
+            if (!sr) continue;
+            sr.flipX = flipX;
+            sr.flipY = flipY;
+        }
+
         if (visualRoot) visualRoot.localRotation = Quaternion.identity;
     }
 
-    void SyncVisualFacingWithOwner()
+    (bool ok, bool isLeft) TryGetPlayerFacingLeft()
     {
-        if (!mainSR || !_owner) return;
+        var player = GameManager.Manager ? GameManager.Manager.Player : null;
+        if (!player) return (false, false);
 
-        bool isLeft =
-            (_ownerDash != null) ? _ownerDash.IsLeftSight :
-            (_ownerSR != null) ? _ownerSR.flipX :
-            (_owner.localScale.x < 0f);
+        if (_playerDash != null) return (true, _playerDash.IsLeftSight);
 
-        mainSR.flipX = isLeft;
+        if (_playerSR == null) RebindPlayerFacingRefs();
+        if (_playerSR != null)
+        {
+            bool isLeft = _playerSR.flipX; 
+                                           
+            return (true, isLeft);
+        }
 
-        if (_mirrorYWhenLeft) mainSR.flipY = isLeft;
-        else mainSR.flipY = false;
+        return (true, player.transform.localScale.x < 0f);
+    }
+
+    static Transform FindDeepChildByName(Transform root, string name)
+    {
+        if (!root) return null;
+        if (root.name == name) return root;
+        for (int i = 0; i < root.childCount; i++)
+        {
+            var t = FindDeepChildByName(root.GetChild(i), name);
+            if (t) return t;
+        }
+        return null;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -202,8 +247,6 @@ public class SpiritMinion2D : MonoBehaviour
         _nextAttackTime = Time.time + _atkCD;
 
         if (_damage > 0) enemy.TakeDamage(_damage);
-        if (!string.IsNullOrEmpty(_hitFxKey)) { /* _playFxAt?.Invoke(_hitFxKey, other.bounds.center); */ }
-
         if (_anim) _anim.SetTrigger("Attack");
 
         _lastHitTargetId = enemy.GetInstanceID();
