@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
-    public float destroyTime = 2f;
+    public float destroyTime = 0.5f;
     public PotionEffectType potionType;
 
     private void Start()
@@ -16,19 +17,16 @@ public class Potion : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            StopAllCoroutines();
             AEnemyStats aEnemy = other.GetComponent<AEnemyStats>();
             if (aEnemy != null)
             {
                 ApplyEffect(aEnemy);
-                string effectPath = GetEffectPath(potionType);
-                GameObject effectPrefab = Resources.Load<GameObject>(effectPath);
-                if (effectPrefab != null)
-                {
-                    Instantiate(effectPrefab, aEnemy.transform.position, Quaternion.identity, aEnemy.transform);
-                }
+
+                Bomb(aEnemy.transform);
             }
 
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 
@@ -37,7 +35,7 @@ public class Potion : MonoBehaviour
         switch (potionType)
         {
             case PotionEffectType.Heal:
-                aEnemy.Heal(3); 
+                aEnemy.Heal(3);
                 break;
 
             case PotionEffectType.Poison:
@@ -55,7 +53,7 @@ public class Potion : MonoBehaviour
                 break;
 
             case PotionEffectType.Death:
-                aEnemy.Die(); 
+                aEnemy.Die();
                 break;
         }
     }
@@ -71,5 +69,36 @@ public class Potion : MonoBehaviour
             //case PotionType.Death: return "Effects/DeathEffect";
             default: return "";
         }
+    }
+
+    private IEnumerator NoHit()
+    {
+        yield return new WaitForSeconds(0.65f);
+        GetComponent<SpriteRenderer>().enabled = false;
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.simulated = false;
+
+
+        Bomb(transform);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+
+    private void Bomb(Transform applyTransform)
+    {
+        string effectPath = GetEffectPath(potionType);
+        GameObject effectPrefab = Resources.Load<GameObject>(effectPath);
+        if (effectPrefab != null)
+        {
+            Instantiate(effectPrefab, applyTransform.position, Quaternion.identity, applyTransform);
+        }
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(NoHit());
     }
 }
