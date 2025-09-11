@@ -1,9 +1,10 @@
-using System;
-using UnityEngine;
-using TMPro;
-using System.Collections.Generic;
 using Manager;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using TMPro;
+using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class ShopManager : MonoBehaviour
         int weaponLayer = LayerMask.NameToLayer("Weapon");
         if (weaponLayer == -1)
         {
-            Debug.LogWarning("\"Weapon\" 레이어가 존재하지 않습니다. 기본 레이어(0)로 무기를 생성합니다.");
+            //UnityEngine.Debug.LogWarning("\"Weapon\" 레이어가 존재하지 않습니다. 기본 레이어(0)로 무기를 생성합니다.");
             weaponLayer = 0; // Default layer
         }
 
@@ -73,7 +74,7 @@ for (int i = 0; i < stallCount; i++)
             {
                 if (availableIndices.Count == 0)
                 {
-                    Debug.LogWarning("가판대 수가 무기 종류보다 많아 중복이 발생할 수 있습니다.");
+                    UnityEngine.Debug.LogWarning("가판대 수가 무기 종류보다 많아 중복이 발생할 수 있습니다.");
                     break;
                 }
 
@@ -109,7 +110,7 @@ for (int i = 0; i < stallCount; i++)
         }
     }
 
-    private void BuyWeapon(int index)
+    /*private void BuyWeapon(int index)
     {
         if (spawnedWeapons[index] == null)
         {
@@ -214,9 +215,88 @@ for (int i = 0; i < stallCount; i++)
 
         // 코인 차감
         GameManager.Manager.PlayerScript.SpendCoins(25);
+    }*/
+
+    private void BuyWeapon(int index)
+    {
+        if (spawnedWeapons[index] == null)
+        {
+            UnityEngine.Debug.LogWarning("구매하려는 무기가 이미 제거되었거나 존재하지 않습니다.");
+            return;
+        }
+
+        // 맵 코인 확인
+        if (GameManager.Manager.PlayerScript.Coins < 25)
+        {
+            UnityEngine.Debug.Log("코인이 부족합니다! 25코인이 필요합니다.");
+            return;
+        }
+
+        // 체력 포션인지 확인
+        if (spawnedWeaponPrefabIndices[index] == -1)
+        {
+            if (SystemManager.Instance.HpControl != null)
+            {
+                if (!SystemManager.Instance.HpControl.IsFullHp)
+                {
+                    SystemManager.Instance.HpControl.PlusHp();
+                    UnityEngine.Debug.Log($"체력 포션 구매! HP 1 증가 현재 Hp {SystemManager.Instance.HpControl.CurrentHp}");
+                }
+                else
+                {
+                    UnityEngine.Debug.Log($"체력이 가득 차 있습니다! 현재 HP {SystemManager.Instance.HpControl.CurrentHp}");
+                    return; // 체력이 가득 차 있으면 구매 불가
+                }
+            }
+        }
+        else
+        {
+            // 무기 구매
+            LastPurchasedWeaponPrefab = weaponPrefabs[spawnedWeaponPrefabIndices[index]];
+            LastPurchasedStallIndex = index;
+            UnityEngine.Debug.Log($"가판대 {index + 1} 무기 구매 완료! ({LastPurchasedWeaponPrefab.name}) 남은 코인: {GameManager.Manager.PlayerScript.Coins}");
+            OnWeaponPurchased?.Invoke(index, LastPurchasedWeaponPrefab);
+
+            // Player 무기에 장착
+            var player = FindAnyObjectByType<Player>();
+            if (player != null)
+            {
+                // Player 스크립트에서 WeaponHandler를 가져옵니다.
+                var weaponHandler = player.weaponHandler;
+
+                if (weaponHandler != null)
+                {
+                    string weaponName = LastPurchasedWeaponPrefab.name;
+                    WeaponData newData = Resources.Load<WeaponData>($"Weapons/{weaponName}");
+
+                    if (newData != null)
+                    {
+                        // WeaponHandler의 SwapWeapon을 호출하여
+                        // 기존 무기를 드랍하고 새로운 무기를 장착합니다.
+                        weaponHandler.SwapWeapon(newData, player.transform.position);
+
+                        player.startingWeapon = newData;
+                        UnityEngine.Debug.Log($"WeaponHandler에 {weaponName} 장착 완료");
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.LogWarning($"WeaponData not found at Resources/Weapons/{weaponName}");
+                    }
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError("WeaponHandler를 Player에서 찾을 수 없음!");
+                }
+            }
+        }
+
+        // 선택한 가판대 무기 제거
+        Destroy(spawnedWeapons[index]);
+        spawnedWeapons[index] = null;
+
+        // 코인 차감
+        GameManager.Manager.PlayerScript.SpendCoins(25);
     }
-
-
 
     private void SetWeaponSorting(GameObject weaponObj)
     {
