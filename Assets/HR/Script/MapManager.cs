@@ -204,6 +204,7 @@ public class MapManager : MonoBehaviour
         if (shopPrefab != null && StageManager.IsShopStage())
         {
             shopInstance = PlaceShop();
+            Destroy(shopInstance.GetComponentInParent<EnemySpawner>());
         }
 
         // 새로운 씬이 로드된 후 MapUIManager의 OnStageStart()를 호출
@@ -342,7 +343,7 @@ public class MapManager : MonoBehaviour
         if (rooms.Count < 2) return;
 
         var shuffledRooms = rooms.OrderBy(r => Random.value).ToList();
-        var availableRooms = shuffledRooms.Where(r => r != _startRoom).ToList();
+        var availableRooms = shuffledRooms.Where(r => r != _startRoom && r!= rooms[shopRoomIndex]).ToList();
         Room upRoom = availableRooms[0];
         Room downRoom = availableRooms[1];
 
@@ -580,6 +581,6 @@ public class MapManager : MonoBehaviour
 
         avgWorldPos /= shopRoom.tiles.Count;
 
-        return Instantiate(shopPrefab, avgWorldPos, Quaternion.identity, this.transform);
+        return Instantiate(shopPrefab, avgWorldPos, Quaternion.identity, shopRoom.roomObject.transform);
     }
 }
