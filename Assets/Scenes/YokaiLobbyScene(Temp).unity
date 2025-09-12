@@ -2185,9 +2185,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3801307376890050959, guid: 26d5389559c0c6d49a865a3d8fe73c3b, type: 3}
+      propertyPath: m_TagString
+      value: InteractionAble
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313945488174791592, guid: 26d5389559c0c6d49a865a3d8fe73c3b, type: 3}
+      propertyPath: m_TagString
+      value: InteractionAble
+      objectReference: {fileID: 0}
     - target: {fileID: 7952547589909941521, guid: 26d5389559c0c6d49a865a3d8fe73c3b, type: 3}
       propertyPath: m_Name
       value: StartWeapon_witch
+      objectReference: {fileID: 0}
+    - target: {fileID: 8380169985516726177, guid: 26d5389559c0c6d49a865a3d8fe73c3b, type: 3}
+      propertyPath: m_TagString
+      value: InteractionAble
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
